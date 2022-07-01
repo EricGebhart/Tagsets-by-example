@@ -1,0 +1,891 @@
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2004.12.7)  26 JUL 2010 12:25
+**book.tex
+(./book.tex{/sw/share/texmf/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/sw/share/texmf/tex/latex/base/book.cls
+Document Class: book 2001/04/21 v1.4e Standard LaTeX document class
+(/sw/share/texmf/tex/latex/base/bk10.clo
+File: bk10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/sw/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
+\headwidth=\dimen103
+)
+(/sw/share/texmf/tex/latex/base/flafter.sty
+Package: flafter 2000/07/23 v1.2i Standard LaTeX floats after reference (FMi)
+)
+(/sw/share/texmf/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/sw/share/texmf/tex/latex/misc/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count88
+\float@exts=\toks14
+\float@box=\box26
+\@float@everytoks=\toks15
+\@floatcapt=\box27
+)
+(/sw/share/texmf/tex/latex/psnfss/times.sty
+Package: times 2002/09/08 PSNFSS-v9.0a (SPQR) 
+)
+(/sw/share/texmf/tex/latex/base/fontenc.sty
+Package: fontenc 2001/06/05 v1.94 Standard LaTeX package
+
+(/sw/share/texmf/tex/latex/base/t1enc.def
+File: t1enc.def 2001/06/05 v1.94 Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 38.
+))
+(/sw/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/sw/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/sw/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/sw/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/sw/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/sw/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/sw/share/texmf/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2000/03/21
+
+Style option: `fancyvrb' v2.7, with DG/SPQR fixes <2000/03/21> (tvz)
+\FV@CodeLineNo=\count90
+\FV@InFile=\read1
+\FV@TabBox=\box28
+\c@FancyVerbLine=\count91
+\FV@StepNumber=\count92
+\FV@OutFile=\write3
+)
+(./listings.sty
+\lst@mode=\count93
+\lst@gtempboxa=\box29
+\lst@token=\toks17
+\lst@length=\count94
+\lst@currlwidth=\dimen106
+\lst@column=\count95
+\lst@pos=\count96
+\lst@lostspace=\dimen107
+\lst@width=\dimen108
+\lst@newlines=\count97
+\lst@lineno=\count98
+\c@lstlisting=\count99
+\lst@maxwidth=\dimen109
+ (./lstpatch.sty
+File: lstpatch.sty 2004/10/17 1.3b (Carsten Heinz)
+) (./lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+\c@lstnumber=\count100
+\lst@skipnumbers=\count101
+\lst@framebox=\box30
+) (./listings.cfg
+File: listings.cfg 2004/09/05 1.3 listings configuration
+))
+Package: listings 2004/10/17 1.3b (Carsten Heinz)
+
+(/sw/share/texmf/tex/latex/tools/varioref.sty
+Package: varioref 2001/09/04 v1.3c package for extended references (FMi)
+\c@vrcnt=\count102
+) (./ods.sty
+(/sw/share/texmf/tex/latex/misc/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+\Gm@cnth=\count103
+\Gm@cntv=\count104
+\c@Gm@tempcnt=\count105
+\Gm@bindingoffset=\dimen110
+\Gm@wd@mp=\dimen111
+\Gm@odd@mp=\dimen112
+\Gm@even@mp=\dimen113
+\Gm@dimlist=\toks18
+
+(/sw/share/texmf/tex/latex/config/geometry.cfg
+File: geometry.cfg 2001/06/05 v1.0 teTeX (uncustomised setup)
+))
+(/sw/share/texmf/tex/latex/tools/longtable.sty
+Package: longtable 2000/10/22 v4.10 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count106
+\LTcapwidth=\dimen114
+\LT@head=\box31
+\LT@firsthead=\box32
+\LT@foot=\box33
+\LT@lastfoot=\box34
+\LT@cols=\count107
+\LT@rows=\count108
+\c@LT@tables=\count109
+\c@LT@chunks=\count110
+\LT@p@ftn=\toks19
+)
+(/sw/share/texmf/tex/latex/tools/array.sty
+Package: array 1998/05/13 v2.3m Tabular extension package (FMi)
+\col@sep=\dimen115
+\extrarowheight=\dimen116
+\NC@list=\toks20
+\extratabsurround=\skip47
+\backup@length=\skip48
+)
+(/sw/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2003/01/22 v6.73n Hypertext links for LaTeX
+\@linkdim=\dimen117
+\Hy@linkcounter=\count111
+\Hy@pagecounter=\count112
+
+(/sw/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2003/01/22 v6.73n Hyperref: PDFDocEncoding definition (HO)
+)
+(/sw/share/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive and teTeX
+)
+Package hyperref Info: Hyper figures OFF on input line 1792.
+Package hyperref Info: Link nesting OFF on input line 1797.
+Package hyperref Info: Hyper index ON on input line 1800.
+Package hyperref Info: Plain pages ON on input line 1805.
+Package hyperref Info: Backreferencing OFF on input line 1812.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 1916.
+(/sw/share/texmf-local/tex/latex/other/misc/url.sty
+\Urlmuskip=\muskip10
+Package: url 1999/03/28  ver 1.5x  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 2055.
+\Fld@menulength=\count113
+\Field@Width=\dimen118
+\Fld@charsize=\dimen119
+\Choice@toks=\toks21
+\Field@toks=\toks22
+Package hyperref Info: Hyper figures OFF on input line 2513.
+Package hyperref Info: Link nesting OFF on input line 2518.
+Package hyperref Info: Hyper index ON on input line 2521.
+Package hyperref Info: backreferencing OFF on input line 2528.
+Package hyperref Info: Link coloring OFF on input line 2533.
+\c@Item=\count114
+\c@Hfootnote=\count115
+)
+*hyperref using default driver hpdftex*
+(/sw/share/texmf/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2003/01/22 v6.73n Hyperref driver for pdfTeX
+
+(/sw/share/texmf/tex/latex/psnfss/pifont.sty
+Package: pifont 2002/09/08 PSNFSS-v9.0a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 62.
+
+(/sw/share/texmf/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 63.
+
+(/sw/share/texmf/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+\Fld@listcount=\count116
+\@outlinefile=\write4
+)
+\notewidth=\skip49
+
+(/sw/share/texmf/tex/latex/carlisle/colortbl.sty
+Package: colortbl 1999/03/24 v0.1i Color table columns (DPC)
+
+(/sw/share/texmf/tex/latex/graphics/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+
+(/sw/share/texmf/tex/latex/config/color.cfg
+File: color.cfg 2001/08/31 v1.1 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 125.
+)
+\everycr=\toks23
+\minrowclearance=\skip50
+)
+\c@sastarget=\count117
+) (./lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+)
+\c@calloutcounter=\count118
+\@indexfile=\write5
+\openout5 = `book.idx'.
+
+
+Writing index file book.idx
+(./book.aux (./preface.aux) (./introduction.aux) (./chapter1.aux)
+(./chapter16.aux) (./chapter15.aux) (./chapter14.aux) (./appendix1.aux)
+(./appendix3.aux))
+\openout1 = `book.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 182.
+ (/sw/share/texmf/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+(/sw/share/texmf/tex/context/base/supp-pdf.tex
+(/sw/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count119
+\scratchcounter=\count120
+\scratchtoks=\toks24
+\scratchdimen=\dimen120
+\scratchskip=\skip51
+\scratchmuskip=\muskip11
+\scratchbox=\box35
+\scratchread=\read2
+\scratchwrite=\write6
+\zeropoint=\dimen121
+\minusone=\count121
+\thousandpoint=\dimen122
+\emptytoks=\toks25
+\nextbox=\box36
+\nextdepth=\dimen123
+\everyline=\toks26
+\!!counta=\count122
+\!!countb=\count123
+\recursecounter=\count124
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPtoPDFconversion=\toks27
+)
+-------------------- Geometry parameters
+paper: class default
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 73.71613pt, 0.7\paperwidth , 110.57425pt (default)
+v-parts: 95.39737pt, 0.7\paperheight , 143.09605pt (default)
+hmarginratio: 2:3
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  614.295pt
+\paperheight 794.96999pt
+\textwidth  430.00462pt
+\textheight 556.47656pt
+\oddsidemargin  1.44614pt
+\evensidemargin 38.30426pt
+\topmargin  -6.94011pt
+\headheight 12.0pt
+\headsep    18.06749pt
+\footskip   25.29494pt
+\marginparwidth 125.0pt
+\marginparsep   7.0pt
+\columnsep  10.0pt
+\skip\footins  9.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+Package hyperref Info: Link coloring OFF on input line 182.
+ (/sw/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2001/01/27 v2.19 Cross-referencing by name of section
+\c@section@level=\count127
+)
+LaTeX Info: Redefining \ref on input line 182.
+LaTeX Info: Redefining \pageref on input line 182.
+ (./book.out) (./book.out)
+\openout4 = `book.out'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 201.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 201.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 201.
+
+[1
+
+
+
+{/sw/share/texmf/dvips/config/pdftex.map}]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 201.
+ [2]
+\openout2 = `preface.aux'.
+
+ (./preface.tex) [3
+
+] [4
+
+
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 204.
+
+(./book.toc
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+ [5
+
+] [6])
+\tf@toc=\write7
+\openout7 = `book.toc'.
+
+ [7] [8
+
+] (./book.lot)
+\tf@lot=\write8
+\openout8 = `book.lot'.
+
+ [9
+
+
+] [10
+
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 228.
+
+! pdfTeX warning (ext4): destination with the same identifier (name{page.1}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.228 \part{Using ODS Markup and Tagsets}
+                                          [1
+
+
+]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.2}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.228 \part{Using ODS Markup and Tagsets}
+                                          [2]
+\openout2 = `introduction.aux'.
+
+ (./introduction.tex
+Chapter 1.
+)
+! pdfTeX warning (ext4): destination with the same identifier (name{page.3}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.236 \include{introduction}
+                             [3
+
+
+
+]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.4}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.237 \cleardoublepage
+                       [4
+
+
+]
+\openout2 = `chapter1.aux'.
+
+ (./chapter1.tex
+Chapter 2.
+! pdfTeX warning (ext4): destination with the same identifier (name{page.5}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.60 ...list_tagsets}{Simple ODS Markup Statement}
+                                                   [5
+
+
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 61.
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 64--65
+[][][][][][][][][][][]
+ []
+
+
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 65--67
+[][][][][][][][][][][][][][] 
+ []
+
+! pdfTeX warning (ext4): destination with the same identifier (name{page.6}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.105                 34 
+                             Tagsets.SASReport13              Tagset [6]
+LaTeX Font Info:    Try loading font information for T1+phv on input line 145.
+
+(/sw/share/texmf/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+! pdfTeX warning (ext4): destination with the same identifier (name{page.7}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.167     ods 
+              markup file='test.xml'; [7]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.8}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.255     ods 
+              tagsets.RTF close; [8])
+! pdfTeX warning (ext4): destination with the same identifier (name{page.9}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.238 \include{chapter1}
+                         [9]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.10}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.239 \cleardoublepage
+                       [10
+
+
+]
+\openout2 = `chapter16.aux'.
+
+ (./chapter16.tex
+Chapter 3.
+[11
+
+
+] (./lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+) (./lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+) [12]
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 146--147
+[][][][] 
+ []
+
+
+Overfull \hbox (52.05273pt too wide) in paragraph at lines 151--152
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (35.85257pt too wide) in paragraph at lines 152--154
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 154--156
+[][][][] 
+ []
+
+
+Overfull \hbox (46.65268pt too wide) in paragraph at lines 162--164
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 169.
+
+Overfull \hbox (14.25235pt too wide) in paragraph at lines 169--170
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[13]
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 197--199
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.45224pt too wide) in paragraph at lines 204--205
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.25235pt too wide) in paragraph at lines 212--214
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 1546) has occurred while \output is active []
+
+ [14]
+Overfull \hbox (24.19147pt too wide) in paragraph at lines 239--242
+[]/ptmr8t/There are a few less ob-vi-ous op-tions in there. Ta-ble_headers turn
+s the ta-ble_headers on and off. Empty_missing
+ []
+
+[15]
+LaTeX Font Info:    Font shape `T1/ptm/bx/sl' in size <9> not available
+(Font)              Font shape `T1/ptm/b/sl' tried instead on input line 310.
+ [16]) [17] [18
+
+
+]
+\openout2 = `chapter15.aux'.
+
+ (./chapter15.tex
+Chapter 4.
+[19
+
+
+]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 63.
+ (/sw/share/texmf/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
+ [20] [21] [22]) [23] [24
+
+
+]
+\openout2 = `chapter14.aux'.
+
+
+(./chapter14.tex
+Chapter 5.
+[25
+
+
+] [26] [27]
+LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 228.
+ [28] [29]) [30] [31
+
+
+
+] [32] [33
+
+] [34] [35
+
+] [36] [37
+
+
+] [38]
+\openout2 = `appendix1.aux'.
+
+
+(./appendix1.tex [39
+
+
+] [40] [41] [42] [43] [44] [45] [46]) [47]
+\openout2 = `appendix3.aux'.
+
+ (./appendix3.tex [48
+
+
+
+] [49] [50] [51]
+Overfull \hbox (1.61588pt too wide) in paragraph at lines 215--216
+[]/ptmr8t@12.0pt/Current des-ti-na-tion file. Val-ues in-clude BODY, CON-TENTS,
+ PAGES, FRAME,
+ []
+
+[52] [53] [54] [55]
+Overfull \hbox (14.67111pt too wide) in paragraph at lines 526--527
+[]/ptmr8t@12.0pt/Darker color in a bor-der that uses two col-ors to cre-ate a t
+hree-dimensional
+ []
+
+
+Overfull \hbox (18.15085pt too wide) in paragraph at lines 529--530
+[]/ptmr8t@12.0pt/Lighter color in a bor-der that uses two col-ors to cre-ate a 
+three-dimensional
+ []
+
+[56] [57]
+Overfull \hbox (1.44777pt too wide) in paragraph at lines 604--605
+[]/ptmr8t@12.0pt/Specifies whether to make the im-age that is spec-i-fied by BA
+CK-GROUNDIM-
+ []
+
+[58] [59]) [60] (./book.ind [61
+
+
+] [62] [63] [64] [65] [66]) (./book.aux
+(./preface.aux) (./introduction.aux) (./chapter1.aux) (./chapter16.aux)
+(./chapter15.aux) (./chapter14.aux) (./appendix1.aux) (./appendix3.aux)) ) 
+Here is how much of TeX's memory you used:
+ 6652 strings out of 95437
+ 88025 string characters out of 1190295
+ 164323 words of memory out of 1000001
+ 8853 multiletter control sequences out of 10000+50000
+ 63561 words of font info for 66 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 38i,12n,58p,634b,1897s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 1912 PDF objects out of 300000
+ 650 named destinations out of 131072
+ 548 words of extra memory for PDF output out of 65536
+
+! pdfTeX warning (dest): name{page.192} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.162} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.211} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.181} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.119} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.126} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.121} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.111} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.132} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.98} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.81} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.183} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.153} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.199} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.169} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.78} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.215} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.219} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.102} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.106} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.104} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.141} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.203} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.173} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.125} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.123} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.188} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.158} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.137} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.97} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.145} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.127} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.114} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.130} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.216} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.220} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.89} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.91} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.79} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.221} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.210} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.180} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.184} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.154} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.101} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.225} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.90} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.217} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.80} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.222} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.226} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.195} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.165} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.207} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.177} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.197} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.167} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.205} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.175} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.88} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.139} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.115} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.117} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.70} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.218} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.112} has been referenced but does not exist,
+ replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.72} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.71} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.74} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.73} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.69} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.77} has been referenced but does not exist, 
+replaced by a fixed one
+
+! pdfTeX warning (dest): name{page.87} has been referenced but does not exist, 
+replaced by a fixed one
+
+{/sw/share/texmf/dvips/psnfss/8r.enc}</sw/share/texmf/fonts/type1/urw/times/utm
+b8a.pfb>{/sw/share/texmf/dvips/tetex/bbad153f.enc}</sw/share/texmf/fonts/type1/
+bluesky/cm/cmsy9.pfb></sw/share/texmf/fonts/type1/urw/times/utmr8a.pfb>
+Output written on book.pdf (76 pages, 385833 bytes).

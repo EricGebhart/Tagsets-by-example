@@ -1,0 +1,21 @@
+
+proc template;
+    define tagset tagsets.input;   
+
+        mvar some_number;
+    
+        define event initialize;
+           eval $inputn_value  inputn(some_number, '3.');           
+           set $set_inputn  inputn(some_number, '3.');           
+           eval $input_value  input(some_number, '3.');           
+        end;
+    end;
+run;
+
+%let some_number=10;
+
+ods tagsets.input file="input.txt";
+ods tagsets.inpuc close;
+
+     
+ 

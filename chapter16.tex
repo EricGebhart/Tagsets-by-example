@@ -1,0 +1,378 @@
+\chapter{Using The CSV Destinations.}
+The CSV Tagsets are some of the most useful tagsets around,
+the format has been used for decades by various applications
+and everyone knows what to expect from a CSV file.  This chapter
+will explain how to use the 3 different CSV tagsets provided by SAS.
+
+\index{CSV}
+\index{Excel!CSV}
+\index{Excel!Live Data}
+Comma separated values are one of the simplest formats that are
+is understood by many different applications.  The disadvantage is that
+there is no formatting, fonts, or colors.  Still CSV files work
+very well for many applications.  A CSV file can be connected as
+live data to an Excel Template.  This can be a convenient way to
+publish Excel spreadsheets to many people.  
+
+\index{CSV|Tagsets}
+\index{CSV|CSVALL}
+\index{CSV|CSVBYLINE}
+There are three different CSV Tagsets shipped with SAS.  The
+simplest is the CSV Tagset, next comes CSVByline, and last
+is CSVAll.  The CSV Tagset only creates output from tabular
+data, there are no titles, footnotes, bylines, Notes, there
+is nothing but tables.  It didn't take long to find out that
+there were people who wanted titles and footnotes and everything
+else, that's when CSVAll came into existence.  It also became
+apparent that just having tables and bylines was a nice thing to
+have, so CSVBylines was born.  All of these tagsets use the same
+base Tagset to create the CSV data, so there is no other difference
+in behavior besides the verbosity of the output.
+
+Both CSV and CSVAll have aliases so that they can be referenced by
+a simple name, rather than the full tagset name.  CSVByline has no
+alias, so it must be used with it's full name.  Here are examples
+of each of these ODS statements.
+
+\begin{sfvcode}
+ODS CSV file='test.csv';
+ODS CSVAll file='testall.csv';
+ODS tagsets.CSVByline file='testby.csv';
+\end{sfvcode}
+
+Using these statements around a simple Proc Print will show how
+these destinations vary.
+
+\begin{sfvcode}
+ODS CSV file='test.csv';
+ODS CSVAll file='testall.csv';
+ODS tagsets.CSVByline file='testby.csv';
+
+options obs=6;
+
+proc sort data=sashelp.class out=sorted;
+     by sex;
+
+Proc print data=sorted;
+     by sex;
+run;
+
+ODS _all_ close;
+\end{sfvcode}
+
+None of the output from this example is very complicated,
+but each has it's differences.  The CSV Tagset ignores the title
+and the bylines. But it does create the two tables as a result of
+the by.
+
+\begin{sfvoutput}
+"Obs","Name","Age","Height","Weight"
+"1","Alice",13,56.5,84.0
+"2","Barbara",13,65.3,98.0
+"3","Carol",14,62.8,102.5
+
+"Obs","Name","Age","Height","Weight"
+"4","Alfred",14,69.0,112.5
+"5","Henry",14,63.5,102.5
+"6","James",12,57.3,83.0
+\end{sfvoutput}
+
+The CSVByline Tagset adds the bylines, but nothing else.
+
+\begin{sfvoutput}
+"Sex=F"
+"Obs","Name","Age","Height","Weight"
+"1","Alice",13,56.5,84.0
+"2","Barbara",13,65.3,98.0
+"3","Carol",14,62.8,102.5
+
+"Sex=M"
+"Obs","Name","Age","Height","Weight"
+"4","Alfred",14,69.0,112.5
+"5","Henry",14,63.5,102.5
+"6","James",12,57.3,83.0
+\end{sfvoutput}
+
+Finally, the CSVAll tagset adds in the title.  If there were
+footnotes, or procedure titles, or any of the four flavors of
+notes; Note, Warning, Error, or Fatal, those would be included as well.
+
+\begin{sfvoutput}
+The SAS System
+
+"Sex=F"
+"Obs","Name","Age","Height","Weight"
+"1","Alice",13,56.5,84.0
+"2","Barbara",13,65.3,98.0
+"3","Carol",14,62.8,102.5
+
+"Sex=M"
+"Obs","Name","Age","Height","Weight"
+"4","Alfred",14,69.0,112.5
+"5","Henry",14,63.5,102.5
+"6","James",12,57.3,83.0
+\end{sfvoutput}
+
+In the beginning it seemed that this was everything that any CSV tagset
+would ever need to do.  But even the simplest of outputs is not always 
+that simple.  Tagsets needed to be able to adapt to what was needed of them.
+The best way to do that is to have the ability to give the tagset some variable
+to help it make decisions on how to behave.  Up until SAS 9.1.3 the only way
+to do that was with macro variables.  Macro variables still work, but now there
+is a better way.  With SAS 9.1.3 the ODS Markup statement was given a new option,
+the options(...) option.  Options are a nearly arbitrary set of key value pairs
+that the tagset will recieve.  It is completely up to the Tagset to process those
+values and use them. 
+
+Surprisingly the CSV Tagset has quite a number of options. In fact everything
+that the CSVAll and CSVByline tagsets do can be done by the base CSV Tagset.
+In SAS 9.1.3 the only thing CSVALL and CSVByline Tagsets do is set up some new defaults for
+the CSV options available.
+
+With the proliferation of Tagset options it didn't take long to figure out we needed
+another option, Help!  All Tagsets that have options have an option called doc.  The Doc
+option is all you need to find out just what a Tagset can do.  Asking for help may be
+the first thing you want to do when using a new tagset.  If there are options, Help will
+tell you about them.  Help isn't in all of the Tagsets, but the number is growing and
+it never hurts to ask.  Here is how we ask for help.
+
+\begin{sfvcode}
+ODS CSV file='test.csv' options(doc='help');
+\end{sfvcode}
+
+The output from help will go to the log and for CSV, it looks like this.
+
+\begin{sfvoutput}
+==============================================================================
+The CSV Tagset Help Text.
+ 
+This Tagset/Destination creates output in comma separated value format.
+ 
+Numbers, Currency and percentages are correctly detected and show as numeric values.
+Dollar signs, commas and percentages are stripped from numeric values by default.
+ 
+==============================================================================
+ 
+These are the options supported by this tagset.
+ 
+Sample usage:
+ 
+ods csv options(doc='Quick'); 
+ 
+ods csv options(currency_as_number='yes' percentage_as_number='yes' delimiter=';'); 
+ 
+Doc:  No default value.
+     Help: Displays introductory text and options.
+     Quick: Displays available options.
+ 
+Delimiter:   Default Value ','
+     Sets the delimiter for the values.  Comma is the default.  Semi-colon is
+     a popular setting for european sites.
+ 
+currency_as_number:   Default Value 'No'
+     If 'Yes' currency values will not be quoted.
+     The currency values are stripped of punctuation and currency symbols
+     so they can be used as a number.
+ 
+percentage\_as\_number:   Default Value 'No'
+     If 'Yes' percentage values will not be quoted.
+     The percentages are stripped of punctuation and the percent sign
+     so they can be used as a number.
+ 
+Currency\_symbol:   Default Value '\$'
+     Used for detection of currency formats and for 
+     removing those symbols so excel will like them.
+     Will be deprecated in a future release when it is
+     no longer needed.        
+ 
+Decimal\_separator:   Default Value '.'
+     The character used for the decimal point.
+     Will be deprecated in a future release when it is no longer needed.
+ 
+Prepend\_Equals:   Default Value 'no'
+     Put an equal sign in front of quoted number values.
+     This only works in conjunction with quote_by_type.
+ 
+quote\_by\_type:   Default Value 'no'
+     Put values based on the type, not based on what the regex match for number.
+ 
+Table\_Headers:   Default Value 'yes'
+     If no, skip the header section of all tables.
+ 
+Thousands\_separator:   Default Value ','
+     The character used for indicating thousands in numeric values.
+     Used for removing those symbols from numerics so excel will like them.
+     Will be deprecated in a future release when it is no longer needed.
+ 
+Quoted\_columns:   Default Value ''
+     A list of column numbers that indicate which values should be quoted
+     ie. Quoted\_columns="123"
+ 
+Empty\_Missing:   Default Value 'no'
+     If yes, missing values will not show in any way other than positionally.
+ 
+Bylines:   Default Value: No
+     If yes bylines will be printed
+ 
+Titles:   Default Value: No
+     If yes titles and footnotes will be printed
+ 
+Notes:   Default Value: No
+     If yes Note, Warning, Error, and Fatal notes will be printed
+ 
+Proc\_Titles:   Default Value: No
+     If yes titles generated by the procedures will be printed
+ 
+\end{sfvoutput}
+
+
+The help you get will depend upon which version of the tagset you have.
+There are the expected options that reflect the behaviors we have seen
+from the CSVAll and CSVByline Tagsets, but there is much more.  One
+of the most used options is Delimiter, this makes it easy to change the
+field delimiter to a ;, a | or even tabs.  Another thing that became
+obvious was that there needed to be a way to detect numbers in any one
+of the various European formats.  That's where decimal\_separator, thousands\_separator
+and currency\_symbol come in.  Not everyone uses a '.' for decimals, or ',' for
+thousands. 
+
+There are a few less obvious options in there.  Table\_headers turns the table\_headers
+on and off.  Empty\_missing makes missing values go completely away, with just it's
+field delimiters showing where it would have been.  
+
+Currency\_as\_Number, and Percentage\_as\_Number,
+are there because not everyone wants those values as strings, So if you want them as numbers,
+these options will do that for you, they will also strip out any symbols that would prevent
+Excel from seeing those values as numbers.
+
+Another option that is just for excel, is prepend\_equals, this option will put an '=' in front
+of quoted numbers so that Excel will read the value correctly, even if it has leading zeros.  So
+if you have leading zero's this is the option you want.
+
+The last two have to do with quoting.  Currently, the CSV tagset tries it's best to figure out
+what is a string and what is a number.  It doesn't always do exactly what we want.  Part of
+the problem is that some procedures don't tell the Tagset what is what.  Proc Print is one of
+those procedures that does say which value is a string and which is a number.  The quote\_by\_type
+option tells the tagset to stop guessing and do what Proc Print or any other proc says.  The
+exception to this, until SAS 9.2, is Proc Report, and Proc Tabulate.  Those are the two Procs
+that don't give the tagset any clues.
+
+To further extend the ability to control quoting, There is a Quoted\_columns option that will
+allow for columns to be specified by number.  So if all else fails and you still can't get
+your values quoted where you want, this option should do the trick.
+
+
+By default the csv tagset only displays tables.  Turning on bylines so that it looks
+like the output from the CSVByline Tagset 
+is just a matter of setting the bylines option to yes.  Changing the Delimiter to a
+';' is just as easy.  Of course we could have used the CSVByline Tagset with just
+the delimiter option to do the same thing.
+
+\begin{sfvcode}
+ODS CSV file='test.csv' options(delimiter=';' bylines='yes');
+ODS tagsets.CSVByline file='test.csv' options(delimiter=';');
+
+options obs=6;
+
+proc sort data=sashelp.class out=sorted;
+     by sex;
+
+Proc print data=sorted;
+     by sex;
+run;
+
+ODS _all_ close;
+\end{sfvcode}
+
+The output from both of these ODS statements looks identical.
+
+\begin{sfvoutput}
+"Sex=F"
+"Obs";"Name";"Age";"Height";"Weight"
+"1";"Alice";13;56.5;84.0
+"2";"Barbara";13;65.3;98.0
+"3";"Carol";14;62.8;102.5
+
+"Sex=M"
+"Obs";"Name";"Age";"Height";"Weight"
+"4";"Alfred";14;69.0;112.5
+"5";"Henry";14;63.5;102.5
+"6";"James";12;57.3;83.0
+\end{sfvoutput}
+
+Knowing how the CSVByline and CSVAll Tagsets work can be quite handy, Especially
+if you find that you always want the same basic set of options.  It is much easier
+to create your own Tagset than it is to always type in the same options over and over.
+Here is the entire code for the CSVByline Tagset.  Before you look, realize that most
+of this is copied and pasted from the CSV Tagset.
+
+\begin{sfvcode}
+   define tagset tagsets.csvbyline;
+       parent=tagsets.csv;
+
+        define event initialize;
+            set \$options['BYLINES'] 'yes';
+            trigger set_options;
+            trigger documentation;
+            trigger compile_regexp;
+        end;
+    end;
+\end{sfvcode}
+
+The only addition to the copied and pasted code is this line.
+
+\begin{sfvcode}
+            set \$options['BYLINES'] 'yes';
+\end{sfvcode}
+
+We can take advantage of this knowledge and create our own CSV Tagset that
+has it's own set of default option values.  If we want the same behavior from
+the new Tagset as 
+our previous example a new name is probably in order.  After all it's no longer
+comma separted values, it's semi-colon separated values. 
+Our new Tagset would look like this.  Be aware that option
+names are always capitalized inside the tagset.
+
+\begin{sfvcode}
+proc template;
+   define tagset tagsets.ssvbyline;
+       parent=tagsets.csv;
+
+        define event initialize;
+            set \$options['BYLINES'] 'yes';
+            set \$options['DELIMITER'] ';';
+            trigger set_options;
+            trigger documentation;
+            trigger compile_regexp;
+        end;
+    end;
+run;
+\end{sfvcode}
+
+All we have to do is run that Proc Template, and our new tagset is ready to use.
+Congratulations! You've just written your first Tagset!  If someone else wants 
+output that has bylines and semi-colons for field separators, just tell them to
+do this!
+
+\begin{sfvcode}
+     ODS tagsets.ssvbyline file='test.csv' options(doc='help');
+\end{sfvcode}
+
+The output looks exactly like the output above.  It is, after all, generated the same way.
+
+\section{Summary}
+The CSV destinations are very easy to use and although the output is very simple, there are
+many options that can be used to control how that output is created.  ODS Markup options 
+provide a very versatile way to change the behavior of any Tagset destination.  Finding out
+what those options are, and how to use them is as easy as asking for help.  Add options(doc='help')
+to any ODS Markup/tagsets statement and find out just what that Tagset can do for you.
+Creating a new Tagset that sets the options just the way you want is almost as easy is copy
+and paste.    
+That's what tagsets are all about, creating output just the way you want it,
+in a reusable and easy way.
+
+
+
+
+
+

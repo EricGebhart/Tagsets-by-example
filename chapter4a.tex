@@ -1,0 +1,428 @@
+\chapter{Data Step Functions}
+\index{Functions}
+\index{Data Step!functions}
+Data step functions provide important capabilities to tagsets.  Many
+solutions are dependent on string manipulation, formatting and 
+number conversion.  Without the functions, these solutions would
+be very difficult or impossible.  This chapter will explain the usage
+of data step functions in tagsets.
+
+
+\section{Set and Put statements}
+\index{Statements!Put}
+\index{Statements!Set}
+\index{Set}
+\index{Put}
+The simplest and most efficient use of data step functions is in
+the put and set statements.  The only limitation to using functions
+in these statements is that they cannot be nested.  This is generally
+not a disadvantage.  
+
+Searching through tagsets released by SAS, the most
+popular functions are tranwrd, index, substr, scan, strip and
+the perl regular expressions.  These functions return values will
+be strings or will be converted to strings when used in the set 
+and put statements.  
+
+
+
+\section{The Eval Statement}
+\index{Statements!Eval}
+\index{Eval}
+If a numeric return value is desired then the function must be used in
+an eval statement.  The eval statement also allows for nested functions.
+This is because eval supports all valid where clauses which allow this.
+
+\index{Functions!index}
+\index{Functions!substr}
+\index{Functions!trim}
+\index{Functions!strip}
+The following example is taken directly from the html tagsets released with SAS 9.1.
+This code shows eval being used to capture the location of the spaces in
+the url.  Everything else uses a set statement to store string values. It
+would be possible to combine multiple statements into one, if the set statements
+were replaced with an eval statement that nested the two datastep functions.
+
+This particular event will only happen once per file so that may be a reasonable
+thing to do.  But it should be noted that over use of eval and where clauses
+can cause tagsets to be slow.
+
+\begin{sfvcode}
+        define event urlLoop;
+            eval $space_pos index($urlList, " ");
+
+            do /while $space_pos ne 0;
+
+                do /if $space_pos ne 0;
+                    set $current_url substr($urlList,1,$space_pos);
+                    set $current_url trim($current_url);
+                done;
+
+                trigger link;
+
+                set $urlList substr($urlList,$space_pos);
+                set $urlList strip($urlList);
+
+                eval $space_pos index($urlList, " ");
+            done;
+            /* when space_pos is 0 it's either the only link or the last link */
+            set $current_url $urlList;
+            trigger link;
+        end;
+\end{sfvcode}
+
+The purpose of this event is to take a stylesheet url that has multiple urls
+separated by spaces.  When that occurs, this event will pull apart the 
+urls and create multiple link tags in the html.  An ods statement that uses
+this feature would look like this.
+
+\begin{verbatim}
+       ods html file='test.html' stylesheet='test.css'(url='test.css test2.css');
+\end{verbatim}
+
+\index{Functions!scan}
+This event is a nice example of several functions, but there is a much
+simpler way to do this.  The scan function does all the work of index,
+substr, strip, and trim.
+
+\begin{sfvcode}
+        define event urlLoop;
+            eval $count 1;
+            set $current_url scan($urlList, 1, " ");
+
+            /*---------------------------------------------------eric-*/
+            /*-- scan returns a space when it fails.                --*/
+            /*------------------------------------------------20Nov03-*/
+            do /while !cmp($current_url, ' ');
+
+                trigger link;
+
+                eval $count $count + 1
+                set $current_url scan($urlList, $count, " ");
+            done;
+        end;
+\end{sfvcode}
+
+\subsection{number conversions}
+\index{Functions!inputn}
+\index{Functions!input}
+\index{Functions!putc}
+\index{Statements!Set}
+\index{Statements!Eval}
+\index{Numbers!Converting}
+\index{Strings!Converting to number}
+Converting strings to numbers is one of the most common things tagsets need to do.
+It seems to happen a lot.  Using numbers to indicate a column
+or row in a table is a common desire.  Often these numbers come in the form of a
+macro variable.  The inputn function is the way to convert these strings to numbers.
+Inputc also works.  But the input function does not.  Using input will result in
+a runtime error.  Following code shows common misuse and usage.
+
+\begin{sfvcode}
+proc template;
+    define tagset tagsets.input;   
+
+        mvar some_number;
+    
+        define event initialize;
+           eval $inputn_value  inputn(some_number, '3.')+5;           
+           set $set_inputn  inputn(some_number, '3.');           
+           eval $input_value  input(some_number, 3.)+1;           
+           put ":" putc("hello", '$', 15) ":" nl;
+           put ":" put("hello", '$15') ":" nl;
+           putvars mem _name_ ":" _value_ nl; 
+        end;
+    end;
+run;
+
+%let some_number=10;
+
+ods tagsets.input file="input.txt";
+ods tagsets.inpuc close;
+\end{sfvcode}
+
+The log looks like this:
+
+\begin{sfvoutput}
+NOTE: Overwriting existing template/link: Tagsets.Input
+NOTE: TAGSET 'Tagsets.Input' has been saved to: SASUSER.TEMPLAT
+16         run;
+NOTE: PROCEDURE TEMPLATE used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.12 seconds
+      
+
+17         
+18         %let some_number=10;
+19         
+20         ods tagsets.input file="input.txt";
+WARNING: Function not found: input
+WARNING: Function not found: put
+NOTE: Writing TAGSETS.INPUT Body file: input.txt
+\end{sfvoutput}
+
+And the Output looks like this.
+
+\begin{sfvoutput}
+:hello          :
+:
+inputn_value:15
+set_inputn:10
+input_value:11
+\end{sfvoutput}
+
+Obviously, some datastep functions do not work.  Input gives a warning but
+seems to work anyway.  Put doesn't work at all.  But putc does.  It's probably
+a good idea to stay away from functions that give warnings.
+
+\section{advanced usage and debugging}
+\index{Statements!Eval}
+\index{Statements!Set}
+String
+manipulation or using inputn to convert a string to a number are easy.  But
+sometimes it is not obvious when to use eval or set.  The choice comes down
+to the return value of the function and if it is needed as a parameter to 
+another function later on.  
+
+\subsection{File I/O}
+\label{readfile}
+\index{Functions!filename}
+\index{Functions!fopen}
+\index{Functions!fread}
+\index{Functions!fget}
+\index{Functions!missing}
+\index{Statements!Eval}
+\index{Statements!Set}
+This next example uses datastep functions to read in a file.  It is important
+that some of the return codes be integers so that they can be used as parameters
+later on.  The key to understanding this code is using putlog to print the return
+values from the functions.  The return values can be very revealing, If the file
+is not found the return from the filename function will be missing, or '.'.  if
+close is used instead of fclose the return value wil be a large number.  If everything
+comes back with 0's all is well.  Except the file identifier, it should be a unique 
+number.  It must be an integer to be used by fread and fget functions.  That means 
+that eval must be used when the file identifier is created.
+
+\index{Variables!Fixed Length}
+Another trick that this example uses is the creation of a variable with a fixed length.
+Data step functions always want fixed length variables.  But tagsets do not have any.
+The solution is to create a variable full of spaces.  The functions will not change
+the length of it, they will only put values in it.
+
+\begin{sfvcode}
+/*----------------------------------------------------------------*/
+/*-- Reading a file in using datastep functions.  This example  --*/
+/*-- comes straight out of the online documentation             --*/
+/*-- for fread().                                               --*/
+/*----------------------------------------------------------------*/
+proc template;
+    define tagset tagsets.readfile;
+        parent=tagsets.html4;
+        embedded_stylesheet=no;
+
+        mvar infile;
+
+
+        /*-------------------------------------------------------------eric-*/
+        /*-- The files should be given as a list with spaces between them.--*/
+        /*----------------------------------------------------------8Nov 03-*/
+        define event initialize;
+            set $filename 'default.txt';
+
+            set $filrf "myfile";
+            trigger readfile;
+        end;
+
+        define event readfile;
+            
+            /*--------------------------------------------------------*/
+            /*-- Set up the file and open it.                       --*/
+            /*--------------------------------------------------------*/
+            putlog "Reading in file: " $filename;
+
+            eval $fid 0;
+
+            eval $rc filename($filrf, $filename);
+            putlog "Filename Return Code" ":" $rc;
+            
+            eval $fid fopen($filrf);
+
+            do /if missing($fid);
+                putlog "Error: File Not Found, " $filename;
+                break;
+            done;
+                
+            putlog "File ID" ":" $fid;
+
+            /*--------------------------------------------------------*/
+            /*-- datastep functions  will bind directly to the      --*/
+            /*-- variable space as it exists.                       --*/
+            /*--                                                    --*/
+            /*-- Tagset variables are not like datastep             --*/
+            /*-- variables but we can create a big one full         --*/
+            /*-- of spaces and let the functions write to it.       --*/
+            /*--                                                    --*/
+            /*-- This creates a variable that is 200 spaces so      --*/
+            /*-- that the function can write directly to the        --*/
+            /*-- memory location held by the variable.              --*/
+            /*-- in VI, 200i<space>                                 --*/
+            /*--------------------------------------------------------*/
+            set $file_record  "                                                                                                                                                                                                        ";
+
+            /*--------------------------------------------------------*/
+            /*-- Loop over the records in the file                  --*/
+            /*--------------------------------------------------------*/
+            do /if $fid > 0 ;
+
+                do /while fread($fid) = 0;
+
+                    set $rc fget($fid,$file_record ,200);
+                    putlog "FGet rc" ":" $rc;
+
+                    putlog "Record:" trimn($file_record);
+                done;
+            done;
+
+           /*----------------------------------------------------------*/
+           /*-- close up the file.  set works fine for this.         --*/
+           /*----------------------------------------------------------*/
+
+            set $rc fclose($fid);
+            putlog "close rc" ":" $rc;
+            set $rc filename($filrf);
+            putlog "filename rc" ":" $rc;
+
+        end;
+    end;
+run;
+
+
+ods tagsets.readfile file="file.txt";
+ods tagsets.readfile close;
+
+
+\end{sfvcode}
+
+With simple four line input file, the output to the log generated by 
+this tagset looks like this.
+
+\begin{sfvcode}
+NOTE: Writing TAGSETS.READFILE Body file: file.txt
+Reading in file: default.txt
+Filename Return Code:0
+File ID:1
+FGet rc:0
+this is a test
+FGet rc:0
+the quick brown
+FGet rc:0
+fox jumped over
+FGet rc:0
+the lazy dog.
+close rc:0
+filename rc:0
+83         ods tagsets.readfile close;
+\end{sfvcode}
+
+\subsection{Perl Regular Expressions}
+\index{Perl!Regular Expressions}
+\index{Functions!getoption}
+\index{Functions!tranwrd}
+\index{Functions!lowcase}
+\index{Functions!prxmatch}
+\index{Functions!prxparse}
+\index{Functions!prxposn}
+\index{papersize}
+\index{Statements!Eval}
+\index{Statements!Set}
+Another complex example comes from the perl regular expressions.  The compiled
+regular expression is a unique integer that is used when getting the substrings from
+the matched string.  The following example pulls apart the value of the papersize option
+for use in an xml document.  The papersize option is extremely variable in it's format.
+That makes the perl regular expressions a good choice for solving this problem. 
+
+\begin{fvcode}{perl_regular_expressions}{Using Perl Regular Expressions}
+proc template;
+   define tagset tagsets.regex;   
+ 
+     define event initialize;
+         set $papersize getoption('PAPERSIZE');
+
+         put "Papersize" ":" $papersize nl;
+
+         /* tranwrd just makes the regex easier. Get rid of optional quotes */
+         set $papersize tranwrd($papersize, '"', " ");
+         set $papersize tranwrd($papersize, "'", " ");
+
+         /* could be centimeters, could be quoted, or not...
+            default is supposedly inches but could be installation
+            dependent.
+            (8in 11in);
+            ('8in', '11in');
+            ("8in", "11in");
+            ("8", "11");
+         */
+
+        /*---------------------------------------------------------------eric-*/
+        /*-- The compiled regular expression is a unique integer.           --*/
+        /*------------------------------------------------------------21Nov03-*/
+         eval $re prxparse('( *([0-9]+) *(IN|CM)* *[,]+ *([0-9]+) *(IN|CM)*.*)') ;
+         put "RE is " ":" $re nl;
+
+         eval $match prxmatch($re, $papersize);
+         put "MATCH is " ":" $match nl;
+
+        /*---------------------------------------------------------------eric-*/
+        /*-- Get the width and the width unit                               --*/
+        /*------------------------------------------------------------21Nov03-*/
+         set $pwidth prxposn($re, 1, $papersize) ;
+         set $pwidth_unit prxposn($re, 2, $papersize) ;
+
+         set $pwidth_unit lowcase($pwidth_unit) /if $pwidth_unit;
+         set $pwidth_unit "in" /if !$pwidth_unit;
+
+        /*---------------------------------------------------------------eric-*/
+        /*-- Get the height and the height unit.                            --*/
+        /*------------------------------------------------------------21Nov03-*/
+         set $pheight prxposn($re, 3, $papersize) ;
+         set $pheight_unit prxposn($re, 4, $papersize) ;
+
+         set $pheight_unit lowcase($pheight_unit) /if $pheight_unit;
+         set $pheight_unit "in" /if !$pheight_unit;
+
+         /* Only if they are non-zero */
+         put ' height="' $pheight $pheight_unit '"' nl /if $pheight;
+         put ' width="' $pwidth $pwidth_unit '"' nl /if $pwidth;
+
+         unset $papersize;
+         unset $re;
+         unset $pwidth;
+         unset $pwidth_unit;
+         unset $pheight;
+         unset $pheight_unit;
+     end;
+
+ end;
+run;
+
+options papersize=("5in" , 10cm);
+
+ods tagsets.regex file="regex.txt";
+ods tagsets.regex close;
+\end{fvcode}
+
+The output from this tagset looks like this.
+
+\begin{sfvoutput}
+Papersize:("5IN" , 10CM)
+RE is :1
+MATCH is :2
+ height="10cm"
+ width="5in"
+\end{sfvoutput}
+
+\section{Summary}
+Date step functions are another versatile tool available to the tagset programmer. 
+Functions are simple to use and provide great versatility and power.  Many things 
+would not be possible without them.  Functions do need to be used with care, checking
+the return values from them is always a good idea.

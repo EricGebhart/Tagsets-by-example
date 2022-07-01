@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" saslongversion="9.01.01M0D10062003" date="2003-11-17" time="01:59:01" encoding="iso-8859-1">
+  <doc_body>
+    <proc name="GLM">
+      <anchor name="IDX"/>
+      <system_title_group>
+        <title_container>
+          <system_title value="A system title">
+          </system_title>
+          <system_title value="Another system title">
+          </system_title>
+        </title_container>
+      </system_title_group>
+      <proc_title_group>
+        <proc_title value="The GLM Procedure"/>
+      </proc_title_group>
+      <proc_branch name="GLM" value="GLM">
+        <branch name="Data" value="Data">
+          <leaf name="ClassLevels" value="Class Levels">
+            <page_anchor/>
+            <output name="ClassLevels">
+              <table>
+              </table>
+            </output>
+          </leaf>
+        </branch>
+        <system_footer_group>
+          <title_container>
+            <system_footer value="A system Footer">
+            </system_footer>
+            <system_footer value="Another system Footer">
+            </system_footer>
+          </title_container>
+        </system_footer_group>
+        <pagebreak/>
+        <anchor name="IDX1"/>
+        <page_anchor/>
+        <system_title_group>
+          <title_container>
+            <system_title value="A system title">
+            </system_title>
+            <system_title value="Another system title">
+            </system_title>
+          </title_container>
+        </system_title_group>
+        <proc_title_group>
+          <proc_title value="The GLM Procedure"/>
+          <proc_title/>
+          <proc_title value="Waller-Duncan K-ratio t Test for stemleng"/>
+        </proc_title_group>
+        <branch name="Means" value="Means">
+          <branch name="type" value="type">
+            <branch name="stemleng" value="stemleng">
+              <branch name="MCLines" value="Multiple Comparison Lines">
+                <branch name="Waller" value="Waller-Duncan">
+                  <leaf name="MCLinesInfo" value="Information">
+                    <output name="MCLinesInfo">
+                      <table>
+                      </table>
+                    </output>
+                  </leaf>
+                  <anchor name="IDX2"/>
+                  <leaf name="MCLines" value="Comparisons">
+                    <output name="MCLines">
+                      <table>
+                      </table>
+                    </output>
+                  </leaf>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+        <system_footer_group>
+          <title_container>
+            <system_footer value="A system Footer">
+            </system_footer>
+            <system_footer value="Another system Footer">
+            </system_footer>
+          </title_container>
+        </system_footer_group>
+      </proc_branch>
+    </proc>
+  </doc_body>
+</doc>

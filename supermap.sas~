@@ -1,0 +1,12 @@
+
+ods tagsets.supermap file="supermap.xml";
+
+ proc gplot data=sashelp.class;
+     plot height*weight;
+     by name;
+ run;
+ quit;
+
+     
+ods _all_ close;
+     

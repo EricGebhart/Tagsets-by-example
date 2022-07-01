@@ -1,0 +1,25 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Page headers and footers}{3}{section.2}
+\contentsline {section}{\numberline {3}What is \textsf {fancyhdr}}{4}{section.3}
+\contentsline {section}{\numberline {4}Simple use of \textsf {fancyhdr}}{4}{section.4}
+\contentsline {section}{\numberline {5}A simple example}{5}{section.5}
+\contentsline {section}{\numberline {6}An example of two-sided printing}{6}{section.6}
+\contentsline {section}{\numberline {7}Redefining \texttt {plain} style}{7}{section.7}
+\contentsline {section}{\numberline {8}The default layout}{7}{section.8}
+\contentsline {section}{\numberline {9}The scoop on \LaTeX {}'s marks}{8}{section.9}
+\contentsline {section}{\numberline {10}Dictionary style headers}{10}{section.10}
+\contentsline {section}{\numberline {11}Fancy layouts}{11}{section.11}
+\contentsline {section}{\numberline {12}Two book examples}{12}{section.12}
+\contentsline {section}{\numberline {13}Special page layout for float pages}{14}{section.13}
+\contentsline {section}{\numberline {14}Those blank pages}{14}{section.14}
+\contentsline {section}{\numberline {15}\textsf {N} of \textsf {M} style page numbers}{15}{section.15}
+\contentsline {section}{\numberline {16}Chapter or section related page numbers}{15}{section.16}
+\contentsline {section}{\numberline {17}When to change the headers and footers?}{16}{section.17}
+\contentsline {section}{\numberline {18}Headers and footers induced by the text}{16}{section.18}
+\contentsline {section}{\numberline {19}A movie}{19}{section.19}
+\contentsline {section}{\numberline {20}Thumb-indexes}{19}{section.20}
+\contentsline {section}{\numberline {21}Float placement}{20}{section.21}
+\contentsline {section}{\numberline {22}Multipage Floats}{23}{section.22}
+\contentsline {subsection}{\numberline {22.1}Tables}{23}{subsection.22.1}
+\contentsline {subsection}{\numberline {22.2}Figures}{24}{subsection.22.2}
+\contentsline {section}{\numberline {23}Contact information}{25}{section.23}

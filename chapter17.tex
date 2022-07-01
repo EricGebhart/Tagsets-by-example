@@ -1,0 +1,208 @@
+\chapter{Using Tagsets with the Libname XML Engine}
+The libname XML Engine also uses tagsets.  all of the output generated
+from the XML engine is done through a tagset.  The libname engine's 
+tagsets differ somewhat from the tagsets used by ODS Markup.  This chapter
+will explain how to use tagsets with the libname engine and how they
+differ from those used by ODS.
+
+\section{XML Engine vs. ODS}
+ODS is more about reporting and
+style.  The XML engine is all about data.  Consequently, the tagsets used by
+the Engine are much different from those used by ODS.  The tagsets are not
+currently interchangeable (SAS 9.1.3) but that is changing.  The XBRL tagset
+works with both ODS and the XML engine.  The XML engine may be able to use 
+some of the ODS tagsets with reasonable results.  But ODS usually cannot use 
+the engine's tagsets.
+
+The first step towards understanding is to run libname with the short\_map tagset.
+
+\begin{sfvcode}
+libname mapxml xml 'map.xml'
+tagset=tagsets.short_map;
+proc copy in=sashelp out=mapxml;
+select class;
+run;
+\end{sfvcode}
+
+The output from this simple job reveals an event model that is not all that
+different from th  ods output.  It's just simpler.
+
+\begin{fvoutput}{Engine_map}{The XML Engine's Event Model}
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" 
+      saslongversion="9.01.01M0D10062003" 
+      date="2003-11-17" time="23:08:50" 
+      encoding="iso-8859-1" name="CLASS">
+   <doc_head>
+   </doc_head>
+   <doc_body>
+      <proc name="CLASS">
+         <table name="CLASS">
+            <colspecs name="CLASS">
+               <colgroup>
+                  <colspec_entry name="Name"/>
+                  <colspec_entry name="Sex"/>
+                  <colspec_entry name="Age"/>
+                  <colspec_entry name="Height"/>
+                  <colspec_entry name="Weight"/>
+               </colgroup>
+            </colspecs>
+            <table_head name="CLASS">
+               <row name="CLASS">
+                  <data>
+                  </data>
+                  <data>
+                  </data>
+                  <data>
+                  </data>
+                  <data>
+                  </data>
+                  <data>
+                  </data>
+               </row>
+            </table_head>
+            <table_body name="CLASS">
+               <row name="CLASS">
+                  <data name="Name" value="Joyce">
+                  </data>
+                  <data name="Sex" value="F">
+                  </data>
+                  <data name="Age" value="11">
+                  </data>
+                  <data name="Height" value="51.3">
+                  </data>
+                  <data name="Weight" value="50.5">
+                  </data>
+               </row>
+               <row name="CLASS">
+                  <data name="Name" value="Thomas">
+                  </data>
+                  <data name="Sex" value="M">
+                  </data>
+                  <data name="Age" value="11">
+                  </data>
+                  <data name="Height" value="57.5">
+                  </data>
+                  <data name="Weight" value="85">
+                  </data>
+               </row>
+               <row name="CLASS">
+                  <data name="Name" value="Louise">
+                  </data>
+                  <data name="Sex" value="F">
+                  </data>
+                  <data name="Age" value="12">
+                  </data>
+                  <data name="Height" value="56.3">
+                  </data>
+                  <data name="Weight" value="77">
+                  </data>
+               </row>
+               <row name="CLASS">
+                  <data name="Name" value="Jane">
+                  </data>
+                  <data name="Sex" value="F">
+                  </data>
+                  <data name="Age" value="12">
+                  </data>
+                  <data name="Height" value="59.8">
+                  </data>
+                  <data name="Weight" value="84.5">
+                  </data>
+               </row>
+               <row name="CLASS">
+                  <data name="Name" value="James">
+                  </data>
+                  <data name="Sex" value="M">
+                  </data>
+                  <data name="Age" value="12">
+                  </data>
+                  <data name="Height" value="57.3">
+                  </data>
+                  <data name="Weight" value="83">
+                  </data>
+               </row>
+               <row name="CLASS">
+                  <data name="Name" value="John">
+                  </data>
+                  <data name="Sex" value="M">
+                  </data>
+                  <data name="Age" value="12">
+                  </data>
+                  <data name="Height" value="59">
+                  </data>
+                  <data name="Weight" value="99.5">
+                  </data>
+               </row>
+               <row name="CLASS">
+                  <data name="Name" value="Robert">
+                  </data>
+                  <data name="Sex" value="M">
+                  </data>
+                  <data name="Age" value="12">
+                  </data>
+                  <data name="Height" value="64.8">
+                  </data>
+                  <data name="Weight" value="128">
+                  </data>
+               </row>
+               <row name="CLASS">
+                  <data name="Name" value="Alice">
+                  </data>
+                  <data name="Sex" value="F">
+                  </data>
+                  <data name="Age" value="13">
+                  </data>
+                  <data name="Height" value="56.5">
+                  </data>
+                  <data name="Weight" value="84">
+                  </data>
+               </row>
+</table_body>
+</table>
+</proc>
+</doc_body>
+</doc>
+\end{verbatim}
+
+Using the event\_map tagset with the same job is even more revealing.  Here is a small
+section of that output.
+
+\begin{verbatim}
+  <row event_name="row" trigger_name="attr_out" section="body" 
+       class="Table" id="CLASS" colcount="5" name="CLASS" 
+       index="IDX" just="c">
+
+    <data event_name="data" trigger_name="attr_out" section="body" 
+       class="Data" id="CLASS" text="COLUMN" value="Jane" 
+       colcount="5" col_id="4" name="Name" type="string" 
+       index="IDX" just="0">
+    </data>
+\end{fvoutput}
+
+\section{Advantages of the XML engine}
+It is possible to use ODS tagsets with the libname engine, to a point.  They
+don't always work very well.  But the XML Libname engine has several tagsets 
+created just for it.  They work better, and they do things that ods doesn't
+do all that well.  This is mostly because the datastep's relationship with the
+XML engine is much closer than it is with ODS.
+
+\subsection{Control options}
+There are also some options that allow control over the form the generated xml
+will take.  The increased versatility means that the XML engine can create just
+about any XML format that you can imagine.
+
+\section{The Tagsets}
+The XML engine's tagsets are designed around a single abstract tagset that should
+never be used directly, It won't produce much in the way of output if you do.
+The design allows most of the tagsets to be very simple.  But understanding it
+all is a bit more complicated.
+
+\section{Summary}
+When it comes to importing SAS output into spreadsheets there are many choices.
+None of them work perfectly.  But some of them work very well.  DDE has been a
+popular choice, but using it is somewhat painful.  The excelXP tagset is probably
+a better choice for most uses.  The msOffice2K and phtml tagsets also work very well.
+
+

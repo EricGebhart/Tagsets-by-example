@@ -1,0 +1,480 @@
+\chapter{Procedural controls}
+\index{control!procedural}
+\index{control!procedural!do}
+\index{control!procedural!else}
+\index{control!procedural!done}
+\index{control!procedural!break}
+\index{control!procedural!breakif}
+The tagset's if syntax has already been used in previous examples. 
+With SAS 8.2 and 9.0 if statements were kept to a few simple 
+choices.  This simple if statement is still the most efficient
+and most frequently used type of conditional programming that
+tagsets have.  With SAS 9.1 if statments have been extended with
+where clauses and new statements to provide fully featured procedural
+controls.  
+The examples in this chapter will explain the if syntax and the procedural control
+statements that complement them.
+
+\section{Simple If's}
+\index{if}
+\index{when}
+\index{where}
+\index{/}
+An if can be
+placed at the end of almost any tagset statement\footnote{eval and done are 
+the only statements that cannot have an if}
+.  But it must
+be preceded by a /.  Usually an {\itshape if} follows the /.  But that is optional.
+In fact, the keywords {\itshape when} and {\itshape where} are also allowed.  But it's
+all personal preference since none of the words mean anything.  There
+are two cases where the keyword following the / is important. 
+{\itshape Breakif} and {\itshape While} cause the if to do more than a simple test.
+
+\subsection{Built in tests}
+\index{if}
+\index{compare}
+\index{cmp}
+\index{exists}
+\index{any}
+\index{contains}
+\index{if!compare}
+\index{if!cmp}
+\index{if!exists}
+\index{if!any}
+\index{if!contains}
+These four tests
+are very tightly integrated and are therefore faster than any other
+type of test.  Any of these can be preceded with
+a ! or \^ which indicates negation of the result.  The ! can only be
+used for 'not' at the very beginning of an if, while \^ can be used
+at any time.  Table \ref{builtin_ifs} on page \pageref{builtin_ifs}
+shows the forms of the builtin if tests.  One very important distinction
+between these if tests is that the variables in the tests do not have
+to be defined.  If a variable doesn't exist the tests will evaluate to
+false.  This is very convenient for boolean variables.  Set the variable
+to some string for true, and unset it for false.  On the other hand,
+referencing a non-existant variable in a where clause frequently
+causes runtime errors.
+
+If a variable in a where clause is not defined then an error
+will result.
+
+\begin{table}\caption{Built in 'if' tests}
+\label{builtin_ifs}
+\begin{tabular}{l|l}\\ \hline
+Cmp &  Case insensitive compare of two string values.\\
+Exists & Check if all values have a length or are non-zero\\
+Any & Check if any values have a length or are non-zero\\
+Contains & Case sensitive search for string inside a string.\\
+Variable & Is the string length or numeric value.
+\end{tabular}
+\end{table}
+
+The following example uses each of these tests in use.
+
+\begin{sfvcode}
+        define event initialize;
+           set $is_eric 'True' /if cmp(operator, 'eric');
+           put 'Hello Eric' nl /if $is_eric;
+           put 'Hello ' operator nl /if ^$is_eric;
+           put 'RIC' nl /if contains(operator, 'ric');
+           put 'This might be Eric' nl /if any(operator, $is_eric);
+           put 'This is Eric' nl /if exists(operator, $is_eric);
+        end;
+\end{sfvcode}
+
+\section{Where Clauses}
+\index{if!Where clauses}
+\index{Where clauses}
+In addition to the simple if conditions
+above if tests can also use where clauses.  It turns out that they
+are usually used when doing numeric comparisons, but some problems reguire
+more complex if's.  The where processing provides that.
+
+\begin{sfvcode}
+        define event initialize;
+           eval $count 1;
+           put 'Count is > 0' nl /if $count > 0;
+
+           eval $max 10;
+           put 'max > Count > 0 ' nl /if $count > 0 and $count < $max;
+        end;
+\end{sfvcode}
+
+
+\section{Break}
+\index{Statements!Break}
+\index{Break}
+Break is a statement just like put or set.  When encountered the program
+flow exits the event immediately.  This is useful for skipping the end
+of an event when the remaining statements are not desired.  Here is an
+example based on the initialize event from the example in in 
+figure \ref{csv_2_out} on page \pageref{csv_2_out}.
+
+\begin{sfvcode}
+        define event initialize;
+           set $delimiter tagset_alias;
+           break /if $delimiter;
+
+           set $delimiter csv_delimiter /if !$delimiter;
+           set $delimiter ','           /if !$delimiter;
+        end;
+\end{sfvcode}
+
+This is more efficient when tagset\_alias is used because only one if
+is executed instead of two.  But it is less efficient if neither tagset
+alias or the csv\_delimiter macro variable is set because all three if's
+will have to execute.  Efficiency is not so important in this case, but
+it can be very important if the event is used very frequently.  A poorly
+coded data event can have a significant impact on performance.
+
+
+\section{Breakif}
+\index{if}
+\index{if!Breakif}
+Breakif is one of the two special keywords that can be used to define an
+if test on a tagset statement.  When looking through the tagset code, 
+there are many times when it is desirable to do something and then break
+if a certain condition is met.  With breakif it is possible to write this
+with one line instead of two.  That means one test evaluation instead of
+two.
+Breakif\footnote{Available in SAS 9.1 and later} can be quite useful in
+these situations because it combines break with the execution of another
+command based on an if.  Using the same example using breakif looks like this:
+\begin{sfvcode}
+        define event initialize;
+           set $delimiter tagset_alias  /breakif tagset_alias;
+           set $delimiter csv_delimiter /breakif csv_delimiter;
+           set $delimiter ',';
+        end;
+\end{sfvcode}
+
+This is a nice, efficient, and readable way to control the program flow.  As
+soon as any one of the if's is true the delimiter will be set and the event 
+will be exited.
+
+\section{Do blocks}
+\index{Statements!Do}
+\index{Statements!Else}
+\index{Statements!Done}
+\index{Do}
+\index{Else}
+\index{Done}
+Do blocks\footnote{Available in SAS 9.1 and later} provide a way to 
+group several event statements together under one condition.  
+do blocks start with a Do statement, end with a Done statement and may
+have any number of else statements in between.  Using the same example
+with do else looks like this.
+\begin{sfvcode}
+        define event initialize;
+
+           do /if tagset_alias;
+               set $delimiter tagset_alias;
+
+           else /if csv_delimiter;
+               set $delimiter csv_delimiter;
+
+           else;
+               set $delimiter ',';
+           done;
+
+        end;
+\end{sfvcode}
+\index{Statements!Set}
+
+This is the most efficient construct so far.  but can be refined further by
+eliminating one more if.  If tagset\_alias has no value, the set does nothing,
+so putting an if around it isn't really an improvement.  It comes down to 
+readability and personal taste.
+
+\begin{sfvcode}
+        define event initialize;
+
+           set $delimiter tagset_alias;
+
+           do /if !$delimiter;
+               set $delimiter csv_delimiter;
+
+           else;
+               set $delimiter ',';
+           done;
+
+        end;
+\end{sfvcode}
+
+\section{Do While Loops}
+\index{Looping}
+\index{While}
+\index{if}
+\index{if!While}
+\index{Stop}
+\index{Continue}
+\index{Statements!Stop}
+\index{Statements!Continue}
+Using the do statement it is also possible to create loops.  The behavior of the do
+block is changed to do looping with  
+the help of another special keyword.  Like {\itshape breakif}, 
+{\itshape while}\footnote{The while keyword is only valid on the Do statement}, 
+has special meaning.
+it causes the do block to loop as long as the while test is true.  A Do /while
+block can also have an else, or even multiple else /if's.  If the initial while
+test is false, execution will fall to the else.  But if the while block executes
+at all then the else will not be executed.
+
+That is how it works with SAS 9.1.3 and above.  But with SAS 9.1 there is a bug 
+in the do while, else construct.  The else always happens when the loop finally 
+fails.  
+
+\begin{sfvcode}
+proc template;
+define tagset tagsets.dowhile;
+    default_event = 'count';
+
+    define event initialize;
+        eval $count 1;
+
+        do /while $count <3;
+            put "Count < 3 " $count nl;
+            eval $count $count + 1;
+        else;
+            put "Else from: Count < 3: " $count nl;
+        done;
+
+        do /while $count <3;
+            put "Second Count < 3:" $count nl;
+            eval $count $count + 1;
+        else;
+            put "Second Else: Count > 3: " $count nl;
+        done;
+        
+    end;
+end;
+run;
+
+ods tagsets.dowhile file="dowhile.txt";
+ods tagsets.dowhile close;
+\end{sfvcode}
+
+The output shows a count of 1 and 2.  Then, disapponintingly the first else
+prints it's message.  The second loop fails to execute and displays the message
+from the else.  The output follows.
+
+\begin{sfvcode}
+Count < 3 1
+Count < 3 2
+Second Else: Count > 3: 3
+\end{sfvcode}
+
+To round out the looping controls there are stop and continue statements.  Stop
+will cause the loop to stop, program flow will pick up at the done.  Continue
+will cause program flow to start back at the top of the loop again.  Break
+behaves as always and causes the entire event to be aborted.  It is very easy
+to make infinite loops, be careful.
+
+\begin{sfvcode}
+      eval $i 0;
+
+      put "i is " $i nl;
+
+      put "Going into a Loop to 10" nl;
+      put "Continue at 5" nl;
+      put "stop at 8" nl;
+
+      do /while $i < 10;
+
+          eval $i $i+1;
+
+          continue /if $i eq 5;
+          stop     /if $i eq 8;
+
+          put "I is " $i nl;
+
+      else;
+          put "do this if i started out > 10" nl;
+
+      done;
+\end{sfvcode}
+
+\section{Iterating through Dictionaries}
+\index{Lists}
+\index{Dictionaries}
+\index{Looping}
+\index{While}
+\index{Iterate}
+\index{Next}
+\index{Statements!Iterate}
+\index{Statements!Next}
+Using do loops, the capability of iterating through a dictionary of values would be a 
+very nice thing
+to do.  Looping through a list is easy, all that is needed is a counter.  But dictionary's are
+not so easy.  To loop through a dictionary there are iterate and next statements.  
+Iterate and next work similarly to putvars in that they populate the special variables
+\_name\_ and \_value\_.  Iterate
+sets up the iterator for us and populates the first name and value into \_name\_ and \_value\_
+respectively.  From then on, only the next statement is used.  Of course an iterator will
+work on a list too, but there won't be a \_name\_.  These examples are awfully simple, putvars 
+could have done this in one line.  The output can be seen in figure \ref{controls_out} on page
+\pageref{controls_out}.
+
+\begin{sfvcode}
+
+      set $dogs['Ernie'] 'Was a great dog';
+      set $dogs['Pola'] 'Was really sweet.';
+      set $dogs['Arkas'] 'Is a big dog';
+      set $dogs['Luna'] 'Is super sweet';
+
+      iterate $dogs;
+      do /while _value_;
+          put "Key: " _name_ " Value: " _value_ nl;
+          next $dogs;
+      done;
+
+      set $dog_keys[] 'Ernie';
+      set $dog_keys[] 'Pola';
+      set $dog_keys[] 'Arkas';
+      set $dog_keys[] 'Luna';
+
+      iterate $dog_keys;
+      do /while _value_;
+          put "Key: " _name_ " Value: " _value_ nl;
+          next $dogs_keys;
+      done;
+
+\end{sfvcode}
+
+
+\section{Bringing it all together}
+The code example on page \pageref{controls example} shows 
+everything covered in this chapter in one event
+so that it can be easy to see how things work.
+
+\clearpage
+\begin{fvcode}{controls example}{Using Procedural controls}
+      
+proc template;
+
+    define tagset tagsets.controls;
+
+        define event bif;
+            put 'Hello Eric' nl /break_if $is_eric;
+            put 'Greetings ' operator nl;
+        end;
+
+        define event initialize;
+            set $is_elmo 'True' /if cmp(operator, 'elmo');
+            set $is_eric 'True' /if cmp(operator, 'eric');
+            put 'Hello Eric' nl /if $is_eric;
+            put 'Greetings ' operator nl /if ^$is_eric;
+            put 'RIC' nl /if contains(operator, 'ric');
+            put 'This might be Eric' nl /if any(operator, $is_eric);
+            put 'This is Eric' nl /if exists(operator, $is_eric);
+
+            trigger bif;
+
+            do /if $is_eric;
+                put 'Go away' nl;
+
+            else /if $is_elmo;
+                put "What's up?" nl;
+
+            else;
+                put 'Hello ' operator ' How are you?' nl;
+            done;
+
+
+            eval $i 0;
+
+            put nl 'i is ' $i nl;
+
+            put "Going into a Loop to 10" nl;
+            put "Continue at 5" nl;
+            put "stop at 8" nl;
+
+            do /while $i < 10;
+
+                eval $i $i+1;
+
+                continue /if $i eq 5;
+                stop     /if $i eq 8;
+
+                put 'I is ' $i nl;
+
+            else;
+                put 'do this if i started out > 10' nl;
+
+            done;
+
+            set $dogs['Ernie'] 'Was a great dog';
+            set $dogs['Pola'] 'Was really sweet.';
+            set $dogs['Arkas'] 'Is a big dog';
+            set $dogs['Luna'] 'Is super sweet';
+
+            put nl 'iterating on a dictionary' nl;
+            iterate $dogs;
+            do /while _value_;
+                put "Key: " _name_ " Value: " _value_ nl;
+                next $dogs;
+            done;
+      
+            set $dog_keys[] 'Ernie';
+            set $dog_keys[] 'Pola';
+            set $dog_keys[] 'Arkas';
+            set $dog_keys[] 'Luna';
+      
+            put nl 'iterating on a list' nl;
+            iterate $dog_keys;
+            do /while _value_;
+                put "Key: " _name_ " Value: " _value_ nl;
+                next $dog_keys;
+            done;
+
+        end;
+    end;
+run;
+
+ods tagsets.controls operator='eric' file='test.txt';
+ods tagsets.controls close;
+      
+\end{fvcode}
+
+
+\begin{poutput}{controls_out}{Control statements Example}
+Hello Eric
+RIC
+This might be Eric
+This is Eric
+Hello Eric
+Go away
+
+i is 0
+Going into a Loop to 10
+Continue at 5
+stop at 8
+I is 1
+I is 2
+I is 3
+I is 4
+I is 6
+I is 7
+
+iterating on a dictionary
+Key: Ernie Value: Was a great dog
+Key: Pola Value: Was really sweet.
+Key: Arkas Value: Is a big dog
+Key: Luna Value: Is super sweet
+
+iterating on a list
+ Value: Ernie
+ Value: Pola
+ Value: Arkas
+ Value: Luna
+\end{poutput}
+
+\section{Summary}
+The procedural capabilities of tagsets have grown exponentially
+with the release of SAS 9.1.  Simple if's are still the most common
+and efficient type of if.  But with the addition of where clauses the
+capabilities are almost endless.
+Single line, immediate, if's are still quite common, breakif enhances 
+those abilities for readability and efficiency.  
+Do blocks and while provide even more readability, efficiency and control.

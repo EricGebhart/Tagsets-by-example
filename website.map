@@ -1,0 +1,434 @@
+<proc name="Print">
+<label name="IDX"/>
+<title class="SystemTitle" toc-level="1">The SAS System</title>
+<branch name="Print" label="The Print Procedure" class="ContentProcName" toc-level="1">
+<leaf name="Print" label="Data Set SASHELP.CLASS" class="ContentItem" toc-level="2">
+<output name="Print" label="Data Set SASHELP.CLASS" clabel="Data Set SASHELP.CLASS">
+<output-object type="table" class="Table">
+
+  <style>
+    <border spacing="1" padding="7" rules="groups" frame="box"/>
+  </style>
+<colspecs columns="6">
+<colgroup>
+<colspec name="1" width="2" align="right" type="int"/>
+</colgroup>
+<colgroup>
+<colspec name="2" width="7" type="string"/>
+<colspec name="3" width="1" type="string"/>
+<colspec name="4" width="2" align="decimal" type="double"/>
+<colspec name="5" width="4" align="decimal" type="double"/>
+<colspec name="6" width="5" align="decimal" type="double"/>
+</colgroup>
+</colspecs>
+<output-head>
+<row>
+<header type="string" class="Header" row="1" column="1">
+<value>Obs</value>
+</header>
+<header type="string" class="Header" row="1" column="2">
+<value>Name</value>
+</header>
+<header type="string" class="Header" row="1" column="3">
+<value>Sex</value>
+</header>
+<header type="string" class="Header" row="1" column="4">
+<value>Age</value>
+</header>
+<header type="string" class="Header" row="1" column="5">
+<value>Height</value>
+</header>
+<header type="string" class="Header" row="1" column="6">
+<value>Weight</value>
+</header>
+</row>
+</output-head>
+<output-body>
+<row>
+<header type="double" class="RowHeader" row="2" column="1">
+<value> 1</value>
+</header>
+<data type="string" class="Data" row="2" column="2">
+<value>Alfred</value>
+</data>
+<data type="string" class="Data" row="2" column="3">
+<value>M</value>
+</data>
+<data raw-value="QCwAAAAAAAA=" type="double" class="Data" row="2" column="4">
+<value>14</value>
+</data>
+<data raw-value="QFFAAAAAAAA=" type="double" class="Data" row="2" column="5">
+<value>69.0</value>
+</data>
+<data raw-value="QFwgAAAAAAA=" type="double" class="Data" row="2" column="6">
+<value>112.5</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="3" column="1">
+<value> 2</value>
+</header>
+<data type="string" class="Data" row="3" column="2">
+<value>Alice</value>
+</data>
+<data type="string" class="Data" row="3" column="3">
+<value>F</value>
+</data>
+<data raw-value="QCoAAAAAAAA=" type="double" class="Data" row="3" column="4">
+<value>13</value>
+</data>
+<data raw-value="QExAAAAAAAA=" type="double" class="Data" row="3" column="5">
+<value>56.5</value>
+</data>
+<data raw-value="QFUAAAAAAAA=" type="double" class="Data" row="3" column="6">
+<value> 84.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="4" column="1">
+<value> 3</value>
+</header>
+<data type="string" class="Data" row="4" column="2">
+<value>Barbara</value>
+</data>
+<data type="string" class="Data" row="4" column="3">
+<value>F</value>
+</data>
+<data raw-value="QCoAAAAAAAA=" type="double" class="Data" row="4" column="4">
+<value>13</value>
+</data>
+<data raw-value="QFBTMzMzMzM=" type="double" class="Data" row="4" column="5">
+<value>65.3</value>
+</data>
+<data raw-value="QFiAAAAAAAA=" type="double" class="Data" row="4" column="6">
+<value> 98.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="5" column="1">
+<value> 4</value>
+</header>
+<data type="string" class="Data" row="5" column="2">
+<value>Carol</value>
+</data>
+<data type="string" class="Data" row="5" column="3">
+<value>F</value>
+</data>
+<data raw-value="QCwAAAAAAAA=" type="double" class="Data" row="5" column="4">
+<value>14</value>
+</data>
+<data raw-value="QE9mZmZmZmY=" type="double" class="Data" row="5" column="5">
+<value>62.8</value>
+</data>
+<data raw-value="QFmgAAAAAAA=" type="double" class="Data" row="5" column="6">
+<value>102.5</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="6" column="1">
+<value> 5</value>
+</header>
+<data type="string" class="Data" row="6" column="2">
+<value>Henry</value>
+</data>
+<data type="string" class="Data" row="6" column="3">
+<value>M</value>
+</data>
+<data raw-value="QCwAAAAAAAA=" type="double" class="Data" row="6" column="4">
+<value>14</value>
+</data>
+<data raw-value="QE/AAAAAAAA=" type="double" class="Data" row="6" column="5">
+<value>63.5</value>
+</data>
+<data raw-value="QFmgAAAAAAA=" type="double" class="Data" row="6" column="6">
+<value>102.5</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="7" column="1">
+<value> 6</value>
+</header>
+<data type="string" class="Data" row="7" column="2">
+<value>James</value>
+</data>
+<data type="string" class="Data" row="7" column="3">
+<value>M</value>
+</data>
+<data raw-value="QCgAAAAAAAA=" type="double" class="Data" row="7" column="4">
+<value>12</value>
+</data>
+<data raw-value="QEymZmZmZmY=" type="double" class="Data" row="7" column="5">
+<value>57.3</value>
+</data>
+<data raw-value="QFTAAAAAAAA=" type="double" class="Data" row="7" column="6">
+<value> 83.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="8" column="1">
+<value> 7</value>
+</header>
+<data type="string" class="Data" row="8" column="2">
+<value>Jane</value>
+</data>
+<data type="string" class="Data" row="8" column="3">
+<value>F</value>
+</data>
+<data raw-value="QCgAAAAAAAA=" type="double" class="Data" row="8" column="4">
+<value>12</value>
+</data>
+<data raw-value="QE3mZmZmZmY=" type="double" class="Data" row="8" column="5">
+<value>59.8</value>
+</data>
+<data raw-value="QFUgAAAAAAA=" type="double" class="Data" row="8" column="6">
+<value> 84.5</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="9" column="1">
+<value> 8</value>
+</header>
+<data type="string" class="Data" row="9" column="2">
+<value>Janet</value>
+</data>
+<data type="string" class="Data" row="9" column="3">
+<value>F</value>
+</data>
+<data raw-value="QC4AAAAAAAA=" type="double" class="Data" row="9" column="4">
+<value>15</value>
+</data>
+<data raw-value="QE9AAAAAAAA=" type="double" class="Data" row="9" column="5">
+<value>62.5</value>
+</data>
+<data raw-value="QFwgAAAAAAA=" type="double" class="Data" row="9" column="6">
+<value>112.5</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="10" column="1">
+<value> 9</value>
+</header>
+<data type="string" class="Data" row="10" column="2">
+<value>Jeffrey</value>
+</data>
+<data type="string" class="Data" row="10" column="3">
+<value>M</value>
+</data>
+<data raw-value="QCoAAAAAAAA=" type="double" class="Data" row="10" column="4">
+<value>13</value>
+</data>
+<data raw-value="QE9AAAAAAAA=" type="double" class="Data" row="10" column="5">
+<value>62.5</value>
+</data>
+<data raw-value="QFUAAAAAAAA=" type="double" class="Data" row="10" column="6">
+<value> 84.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="11" column="1">
+<value>10</value>
+</header>
+<data type="string" class="Data" row="11" column="2">
+<value>John</value>
+</data>
+<data type="string" class="Data" row="11" column="3">
+<value>M</value>
+</data>
+<data raw-value="QCgAAAAAAAA=" type="double" class="Data" row="11" column="4">
+<value>12</value>
+</data>
+<data raw-value="QE2AAAAAAAA=" type="double" class="Data" row="11" column="5">
+<value>59.0</value>
+</data>
+<data raw-value="QFjgAAAAAAA=" type="double" class="Data" row="11" column="6">
+<value> 99.5</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="12" column="1">
+<value>11</value>
+</header>
+<data type="string" class="Data" row="12" column="2">
+<value>Joyce</value>
+</data>
+<data type="string" class="Data" row="12" column="3">
+<value>F</value>
+</data>
+<data raw-value="QCYAAAAAAAA=" type="double" class="Data" row="12" column="4">
+<value>11</value>
+</data>
+<data raw-value="QEmmZmZmZmY=" type="double" class="Data" row="12" column="5">
+<value>51.3</value>
+</data>
+<data raw-value="QElAAAAAAAA=" type="double" class="Data" row="12" column="6">
+<value> 50.5</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="13" column="1">
+<value>12</value>
+</header>
+<data type="string" class="Data" row="13" column="2">
+<value>Judy</value>
+</data>
+<data type="string" class="Data" row="13" column="3">
+<value>F</value>
+</data>
+<data raw-value="QCwAAAAAAAA=" type="double" class="Data" row="13" column="4">
+<value>14</value>
+</data>
+<data raw-value="QFATMzMzMzM=" type="double" class="Data" row="13" column="5">
+<value>64.3</value>
+</data>
+<data raw-value="QFaAAAAAAAA=" type="double" class="Data" row="13" column="6">
+<value> 90.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="14" column="1">
+<value>13</value>
+</header>
+<data type="string" class="Data" row="14" column="2">
+<value>Louise</value>
+</data>
+<data type="string" class="Data" row="14" column="3">
+<value>F</value>
+</data>
+<data raw-value="QCgAAAAAAAA=" type="double" class="Data" row="14" column="4">
+<value>12</value>
+</data>
+<data raw-value="QEwmZmZmZmY=" type="double" class="Data" row="14" column="5">
+<value>56.3</value>
+</data>
+<data raw-value="QFNAAAAAAAA=" type="double" class="Data" row="14" column="6">
+<value> 77.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="15" column="1">
+<value>14</value>
+</header>
+<data type="string" class="Data" row="15" column="2">
+<value>Mary</value>
+</data>
+<data type="string" class="Data" row="15" column="3">
+<value>F</value>
+</data>
+<data raw-value="QC4AAAAAAAA=" type="double" class="Data" row="15" column="4">
+<value>15</value>
+</data>
+<data raw-value="QFCgAAAAAAA=" type="double" class="Data" row="15" column="5">
+<value>66.5</value>
+</data>
+<data raw-value="QFwAAAAAAAA=" type="double" class="Data" row="15" column="6">
+<value>112.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="16" column="1">
+<value>15</value>
+</header>
+<data type="string" class="Data" row="16" column="2">
+<value>Philip</value>
+</data>
+<data type="string" class="Data" row="16" column="3">
+<value>M</value>
+</data>
+<data raw-value="QDAAAAAAAAA=" type="double" class="Data" row="16" column="4">
+<value>16</value>
+</data>
+<data raw-value="QFIAAAAAAAA=" type="double" class="Data" row="16" column="5">
+<value>72.0</value>
+</data>
+<data raw-value="QGLAAAAAAAA=" type="double" class="Data" row="16" column="6">
+<value>150.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="17" column="1">
+<value>16</value>
+</header>
+<data type="string" class="Data" row="17" column="2">
+<value>Robert</value>
+</data>
+<data type="string" class="Data" row="17" column="3">
+<value>M</value>
+</data>
+<data raw-value="QCgAAAAAAAA=" type="double" class="Data" row="17" column="4">
+<value>12</value>
+</data>
+<data raw-value="QFAzMzMzMzM=" type="double" class="Data" row="17" column="5">
+<value>64.8</value>
+</data>
+<data raw-value="QGAAAAAAAAA=" type="double" class="Data" row="17" column="6">
+<value>128.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="18" column="1">
+<value>17</value>
+</header>
+<data type="string" class="Data" row="18" column="2">
+<value>Ronald</value>
+</data>
+<data type="string" class="Data" row="18" column="3">
+<value>M</value>
+</data>
+<data raw-value="QC4AAAAAAAA=" type="double" class="Data" row="18" column="4">
+<value>15</value>
+</data>
+<data raw-value="QFDAAAAAAAA=" type="double" class="Data" row="18" column="5">
+<value>67.0</value>
+</data>
+<data raw-value="QGCgAAAAAAA=" type="double" class="Data" row="18" column="6">
+<value>133.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="19" column="1">
+<value>18</value>
+</header>
+<data type="string" class="Data" row="19" column="2">
+<value>Thomas</value>
+</data>
+<data type="string" class="Data" row="19" column="3">
+<value>M</value>
+</data>
+<data raw-value="QCYAAAAAAAA=" type="double" class="Data" row="19" column="4">
+<value>11</value>
+</data>
+<data raw-value="QEzAAAAAAAA=" type="double" class="Data" row="19" column="5">
+<value>57.5</value>
+</data>
+<data raw-value="QFVAAAAAAAA=" type="double" class="Data" row="19" column="6">
+<value> 85.0</value>
+</data>
+</row>
+<row>
+<header type="double" class="RowHeader" row="20" column="1">
+<value>19</value>
+</header>
+<data type="string" class="Data" row="20" column="2">
+<value>William</value>
+</data>
+<data type="string" class="Data" row="20" column="3">
+<value>M</value>
+</data>
+<data raw-value="QC4AAAAAAAA=" type="double" class="Data" row="20" column="4">
+<value>15</value>
+</data>
+<data raw-value="QFCgAAAAAAA=" type="double" class="Data" row="20" column="5">
+<value>66.5</value>
+</data>
+<data raw-value="QFwAAAAAAAA=" type="double" class="Data" row="20" column="6">
+<value>112.0</value>
+</data>
+</row>
+</output-body>
+</output-object>
+</output>
+</leaf>
+</branch>
+</proc>
+</body>
+</odsxml>

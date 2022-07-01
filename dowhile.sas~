@@ -1,0 +1,54 @@
+OPTIONS NODATE NOSTIMER LS=78 PS=60;
+proc template;
+define tagset tagsets.frequency;
+    default_event = 'count';
+
+    define event initialize;
+        eval $count 1;
+
+        do /while $count <10;
+            put "Count < 10 " $count nl;
+            eval $count $count + 1;
+        else;
+            put "Else from: Count < 10: " $count nl;
+        done;
+
+        do /while $count <10;
+            put "Second Count < 10:" $count nl;
+            eval $count $count + 1;
+        else;
+            put "Second Else: Count > 10: " $count nl;
+        done;
+        
+    end;
+
+
+    define event doc;
+        start:
+            eval $events[event_name] 1;
+            eval $total 0;
+        finish:
+            trigger report;
+    end;
+
+    define event count;
+         do / if $events[event_name];
+             eval $events[event_name] $events[event_name] + 1;
+         else;
+             eval $events[event_name] 1;
+    end;
+
+    define event report;
+       putvars $events _name_ " : " _value_ nl;
+    end;
+end;
+run;
+
+title2 "mytitle";
+
+ods listing close;
+ods tagsets.frequency file="frequency.txt";
+proc print data=sashelp.class;
+run;
+ods tagsets.frequency close;
+ods listing;

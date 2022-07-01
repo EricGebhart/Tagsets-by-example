@@ -1,0 +1,550 @@
+\chapter{Quick Reference Guide}
+\section{Useful tagsets}
+
+\begin{description}
+
+\tagsetitem{HTML4}{HTML, HTML4}
+
+Generates W3C compliant HTML4.
+
+\tagsetitem{PHTML}{pHTML}
+
+HTML with a simplified Stylesheet.
+
+\tagsetitem{HTMLCSS}{HTMLcss}
+
+HTML 4.0 with a complete stylesheet definition.
+Only slightly different HTML from the HTML4 tagset.
+
+\stagsetitem{XHTML}
+
+This is an XHTML destination that is almost identical
+to HTML4.
+
+\tagsetitem{CSV}{CSV}
+
+CSV that contains only tabular data.
+
+\tagsetitem{CSVALL}{CSVall}
+
+CSV with titles, footnotes, notes, and bylines.
+
+\stagsetitem{CSVbyline}
+
+CSV with tables and bylines.
+
+\stagsetitem{RTF}
+
+This is an RTF destination with both vertical and horizontal 
+measurement among other things.  The RTF tagset is the future
+of ODS RTF.
+
+\tagsetitem{LaTeX}{Latex}
+
+The basic LateX destination for creating complete LaTeX documents.
+
+\stagsetitem{ColorLaTeX}
+
+The basic LateX destination with the color package added.
+
+\stagsetitem{SimpleLaTeX}
+
+A simple LateX destination without SAS specific LaTeX macros.
+
+\stagsetitem{TablesOnlyLaTeX}
+
+A very simple LateX destination that only generates tables.
+This is perfect for use with newfile=output to create files
+with individual tables for inclusion in other LaTeX documents.
+
+\tagsetitem{Troff}{Troff}
+
+This is a basic troff tagset that is useful for creating black and
+white typeset documents, in pdf and postscript.  Troff is used to
+typeset the man pages on Unix systems.
+
+\tagsetitem{MSOffice2k}{MSOffice2k}
+
+An HTML tagset with Microsoft specific XML embedded for better
+loading into Microsoft Office products.
+
+\tagsetitem{cHTML}{cHTML}
+
+Compact HTML creates very compact HTML with no style. 
+Used primarily for PDA's and phones.
+
+\tagsetitem{Imode}{Imode}
+
+Imode is a subset of HTML that has no tabular support.
+Used for PDA's and phones in Japan and some other countries.
+
+\tagsetitem{WML}{WML}
+
+Wireless markup language is a small footprint XML for
+PDA's and phones.
+
+\tagsetitem{WMLolist}{WMLolist}
+
+Wireless markup tagset that creates a table of contents as
+an option list.
+
+\tagsetitem{Default}{XML}
+
+An XML definition that is closely modeled after the internals of
+ODS.
+
+\stagsetitem{Event\_map}
+
+Event map creates an XML file that shows all events as XML tags.
+Event map prints a large number of attributes as part of it's output.
+
+\stagsetitem{Short\_map}
+
+Short map is a much less verbose mapping tagset that can be much easier
+to read.  This is handy for showing the event model when looking for
+events, names, labels and values.
+
+\stagsetitem{Super\_map}
+
+Super map is a mapping tagset that can be controlled through options.
+It can be verbose, or not.  Among other things it can look for 
+specific values within the event model and show only events that match.
+
+
+\stagsetitem{Style\_Popup}
+
+Style popup is a child of HTML4 it creates HTML with a popup window that displays
+ODS style information for all the HTML elements on the page.
+
+\stagsetitem{Style\_Display}
+
+Style Display is a child of Style Popup that creates a sample page that contains
+examples of all of the different style elements that ODS regularly defines.
+
+\stagsetitem{OdsStyle}
+
+The Ods style tagset writes a proc template program to the stylesheet file.
+The program generated is a style template with no inheritance that makes it
+easier to see all the attributes in use for any given element.  It is not a
+good way to keep a style template because of maintainence issues.
+
+\tagsetitem{Pyx}{Pyx}
+
+Pyx is a very simple markup language that lists every single item on a separate
+line.  Pyx is very easy to parse, grep and mold into other shapes including XML.
+
+
+ 
+
+
+\end{description}
+
+\section{Tagset attributes}
+
+\begin{description}
+
+\commanditem{Map}{string}
+
+Map is a list of special characters that need to be
+translated in order to work with the target markup language.
+A typical value for HTML or XML might be "\&<>'"
+
+\commanditem{MapSub}{string}
+Mapsub is a list of strings that will replace the characters
+listed in the map.  The strings separater is the first character
+in the list.  A typical value for HTML is "/\&amp;/\&lt;/\&gt;/\&apos;/".
+
+\commanditem{Split}{string}
+
+The value of slit is what the tagset will use in place of split characters
+when they are encountered.  The typical value for HTML is "<Br>".
+
+\commanditem{NoBreakSpace}{string}
+
+The value of NoBreakSpace is what the tagset will use for non-breaking spaces.
+The default is a regular space.  HTML generally uses "\&nbsp;".
+
+\commanditem{Default\_Event}{string}
+
+This the name of an event to use when the ODS requested event is not defined
+within the tagset.
+
+\commanditem{Output\_Type}{string}
+
+Output type is the type of output being created.  HTML, LaTeX, XML, CSV, etc.
+This is primarily used by the SAS results window so that it can display the
+output correctly.
+
+\commanditem{Log\_Note}{string}
+
+Log Note is a note that will be printed to the log every time the tagset is used.
+Usage notes, release date and revision number are good things to put in the lognote.
+
+\commanditem{Trademark}{string}
+
+Trademark is the string to use in place of the SAS control code for trademark.
+HTML uses '\&trad;'.
+
+\commanditem{Registered\_TM}{string}
+
+Registered\_TM is the string to use in place of the SAS control code for registered trademark.
+HTML uses '\&reg;'.
+
+\commanditem{Copyright}{string}
+
+Copyright is the string to use in place of the SAS control code for copyright.
+HTML uses '\&copy;'.
+
+\commanditem{Image\_Formats}{string}
+
+Image formats is a space delimited list of image formats supported by the target output
+type.  Valid values are png, gif, jpeg, bmp, svg, java, activex, ps, psepsf, epsi.
+If the image device is not set to a valid image format, then the first image format
+in the list will be used to create the image.
+
+\commanditem{BeginWellFormed}{string}
+\commanditem{EndWellFormed}{string}
+
+BeginWellFormed is a string that indicates what well formed markup for the target
+output begins with.  All text will be checked to see if it begins and ends with
+the value of beginwellformed and ends with the value of endwellformed, excluding
+leading and trailing whitespace.  If the string is matched, then the characters
+in the string will not be remapped by the values of map and mapsub.
+
+
+\commanditem{Default\_style}{string}
+
+Default style is the name of the default style to use when a style is not
+specified on the ods statement.
+
+\commanditem{Body}{string}
+
+Body is the name to use for the body file when automatic packages are in use.
+When an automatic package is in use, the file name given on the ods statement
+becomes the package archive name.  The body name given here becomes the body
+file actually created and placed within the archive.
+
+\commanditem{Contents}{string}
+
+Contents is the name to use for the contents file when automatic packages are in use.
+
+\commanditem{Pages}{string}
+
+Pages is the name to use for the pages file when automatic packages are in use.
+
+\commanditem{Frame}{string}
+
+Frame is the name to use for the frame file when automatic packages are in use.
+
+\commanditem{Stylesheet}{string}
+
+Stylesheet is the name to use for the stylesheet file when automatic packages are in use.
+
+\commanditem{Code}{string}
+
+Code is the name to use for the code file when automatic packages are in use.
+
+\commanditem{Data}{string}
+
+Data is the name to use for the data file when automatic packages are in use.
+
+
+\commanditem{Body\_Mimetype}{string}
+
+Body\_Mimetype is the mimetype to use for all body files created.
+
+\commanditem{Contents\_Mimetype}{string}
+
+Contents\_Mimetype is the mimetype to use for all contents files created.
+
+\commanditem{Pages\_Mimetype}{string}
+
+Pages\_Mimetype is the mimetype to use for all pages files created.
+
+\commanditem{Frame\_Mimetype}{string}
+
+frame\_Mimetype is the mimetype to use for all frame files created.
+
+\commanditem{Stylesheet\_Mimetype}{string}
+
+Stylesheet\_Mimetype is the mimetype to use for all stylesheet files created.
+
+\commanditem{Code\_Mimetype}{string}
+
+Code\_Mimetype is the mimetype to use for all code files created.
+
+\commanditem{Data\_Mimetype}{string}
+
+Data\_Mimetype is the mimetype to use for all data files created.
+
+\commanditem{Default\_Mimetype}{string}
+
+Default\_Mimetype is the mimetype to use for all files that do not specify a mimetype.
+
+\commanditem{Indent}{Integer}
+
+The value of indent is used to determine how many spaces the Ndent and Xdent statements
+move the indention level.
+
+\commanditem{Breaktext\_Width}{Integer}
+
+Breaktext\_width is the maximum {\bfseries width of space} that will
+be considered for placement of automatic breaks in text.  If the width
+of the space is greater than this value the text will not be broken.
+
+\commanditem{Breaktext\_Length}{Integer}
+
+Breaktext\_length is the maximum {\bfseries length of text} which will be considered for placement 
+of automatic breaks.  If the text is longer than this value then no breaks will be inserted
+automatically
+
+\commanditem{Breaktext\_Ratio}{Number}
+
+Breaktext\_Ratio is the ratio of the width of space to the length of the text which is supposed to fit in it.  Like the other two attributes, this attribute serves to narrow the the string and
+width combinations that will be considered for splitting.  The text length and width must fall
+within this ratio before they will be considered for forced splits.
+
+
+\commanditem{Upi}{Integer}
+\commanditem{Fontpad}{Integer}
+
+\commanditem{Parent}{Tagset Name}
+
+Parent is the name of a tagset to inherit events and attribute settings from.
+
+\commanditem{Package}{Package Template Name}
+
+Package template name.  This turns on automatic packages for the tagset.
+When set, the file specified on the ods statement becomes the package archive
+name. All output from the destination will be placed in that archive.  The
+actual files created will depend upon the settings of the package file attributes,
+body, contents, pages, frame, stylesheet, code and data.
+
+\commanditem{Stacked\_columns}{yes | no | on | off}
+
+When set to off, stacked column events will not be sent to the tagset.  Except for
+the Freq Procedure with cross tabular reports.
+
+\commanditem{Embedded\_stylesheet}{yes | no | on | off}
+
+If set to on, stylesheet events will be sent to the body file when no stylesheet
+file is specified on the ods statement.
+
+\commanditem{Pure\_style}{yes | no | on | off}
+
+Normally, all style information is surfaced in the stylesheet events and is filtered
+in subsequent events.  Setting pure\_style to yes will cause all events to receive all
+the style information all of the time.
+
+\commanditem{Measurement}{yes | no | on | off}
+
+Turn contents measurement on.  When on, the output is measured vertically and
+horizontally and ajusted to fit on the page.  Primarily used by the RTF, LaTeX
+and any other markup that needs page formatting.
+
+\commanditem{Ext\_Graph\_Instance}{yes | no | on | off}
+\commanditem{No\_Byte\_Order\_Mark}{yes | no | on | off}
+
+If set No Byte order mark will be generated for XML files.
+
+\commanditem{Hierarchical\_Data}{yes | no | on | off}
+
+When hierarchical data is set to yes, The Tabulate and Freq procedures
+generate events in a tree view rather than a tabular view.
+
+\commanditem{Uniform}{yes | no | on | off}
+
+\commanditem{Reference\_Image}{yes | no | on | off}
+
+\end{description}
+
+\section{Event attributes}
+
+\begin{description}
+\commanditem{STYLE}{Style Element Name}
+
+This is the name of the style element that the event should use.
+
+\commanditem{Pure\_Style}{yes | no | on | off}
+
+When pure style is set to yes, all style attributes will be available, they will not
+be filtered as if they were already defined in a stylesheet.
+
+\commanditem{File}{(frame | contents | style | code | body | default | pages | data )}
+
+The file attribute determines which output file the event will write it's output to.
+If the file was not specified on the ods statement, the event will generate no output.
+
+\end{description}
+
+\section{Event Statements}
+\begin{description}
+
+%\item[\commandnames{Block}]  \commandargs{event-name <condition>}
+\commanditem{Block}{event-name <condition>}
+
+Blocks the use of the specified event.  Use the unblock command to
+make the event usable again.
+
+\commanditem{Break}{<condition>}
+
+Break stops an event from continuing. The event is exited immediately, no statements below
+the break statement will be executed.
+
+\commanditem{Continue}{<condition>};
+
+When placed within an if or while, execution goes back to the top for re-evaluation.
+
+\commanditem{Close}{<condition>};
+
+Close stops the flow of output to the current stream. 
+Output is redirected to the current output file.
+
+\commanditem{Delstream}{(stream-name | variable) <condition>};
+
+Completely deletes the specified stream.  This is different from an unset which
+simply clears the contents of the stream.
+
+\commanditem{Do}{<condition>}
+
+Starts a statement block. 
+
+\commanditem{Done}{}
+
+Ends a statement block. 
+
+\commanditem{Else}{<condition>};
+
+Begins a statement block that executes if the Do it belongs to is false. This is more efficient and easier to read than the common alternative of two lines with one if negated. In the case of a Do /while the else only executes if the while is false on the first evaluation. Multiple elses may be chained by using an if.
+
+\commanditem{Eval}{variable-name>[(<number>|<key>)]<where-clause>};
+
+Eval sets the value of the variable to the return value of the where clause. The variable's type can be numeric or string depending upon the where clause. The standard SAS Language where processing syntax applies. 
+
+\commanditem{Flush}{<condition>};
+
+Forces any buffered output to be written to the current output file or stream.
+
+\commanditem{Iterate}{variable-name <condition>};
+
+Creates or initializes an iterator for the given list or dictionary variable. The first value of the variable will be placed into \_value\_. If it is a dictionary the key will be placed in \_name\_.
+
+\commanditem{Ndent}{<condition>};
+
+Indents output one indentation level using the number of spaces specified by the INDENT= attribute. 
+
+\commanditem{Next}{variable-name <condition>};
+
+Causes the variables iterator to increment to the next value and repopulate the variables \_value\_ and \_name\_ as appropriate.
+
+\commanditem{Open}{(stream-name | variable) <condition>};
+
+Opens the specified stream. If the stream does not exist it is created. If a variable is given, the value of that variable becomes the stream name.  If a different stream is open, that stream is closed. All PUT statements that occur after the open are appended to the stream and not to the output file.
+
+\commanditem{PUT | PUTL | PUTQ}{(<variable> <String> <function> <nl|cr|lf> )* <conditon>};
+
+Writes text or variable data to an output file. In general, the syntax consists of a space-delimited list of strings, variables, new line, or data step functions, followed by an optional condition. Functions may not be nested. A string preceding a variable creates a string-value pair, Both the label string and the variable will print as long as the variable has a value.
+PUT is the basic statement in its simplest form. For example:
+    put 'Beginning of output.';
+PUTL adds a new line to the end of the output. This is useful when an event's output is large.
+PUTQ places quotes around the value in a variable. For example, the PUTQ statement
+    putq "color=" foreground;
+results in the following output: 
+
+color="blue"
+To write a new line, use any of these new line arguments: CR, NL, or LF. All three work the same.
+PUT statements pair strings with variables. If a string is followed by a variable, they become a pair. If the variable has a value, then the pair becomes output. If not, then neither will be output. For example, for the following PUTQ statement, if none of the variables have a value, the output would be <table>:
+    putq "<table" " background" background "
+    foreground=" foreground "cellpadding=" cellpadding ">" nl;
+
+\commanditem{Putlog}{(<variable> <String> <function> )* <conditon>};
+
+Putlog works just like put except that the output is directed to the log. 
+Putlog does not accept newlines.
+
+\commanditem{Putstream}{(stream-name | variable) <condition>};
+
+Writes the contents of the specified stream to the current output file. 
+
+\commanditem{Putvars}{(variable-group | list | dictionary) (<variable> <String> <function> <nl|cr|lf> )* <conditon>};
+
+Putvars is like the put statement except that it loops through all of the variables in the variable group. Each iteration populates special variables that can be used in the format. \_name\_ holds the name of the variable. \_value\_ holds the value of the variable.  This is very similar to a simple loop using iterate and next.  All in one statement.
+
+Values for variable-group are
+EVENT
+STYLE
+DYNAMIC
+MEMORY
+STREAM
+
+    putvars event   \_name\_ ':' \_value\_ nl;
+
+\commanditem{Set} {variable-name <[(<number>|< key>)]> (<variable> <String> <function>)* <conditon>};
+
+Sets the specified variable with the value of any strings, variables, or data step functions, following the variable name. Functions may not be nested. The variable name must be a memory or stream variable or stream variable, that is, preceded by a single or double dollar sign (\$ or \$\$). The arguments follow the same behavior and syntax as the PUT statement. SET does not accept newlines. The only limitation is that a user variable cannot be set to a stream variable. Variables can be set to themselves. It should be noted that setting a stream to itself can be inefficient and slow. 
+
+\commanditem{Stop}{<condition>};
+
+Causes execution to jump to the end of the current statement block. 
+
+\commanditem{Trigger}{event-name <START | FINISH> <condition>};
+
+Executes another event inline. If you are in the start section of an event, then any event triggered also runs its start section. If you are in the finish section, then the triggered event runs its finish. If a triggered event does not have start or finish sections, then it runs the statements it does have. A trigger can also explicitly ask for an event's specific section.
+
+
+\commanditem{Unblock}{event-name <condition>};
+
+Re-enables a previously blocked event. To disable an event, use the BLOCK statement. 
+
+\commanditem{Unset}{(ALL | variable-name [(<number>|< key>)]) <condition>};
+
+Remove, delete, clear, the variable given.
+
+\commanditem{Xdent}{<condition>};
+
+Removes one indention level from the output.
+
+\end{description}
+
+\section{If Statements}
+
+All of these items are conditons that can be used anywhere you see
+<condition> in the reference.  Conditions are separated from the statement
+with a /.  if, when, and where can be used as desired for readability. 
+While and breakif both give special behavior to the statements they are
+connected to.  The test can can be any of the 5 builtin tests or it can
+be a where clause.  The 5 builtin functions are Any, cmp, contains, exists,
+or a variable alone. 
+
+\large{Statement}\large\textbf{/ (<if | when | where | while | breakif>) } \large\textsc{any | cmp | contains | exist | variable | where clause}
+
+\begin{description}
+\commanditem{Any}{(variable, <variable>*)}
+
+checks a list of variables for values. If any of the variables has a value, then the condition is true and the statement executes.
+
+\commanditem{BreakIf}{<condition>}
+
+When true break if executes the current line and then breaks out of the event. 
+
+\commanditem{Cmp}{(variable | string, variable | string)}
+
+compares a string to a variable or a list of variables for equality. Cmp is case insensitive. For example:
+
+\commanditem{Contains}{(variable | string, <variable | string >)};
+
+looks inside the first string for the second string.  Case sensitive.
+
+\commanditem{EXIST | EXISTS}{(variable, <variable>*)}
+
+checks a variable or a list of variables to determine if a value exists for each. If all of the variables have a value, then the condition is true and the statement executes. If a variable has an empty string of length 0, then the value does not exist and the statement does not execute. 
+
+\commanditem{Variable}{}
+
+An if that consists of a single variable will be evaluated according to its type. If it is a string variable the test will be for length. If it is a numeric variable the test will be for the value. If the variable is a dictionary element ("\$dict[\$key]") the the result is true if the key is defined, otherwise false." 
+
+\commanditem{While}{<condition>}
+
+While is only valid on a Do statement. It indicates that the corresponding statement block should loop until the while becomes false.
+
+\end{description}

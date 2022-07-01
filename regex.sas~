@@ -1,0 +1,48 @@
+proc template;
+   define tagset tagsets.regex;   
+ 
+     define event initialize;
+         set $papersize getoption('PAPERSIZE');
+
+         /* tranwrd just makes the regex easier. Get rid of optional quotes */
+         set $papersize tranwrd($papersize, '"', " ");
+         set $papersize tranwrd($papersize, "'", " ");
+
+         /* could be centimeters, could be quoted, or not...
+            default is supposedly inches but could be installation
+            dependent.
+            (8in 11in);
+            ('8in', '11in');
+            ("8in", "11in");
+            ("8", "11");
+         */
+         eval $re prxparse('( *([0-9]+) *(IN|CM)* *[,]+ *([0-9]+) *(IN|CM)*.*)') ;
+         eval $match prxmatch($re, $papersize);
+
+         set $pwidth prxposn($re, 1, $papersize) ;
+         set $pwidth_unit prxposn($re, 2, $papersize) ;
+         set $pwidth_unit lowcase($pwidth_unit) /if $pwidth_unit;
+         set $pwidth_unit "in" /if !$pwidth_unit;
+
+         set $pheight prxposn($re, 3, $papersize) ;
+         set $pheight_unit prxposn($re, 4, $papersize) ;
+         set $pheight_unit lowcase($pheight_unit) /if $pheight_unit;
+         set $pheight_unit "in" /if !$pheight_unit;
+
+         /* Only if they are non-zero */
+         put ' height="' $pheight $pheight_unit '"' /if $pheight;
+         put ' width="' $pwidth $pwidth_unit '"' /if $pwidth;
+
+         unset $papersize;
+         unset $re;
+         unset $pwidth;
+         unset $pwidth_unit;
+         unset $pheight;
+         unset $pheight_unit;
+     end;
+
+ end;
+run;
+
+ods tagsets.regex file="regex.txt";
+ods tagsets.regex close;

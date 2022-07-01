@@ -1,0 +1,93 @@
+1                                                          The SAS System                           17:37 Friday, September 21, 2007
+
+NOTE: Copyright (c) 2002-2008 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software Pre-Production 9.2 (TS1B0)
+      Licensed to SAS Institute Inc., Site 0000000001.
+NOTE: This session is executing on the XP_PRO  platform.
+
+
+
+NOTE: SAS initialization used:
+      real time           0.57 seconds
+      cpu time            0.40 seconds
+      
+1          %inc "ods/pgm/en/maptags.tpl";
+NOTE: Overwriting existing template/link: Tagsets.Event_map
+NOTE: TAGSET 'Tagsets.Event_map' has been saved to: SASUSER.TEMPLAT
+NOTE: Overwriting existing template/link: Tagsets.Text_map
+NOTE: TAGSET 'Tagsets.Text_map' has been saved to: SASUSER.TEMPLAT
+NOTE: Overwriting existing template/link: Tagsets.Short_map
+NOTE: TAGSET 'Tagsets.Short_map' has been saved to: SASUSER.TEMPLAT
+NOTE: Overwriting existing template/link: Tagsets.Supermap
+NOTE: TAGSET 'Tagsets.Supermap' has been saved to: SASUSER.TEMPLAT
+NOTE: Overwriting existing template/link: Tagsets.Config_debug
+NOTE: TAGSET 'Tagsets.Config_debug' has been saved to: SASUSER.TEMPLAT
+NOTE: PROCEDURE TEMPLATE used (Total process time):
+      real time           0.63 seconds
+      cpu time            0.51 seconds
+      
+
+1523       
+1524       ods chtml file="chtml.html";
+NOTE: Writing CHTML Body file: chtml.html
+1525       ods imode file="imode.html";
+NOTE: Writing IMODE Body file: imode.html
+1526       ods htmlcss file="htmlcss.html";
+NOTE: Writing HTMLCSS Body file: htmlcss.html
+1527       ods phtml file="phtml.html";
+NOTE: Writing PHTML Body file: phtml.html
+1528       ods tagsets.MSOffice2K file="msoffice2k.html";
+NOTE: Writing TAGSETS.MSOFFICE2K Body file: msoffice2k.html
+1529       ods html file="html.html";
+NOTE: Writing HTML Body file: html.html
+1530       
+1531       
+1532         title3 height=15pt color=orange
+1533                justify=right '15 pt first right'
+1534                justify=left 'first left';
+1535         title4 height=10pt color=red 'no justify red'
+1536                justify=right 'Second right'
+1537                justify=left 'Second left';
+1538       
+1539       
+1540       
+1541       proc sort data=sashelp.class out=work.class;
+1542           by age  sex;
+2                                                          The SAS System                           17:37 Friday, September 21, 2007
+
+1543       run;
+
+NOTE: There were 19 observations read from the data set SASHELP.CLASS.
+NOTE: The data set WORK.CLASS has 19 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+
+1544       
+1545       options obs=2;
+1546       
+1547       
+1548       PROC TABULATE DATA=class;
+1549          VAR Height Weight;
+1550          CLASS Sex Age;
+1551          TABLE Age*Mean ALL*Sex*Mean,
+1552                Weight;
+1553          by age;
+1554       
+1555       RUN;
+
+NOTE: There were 2 observations read from the data set WORK.CLASS.
+NOTE: The PROCEDURE TABULATE printed page 1.
+NOTE: PROCEDURE TABULATE used (Total process time):
+      real time           0.43 seconds
+      cpu time            0.42 seconds
+      
+
+1556       
+1557       ods _all_ close;
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           5.37 seconds
+      cpu time            4.15 seconds
+      

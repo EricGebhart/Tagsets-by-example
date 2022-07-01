@@ -1,0 +1,59 @@
+[PROC]
+  <branch name="ByGroup1" label="Name=Alfred" anchor="IDX" value="Name=Alfred" htmlclass="ByContentFolder" url="supermap.xml#IDX">
+    <image anchor="IDX" url="gplot.gif"/>
+  </branch>
+  <branch name="ByGroup2" label="Name=Alice" anchor="IDX1" value="Name=Alice" htmlclass="ByContentFolder" url="supermap.xml#IDX1">
+    <image anchor="IDX1" url="gplot1.gif"/>
+  </branch>
+  <branch name="ByGroup3" label="Name=Barbara" anchor="IDX2" value="Name=Barbara" htmlclass="ByContentFolder" url="supermap.xml#IDX2">
+    <image anchor="IDX2" url="gplot2.gif"/>
+  </branch>
+  <branch name="ByGroup4" label="Name=Carol" anchor="IDX3" value="Name=Carol" htmlclass="ByContentFolder" url="supermap.xml#IDX3">
+    <image anchor="IDX3" url="gplot3.gif"/>
+  </branch>
+  <branch name="ByGroup5" label="Name=Henry" anchor="IDX4" value="Name=Henry" htmlclass="ByContentFolder" url="supermap.xml#IDX4">
+    <image anchor="IDX4" url="gplot4.gif"/>
+  </branch>
+  <branch name="ByGroup6" label="Name=James" anchor="IDX5" value="Name=James" htmlclass="ByContentFolder" url="supermap.xml#IDX5">
+    <image anchor="IDX5" url="gplot5.gif"/>
+  </branch>
+  <branch name="ByGroup7" label="Name=Jane" anchor="IDX6" value="Name=Jane" htmlclass="ByContentFolder" url="supermap.xml#IDX6">
+    <image anchor="IDX6" url="gplot6.gif"/>
+  </branch>
+  <branch name="ByGroup8" label="Name=Janet" anchor="IDX7" value="Name=Janet" htmlclass="ByContentFolder" url="supermap.xml#IDX7">
+    <image anchor="IDX7" url="gplot7.gif"/>
+  </branch>
+  <branch name="ByGroup9" label="Name=Jeffrey" anchor="IDX8" value="Name=Jeffrey" htmlclass="ByContentFolder" url="supermap.xml#IDX8">
+    <image anchor="IDX8" url="gplot8.gif"/>
+  </branch>
+  <branch name="ByGroup10" label="Name=John" anchor="IDX9" value="Name=John" htmlclass="ByContentFolder" url="supermap.xml#IDX9">
+    <image anchor="IDX9" url="gplot9.gif"/>
+  </branch>
+  <branch name="ByGroup11" label="Name=Joyce" anchor="IDX10" value="Name=Joyce" htmlclass="ByContentFolder" url="supermap.xml#IDX10">
+    <image anchor="IDX10" url="gplot10.gif"/>
+  </branch>
+  <branch name="ByGroup12" label="Name=Judy" anchor="IDX11" value="Name=Judy" htmlclass="ByContentFolder" url="supermap.xml#IDX11">
+    <image anchor="IDX11" url="gplot11.gif"/>
+  </branch>
+  <branch name="ByGroup13" label="Name=Louise" anchor="IDX12" value="Name=Louise" htmlclass="ByContentFolder" url="supermap.xml#IDX12">
+    <image anchor="IDX12" url="gplot12.gif"/>
+  </branch>
+  <branch name="ByGroup14" label="Name=Mary" anchor="IDX13" value="Name=Mary" htmlclass="ByContentFolder" url="supermap.xml#IDX13">
+    <image anchor="IDX13" url="gplot13.gif"/>
+  </branch>
+  <branch name="ByGroup15" label="Name=Philip" anchor="IDX14" value="Name=Philip" htmlclass="ByContentFolder" url="supermap.xml#IDX14">
+    <image anchor="IDX14" url="gplot14.gif"/>
+  </branch>
+  <branch name="ByGroup16" label="Name=Robert" anchor="IDX15" value="Name=Robert" htmlclass="ByContentFolder" url="supermap.xml#IDX15">
+    <image anchor="IDX15" url="gplot15.gif"/>
+  </branch>
+  <branch name="ByGroup17" label="Name=Ronald" anchor="IDX16" value="Name=Ronald" htmlclass="ByContentFolder" url="supermap.xml#IDX16">
+    <image anchor="IDX16" url="gplot16.gif"/>
+  </branch>
+  <branch name="ByGroup18" label="Name=Thomas" anchor="IDX17" value="Name=Thomas" htmlclass="ByContentFolder" url="supermap.xml#IDX17">
+    <image anchor="IDX17" url="gplot17.gif"/>
+  </branch>
+  <branch name="ByGroup19" label="Name=William" anchor="IDX18" value="Name=William" htmlclass="ByContentFolder" url="supermap.xml#IDX18">
+    <image anchor="IDX18" url="gplot18.gif"/>
+  </branch>
+[/PROC]

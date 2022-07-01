@@ -1,0 +1,317 @@
+
+
+
+Getting started with ODS Markup.
+
+    The ODS Markup statement.
+
+    finding a tagset.
+ 
+    Invoking a tagset.
+
+    
+Tagsets: how do they work?
+
+    The event model.
+        Data and context in time.        
+
+    Event Requests.
+
+    A few variables.
+
+       Data and Metadata
+       style (font, color, etc)
+
+    Our First tagset; plain_text.
+
+       Define statement
+       
+       put statement
+
+       label, value pairs.
+
+       The data event.
+
+           Output Comparison, Chtml vs plain_text.
+              ( proc print; obs=1 )
+
+       The header event.
+
+           Output Comparison, Chtml vs plain_text.
+              ( proc print; obs=1 )
+
+
+    Fleshing out the plain_text tagset.
+
+        What is a table?.
+            Rows.
+              Start and finish.
+
+            head, body, and foot.
+
+            table.
+
+               Output Comparison, Chtml vs plain_text.
+                  ( proc print; obs=5 )
+
+        Titles.
+
+
+Modifying Existing tagsets.
+
+    Changing the HTML table of Contents.
+
+        Identifying the problem.
+
+            The Content's indention is too deep/detailed.
+
+        Finding the event.
+
+        Making the change.
+
+            The code.
+
+            The ODS statement.
+
+            Output Comparison, html vs new_html.
+
+
+    Changing the delimiter used by the CSV destination.
+
+        Finding the events.
+ 
+        Making the changes.
+
+            The code.
+
+            The ODS statement.
+
+            The output.
+
+        A better way.
+
+            Tagset alias.
+
+            The Initialize event.
+
+            Creating variables.
+  
+            The code.
+
+            The ODS statement.
+
+            The output.
+
+    Changing table rule lines.
+
+        The problem.
+
+            (Rules = cols turns off all horizontal lines)
+
+            The desired HTML.
+
+        The fix.
+
+            Solution 1 - hard coded HTML.
+
+                The code.
+
+                The ODS statement.
+
+                The output.
+
+            Solution 2 - Using styles.
+
+                The table_head style.
+
+                The code.
+
+                The ODS statement.
+
+                The output.
+    
+    Striped table rows.
+
+        Defining the desired output.
+            (alternating <td class="dark"> and <td class="light"> )
+
+        The events.
+           (Row, Data, Header, table_body)
+        
+        The variables.
+           (htmlclass, section)
+
+        Solution 1 - custom styles.
+
+            The style.
+
+            swapping the colors.
+
+                if/else.
+         
+            The data cell.
+
+            The code.
+
+            The ods statement.
+
+            The output.
+
+         Solution 2 - Elegance and reuse.
+
+            Existing Styles.
+               (data, data_emphasis, data_strong)
+
+            Using the style attribute with triggers.
+
+            The code.
+
+            The ods statement.
+            
+            The output.
+
+     Implementing StartPage behavior for HTML.
+
+         Defining the behavior.
+
+            Suppressing titles, page breaks, and
+            Footnotes.
+
+            Save the first Footnotes we find.
+
+         The Test case.
+
+            The output.
+
+         Finding Useful Events
+
+            Using the shortmap tagset.
+
+            Titles and Footnotes, what are they?
+                (tables!)
+            
+         Suppressing titles, footnotes and pagebreaks.
+
+            The block and unblock statements.
+
+            The initialize event.
+
+            Hooking it together.
+
+                The code.
+
+                The output.
+
+            Saving and printing the footnotes.
+
+                Streams.
+
+                The code.
+
+                The output.
+
+            Another more versatile control.
+
+                The startpage event.
+
+                    The code.
+
+                Using our new event.
+
+                    Another ODS statement.
+
+            A more complex test case.
+
+                The code.
+
+                The output.
+
+            Missing Footnotes.
+
+                The fix.
+
+                    Finding where it should go.
+
+                        The doc_body event.
+
+            The final code.
+
+            The output.
+
+
+    Coorporate HTML,  a simple example.
+
+        Defining the problem.
+
+        The old solution.
+
+            Data Null, notop, nobot.
+
+            The code.
+
+        The new solution.
+
+            Finding the conflicting events.
+            
+            Eliminating and redefining.  
+               
+                Simplicity vs. flexibility.
+
+                    meta data.
+
+                    style.
+
+                The Simple solution.
+
+                    The code.
+
+                The flexible solution.
+           
+                    The code.
+
+
+More Complexity.
+
+    Data step conversions.
+
+        Sampsrc data step examples.
+ 
+        Modifying bylines.
+ 
+    Automatic Panelling.
+
+
+
+Hints and tips.
+   
+   Creating URLS and File paths.
+
+       
+ODS Feature compatibility.
+
+   pre and post image, text, html
+  
+   urls, inline formatting, styles.
+
+   
+Procedure compatibility and gotchas'.
+
+   proc report.
+
+       The put_value event.
+
+
+
+
+
+Finding Events.
+    
+    Using the mapping tagsets.
+        event_map.
+        short_map
+
+    Sleuthing existing tagsets.
+
+
+    
+    

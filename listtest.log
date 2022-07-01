@@ -1,0 +1,384 @@
+This is pdfTeX, Version 3.14159-1.10a (Web2C 7.4.5) (format=pdflatex 2003.9.16)  31 JAN 2004 18:33
+**listtest.tex
+(./listtest.tex{/usr/local/share/texmf/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/local/share/texmf/tex/latex/book.cls
+Document Class: book 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/local/share/texmf/tex/latex/bk10.clo
+File: bk10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/share/texmf/tex/latex/listings/listings.sty
+Package: listings 2003/06/21 1.1 (Carsten Heinz)
+
+(/usr/local/share/texmf/tex/latex/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\lst@mode=\count88
+\lst@gtempboxa=\box26
+\lst@token=\toks15
+\lst@length=\count89
+\lst@currlwidth=\dimen103
+\lst@column=\count90
+\lst@pos=\count91
+\lst@lostspace=\dimen104
+\lst@width=\dimen105
+\lst@newlines=\count92
+\lst@lineno=\count93
+\c@lstlisting=\count94
+\lst@maxwidth=\dimen106
+
+(/usr/local/share/texmf/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2003/08/13 1.1c (Carsten Heinz)
+)
+(/usr/local/share/texmf/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2003/06/21 1.1 (Carsten Heinz)
+\c@lstnumber=\count95
+\lst@skipnumbers=\count96
+\lst@framebox=\box27
+)
+(/usr/local/share/texmf/tex/latex/listings/listings.cfg
+File: listings.cfg 2003/08/13 1.1a listings configuration
+))
+(/usr/local/share/texmf/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2000/03/21
+
+Style option: `fancyvrb' v2.7, with DG/SPQR fixes <2000/03/21> (tvz)
+\FV@CodeLineNo=\count97
+\FV@InFile=\read1
+\FV@TabBox=\box28
+\c@FancyVerbLine=\count98
+\FV@StepNumber=\count99
+\FV@OutFile=\write3
+)
+(/usr/local/share/texmf/tex/latex/varioref.sty
+Package: varioref 2001/09/04 v1.3c package for extended references (FMi)
+\c@vrcnt=\count100
+)
+(/usr/local/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
+\headwidth=\dimen107
+)
+(/usr/local/share/texmf/tex/latex/flafter.sty
+Package: flafter 2000/07/23 v1.2i Standard LaTeX floats after reference (FMi)
+)
+(/usr/local/share/texmf/tex/latex/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/usr/local/share/texmf/tex/latex/misc/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count101
+\float@exts=\toks16
+\float@box=\box29
+\@float@everytoks=\toks17
+\@floatcapt=\box30
+)
+(/usr/local/share/texmf/tex/latex/times.sty
+Package: times 2002/09/08 PSNFSS-v9.0a (SPQR) 
+)
+(/usr/local/share/texmf/tex/latex/fontenc.sty
+Package: fontenc 2001/06/05 v1.94 Standard LaTeX package
+
+(/usr/local/share/texmf/tex/latex/t1enc.def
+File: t1enc.def 2001/06/05 v1.94 Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 38.
+))
+(/usr/local/share/texmf/tex/latex/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/share/texmf/tex/latex/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/share/texmf/tex/latex/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/share/texmf/tex/latex/graphics.cfg)
+Package graphics Info: Driver file: dvips.def on input line 80.
+
+(/usr/local/share/texmf/tex/latex/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen108
+\Gin@req@width=\dimen109
+) (./ods.sty
+(/usr/local/share/texmf/tex/latex/misc/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+\Gm@cnth=\count102
+\Gm@cntv=\count103
+\c@Gm@tempcnt=\count104
+\Gm@bindingoffset=\dimen110
+\Gm@wd@mp=\dimen111
+\Gm@odd@mp=\dimen112
+\Gm@even@mp=\dimen113
+\Gm@dimlist=\toks18
+
+(/usr/local/share/texmf/tex/latex/config/geometry.cfg
+File: geometry.cfg 2001/06/05 v1.0 teTeX (uncustomised setup)
+))
+(/usr/local/share/texmf/tex/latex/longtable.sty
+Package: longtable 2000/10/22 v4.10 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count105
+\LTcapwidth=\dimen114
+\LT@head=\box31
+\LT@firsthead=\box32
+\LT@foot=\box33
+\LT@lastfoot=\box34
+\LT@cols=\count106
+\LT@rows=\count107
+\c@LT@tables=\count108
+\c@LT@chunks=\count109
+\LT@p@ftn=\toks19
+)
+(/usr/local/share/texmf/tex/latex/array.sty
+Package: array 1998/05/13 v2.3m Tabular extension package (FMi)
+\col@sep=\dimen115
+\extrarowheight=\dimen116
+\NC@list=\toks20
+\extratabsurround=\skip47
+\backup@length=\skip48
+)
+(/usr/local/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2003/01/22 v6.73n Hypertext links for LaTeX
+\@linkdim=\dimen117
+\Hy@linkcounter=\count110
+\Hy@pagecounter=\count111
+
+(/usr/local/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2003/01/22 v6.73n Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/local/share/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive and teTeX
+)
+Package hyperref Info: Hyper figures OFF on input line 1792.
+Package hyperref Info: Link nesting OFF on input line 1797.
+Package hyperref Info: Hyper index ON on input line 1800.
+Package hyperref Info: Plain pages ON on input line 1805.
+Package hyperref Info: Backreferencing OFF on input line 1812.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 1916.
+(/usr/local/share/texmf/tex/latex/html/url.sty
+Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
+ names
+)
+LaTeX Info: Redefining \url on input line 2055.
+\Fld@menulength=\count112
+\Field@Width=\dimen118
+\Fld@charsize=\dimen119
+\Choice@toks=\toks21
+\Field@toks=\toks22
+Package hyperref Info: Hyper figures OFF on input line 2513.
+Package hyperref Info: Link nesting OFF on input line 2518.
+Package hyperref Info: Hyper index ON on input line 2521.
+Package hyperref Info: backreferencing OFF on input line 2528.
+Package hyperref Info: Link coloring OFF on input line 2533.
+\c@Item=\count113
+\c@Hfootnote=\count114
+)
+*hyperref using default driver hpdftex*
+(/usr/local/share/texmf/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2003/01/22 v6.73n Hyperref driver for pdfTeX
+
+(/usr/local/share/texmf/tex/latex/pifont.sty
+Package: pifont 2002/09/08 PSNFSS-v9.0a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 62.
+
+(/usr/local/share/texmf/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 63.
+
+(/usr/local/share/texmf/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+\Fld@listcount=\count115
+\@outlinefile=\write4
+)
+\notewidth=\skip49
+
+(/usr/local/share/texmf/tex/latex/carlisle/colortbl.sty
+Package: colortbl 1999/03/24 v0.1i Color table columns (DPC)
+
+(/usr/local/share/texmf/tex/latex/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+
+(/usr/local/share/texmf/tex/latex/color.cfg)
+Package color Info: Driver file: pdftex.def on input line 125.
+
+(/usr/local/share/texmf/tex/latex/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count116
+)
+(/usr/local/share/texmf/tex/latex/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\everycr=\toks23
+\minrowclearance=\skip50
+)
+\c@sastarget=\count117
+) (./listtest.aux)
+\openout1 = `listtest.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 21.
+
+(/usr/local/share/texmf/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+-------------------- Geometry parameters
+paper: class default
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 73.71613pt, 0.7\paperwidth , 110.57425pt (default)
+v-parts: 95.39737pt, 0.7\paperheight , 143.09605pt (default)
+hmarginratio: 2:3
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  614.295pt
+\paperheight 794.96999pt
+\textwidth  430.00462pt
+\textheight 556.47656pt
+\oddsidemargin  1.44614pt
+\evensidemargin 38.30426pt
+\topmargin  -6.94011pt
+\headheight 12.0pt
+\headsep    18.06749pt
+\footskip   25.29494pt
+\marginparwidth 125.0pt
+\marginparsep   7.0pt
+\columnsep  10.0pt
+\skip\footins  9.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+Package hyperref Info: Link coloring OFF on input line 21.
+
+(/usr/local/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2001/01/27 v2.19 Cross-referencing by name of section
+\c@section@level=\count118
+)
+LaTeX Info: Redefining \ref on input line 21.
+LaTeX Info: Redefining \pageref on input line 21.
+ (./listtest.out)
+(./listtest.out)
+\openout4 = `listtest.out'.
+
+ (/usr/local/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/local/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count119
+\scratchcounter=\count120
+\scratchtoks=\toks24
+\scratchdimen=\dimen120
+\scratchskip=\skip51
+\scratchmuskip=\muskip10
+\scratchbox=\box35
+\scratchread=\read2
+\scratchwrite=\write5
+\zeropoint=\dimen121
+\minusone=\count121
+\thousandpoint=\dimen122
+\emptytoks=\toks25
+\nextbox=\box36
+\nextdepth=\dimen123
+\everyline=\toks26
+\!!counta=\count122
+\!!countb=\count123
+\recursecounter=\count124
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPtoPDFconversion=\toks27
+) (/usr/local/share/texmf/tex/latex/listings/lstlang1.sty
+File: lstlang1 2003/08/13 1.1a listings language file
+)
+(/usr/local/share/texmf/tex/latex/listings/lstlang2.sty
+File: lstlang2 2003/08/13 1.1a listings language file
+)
+(/usr/local/share/texmf/tex/latex/listings/lstlang3.sty
+File: lstlang3 2003/08/13 1.1a listings language file
+)
+(/usr/local/share/texmf/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2003/06/21 1.1 (Carsten Heinz)
+)
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 24.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 24.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 25.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 33.
+(/usr/local/share/texmf/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 33.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 39.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 57.
+ [1
+
+
+{/usr/local/share/texmf/dvips/config/pdftex.map}] [2] [3] (./listtest.aux) ) 
+Here is how much of TeX's memory you used:
+ 5793 strings out of 95439
+ 78307 string characters out of 1190032
+ 153089 words of memory out of 1000001
+ 8628 multiletter control sequences out of 10000+50000
+ 35399 words of font info for 41 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 38i,11n,59p,242b,806s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 129 PDF objects out of 300000
+ 87 named destinations out of 131072
+ 37 words of extra memory for PDF output out of 65536
+{/u
+sr/local/share/texmf/dvips/psnfss/8r.enc}</usr/local/share/texmf/fonts/type1/ur
+w/times/utmr8a.pfb>
+Output written on listtest.pdf (3 pages, 28424 bytes).

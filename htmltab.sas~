@@ -1,0 +1,29 @@
+ title1 justify=left '25 pt first left'
+         justify=left 'another left';
+  title3 height=45pt color=yellow
+         justify=right '45 pt first right'
+         justify=left 'first left';
+  title4 height=25pt color=red
+         justify=left 'first left'
+         justify=right 'first right' color=yellow ' & append right';
+  title5 height=6.5 color=red 'no justify red'
+         justify=right 'first right'
+         justify=left 'first left';
+
+
+proc sort data=sashelp.class out=work.class;
+    by age  sex;
+run;
+
+Title "AGE is #BYVAL(AGE)";
+Title2;
+Title3;
+
+PROC TABULATE DATA=class;
+   VAR Height Weight;
+   CLASS Sex Age;
+   TABLE Age*Mean ALL*Sex*Mean,
+         Weight;
+   by age;
+   
+RUN;

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" saslongversion="9.01.01M0D10062003" date="2003-11-17" time="01:59:01" encoding="iso-8859-1" event_name="doc" trigger_name="attr_out" class="Body" index="IDX" just="c">
+  <doc_head event_name="doc_head" trigger_name="attr_out" class="Body" index="IDX" just="c">
+    <doc_meta event_name="doc_meta" trigger_name="attr_out" class="Body" index="IDX" just="c"/>
+    <auth_oper event_name="auth_oper" trigger_name="attr_out" class="Body" index="IDX" just="c"/>
+    <doc_title event_name="doc_title" trigger_name="attr_out" class="Body" index="IDX" just="c"/>
+    <stylesheet_link event_name="stylesheet_link" trigger_name="attr_out" index="IDX" just="c"/>
+    <javascript event_name="javascript" trigger_name="attr_out" class="Body" index="IDX" just="c">
+      <startup_function event_name="startup_function" trigger_name="attr_out" class="StartUpFunction" index="IDX" just="c">
+      </startup_function>
+      <shutdown_function event_name="shutdown_function" trigger_name="attr_out" class="ShutDownFunction" index="IDX" just="c">
+      </shutdown_function>
+    </javascript>
+  </doc_head>
+  <doc_body event_name="doc_body" trigger_name="attr_out" class="Body" index="IDX" just="c">
+    <proc event_name="proc" trigger_name="attr_out" name="GLM" index="IDX" just="c">
+      <anchor event_name="anchor" trigger_name="attr_out" class="Body" name="IDX" index="IDX" just="c"/>
+      <page_setup event_name="page_setup" trigger_name="attr_out" class="Body" index="IDX" just="c">
+        <system_title_setup_group event_name="system_title_setup_group" trigger_name="attr_out" class="Body" colcount="1" index="IDX" just="c">
+          <title_setup_container event_name="title_setup_container" trigger_name="attr_out" class="SysTitleAndFooterContainer" colcount="1" index="IDX" just="c">
+            <title_setup_container_specs event_name="title_setup_container_specs" trigger_name="attr_out" class="SysTitleAndFooterContainer" colcount="1" index="IDX" just="c">
+              <title_setup_container_spec event_name="title_setup_container_spec" trigger_name="attr_out" colcount="1" type="string" index="IDX" just="c" width="100%"/>
+            </title_setup_container_specs>
+            <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" colcount="1" index="IDX" just="c">
+              <system_title_setup event_name="system_title_setup" trigger_name="attr_out" class="SystemTitle" value="A system title" colcount="1" index="IDX" just="c">
+              </system_title_setup>
+            </title_setup_container_row>
+            <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" colcount="1" index="IDX" just="c">
+              <system_title_setup event_name="system_title_setup" trigger_name="attr_out" class="SystemTitle" value="Another system title" colcount="1" index="IDX" just="c">
+              </system_title_setup>
+            </title_setup_container_row>
+          </title_setup_container>
+        </system_title_setup_group>
+        <system_footer_setup_group event_name="system_footer_setup_group" trigger_name="attr_out" class="Body" colcount="1" index="IDX" just="c">
+          <title_setup_container event_name="title_setup_container" trigger_name="attr_out" class="SysTitleAndFooterContainer" colcount="1" index="IDX" just="c">
+            <title_setup_container_specs event_name="title_setup_container_specs" trigger_name="attr_out" class="SysTitleAndFooterContainer" colcount="1" index="IDX" just="c">
+              <title_setup_container_spec event_name="title_setup_container_spec" trigger_name="attr_out" colcount="1" type="string" index="IDX" just="c" width="100%"/>
+            </title_setup_container_specs>
+            <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" colcount="1" index="IDX" just="c">
+              <system_footer_setup event_name="system_footer_setup" trigger_name="attr_out" class="SystemFooter" value="A system Footer" colcount="1" index="IDX" just="c">
+              </system_footer_setup>
+            </title_setup_container_row>
+            <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" colcount="1" index="IDX" just="c">
+              <system_footer_setup event_name="system_footer_setup" trigger_name="attr_out" class="SystemFooter" value="Another system Footer" colcount="1" index="IDX" just="c">
+              </system_footer_setup>
+            </title_setup_container_row>
+          </title_setup_container>
+        </system_footer_setup_group>
+      </page_setup>
+      <system_title_group event_name="system_title_group" trigger_name="attr_out" class="Body" colcount="1" index="IDX" just="c">
+        <title_container event_name="title_container" trigger_name="attr_out" class="SysTitleAndFooterContainer" colcount="1" index="IDX" just="c">
+          <title_container_specs event_name="title_container_specs" trigger_name="attr_out" class="SysTitleAndFooterContainer" colcount="1" index="IDX" just="c">
+            <title_container_spec event_name="title_container_spec" trigger_name="attr_out" colcount="1" type="string" index="IDX" just="c" width="100%"/>
+          </title_container_specs>
+          <title_container_row event_name="title_container_row" trigger_name="attr_out" colcount="1" index="IDX" just="c">
+            <system_title event_name="system_title" trigger_name="attr_out" class="SystemTitle" value="A system title" colcount="1" index="IDX" just="c">
+            </system_title>
+          </title_container_row>
+          <title_container_row event_name="title_container_row" trigger_name="attr_out" colcount="1" index="IDX" just="c">
+            <system_title event_name="system_title" trigger_name="attr_out" class="SystemTitle" value="Another system title" colcount="1" index="IDX" just="c">
+            </system_title>
+          </title_container_row>
+        </title_container>
+      </system_title_group>
+      <proc_title_group event_name="proc_title_group" trigger_name="attr_out" class="Body" colcount="1" index="IDX" just="c">
+        <proc_title event_name="proc_title" trigger_name="attr_out" class="ProcTitle" value="The GLM Procedure" colcount="1" index="IDX" just="c"/>
+      </proc_title_group>
+      <proc_branch event_name="proc_branch" trigger_name="attr_out" class="ContentProcName" value="GLM" colcount="1" name="GLM" label="The GLM Procedure" index="IDX" just="c" url="outline2.xml#IDX" hreftarget="body">
+        <branch event_name="branch" trigger_name="attr_out" class="ContentFolder" value="Data" colcount="1" name="Data" label="Data" index="IDX" just="c" url="outline2.xml#IDX" hreftarget="body">
+          <leaf event_name="leaf" trigger_name="attr_out" class="ContentItem" value="Class Levels" colcount="1" name="ClassLevels" label="Class Levels" index="IDX" just="c" url="outline2.xml#IDX" hreftarget="body">
+            <page_anchor event_name="page_anchor" trigger_name="attr_out" class="PagesItem" colcount="1" index="IDX" just="c"/>
+            <output event_name="output" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" name="ClassLevels" label="Class Levels" clabel="Class Levels" index="IDX" just="c">
+              <table event_name="table" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Table" colcount="3" type="table" index="IDX" just="c">
+                <table_headers event_name="table_headers" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Table" colcount="3" index="IDX" just="c">
+                  <span_group event_name="span_group" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Class Level Information" rowspan="1" colcount="3" col="1" index="IDX" just="c" vjust="b">
+                    <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" value="Class" colcount="3" col_id="1" name="Class" type="string" index="IDX" just="l" width="8" precision="0"/>
+                    <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" value="Levels" colcount="3" col_id="2" name="Levels" type="int" index="IDX" just="r" width="8" precision="99"/>
+                    <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" value="Values" colcount="3" col_id="3" name="Values" type="string" index="IDX" just="l" width="52" precision="0"/>
+                  </span_group>
+                  <header_spec event_name="header_spec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Class Level Information" rowspan="1" colcount="3" col="1" index="IDX" just="c" vjust="b">
+                    <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" col_id="1" name="Class" type="string" index="IDX" just="l">
+                      <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Class" colcount="3" index="IDX" just="c" vjust="b">
+                      </col_header_label>
+                    </sub_header_colspec>
+                    <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" col_id="2" name="Levels" type="int" index="IDX" just="r">
+                      <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Levels" colcount="3" index="IDX" just="c" vjust="b">
+                      </col_header_label>
+                    </sub_header_colspec>
+                    <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" col_id="3" name="Values" type="string" index="IDX" just="l">
+                      <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Values" colcount="3" index="IDX" just="c" vjust="b">
+                      </col_header_label>
+                    </sub_header_colspec>
+                  </header_spec>
+                </table_headers>
+                <row_group event_name="row_group" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Table" colcount="3" index="IDX" just="c">
+                  <row_header_spec event_name="row_header_spec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Class" colcount="3" index="IDX" just="l" vjust="b">
+                    <sub_rowheader_colspec event_name="sub_rowheader_colspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" value="Class" colcount="3" col_id="1" name="Class" type="string" index="IDX" just="l" width="8" precision="0"/>
+                  </row_header_spec>
+                </row_group>
+                <rowspec event_name="rowspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c">
+                  <cellspec event_name="cellspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Class Level Information" rowspan="1" colcount="3" col="1" index="IDX" just="c" vjust="b"/>
+                  <cellspecspan event_name="cellspecspan" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Table" colcount="3" index="IDX" just="c"/>
+                  <cellspecspan event_name="cellspecspan" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Table" colcount="3" index="IDX" just="c"/>
+                </rowspec>
+                <rowspec event_name="rowspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c">
+                  <cellspec event_name="cellspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Class" colcount="3" index="IDX" just="l" vjust="b"/>
+                  <cellspecsep event_name="cellspecsep" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Table" colcount="3" index="IDX" just="c"/>
+                  <cellspec event_name="cellspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Levels" colcount="3" index="IDX" just="r" vjust="b"/>
+                  <cellspecsep event_name="cellspecsep" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Table" colcount="3" index="IDX" just="c"/>
+                  <cellspec event_name="cellspec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Values" colcount="3" index="IDX" just="l" vjust="b"/>
+                </rowspec>
+                <colspecs event_name="colspecs" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c">
+                  <colgroup event_name="colgroup" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c">
+                    <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="RowHeader" value="Class" colcount="3" col_id="1" name="Class" type="string" index="IDX" just="l" width="8" precision="0">
+                      <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Class" colcount="3" index="IDX" just="l" vjust="b"/>
+                    </colspec_entry>
+                  </colgroup>
+                  <colgroup event_name="colgroup" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c">
+                    <colspecsep event_name="colspecsep" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c"/>
+                    <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Data" value="Levels" colcount="3" col_id="2" name="Levels" type="int" index="IDX" just="r" width="8" precision="99">
+                      <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Levels" colcount="3" index="IDX" just="r" vjust="b"/>
+                    </colspec_entry>
+                    <colspecsep event_name="colspecsep" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c"/>
+                    <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Data" value="Values" colcount="3" col_id="3" name="Values" type="string" index="IDX" just="l" width="52" precision="0">
+                      <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" value="Values" colcount="3" index="IDX" just="l" vjust="b"/>
+                    </colspec_entry>
+                  </colgroup>
+                </colspecs>
+                <table_head event_name="table_head" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c">
+                  <row event_name="row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="head" class="Table" colcount="3" index="IDX" just="c">
+                    <header event_name="header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="head" class="Header" value="Class Level Information" colspan="3" row="1" data_row="0" colcount="3" col="1" type="string" index="IDX" just="c" vjust="b">
+                    </header>
+                    <colspanfillsep event_name="colspanfillsep" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" colcount="3" index="IDX" just="c" vjust="b"/>
+                    <colspanfill event_name="colspanfill" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" colcount="3" index="IDX" just="c" vjust="b"/>
+                    <colspanfillsep event_name="colspanfillsep" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" colcount="3" index="IDX" just="c" vjust="b"/>
+                    <colspanfill event_name="colspanfill" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Header" colcount="3" index="IDX" just="c" vjust="b"/>
+                  </row>
+                  <row event_name="row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="head" class="Table" colcount="3" index="IDX" just="c">
+                    <header event_name="header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="head" class="Header" value="Class" row="2" data_row="0" colcount="3" col="1" type="string" index="IDX" just="l" vjust="b">
+                    </header>
+                    <header event_name="header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="head" class="Header" value="Levels" row="2" data_row="0" colcount="3" col="2" type="string" index="IDX" just="r" vjust="b">
+                    </header>
+                    <header event_name="header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="head" class="Header" value="Values" row="2" data_row="0" colcount="3" col="3" type="string" index="IDX" just="l" vjust="b">
+                    </header>
+                  </row>
+                </table_head>
+                <table_body event_name="table_body" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="3" index="IDX" just="c">
+                  <row event_name="row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="Table" colcount="3" index="IDX" just="c">
+                    <header event_name="header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="RowHeader" value="type" row="3" data_row="1" colcount="3" col="1" name="Class" type="string" index="IDX" just="l">
+                    </header>
+                    <data event_name="data" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="Data" value="7" row="3" data_row="1" colcount="3" col="2" name="Levels" type="int" index="IDX" just="r">
+                    </data>
+                    <data event_name="data" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="Data" value="clarion clinton knox o'neill compost wabash webster" row="3" data_row="1" colcount="3" col="3" name="Values" type="string" index="IDX" just="l">
+                    </data>
+                  </row>
+                  <row event_name="row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="Table" colcount="3" index="IDX" just="c">
+                    <header event_name="header" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="RowHeader" value="block" row="4" data_row="2" colcount="3" col="1" name="Class" type="string" index="IDX" just="l">
+                    </header>
+                    <data event_name="data" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="Data" value="3" row="4" data_row="2" colcount="3" col="2" name="Levels" type="int" index="IDX" just="r">
+                    </data>
+                    <data event_name="data" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" section="body" class="Data" value="1 2 3" row="4" data_row="2" colcount="3" col="3" name="Values" type="string" index="IDX" just="l">
+                    </data>
+                  </row>
+                </table_body>
+              </table>
+            </output>
+          </leaf>
+        </branch>
+        <system_footer_group event_name="system_footer_group" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentProcName" colcount="1" index="IDX1" just="c" url="outline2.xml#IDX" hreftarget="body">
+          <title_container event_name="title_container" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+            <title_container_specs event_name="title_container_specs" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+              <title_container_spec event_name="title_container_spec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" type="string" index="IDX1" just="c" width="100%"/>
+            </title_container_specs>
+            <title_container_row event_name="title_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+              <system_footer event_name="system_footer" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemFooter" value="A system Footer" colcount="1" index="IDX1" just="c">
+              </system_footer>
+            </title_container_row>
+            <title_container_row event_name="title_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+              <system_footer event_name="system_footer" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemFooter" value="Another system Footer" colcount="1" index="IDX1" just="c">
+              </system_footer>
+            </title_container_row>
+          </title_container>
+        </system_footer_group>
+        <pagebreak event_name="pagebreak" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="Body" colcount="1" index="IDX1" just="c"/>
+        <anchor event_name="anchor" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentProcName" colcount="1" name="IDX1" index="IDX1" just="c" url="outline2.xml#IDX" hreftarget="body"/>
+        <page_anchor event_name="page_anchor" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="PagesItem" colcount="1" index="IDX1" just="c"/>
+        <page_setup event_name="page_setup" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentProcName" colcount="1" index="IDX1" just="c" url="outline2.xml#IDX" hreftarget="body">
+          <system_title_setup_group event_name="system_title_setup_group" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentProcName" colcount="1" index="IDX1" just="c" url="outline2.xml#IDX" hreftarget="body">
+            <title_setup_container event_name="title_setup_container" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+              <title_setup_container_specs event_name="title_setup_container_specs" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+                <title_setup_container_spec event_name="title_setup_container_spec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" type="string" index="IDX1" just="c" width="100%"/>
+              </title_setup_container_specs>
+              <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+                <system_title_setup event_name="system_title_setup" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemTitle" value="A system title" colcount="1" index="IDX1" just="c">
+                </system_title_setup>
+              </title_setup_container_row>
+              <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+                <system_title_setup event_name="system_title_setup" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemTitle" value="Another system title" colcount="1" index="IDX1" just="c">
+                </system_title_setup>
+              </title_setup_container_row>
+            </title_setup_container>
+          </system_title_setup_group>
+          <system_footer_setup_group event_name="system_footer_setup_group" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentProcName" colcount="1" index="IDX1" just="c" url="outline2.xml#IDX" hreftarget="body">
+            <title_setup_container event_name="title_setup_container" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+              <title_setup_container_specs event_name="title_setup_container_specs" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+                <title_setup_container_spec event_name="title_setup_container_spec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" type="string" index="IDX1" just="c" width="100%"/>
+              </title_setup_container_specs>
+              <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+                <system_footer_setup event_name="system_footer_setup" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemFooter" value="A system Footer" colcount="1" index="IDX1" just="c">
+                </system_footer_setup>
+              </title_setup_container_row>
+              <title_setup_container_row event_name="title_setup_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+                <system_footer_setup event_name="system_footer_setup" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemFooter" value="Another system Footer" colcount="1" index="IDX1" just="c">
+                </system_footer_setup>
+              </title_setup_container_row>
+            </title_setup_container>
+          </system_footer_setup_group>
+        </page_setup>
+        <system_title_group event_name="system_title_group" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentProcName" colcount="1" index="IDX1" just="c" url="outline2.xml#IDX" hreftarget="body">
+          <title_container event_name="title_container" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+            <title_container_specs event_name="title_container_specs" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SysTitleAndFooterContainer" colcount="1" index="IDX1" just="c">
+              <title_container_spec event_name="title_container_spec" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" type="string" index="IDX1" just="c" width="100%"/>
+            </title_container_specs>
+            <title_container_row event_name="title_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+              <system_title event_name="system_title" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemTitle" value="A system title" colcount="1" index="IDX1" just="c">
+              </system_title>
+            </title_container_row>
+            <title_container_row event_name="title_container_row" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" colcount="1" index="IDX1" just="c">
+              <system_title event_name="system_title" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="SystemTitle" value="Another system title" colcount="1" index="IDX1" just="c">
+              </system_title>
+            </title_container_row>
+          </title_container>
+        </system_title_group>
+        <proc_title_group event_name="proc_title_group" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentProcName" colcount="1" index="IDX1" just="c" url="outline2.xml#IDX" hreftarget="body">
+          <proc_title event_name="proc_title" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ProcTitle" value="The GLM Procedure" colcount="1" index="IDX1" just="c"/>
+          <proc_title event_name="proc_title" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ProcTitle" colcount="1" index="IDX1" just="c"/>
+          <proc_title event_name="proc_title" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ProcTitle" value="Waller-Duncan K-ratio t Test for stemleng" colcount="1" index="IDX1" just="c"/>
+        </proc_title_group>
+        <branch event_name="branch" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentFolder" value="Means" colcount="1" name="Means" label="Means" index="IDX1" just="c" url="outline2.xml#IDX1" hreftarget="body">
+          <branch event_name="branch" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentFolder" value="type" colcount="1" name="type" label="type" index="IDX1" just="c" url="outline2.xml#IDX1" hreftarget="body">
+            <branch event_name="branch" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentFolder" value="stemleng" colcount="1" name="stemleng" label="stemleng" index="IDX1" just="c" url="outline2.xml#IDX1" hreftarget="body">
+              <branch event_name="branch" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentFolder" value="Multiple Comparison Lines" colcount="1" name="MCLines" label="Multiple Comparison Lines" index="IDX1" just="c" url="outline2.xml#IDX1" hreftarget="body">
+                <branch event_name="branch" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentFolder" value="Waller-Duncan" colcount="1" name="Waller" label="Waller-Duncan" index="IDX1" just="c" url="outline2.xml#IDX1" hreftarget="body">
+                  <leaf event_name="leaf" trigger_name="attr_out" output_name="ClassLevels" output_label="Class Levels" class="ContentItem" value="Information" colcount="1" name="MCLinesInfo" label="Information" index="IDX1" just="c" url="outline2.xml#IDX1" hreftarget="body">
+                    <output event_name="output" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="1" name="MCLinesInfo" label="Information" clabel="Information" index="IDX1" just="c">
+                      <table event_name="table" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="Table" colcount="2" type="table" index="IDX1" just="c">
+                        <table_headers event_name="table_headers" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="Table" colcount="2" index="IDX1" just="c">
+                          <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" col_id="1" name="label1" type="string" index="IDX1" just="l">
+                            <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" index="IDX1" just="c" vjust="b"/>
+                          </sub_header_colspec>
+                          <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" col_id="2" name="cvalue1" type="string" index="IDX1" just="r">
+                            <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" index="IDX1" just="c" vjust="b"/>
+                          </sub_header_colspec>
+                        </table_headers>
+                        <colspecs event_name="colspecs" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" index="IDX1" just="c">
+                          <colgroup event_name="colgroup" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" index="IDX1" just="c">
+                            <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="RowHeader" colcount="2" col_id="1" name="label1" type="string" index="IDX1" just="l" width="30" precision="0">
+                              <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="Header" colcount="2" index="IDX1" just="l" vjust="b"/>
+                            </colspec_entry>
+                            <colspecsep event_name="colspecsep" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" index="IDX1" just="c"/>
+                            <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="Data" colcount="2" col_id="2" name="cvalue1" type="string" index="IDX1" just="r" width="8" precision="0">
+                              <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="Header" colcount="2" index="IDX1" just="r" vjust="b"/>
+                            </colspec_entry>
+                          </colgroup>
+                        </colspecs>
+                        <table_body event_name="table_body" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" colcount="2" index="IDX1" just="c">
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Table" colcount="2" index="IDX1" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="RowHeader" value="Kratio" row="1" data_row="1" colcount="2" col="1" name="label1" type="string" index="IDX1" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Data" value="100" row="1" data_row="1" colcount="2" col="2" name="cvalue1" type="string" index="IDX1" just="r">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Table" colcount="2" index="IDX1" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="RowHeader" value="Error Degrees of Freedom" row="2" data_row="2" colcount="2" col="1" name="label1" type="string" index="IDX1" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Data" value="12" row="2" data_row="2" colcount="2" col="2" name="cvalue1" type="string" index="IDX1" just="r">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Table" colcount="2" index="IDX1" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="RowHeader" value="Error Mean Square" row="3" data_row="3" colcount="2" col="1" name="label1" type="string" index="IDX1" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Data" value="1.645238" row="3" data_row="3" colcount="2" col="2" name="cvalue1" type="string" index="IDX1" just="r">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Table" colcount="2" index="IDX1" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="RowHeader" value="F Value" row="4" data_row="4" colcount="2" col="1" name="label1" type="string" index="IDX1" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Data" value="10.45" row="4" data_row="4" colcount="2" col="2" name="cvalue1" type="string" index="IDX1" just="r">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Table" colcount="2" index="IDX1" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="RowHeader" value="Critical Value of t" row="5" data_row="5" colcount="2" col="1" name="label1" type="string" index="IDX1" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Data" value="2.12034" row="5" data_row="5" colcount="2" col="2" name="cvalue1" type="string" index="IDX1" just="r">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Table" colcount="2" index="IDX1" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="RowHeader" value="Minimum Significant Difference" row="6" data_row="6" colcount="2" col="1" name="label1" type="string" index="IDX1" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" section="body" class="Data" value="2.2206" row="6" data_row="6" colcount="2" col="2" name="cvalue1" type="string" index="IDX1" just="r">
+                            </data>
+                          </row>
+                        </table_body>
+                      </table>
+                    </output>
+                  </leaf>
+                  <anchor event_name="anchor" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="ContentFolder" colcount="2" name="IDX2" index="IDX2" just="c" url="outline2.xml#IDX1" hreftarget="body"/>
+                  <leaf event_name="leaf" trigger_name="attr_out" output_name="MCLinesInfo" output_label="Information" class="ContentItem" value="Comparisons" colcount="2" name="MCLines" label="Comparisons" index="IDX2" just="c" url="outline2.xml#IDX2" hreftarget="body">
+                    <output event_name="output" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="2" name="MCLines" label="Comparisons" clabel="Comparisons" index="IDX2" just="c">
+                      <table event_name="table" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" type="table" index="IDX2" just="c">
+                        <table_headers event_name="table_headers" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c">
+                          <span_group event_name="span_group" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Means with the same letter are not significantly different." rowspan="1" colcount="5" col="1" index="IDX2" just="c" vjust="b">
+                            <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="1" name="line" type="string" index="IDX2" just="l" width="1" precision="0"/>
+                            <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="2" name="line" type="string" index="IDX2" just="l" width="1" precision="0"/>
+                            <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" value="Mean" colcount="5" col_id="3" name="Mean" type="double" index="IDX2" just="d" width="10" precision="3"/>
+                            <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" value="N" colcount="5" col_id="4" name="N" type="double" index="IDX2" just="d" width="6" precision="99"/>
+                            <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" value="type" colcount="5" col_id="5" name="Level" type="string" index="IDX2" just="l" width="7" precision="0"/>
+                          </span_group>
+                          <span_group event_name="span_group" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Waller Grouping" rowspan="1" colcount="5" col="1" index="IDX2" just="c" vjust="b">
+                            <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="1" name="line" type="string" index="IDX2" just="l" width="1" precision="0"/>
+                            <span_header_colspec event_name="span_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="2" name="line" type="string" index="IDX2" just="l" width="1" precision="0"/>
+                          </span_group>
+                          <header_spec event_name="header_spec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Means with the same letter are not significantly different." rowspan="1" colcount="5" col="1" index="IDX2" just="c" vjust="b">
+                            <header_spec event_name="header_spec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Waller Grouping" rowspan="1" colcount="5" col="1" index="IDX2" just="c" vjust="b">
+                              <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="1" name="line" type="string" index="IDX2" just="l" width="1" precision="0">
+                                <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c" vjust="b"/>
+                              </sub_header_colspec>
+                              <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="2" name="line" type="string" index="IDX2" just="l" width="1" precision="0">
+                                <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c" vjust="b"/>
+                              </sub_header_colspec>
+                            </header_spec>
+                            <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="3" name="Mean" type="double" index="IDX2" just="d">
+                              <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Mean" colcount="5" index="IDX2" just="c" vjust="b">
+                              </col_header_label>
+                            </sub_header_colspec>
+                            <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="4" name="N" type="double" index="IDX2" just="d">
+                              <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="N" colcount="5" index="IDX2" just="c" vjust="b">
+                              </col_header_label>
+                            </sub_header_colspec>
+                            <sub_header_colspec event_name="sub_header_colspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" col_id="5" name="Level" type="string" index="IDX2" just="l">
+                              <col_header_label event_name="col_header_label" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="type" colcount="5" index="IDX2" just="c">
+                              </col_header_label>
+                            </sub_header_colspec>
+                          </header_spec>
+                        </table_headers>
+                        <rowspec event_name="rowspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c">
+                          <cellspec event_name="cellspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Means with the same letter are not significantly different." rowspan="1" colcount="5" col="1" index="IDX2" just="c" vjust="b"/>
+                          <cellspecspan event_name="cellspecspan" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                          <cellspecspan event_name="cellspecspan" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                          <cellspecspan event_name="cellspecspan" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                          <cellspecspan event_name="cellspecspan" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                        </rowspec>
+                        <rowspec event_name="rowspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c">
+                          <cellspec event_name="cellspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Waller Grouping" rowspan="1" colcount="5" col="1" index="IDX2" just="c" vjust="b"/>
+                          <cellspecspan event_name="cellspecspan" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                          <cellspecsep event_name="cellspecsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                          <cellspec event_name="cellspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Mean" colcount="5" index="IDX2" just="r" vjust="b"/>
+                          <cellspecsep event_name="cellspecsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                          <cellspec event_name="cellspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="N" colcount="5" index="IDX2" just="r" vjust="b"/>
+                          <cellspecsep event_name="cellspecsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Table" colcount="5" index="IDX2" just="c"/>
+                          <cellspec event_name="cellspec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="type" colcount="5" index="IDX2" just="l" vjust="b"/>
+                        </rowspec>
+                        <colspecs event_name="colspecs" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c">
+                          <colgroup event_name="colgroup" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c">
+                            <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Data" colcount="5" col_id="1" name="line" type="string" index="IDX2" just="l" width="1" precision="0">
+                              <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="l" vjust="b"/>
+                            </colspec_entry>
+                            <colspecsep event_name="colspecsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c"/>
+                            <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Data" colcount="5" col_id="2" name="line" type="string" index="IDX2" just="l" width="1" precision="0">
+                              <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="l" vjust="b"/>
+                            </colspec_entry>
+                            <colspecsep event_name="colspecsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c"/>
+                            <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Data" value="Mean" colcount="5" col_id="3" name="Mean" type="double" index="IDX2" just="d" width="10" precision="3">
+                              <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="Mean" colcount="5" index="IDX2" just="r" vjust="b"/>
+                            </colspec_entry>
+                            <colspecsep event_name="colspecsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c"/>
+                            <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Data" value="N" colcount="5" col_id="4" name="N" type="double" index="IDX2" just="d" width="6" precision="99">
+                              <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="N" colcount="5" index="IDX2" just="r" vjust="b"/>
+                            </colspec_entry>
+                            <colspecsep event_name="colspecsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c"/>
+                            <colspec_entry event_name="colspec_entry" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Data" value="type" colcount="5" col_id="5" name="Level" type="string" index="IDX2" just="l" width="7" precision="0">
+                              <sub_colspec_header event_name="sub_colspec_header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" value="type" colcount="5" index="IDX2" just="l" vjust="b"/>
+                            </colspec_entry>
+                          </colgroup>
+                        </colspecs>
+                        <table_head event_name="table_head" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c">
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="head" class="Table" colcount="5" index="IDX2" just="c">
+                            <header event_name="header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="head" class="Header" value="Means with the same letter are not significantly different." colspan="5" row="1" data_row="0" colcount="5" col="1" type="string" index="IDX2" just="c" vjust="b">
+                            </header>
+                            <colspanfillsep event_name="colspanfillsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfill event_name="colspanfill" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfillsep event_name="colspanfillsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfill event_name="colspanfill" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfillsep event_name="colspanfillsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfill event_name="colspanfill" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfillsep event_name="colspanfillsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfill event_name="colspanfill" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="head" class="Table" colcount="5" index="IDX2" just="c">
+                            <header event_name="header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="head" class="Header" value="Waller Grouping" colspan="2" row="2" data_row="0" colcount="5" col="1" type="string" index="IDX2" just="c" vjust="b">
+                            </header>
+                            <colspanfillsep event_name="colspanfillsep" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <colspanfill event_name="colspanfill" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="Header" colcount="5" index="IDX2" just="c" vjust="b"/>
+                            <header event_name="header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="head" class="Header" value="Mean" row="2" data_row="0" colcount="5" col="3" type="string" index="IDX2" just="r" vjust="b">
+                            </header>
+                            <header event_name="header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="head" class="Header" value="N" row="2" data_row="0" colcount="5" col="4" type="string" index="IDX2" just="r" vjust="b">
+                            </header>
+                            <header event_name="header" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="head" class="Header" value="type" row="2" data_row="0" colcount="5" col="5" type="string" index="IDX2" just="l" vjust="b">
+                            </header>
+                          </row>
+                        </table_head>
+                        <table_body event_name="table_body" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="5" index="IDX2" just="c">
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="3" data_row="1" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="A" row="3" data_row="1" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="35.967" row="3" data_row="1" colcount="5" col="3" name="Mean" type="double" rawvalue="QEH7u7u7u7w=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="3" row="3" data_row="1" colcount="5" col="4" name="N" type="double" rawvalue="QAgAAAAAAAA=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="wabash" row="3" data_row="1" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="4" data_row="2" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="A" row="4" data_row="2" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="4" data_row="2" colcount="5" col="3" name="Mean" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="4" data_row="2" colcount="5" col="4" name="N" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="4" data_row="2" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="5" data_row="3" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="A" row="5" data_row="3" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="34.900" row="5" data_row="3" colcount="5" col="3" name="Mean" type="double" rawvalue="QEFzMzMzMzM=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="3" row="5" data_row="3" colcount="5" col="4" name="N" type="double" rawvalue="QAgAAAAAAAA=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="knox" row="5" data_row="3" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="6" data_row="4" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="A" row="6" data_row="4" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="6" data_row="4" colcount="5" col="3" name="Mean" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="6" data_row="4" colcount="5" col="4" name="N" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="6" data_row="4" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="B" row="7" data_row="5" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="A" row="7" data_row="5" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="33.800" row="7" data_row="5" colcount="5" col="3" name="Mean" type="double" rawvalue="QEDmZmZmZmc=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="3" row="7" data_row="5" colcount="5" col="4" name="N" type="double" rawvalue="QAgAAAAAAAA=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="o'neill" row="7" data_row="5" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="B" row="8" data_row="6" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="8" data_row="6" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="8" data_row="6" colcount="5" col="3" name="Mean" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="8" data_row="6" colcount="5" col="4" name="N" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="8" data_row="6" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="B" row="9" data_row="7" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="C" row="9" data_row="7" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="32.167" row="9" data_row="7" colcount="5" col="3" name="Mean" type="double" rawvalue="QEAVVVVVVVU=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="3" row="9" data_row="7" colcount="5" col="4" name="N" type="double" rawvalue="QAgAAAAAAAA=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="clarion" row="9" data_row="7" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="10" data_row="8" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="C" row="10" data_row="8" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="10" data_row="8" colcount="5" col="3" name="Mean" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="10" data_row="8" colcount="5" col="4" name="N" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="10" data_row="8" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="D" row="11" data_row="9" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="C" row="11" data_row="9" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="31.100" row="11" data_row="9" colcount="5" col="3" name="Mean" type="double" rawvalue="QD8ZmZmZmZk=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="3" row="11" data_row="9" colcount="5" col="4" name="N" type="double" rawvalue="QAgAAAAAAAA=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="webster" row="11" data_row="9" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="D" row="12" data_row="10" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="C" row="12" data_row="10" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="12" data_row="10" colcount="5" col="3" name="Mean" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="12" data_row="10" colcount="5" col="4" name="N" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="12" data_row="10" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="D" row="13" data_row="11" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="C" row="13" data_row="11" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="30.300" row="13" data_row="11" colcount="5" col="3" name="Mean" type="double" rawvalue="QD5MzMzMzM0=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="3" row="13" data_row="11" colcount="5" col="4" name="N" type="double" rawvalue="QAgAAAAAAAA=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="clinton" row="13" data_row="11" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="D" row="14" data_row="12" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="14" data_row="12" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="14" data_row="12" colcount="5" col="3" name="Mean" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="14" data_row="12" colcount="5" col="4" name="N" type="double" missing="_" index="IDX2" just="r">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="r"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="14" data_row="12" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                          </row>
+                          <row event_name="row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Table" colcount="5" index="IDX2" just="c">
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="D" row="15" data_row="13" colcount="5" col="1" name="line" type="string" index="IDX2" just="l">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" row="15" data_row="13" colcount="5" col="2" name="line" type="string" index="IDX2" just="l">
+                              <cell_is_empty event_name="cell_is_empty" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" colcount="5" index="IDX2" just="l"/>
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="29.667" row="15" data_row="13" colcount="5" col="3" name="Mean" type="double" rawvalue="QD2qqqqqqqs=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="3" row="15" data_row="13" colcount="5" col="4" name="N" type="double" rawvalue="QAgAAAAAAAA=" index="IDX2" just="r">
+                            </data>
+                            <data event_name="data" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" section="body" class="Data" value="compost" row="15" data_row="13" colcount="5" col="5" name="Level" type="string" index="IDX2" just="l">
+                            </data>
+                          </row>
+                        </table_body>
+                      </table>
+                    </output>
+                  </leaf>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+        <system_footer_group event_name="system_footer_group" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="ContentProcName" colcount="1" index="IDX2" just="c" url="outline2.xml#IDX" hreftarget="body">
+          <title_container event_name="title_container" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="SysTitleAndFooterContainer" colcount="1" index="IDX2" just="c">
+            <title_container_specs event_name="title_container_specs" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="SysTitleAndFooterContainer" colcount="1" index="IDX2" just="c">
+              <title_container_spec event_name="title_container_spec" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="1" type="string" index="IDX2" just="c" width="100%"/>
+            </title_container_specs>
+            <title_container_row event_name="title_container_row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="1" index="IDX2" just="c">
+              <system_footer event_name="system_footer" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="SystemFooter" value="A system Footer" colcount="1" index="IDX2" just="c">
+              </system_footer>
+            </title_container_row>
+            <title_container_row event_name="title_container_row" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" colcount="1" index="IDX2" just="c">
+              <system_footer event_name="system_footer" trigger_name="attr_out" output_name="MCLines" output_label="Comparisons" class="SystemFooter" value="Another system Footer" colcount="1" index="IDX2" just="c">
+              </system_footer>
+            </title_container_row>
+          </title_container>
+        </system_footer_group>
+      </proc_branch>
+    </proc>
+  </doc_body>
+</doc>

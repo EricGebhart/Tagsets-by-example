@@ -1,0 +1,139 @@
+1                                                          The SAS System                           09:03 Tuesday, November 16, 2004
+
+WARNING: The Base Product product with which Session Manager is associated 
+         will expire within 30 days. Please contact your SAS installation 
+         representative to have it renewed.
+WARNING: The Base Product product with which TKSRV    is associated will 
+         expire within 30 days. Please contact your SAS installation 
+         representative to have it renewed.
+WARNING: The Base Product product with which Program slider is associated 
+         will expire within 30 days. Please contact your SAS installation 
+         representative to have it renewed.
+NOTE: Copyright (c) 2002-2003 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) 9.2 (TS02.01B0D10072004)
+      Licensed to SAS Institute Inc., Site 0000000001.
+NOTE: This session is executing on the FreeBSD 4.10-STABLE platform.
+
+
+
+WARNING: Your system is scheduled to expire on December 15, 2004, which is 29 days from now.  Please contact your SAS Software 
+         Representative to obtain your updated SETINIT information.  The SAS System will no longer function on or after that date.
+NOTE: SAS initialization used:
+      real time           0.16 seconds
+      cpu time            0.08 seconds
+      
+1          proc template;
+WARNING: The Base Product product with which TEMPLATE is associated will expire within 30 days. Please contact your SAS 
+         installation representative to have it renewed.
+WARNING: The Base Product product with which SASODR is associated will expire within 30 days. Please contact your SAS installation 
+         representative to have it renewed.
+2              define style styles.slider;
+3                  parent=styles.default;
+4          
+5                  style table from output /
+6                      rules=cols
+7                      cellpadding=3
+8                      cellspacing=1
+9                  ;
+10                 style slider from data /
+11                     background=colors('headerbg')
+12                 ;
+13             end;
+NOTE: Overwriting existing template/link: Styles.Slider
+NOTE: STYLE 'Styles.Slider' has been saved to: SASUSER.TEMPLAT
+14         
+15             define tagset tagsets.slider;
+16                 parent=tagsets.html4;
+17         
+18                 define event calculate_width;
+19                     set $width value /breakif index(value, '%') > 0;
+20         
+21                     eval $dash_pos index(Tagattr, '-');
+22                     do /if $dash_pos;
+23                         eval $dash_pos $dash_pos+1;
+24                     done;
+25                     eval $value inputn(value, '12.');
+26                     eval $max inputn(substr(Tagattr, $dash_pos), '12.');
+27                     eval $width ($value / $max) * 100;
+28                     set $width $width '%';
+29                     unset $dash_pos;
+30                 end;
+2                                                          The SAS System                           09:03 Tuesday, November 16, 2004
+
+31         
+32                 define event data;
+33                     start:
+34                         /* this would work but sometimes htmlclass is empty... */
+35                         trigger header /breakif cmp(htmlclass, "RowHeader");
+36                         trigger header /breakif cmp(htmlclass, "Header");
+37         
+38                         do /if index(tagattr, 'slider') > 0;
+39                             put '<td width="150" class="data">' nl;
+40                             put '<table width="100%" class="data" cellpadding=0; cellspacing=0;>' nl;
+41                             trigger calculate_width;
+42                         done;
+43                         put "<td";
+44                         putq ' width=' $width;
+45                         putq " title=" flyover;
+46                         do /if !cmp(htmlclass,'batch');
+47                             trigger classalign;
+48                             trigger style_inline;
+49                         done;
+50                         trigger rowcol;
+51                         put " nowrap" /if no_wrap;
+52                         put ">";
+53                         trigger cell_value;
+54         
+55                     finish:
+56                         trigger header /breakif cmp(htmlclass, "RowHeader");
+57                         trigger header /breakif cmp(htmlclass, "Header");
+58         
+59                         trigger cell_value;
+60                         put "</td>" CR;
+61                         do /if $width;
+62                             put '<td>&nbsp;</td>' CR;
+63                             put "</table></td>" CR;
+64                             unset $width;
+65                         done;
+66         
+67                 end;
+68             end;
+NOTE: Overwriting existing template/link: Tagsets.Slider
+NOTE: TAGSET 'Tagsets.Slider' has been saved to: SASUSER.TEMPLAT
+69         run;
+NOTE: PROCEDURE TEMPLATE used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.15 seconds
+      
+
+70         
+71         options obs=3;
+72         ods tagsets.slider file='test.html' style=slider;
+NOTE: Writing TAGSETS.SLIDER Body file: test.html
+73         
+74         proc print data=sashelp.class;
+WARNING: The Base Product product with which PRINT is associated will expire within 30 days. Please contact your SAS installation 
+         representative to have it renewed.
+75             var name;
+76             var sex;
+77             var age;
+78             var height / style(data) = slider[just=center tagattr="slider-80"];
+3                                                          The SAS System                           09:03 Tuesday, November 16, 2004
+
+79             var weight / style(data) = slider[just=center tagattr="slider-150"];
+80         run;
+
+NOTE: There were 3 observations read from the data set SASHELP.CLASS.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.05 seconds
+      
+
+81         
+82         ods tagsets.slider close;
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           1.00 seconds
+      cpu time            0.57 seconds
+      

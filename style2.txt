@@ -1,0 +1,18 @@
+
+Event:style_class
+    FRAME : box
+    RULES : groups
+    FONT_FACE : Verdana, Helvetica, sans-serif
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FONT_SIZE : medium
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #008000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto

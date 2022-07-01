@@ -1,0 +1,37 @@
+Event: table
+  Event:
+    type : table
+    anchor : IDX
+    event_name : table
+    encoding : iso-8859-1
+    operator : eric
+    date : 2003-10-25
+    sasversion : 9.1
+    saslongversion : 9.01.01M0D10062003
+    time : 01:13:14
+    state : start
+    proc_count : 1
+    total_proc_count : 1
+    page_count : 1
+    total_page_count : 1
+    dest_file : body
+    bodyname : putvars.txt
+    tagset : TAGSETS.MY_MAP
+    style : Default
+    javadate : 2003-10-25
+    javatime : 01:13:14-04:00
+    data_viewer : Report
+    style_element : Table
+  Style:
+    FRAME : BOX
+    RULES : GROUPS
+    HTMLCLASS : Table
+    CELLSPACING : 1
+    CELLPADDING : 7
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+  Memory:
+  Stream:
+  Dynamic:
+

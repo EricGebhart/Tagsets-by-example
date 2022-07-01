@@ -1,0 +1,544 @@
+\chapter{File Redirection}
+\index{File Redirection}
+Adding output to the all the files specified on the ODS 
+statement requires that some events be redirected to those
+files.  This chapter will show the differences between the
+various files and the events associated with them.  It will
+also show how to use file redirection to modify their contents.
+
+Most event requests are sent to the body file specified on
+the ods statement.  The other files only get a skeletal number
+of events.  The stylesheet file is an exception to that.  A
+complete stylesheet file can be created with an ods statement
+that looks like this.
+
+\begin{sfvcode} 
+ods html stylesheet="style.css";
+\end{sfvcode} 
+
+\index{Tagset!OdsStyle}
+This statement gives an error, but the stlyesheet is still created.
+There is one tagset that was meant to be used this way.  The odsstyle
+tagset only defines stylesheet events.  Even if a body file is specified,
+nothing will be written to it.
+
+Creating a table of contents is one of the more common desires, yet the
+contents file receives none of the event requests needed to create one.
+This is great for document types like latex and XML that would rather 
+have the hierarchical information embedded in the body of the file.
+It is also not difficult to create a separate file if desired.
+
+
+\section{The File Attribute}
+Each event can have a file attribute that redirects which file the event's
+output will go to.  The attribute values correspond to the names given on the
+ods statement.
+\begin{tabular}{l|l}
+Value & File / Action \\ \hline
+Contents & The contents file \\
+Pages  & The pages file   \\
+Frame  & The frame file   \\
+Code  & The Code file   \\
+Data  & The Data file   \\
+Stylesheet  & The Stylesheet file \\
+Body  & The body file \\ \hline
+\end{tabular}
+
+Once an event has been redirected all events triggered will also be redirected
+until the redirected event is done.
+
+\section{Identify}
+\label{outline_map}
+Running the short\_map tagset will show that there are several events that
+give structure to the output.  The structure is even easier to see if the table
+events are eliminated.  The new tagset looks like this.
+It might have been easier to define the desired events instead of using the
+default.  But this way, it's a sure bet nothing important has been eliminated.
+For variety, this job uses the GLM procedure.  This procedure creates a fairly
+complex table of contents.  The ODS select statement has been used to shorten
+the output considerably.
+
+\begin{sfvcode}
+proc template;
+    define tagset tagsets.leaf;
+       parent = tagsets.short_map;
+       image_formats = "gif,jpeg";
+           
+       define event data; end;
+       define event row; end;
+       define event table_body; end;
+       define event table_head; end;
+       define event cell_is_empty; end;
+       define event rowspec; end;
+       define event colgroup; end;
+       define event colspecs; end;
+       define event colspec_entry; end;
+       define event colspecsep; end;
+       define event header_spec; end;
+       define event span_header_colspec; end;
+       define event span_group; end;
+       define event row_group; end;
+       define event sub_rowheader_colspec; end;
+       define event row_header_spec; end;
+       define event col_header_label; end;
+       define event cellspec; end;
+       define event cellspecsep; end;
+       define event doc_head; end;
+       define event doc_meta; end;   
+       define event auth_oper; end;   
+       define event doc_title; end;
+       define event stylesheet_link; end;
+       define event code_link; end;
+       define event javascript; end;
+       define event startup_function; end;
+       define event shutdown_function; end;
+       define event table_headers; end;
+       define event col_header_spec; end;
+       define event sub_header_colspec; end;
+       define event sub_colspec_header; end;
+       define event header; end;
+       define event cellspecspan; end;
+       define event colspanfillsep; end;
+       define event colspanfill; end;
+       define event rowspancolspanfill; end;
+       define event rowspanfill; end;
+       define event system_title_setup_group; end;
+       define event system_title_setup; end;
+       define event system_footer_setup_group; end;
+       define event system_footer_setup; end;
+       define event title_setup_format_section; end;
+       define event title_format_section; end;
+       define event page_setup; end;
+       define event title_setup_container; end;
+       define event title_setup_container_specs; end;
+       define event title_setup_container_spec; end;
+       define event title_setup_container_row; end;
+       define event title_container_row; end;
+       define event title_container_specs; end;
+       define event title_container_spec; end;
+       define event put_value; end;
+   end;
+run;
+
+   data plants;
+      input type $ @;
+      do block=1 to 3;
+         input stemleng @;
+         output;
+         end;
+      cards;
+   clarion  32.7 32.3 31.5
+   clinton  32.1 29.7 29.1
+   knox     35.7 35.9 33.1
+   oneill   36.0 34.2 31.2
+   compost  31.8 28.0 29.2
+   wabash   38.2 37.8 31.9
+   webster  32.5 31.1 29.7
+   ;
+
+   data mileage;
+      input mph mpg @@;
+      cards;
+   20 15.4 30 20.2 40 25.7 50 26.2 50 26.6 50 27.4 55  . 60 24.8
+   ;
+
+options ls=100;
+
+ods select  GLM.Data.ClassLevels;
+ods select  GLM.Means.type.stemleng.MCLines.Waller.MCLinesInfo;
+ods select  GLM.Means.type.stemleng.MCLines.Waller.MCLines;
+
+
+title 'A system title';
+title2 'Another system title';
+footnote 'A system Footer';
+footnote2 'Another system Footer';
+
+ods tagsets.event_map file="outline2.xml";
+ods tagsets.leaf file="outline.xml";
+
+   proc glm order=data data = plants;
+      class type block;
+      model stemleng=type block / solution;
+      means type / waller regwq;
+
+   *-type-order------------clrn-cltn-knox-onel-cpst-wbsh-wstr;
+      contrast 'compost vs others'  type -1 -1 -1 -1  6 -1 -1;
+      contrast 'river soils vs.non' type -1 -1 -1 -1  0  5 -1,
+                                    type -1  4 -1 -1  0  0 -1;
+      contrast 'glacial vs drift'   type -1  0  1  1  0  0 -1;
+      contrast 'clarion vs webster' type -1  0  0  0  0  0  1;
+      contrast 'knox vs oneill'     type  0  0  1 -1  0  0  0;
+   run;
+    
+ods _all_ close;    
+\end{sfvcode}
+
+The output from this tagset is very interesting.  The most obvious
+events are the proc, proc\_branch, branch and leaf events.  It is 
+those last three that are used by the html tagsets to create the
+table of contents.
+
+\begin{sfvoutput}
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" 
+     saslongversion="9.01.01M0D10062003" 
+     date="2003-11-17" time="01:59:01" encoding="iso-8859-1">
+  <doc_body>
+    <proc name="GLM">
+      <anchor name="IDX"/>
+      <system_title_group>
+        <title_container>
+          <system_title value="A system title">
+          </system_title>
+          <system_title value="Another system title">
+          </system_title>
+        </title_container>
+      </system_title_group>
+      <proc_title_group>
+        <proc_title value="The GLM Procedure"/>
+      </proc_title_group>
+      <proc_branch name="GLM" value="GLM">
+        <branch name="Data" value="Data">
+          <leaf name="ClassLevels" value="Class Levels">
+            <page_anchor/>
+            <output name="ClassLevels">
+              <table>
+              </table>
+            </output>
+          </leaf>
+        </branch>
+        <system_footer_group>
+          <title_container>
+            <system_footer value="A system Footer">
+            </system_footer>
+            <system_footer value="Another system Footer">
+            </system_footer>
+          </title_container>
+        </system_footer_group>
+        <pagebreak/>
+        <anchor name="IDX1"/>
+        <page_anchor/>
+        <system_title_group>
+          <title_container>
+            <system_title value="A system title">
+            </system_title>
+            <system_title value="Another system title">
+            </system_title>
+          </title_container>
+        </system_title_group>
+        <proc_title_group>
+          <proc_title value="The GLM Procedure"/>
+          <proc_title/>
+          <proc_title value="Waller-Duncan K-ratio t Test for stemleng"/>
+        </proc_title_group>
+        <branch name="Means" value="Means">
+          <branch name="type" value="type">
+            <branch name="stemleng" value="stemleng">
+              <branch name="MCLines" value="Multiple Comparison Lines">
+                <branch name="Waller" value="Waller-Duncan">
+                  <leaf name="MCLinesInfo" value="Information">
+                    <output name="MCLinesInfo">
+                      <table>
+                      </table>
+                    </output>
+                  </leaf>
+                  <anchor name="IDX2"/>
+                  <leaf name="MCLines" value="Comparisons">
+                    <output name="MCLines">
+                      <table>
+                      </table>
+                    </output>
+                  </leaf>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+        <system_footer_group>
+          <title_container>
+            <system_footer value="A system Footer">
+            </system_footer>
+            <system_footer value="Another system Footer">
+            </system_footer>
+          </title_container>
+        </system_footer_group>
+      </proc_branch>
+    </proc>
+  </doc_body>
+</doc>
+\end{sfvoutput}
+
+The events that can be seen in this map are the basis for all document
+structure.  Redirecting these events or triggering other events that
+are redirected allows great flexibility in the creation of a table of
+contents or document outlines.  Using event\_map as the parent to this
+tagset would reveal more variables and values which could also be useful.
+
+Among the variables that could be seen are toclevel, and url.
+Toclevel is a counter that indicates the contents depth.  Url is 
+the url for the current output object.  
+
+\section{Locate and Explore}
+\index{Event!Branch}
+\index{Table of Contents}
+\index{Table of Contents!Flattening}
+The next step is to look in the tagset source to see what these events
+are used for.  The HTML tagsets do very little in the proc\_branch, branch 
+and leaf events. These events check the 'hidden' variable and trigger other events 
+that are redirected to the 
+contents file.  An obvious and easy modification would be to block
+the branch event.  The result would be a very flat table of contents.
+Depending on the Procedure, this is sometimes desirable.
+
+\begin{sfvcode}
+proc template;
+    define tagset tagsets.flat_contents;
+        parent=tagsets.html4;
+ 
+        define event branch;
+        end;
+    end;
+run;
+\end{sfvcode}
+
+Another variation would be to block the branch entries based on the toclevel
+variable.  It is possible to eliminate any levels desired.  This example eliminates
+contents levels deeper than 3.
+
+\begin{sfvcode}
+proc template;
+    define tagset tagsets.flat_contents;
+        parent=tagsets.html4;
+ 
+        define event branch;
+            start:
+                break / if hidden;
+                break / if inputn(toclevel, '7.') > 3;
+                trigger contents_branch;
+            finish:
+                break / if hidden;
+                break / if inputn(toclevel, '7.') > 3;
+                trigger contents_branch;
+        end;
+    end;
+run;
+\end{sfvcode}
+
+Another interesting event is the page\_anchor event.  This event is redirected
+to the pages file to create links to each page of output.  It might be desirable
+to redirect the page\_anchor event to the contents file.  This tagset will do that.
+This tagset preserves the original behavior by creating a new event from the original
+page\_anchor event.  Page\_anchor\_entry is exactly the same but without the file 
+redirection.  There are two new events whose sole purpose is to redirect the output
+from the new event to the appropriate file.  The end result of this tagset is that
+page numbers are inserted as links in the table of contents.
+
+\begin{sfvcode}
+proc template;
+    define tagset tagsets.flat_contents;
+        parent=tagsets.html4;
+ 
+        define event page_anchor;
+            start:
+                trigger contents_page_anchor;
+                trigger pages_page_anchor;
+            finish:
+                trigger contents_page_anchor;
+                trigger pages_page_anchor;
+        end;
+
+        define event contents_page_anchor;
+            file=contents;
+            start:
+                trigger page_anchor_entry;
+            finish:
+                trigger page_anchor_entry;
+        end;
+
+        define event pages_page_anchor;
+            file=pages;
+            start:
+                trigger page_anchor_entry;
+            finish:
+                trigger page_anchor_entry;
+        end;
+
+        define event page_anchor_entry;
+            start:
+                put "<li";
+                putq " class=" HTMLCLASS;
+                put ">" nl;
+                put '<a href="' ;
+                put path_name /if !exists(path_url);
+                put path_url;
+                put body_name /if !exists(body_url);
+                put body_url;
+                put "#" ANCHOR;
+                put '"';
+                putq ' target="body" ';
+                put ">";
+                trigger pre_post;
+                put 'Page ' total_page_count;
+                trigger pre_post finish;
+                put "</a>" CR;
+            finish:
+                put "</li>" nl;
+        end;
+    end;
+run;
+\end{sfvcode}
+
+\section{File interactions}
+The ODS markup statement allows for seven separate file specifications.  Each of these 
+files has certain interactions with the others.  Specifying a stylesheet or code file
+will result in stylesheet\_link and code\_link event requests being sent to the body,
+contents, and pages files.  A frame file will receive event requests providing information
+about the body, contents, and pages files if they were specified.
+The easiest way to see all of the file interactions is to run a job like this one.
+The event\_map tagset may also be helpful.
+
+\begin{fvcode}{allmaps}{Getting simple maps for all files}
+ods tagsets.short_map file='body.xml' 
+                  contents='contents.xml' 
+                      page='pages.xml' 
+                     frame='frame.xml' 
+                stylesheet='style.xml' 
+                      code='code.xml' 
+                      data='data.xml';
+ods tagsets.short_map close;
+\end{fvcode}
+
+Looking at the maps created for each file will reveal the various places each file is
+referenced by another.
+
+\begin{enumerate}
+\item The stylesheet is referenced to by every file except the frame file.
+\item The code file is referenced to by the body, contents, and pages files.
+\item The frame file includes frame events for the body, contents and pages file.
+\end{enumerate}
+
+\section{Freedom of Choice}
+\index{Variables!Filename}
+While there are events that are typically used to reference the other files,
+it is not necessary to use them to do so.  All of the filenames and their url's
+are available at all times.  The following event finish definition is from the html 
+tagsets.  It uses the file names and urls to create a noframe section for
+508 compliance.
+
+\begin{sfvcode}
+        finish:
+          put "</frameset>" nl;
+          put "<noframes>" nl;
+          put "<ul>" nl ;
+
+          do /if any(contents_name,contents_url);
+              put '<li><a href="';
+              put basename "'";
+              put path_url;
+              put path_name /if ^path_url;
+              put "(";
+              put contents_url;
+              put contents_name /if ^contents_url;
+              put ")'" '"';
+              put ">The Table of Contents</a></li>" nl;
+          done;
+
+          unset $link;
+          do /if any(pages_name,pages_url);
+              put '<li><a href="';
+              put basename "'";
+              put path_url;
+              put path_name /if ^path_url;
+              put "(";
+              put pages_url;
+              put pages_name /if ^pages_url;
+              put ")'" '"';
+              put ">The Table of Pages</a></li>" nl;
+          done;
+
+          put '<li><a href="';
+          put basename "'";
+          put path_url;
+          put path_name /if ^path_url;
+          put "(";
+          put body_url;
+          put body_name /if ^body_url;
+          put ")'" '"';
+          put ">The Contents</a></li>" nl;
+
+          put "</ul>" nl ;
+          put "</noframes>" nl;
+
+          unset $link;
+      end;
+\end{sfvcode}
+
+\subsection{Explore}
+Like most other things, A tagset and ods statement can be written that explores
+these variables.  The following job will show the file variables that are available. 
+
+\begin{fvcode}{exploring_filenames}{Exploring Filename Variables}
+proc template;
+    define tagset tagsets.filenames;
+        define event initialize;
+            putvars event _name_ ': ' _value_ nl;
+        end;
+    end;
+run;
+
+ods tagsets.filenames file='body.xml'  (url='b.html')
+                  contents='contents.xml' (url='c.html') 
+                      page='pages.xml' (url='p.html')
+                     frame='frame.xml' (url='f.html')
+                stylesheet='style.xml' (url='s.html')
+                      code='code.xml'  (url='cd.html')
+                      data='data.xml'  (url='d.html');
+ods tagsets.filenames close; 
+\end{fvcode}
+
+\index{Variables!Filename}
+Because the initialize event only happens once, it happens in the 
+first file that is opened.  That happens to be the code file.  All 
+the other files created are empty.  But the output is quite interesting.
+Most of the variables are populated at all times.
+
+\begin{sfvoutput}
+event_name: initialize
+empty: 1
+encoding: iso-8859-1
+operator: eric
+date: 2003-11-17
+sasversion: 9.1
+saslongversion: 9.01.01M0D10062003
+time: 21:28:53
+state: start
+dest_file: code
+bodyname: body.xml
+bodyurl: b.html
+contentsname: contents.xml
+contentsurl: c.html
+pagesname: pages.xml
+pagesurl: p.html
+stylesheet: style.xml
+stylesheet_url: s.html
+codename: code.xml
+codeurl: cd.html
+dataname: data.xml
+dataurl: d.html
+framename: frame.xml
+frameurl: f.html
+stylesheet_title: style.xml
+tagset: TAGSETS.FILENAMES
+style: Default
+javadate: 2003-11-17
+javatime: 21:28:53-05:00
+\end{sfvoutput}
+
+\section{Summary}
+File redirection is an important feature of tagsets.  Without it there would be no
+separate table of contents.  But redirection can be used for more than just contents.
+The data and code files were created specifically to allow for separation of data, code
+and formatting if that is desired.  
+

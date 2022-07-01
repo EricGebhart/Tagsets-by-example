@@ -1,0 +1,1182 @@
+\chapter{The Path to Enlightenment}
+So far all of the examples have contained only the events and
+variables needed.  But the ability to find events, and their
+variables is required to be truly effective at programming
+tagsets.  This chapter will explain several techniques that
+will illustrate which events
+may work for a solution, and the variables that are bundled in
+those events.  In short, this chapter will show how to get 
+tagsets to reveal themselves.
+
+\index{Finding Events}
+\index{Events!Finding}
+\section{Finding Events}
+So far, to keep things simple, a few event names have been explained as
+though they are the only events needed.
+But there are many more events than those few that have been
+revealed.  Like the events in your day, the event requests generated
+by ODS also vary.  It all depends on the job being run
+and which output file is examined.  The events for the body
+file will be different than the contents file which will 
+be different from the stylesheet file.  A job with bygrouping
+will be different than a job without it.  Footnotes, graphs,
+notes, the procedure,  all of these things cause variations
+in the event requests that ODS makes.  Similarly, a job with
+By group processing will be different than a job without it.
+A Proc Print job with By group processing will also be different
+from other procedures that also do By group processing, like Proc
+Tabulate or Proc Means.  
+
+\index{Tagsets!event\_map}
+\index{Tagsets!short\_map}
+\index{Tagsets!tpl\_style\_map}
+\index{Tagsets!text\_map}
+\subsection{The Short\_map Tagset}
+Thankfully a tagset can be written that will tell
+what the events are and when they occur.  In fact
+there are several tagsets already created for this purpose.
+All but one of these tagsets generate XML.  Where the tag
+names are the event names.  
+There is no need to worry if you don't know anything about
+XML.  The output will become self evident when you see it.
+The main difference between
+these tagsets are the attributes displayed on the tags.
+The Super\_map tagset is the newest and most capable mapping
+tagset.  Although it may take a little learning
+to get up to speed.  By default Super\_map behaves just 
+like Short\_map.  Short\_map output is the simplest and easiest
+to understand of all the mapping tagsets.
+The Event\_map tagset is fairly verbose and displays the 
+most attributes.
+Short\_map shows only the values, names, and labels and is
+more than adequate most of the time.  Tpl\_style\_map is
+more concerned with style names, and the names for ODS output
+objects. Text\_map is meant as a learning tool but is not as
+helpful as the others once events are understood.  
+The mapping
+tagsets are shown in table \ref{mapping_tagsets} on page \pageref{mapping_tagsets}.
+
+\begin{table}\caption{Event Mapping Tagsets}
+\label{mapping_tagsets}
+\begin{tabular}{l|l} \\ \hline
+Super\_map &  Extremely versatile, it has the same abilities as event\_map 
+and short\_map as well as regular expression matching on event names 
+and values.  It is extremely useful for hunting down values within events.\\
+Event\_map &  A fairly verbose XML map \\
+Short\_map &  The same Event\_map but less data \\
+tpl\_style\_map & Displays more style and template information \\
+text\_map & A formatted text map.  More human readable than xml \\
+odsxrpcs & The most verbose of all tagsets.  
+All attributes are shown as tags.\\
+\end{tabular}
+\end{table}
+
+Using the short\_map tagset without running a procedure is a good first
+start.
+All that is needed is two ods statements as shown 
+in figure \ref{event_map1}
+on page \pageref{event_map1}.
+The corresponding output is shown in figure \ref{event_map1_out}
+on page \pageref{event_map1_out}.
+What is important about the output is that all of the events shown
+are the result of the ODS invocation and close.  
+
+\begin{fvcode}{event_map1}{Creating an Empty Event Map}
+ods tagsets.short_map file='test.xml';
+ods tagsets.short_map close;
+\end{fvcode}
+
+\index{Events!doc}
+\index{Events!doc\_title}
+\index{Events!Start:}
+\index{Events!Finish:}
+Each tag in this output is the name of an event.  Using standard
+XML format a the <doc> tag corresponds to the Start: section
+of the doc event.  The </doc> corresponds to the Finish: section
+of the doc event.  The <doc\_title/> tag means that this is
+a non-scoping event that does not really have a start and finish.
+If the event is defined with a start: and finish: that is still ok,
+but both sections will be triggered one after the other when the
+event occurs.
+
+\index{Events!doc\_body}
+It's interesting to note that even though the job didn't run a procedure
+there were still a fair number of events that occured.  
+Markup languages
+generally need a head section at the top of the document which has
+information about the document itself.  This section also holds
+information about how the document should be formatted.  The very
+last events are doc\_body and the end of doc.  Doc\_body is where
+the output from our procedures will go.  
+
+\index{Events!Initialize}
+It is worth noting that the initialize event did not show up in the map.
+We already know it is the first event that happens.  That is because the
+short\_map tagset specifically omits it.  
+
+The excercises in the next chapter are also very informative.  Particularly
+the example which specifies all possible files on the ODS Markup statement
+on page \pageref{allmaps}.
+
+\begin{fvoutput}{event_map1_out}{Empty Event Map Output}
+<doc operator="eric" sasversion="9.1" 
+     saslongversion="9.01.01M0D10062003" 
+     date="2003-10-24" time="18:09:16" encoding="iso-8859-1">
+  <doc_head>
+    <doc_meta/>
+    <auth_oper/>
+    <doc_title/>
+    <stylesheet_link/>
+    <javascript>
+      <startup_function>
+      </startup_function>
+      <shutdown_function>
+      </shutdown_function>
+    </javascript>
+  </doc_head>
+  <doc_body>
+  </doc_body>
+</doc>
+\end{fvoutput}
+
+The output becomes much more interesting if the job is modified 
+to run the print procedure with one observation.  As expected
+there will now be table, row, header and data events.  But there
+are also a lot of other new events.
+
+\begin{fvcode}{event_map2}{Simple Event Map Output}
+options obs=1;
+ods tagsets.short_map file='test.xml';
+proc print data=sashelp.class; run;
+ods tagsets.short_map close;
+\end{fvcode}
+
+The output is rather extensive for such a small table!
+
+\begin{sfvoutput}
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" 
+     saslongversion="9.01.01M0D10062003" 
+     date="2003-10-24" time="18:27:50" encoding="iso-8859-1">
+  <doc_head>
+    <doc_meta/>
+    <auth_oper/>
+    <doc_title/>
+    <stylesheet_link/>
+    <javascript>
+      <startup_function>
+      </startup_function>
+      <shutdown_function>
+      </shutdown_function>
+    </javascript>
+  </doc_head>
+  <doc_body>
+    <proc name="Print">
+      <anchor name="IDX"/>
+      <page_setup>
+        <system_title_setup_group>
+          <title_setup_container>
+            <title_setup_container_specs>
+              <title_setup_container_spec/>
+            </title_setup_container_specs>
+            <title_setup_container_row>
+              <system_title_setup value="The SAS System">
+              </system_title_setup>
+            </title_setup_container_row>
+          </title_setup_container>
+        </system_title_setup_group>
+      </page_setup>
+      <system_title_group>
+        <title_container>
+          <title_container_specs>
+            <title_container_spec/>
+          </title_container_specs>
+          <title_container_row>
+            <system_title value="The SAS System">
+            </system_title>
+          </title_container_row>
+        </title_container>
+      </system_title_group>
+      <proc_branch name="Print" value="Print">
+        <leaf name="Print" value="Data Set SASHELP.CLASS">
+          <page_anchor/>
+          <output name="Print">
+            <table>
+              <rowspec>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+              </rowspec>
+              <colspecs>
+                <colgroup>
+                  <colspec_entry name="Obs"/>
+                </colgroup>
+                <colgroup>
+                  <colspecsep/>
+                  <colspec_entry name="Name"/>
+                  <colspecsep/>
+                  <colspec_entry name="Sex"/>
+                  <colspecsep/>
+                  <colspec_entry name="Age"/>
+                  <colspecsep/>
+                  <colspec_entry name="Height"/>
+                  <colspecsep/>
+                  <colspec_entry name="Weight"/>
+                </colgroup>
+              </colspecs>
+              <table_headers>
+                <header_spec>
+                  <sub_header_colspec name="Obs">
+                    <col_header_label value="Obs">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Name">
+                    <col_header_label value="Name">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Sex">
+                    <col_header_label value="Sex">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Age">
+                    <col_header_label value="Age">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Height">
+                    <col_header_label value="Height">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Weight">
+                    <col_header_label value="Weight">
+                    </col_header_label>
+                  </sub_header_colspec>
+                </header_spec>
+              </table_headers>
+              <table_head>
+                <row>
+                  <header value="Obs">
+                  </header>
+                  <header value="Name">
+                  </header>
+                  <header value="Sex">
+                  </header>
+                  <header value="Age">
+                  </header>
+                  <header value="Height">
+                  </header>
+                  <header value="Weight">
+                  </header>
+                </row>
+              </table_head>
+              <table_body>
+                <row>
+                  <header value=" 1">
+                  </header>
+                  <data value="Alfred">
+                  </data>
+                  <data value="M">
+                  </data>
+                  <data value="14">
+                  </data>
+                  <data value="69">
+                  </data>
+                  <data value="112.5">
+                  </data>
+                </row>
+              </table_body>
+            </table>
+          </output>
+        </leaf>
+      </proc_branch>
+    </proc>
+  </doc_body>
+</doc>
+\end{sfvoutput}
+
+That is a lot of output.  Obviously the probability of
+using all of those events in one tagset is pretty slim.
+But for every event there is probably a tagset that uses
+it.  
+
+\section{The Default\_Event Tagset Attribute}
+\index{Attributes!Default\_event}
+\index{Default\_event}
+So how do you know that you are seeing all the events?  The
+answer is because these tagsets use the default event.
+Normally, if an event is not defined, the event request
+is quietly forgotten.  But a tagset can have an event that
+is designated as the default.  If an event is not found,
+in a tagset that has a default event, the default event
+is triggered instead.  The code for the shortmap tagset
+can be seen 
+in figure \ref{event_map3} on page \pageref{event_map3}.
+
+The first thing is a bunch of
+attributes at the top of the tagset.  
+The attribute to look for is the default\_event.  In this 
+case the default event is set to 'basic'.
+
+\subsection{The Events}
+\index{Events!Initialize}
+The first event is the initialize event.  This empty definition ensures
+that the initialize event request will be quietly dropped.
+
+\index{show\_charset}
+\index{suppress\_charset}
+\index{SAS Registry!suppress\_charset}
+The show\_charset event sets \$show\_charset variable if
+suppress\_charset is not set.  Suppress\_charset is a setting
+that can be made in the SAS registry.  This is the tagset's way
+of recognizing it.
+
+
+\index{Trigger}
+\index{Statements!Trigger}
+The doc event is defined almost the same as the basic 
+event but prints some extra information that is good to
+know. 
+
+The doc event also does something we haven't seen yet.  It 
+triggers the show\_charset event.  Trigger allows the creation
+of arbitrary event definitions, that can be used as if they
+are functions.
+Triggers are extremely efficient.  At run time they behave as
+if the triggered event's statement's were right where the trigger
+statement is.  Similar to, but not quite the same as SAS macro's
+or inline functions in lower level programming languages like 'C'.
+
+\index{Putq}
+\index{Statements!Putq}
+The next new statement is putq.  Putq works just like put,
+but it automatically double quotes any variables it prints.
+This is perfect behavior for printing HTML or XML attributes.
+
+\index{Variables!Event\_name}
+After printing the the xml tag, The doc event creates the
+doc tag by printing an < followed by the event\_name variable.
+Event\_name will always have the name of the initial event
+requested from within ODS.  In this case the value will be 'doc'.
+
+\index{Value labels}
+\index{Statements!Put!label/value pairs}
+The rest of the start section is nothing but putq's.  
+Looking at the doc tag in figure \ref{event_map1_out}
+on page \pageref{event_map1_out} it is noticable that not all
+of those putq's actually printed something.  This is because
+The put statement always pairs variables with the any string that
+immediately precedes it.  If the variable does not have a value,
+then the string is not printed.  This is another behavior of put
+that is perfect for printing HTML and XML attributes.
+
+It's not so perfect behavior for debugging though.  It is sometimes
+desirable to be sure that the put statement executed and that there
+was nothing to print.  In that case, all that is needed is to separate
+the label and the variable by inserting a shorter label inbetween.
+This example separates the = from the label by making them into separate
+strings.  The output will be the same, except 'Name' will always print
+even when the name variable has no value.  Another technique is to separate
+the string from the variable by using two put statements.
+
+\begin{sfvcode}
+    put 'Name' '=' name;
+
+    put 'Name=';
+    put name;
+\end{sfvcode}
+
+\subsection{The Default Event}
+\index{Default Event}
+The next event is the basic event.  The basic event won't be
+found in any output from event\_map.  It's not one of the known 
+events that ODS will request.  But it is the event assigned to
+the default\_event attribute.  That means that the if the event
+is not initialize or Doc then the 'basic' event will handle the
+event request.
+
+The basic event makes use of another variable 'empty'.  If empty
+is true then this event does not encapsulate other
+events.  In other words it's start and finish are triggered 
+back to back with nothing in between.  This knowledge is used
+to make the XML tag an empty\footnote{This is what a XML tag that contains 
+no other tags is called} tag.
+
+\index{Indent}
+\index{ndent}
+\index{Statements!ndent}
+\index{xdent}
+\index{Statements!xdent}
+\index{Attributes!indent}
+The value of empty is also used eliminate the ndent at the end of the start, and the entire 
+finish section.  The ndent statement tells the tagset to increment it's
+indention level by one.  The amount of space indented depends on the 
+value in the indent attribute at the top of the tagset.  The xdent 
+statement causes the indention level to decrease by one.
+
+Finally, There is the last event attr\_out.   Attr\_out is triggered 
+from the doc and basic events and is responsible for printing 
+the name and label attributes within each tag.   This event is
+mostly for convenience.  It makes it easy to add more attributes
+to the map just by inheriting from this tagset and redefining this
+Event.
+
+
+\begin{fvcode}{event_map3}{Short Map Tagset}
+    define tagset tagsets.short_map;
+        notes "This is the event map definition";
+        map = '<>&"';
+        mapsub = '/&lt;/&gt;/&amp;/&quot;';
+        nobreakspace = ' ';
+        split = ' ';
+        indent=2;
+        stacked_columns = yes;
+        output_type = 'xml';
+
+        default_event = 'basic';
+
+        define event initialize;
+        end;
+
+        define event show_charset;
+           set $show_charset "1" / if !exists(suppress_charset);
+        end;
+
+        define event doc;
+            start:
+                trigger show_charset;
+                put '<?xml version="1.0"';
+                putq " encoding=" encoding / if exists($show_charset);
+                put "?>" CR CR;
+                put "<" EVENT_NAME ;
+                putq " title="        BODY_TITLE;
+                putq " author="       AUTHOR;
+                putq " operator="     OPERATOR;
+                putq " sasversion="   SASVERSION;
+                putq " saslongversion="   SASLONGVERSION;
+                putq " date="         DATE;
+                putq " time="         TIME;
+                putq " encoding="     ENCODING / if exists(\$show_charset);
+                putq " language="     LANGUAGE;
+                putq " trantab="      TRANTAB;
+                trigger attr_out;
+                put ">" CR;
+                ndent;
+            finish:
+                xdent;
+                put "</" EVENT_NAME '>';
+        end;
+
+        define event basic;
+            start:
+                put "<" EVENT_NAME ;
+                trigger attr_out;
+                put "/" / if exists(empty);
+                put ">" CR;
+                break / if exists(empty);
+                ndent;
+            finish:
+                break / if exists(empty);
+                xdent;
+                put "</" EVENT_NAME ">" CR;
+        end;
+
+       define event attr_out;
+          putq " name=" name;
+          putq " value=" value;
+       end;
+    end;
+
+\end{fvcode}
+
+
+\subsection{summary}
+The mapping tagsets are the best resource for 
+finding events are not known.  They reveal 
+all the events for any given SAS job.  
+There are lots of ways to find events. 
+One of the easiest ways is to examine the existing
+ tagsets and their output.
+The mapping tagsets are another resource that can
+be extremely helpful.  Adding a default event
+to an existing tagset can also be extremely helpful
+for revealing new events between the events already
+defined.
+
+\section{Finding Variables}
+\index{Variables!Finding}
+\index{Finding Variables}
+In addition to knowing when events occur it's also
+important to know what data is available for any 
+given event.  The mapping tagsets show some of this
+but there are far too many variables to print them
+all the time.
+
+\index{Statements!Putvars}
+\index{Putvars}
+There is one tagset that prints all the variables
+for all the events.  The Odsxrpcs tagset uses a
+statement called putvars to do this.
+
+\index{Tagsets!Odsxrpcs}
+\index{Odsxrpcs}
+To keep our example short this tagset defines only one event.
+The table event is familiar so that is a good place to start.
+The ODSxrpcs tagset uses a similar event for it's default event.
+
+The entire tagset is not much more than a single putvars statement. 
+See figure \ref{putvars1}.
+
+\begin{fvcode}{putvars1}{Printing Event Variables}
+proc template;
+
+    define tagset tagsets.my_map;
+
+        define event table;
+            putvars event _name_ ' : ' _value_ nl;
+        end;
+
+     end;
+run;
+
+ods tagsets.my_map file='putvars.txt';
+proc print data=sashelp.class; run;
+ods tagsets.my_map close;
+\end{fvcode}
+
+The output in figure \ref{putvars1_out} shows all the populated 
+event variables for the print procedure's table event.  
+
+\begin{poutput}{putvars1_out}{Table Event Variables Output}
+type : table
+anchor : IDX
+event_name : table
+encoding : iso-8859-1
+operator : eric
+date : 2003-10-25
+sasversion : 9.1
+saslongversion : 9.01.01M0D10062003
+time : 01:00:07
+state : start
+proc_count : 1
+total_proc_count : 1
+page_count : 1
+total_page_count : 1
+dest_file : body
+bodyname : putvars.txt
+tagset : TAGSETS.MY_MAP
+style : Default
+javadate : 2003-10-25
+javatime : 01:00:07-04:00
+data_viewer : Report
+style_element : Table
+\end{poutput}
+
+\index{Event!Put\_all}
+\index{Statements!Putvars!Put\_all event}
+Adding the other variable category's and some indentation makes
+the output more informative and readable.
+The better version of the tagset.
+is shown in figure \ref{putvars2} on page \pageref{putvars2}.
+The new, nicely formatted, output is shown in 
+figure \ref{putvars2} on page \pageref{putvars2}.
+
+\begin{fvcode}{putvars2}{Printing all Variables}
+
+proc template;
+
+    define tagset tagsets.my_map;
+
+        indent=2;
+
+        define event table;
+            trigger put_all;
+        end;
+
+        define event put_all;
+            put 'Event: ' event_name nl;
+            ndent;
+
+            put 'Event:' nl;
+            ndent;
+            putvars event _name_ ' : ' _value_ nl;
+            xdent;
+
+            put 'Style:' nl;
+            ndent;
+            putvars style _name_ ' : ' _value_ nl;
+            xdent;
+
+            put 'Memory:' nl;
+            ndent;
+            putvars memory _name_ ' : ' _value_ nl;
+            xdent;
+
+            put 'Stream:' nl;
+            ndent;
+            putvars stream _name_ ' : ' _value_ nl;
+            xdent;
+
+            put 'Dynamic:' nl;
+            ndent;
+            putvars dynamic _name_ ' : ' _value_ nl;
+            xdent;
+
+            xdent;
+            put nl;
+        end;
+
+     end;
+run;
+
+ods tagsets.my_map file='putvars.txt';
+proc print data=sashelp.class; run;
+ods tagsets.my_map close;
+
+\end{fvcode}
+
+\begin{poutput}{putvars2_out}{Table Event Variables Output}
+Event: table
+  Event:
+    type : table
+    anchor : IDX
+    event_name : table
+    encoding : iso-8859-1
+    operator : eric
+    date : 2003-10-25
+    sasversion : 9.1
+    saslongversion : 9.01.01M0D10062003
+    time : 01:13:14
+    state : start
+    proc_count : 1
+    total_proc_count : 1
+    page_count : 1
+    total_page_count : 1
+    dest_file : body
+    bodyname : putvars.txt
+    tagset : TAGSETS.MY_MAP
+    style : Default
+    javadate : 2003-10-25
+    javatime : 01:13:14-04:00
+    data_viewer : Report
+    style_element : Table
+  Style:
+    FRAME : BOX
+    RULES : GROUPS
+    HTMLCLASS : Table
+    CELLSPACING : 1
+    CELLPADDING : 7
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+  Memory:
+  Stream:
+  Dynamic:
+\end{poutput}
+
+\section{The Putlog Statement}
+\index{Putlog}
+\index{Statements!Putlog}
+This chapter has shown how to reveal the inner workings 
+of tagsets.  There
+is another statement that is quite handy for quickly showing
+what is going on.
+Putlog is like put except that instead of
+printing to the output file it prints to the SAS log.  
+
+Putlog is nice for checking values or the order of events
+without putting debug messages in the output file.  
+It also works nicely for printing usage messages from the tagset.
+
+\section{Define, Identify, Locate, Explore, and Solve.}
+This section will outline a method to solving problems with tagsets.
+The key to any solution is knowing what events are in the places that
+can help with the solution, and what information those events have.    
+
+\begin{enumerate}
+\item {\bfseries Define:}
+\begin{enumerate}
+\item {\bfseries Understand the problem.}
+The first step is to understand what the desired output should look
+like.  Modifying ODS output to the desired format is the easiest way
+to verify the goal.
+\end{enumerate}
+
+\item {\bfseries Identify:}
+Finding the events that need modification or definition is the 
+first step towards solving any problem with a tagset.  
+\begin{enumerate}
+\item Find the Markup output that needs changing.
+\item Identify a unique string or data value
+\item {\bfseries Identify the event:}
+\item {\bfseries Search the Source.}
+If the string is not data driven, it is sometimes reasonable to
+find the string in the original tagset.
+\item {\bfseries Search the Mapping Output.}
+Run the SAS job using a mapping tagset and search for a known string.
+This is particularly useful if the SAS job provides a unique string to 
+search for.
+\end{enumerate}
+
+\item {\bfseries Locate the event:}
+\begin{enumerate}
+\item locate the event definition in the source.
+Find the event that was identified in the mapping tagset's output in the parent tagset.
+\end{enumerate}
+
+\item {\bfseries Explore:}
+\begin{enumerate}
+\item {\bfseries Copy the Parent's definition.}
+Copy and paste the parent tagset's event definition into the new 
+tagset definition. If the identified event is not defined by the parent, 
+then define it. 
+
+\item {\bfseries Identify Resources.}
+The next step is to figure out what to change in the event.  Sometimes
+the changes are obvious.  Regardless, it is always helpful to know 
+what variables are bundled in the event request and what their values 
+are.  
+
+\begin{enumerate}
+\item {\bfseries Identify Variables.}
+Adding a putvars statement or triggering a put\_all type event
+is the next step.  
+Run the SAS job using the new tagset, and look at the output file for 
+the new event.  Now there is a list of values that should enable a
+determination of the final event definition.
+\end{enumerate}
+\end{enumerate}
+
+
+\item {\bfseries Problems}
+\begin{enumerate}
+\item {\bfseries Use putlog.}
+If there are problems it is sometimes useful to add a putlog statement to
+see if things are going right.  More putvars statements for more variable
+categories is also helpful.
+
+\item {\bfseries Add a default event.}
+It is sometimes useful to add a default event that prints the event name.
+Any undefined events will then show up between the events already defined.
+If an event looks useful, add a definition with a putvars statement to see
+what sort of data the event contains. 
+\end{enumerate}
+
+\item {\bfseries Solve:}
+\begin{enumerate}
+\item {\bfseries Final version.}
+Remove any debugging statements and make the final adjustments.
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Repeat as Necessary}
+Most of the work happens in the identify, locate, and explore phase of
+the process.  Usually some new tagset code results from knowledge provided
+by those three steps.  But that is not usually the final solution.
+It is quite common to repeat these steps several times
+in the course of writing a new tagset.
+
+\section{Going step by step}
+
+Many of the problems that tagsets solve are fairly simple and involve a few
+events at most.  
+This next example is representative of most common type of tagset modification.
+The key to solving this sort of problem is not so much the coding, but finding
+the place to put the code. The example will show how the steps of 
+Define, Identify, Locate, explore and solve, are used.
+
+\subsection{Adding a Target to a URL}
+The Report procedure has a very handy option that allows dynamic creation
+of URL's based upon data.  This feature works great for creating drill down
+reports that load successively detailed tables.  But if the desire is for 
+the page to load in a new window this approach will not work. This is because the 
+target attribute will not carry through no matter how it is set.  This can 
+be fixed with a tagset.
+
+\subsection{Define the Problem}
+The following code shows Report procedure code that dynamically assigns
+a url based upon the data in each observation.  Despite various efforts
+to give the url a target attribute of '\_blank\_' all efforts have failed.
+The result is that clicking on a link replaces the current page with the
+new one.  The desire is to get another window with the new page.
+Looking forward to the next step, this job has already added an additional ods
+statement, event\_map.
+
+\begin{sfvcode}
+data x; x=1; x2=1; x3=1; x4=1; run;
+
+ods html file="report_url.html";
+ods tagsets.event_map file="report_url.xml";
+
+proc report data=x nowd;
+  column x x2 x3 x4;
+  define x / display;
+  define x2 / display;
+
+  compute x2;
+    call define( _COL_, "URL", "URL-from-REPORT" );
+    endcomp;
+
+  run;
+
+ods _all_ close;
+\end{sfvcode}
+
+This is just a simple, do nothing, example.  But it gives us an HTML table
+cell that looks like this.
+
+\begin{sfvoutput} 
+<td class="r Data"><a href="URL-from-REPORT">        1</a>
+\end{sfvoutput} 
+
+There are various methods of setting the target style attribute on a column.
+However, none of them will work with a dynamic url. Our goal is a cell that
+looks like this.
+
+\begin{sfvoutput} 
+<td class="r Data"><a href="URL-from-REPORT" target="_blank_">        1</a>
+\end{sfvoutput} 
+
+\subsection{Identify the event}
+\index{Events!Identify}
+\index{Events!Finding}
+\index{Tagsets!Event\_map}
+Looking in the html tagset source for 'href' reveals several events that could
+be the one.  A little intuition might allow an accurate guess, 
+but using the event\_map tagset will remove all doubt.
+Adding the event\_map ods statement to the job is all that is needed.
+Looking for - 'URL-from-REPORT' reveals these events.
+
+\begin{sfvoutput} 
+<data event_name="data" trigger_name="attr_out" output_name="Report" 
+      output_label="Detailed and/or summarized report" 
+      section="body" class="Data" row="2" data_row="1" 
+      colcount="4" col="2" type="string" index="IDX" just="r">
+
+  <hyperlink event_name="hyperlink" trigger_name="attr_out" 
+              output_name="Report" 
+              output_label="Detailed and/or summarized report" 
+              value="        1" colcount="4" index="IDX" 
+              just="c" url="URL-from-REPORT"/>
+</data>
+\end{sfvoutput} 
+
+\index{Event!Hyperlink}
+This is quite verbose but it tells exactly which event is needed, the hyperlink
+event.  Finding events is an important skill
+when it comes to working with tagsets.  This method is one of the primary
+ways to do that.
+
+\subsection{Locate the Event}
+\index{htmltags.tpl}
+\index{Tagsets!HTML4}
+\index{Tagsets!HTMLcss}
+\index{Tagsets!PHTML}
+Now that the event is identified the next step is to find it
+in the html tagset.  Technically ODS HTML uses the html4 tagset, but that
+tagset inherits most of it's events from the htmlcss and phtml tagsets.
+Thankfully all of those tagsets come bundled in one file, htmltags.tpl.
+This is another disadvantage of using the template procedure's source
+statement.  It would take three source statements to see all of the events
+in the html4 tagset.  The htmltags.tpl source file has everything in one place.
+
+\begin{sfvcode}
+   proc template;
+   source tagstes.html4;
+   source tagstes.htmlcss;
+   source tagstes.phtml;
+   run;
+\end{sfvcode}
+
+\index{Event!Hyperlink}
+\index{Tagsets!HTML4}
+\index{Tagsets!HTMLcss}
+\index{Tagsets!PHTML}
+\index{Tagsets!MVSHTML}
+Searching the file finds three hyperlink events.  One in phtml,
+a slightly more complex definition in htmlcss and a completely different definition
+in mvs\_html.  When working with the html4 or htmlcss tagsets, the event definitions
+are always more complex than their phtml counterparts.
+The event defined in htmlcss is the one that is needed since that is the one that html4 will
+use.  It looks like this.
+
+\begin{sfvcode}
+        define event hyperlink;
+          start:
+            put '<a href="' URL;
+            /*put "#" ANCHOR;*/
+            put '"';
+            putq " target=" HREFTARGET;
+            put ">";
+            trigger do_value;
+          finish:
+            put "</a>" CR;
+        end;
+\end{sfvcode}
+
+\subsection{Explore the Data}
+Adding a putvars statement or triggering put\_all doesn't really help much.  What
+it shows is that even if hreftarget is set in the style, The report procedure
+removes it.  
+
+The target line in the hyperlink event needs to have an alternate behavior.  Causing
+the alternate behavior by indicating a table column will do.
+Macro variables are the easiest way to do
+that.  One macro variable can tell which column needs the target, and another
+can give the target value.   
+
+\begin{sfvcode}
+    %let target_value=_blank_;
+\end{sfvcode}
+  
+
+Adding this to the hyperlink event should get us close.  But it will have
+to be conditional.  So this isn't a complete answer.
+\begin{sfvcode}
+        putq " target=" target_value;
+\end{sfvcode}
+
+\subsection{Repeat.  Identify, Locate, Explore} 
+The hard part is over.  The event has been identified, located and the data
+it contains is known.  However, this is only a partial solution.  The final
+solution needs to preserve the current behavior while adding a new feature 
+that is driven by macro varibles.
+
+But there is still one problem. The hyperlink event doesn't know anything about
+table columns.  That will make it difficult to cause the alternate behavior.
+
+Looking at the original event\_map output it can be seen that the data event knows
+the column number.  Colstart was used earlier in the CSV examples.  It can be used
+again here.  But it will have to be saved away in a variable.  The next step
+is to copy and paste the data event from the htmlcss tagset.  The only changes are
+to set \$column to colstart and to unset it at the end.  Now the hyperlink event
+can use the \$column variable to check the column number against the new macro 
+variable.
+
+\subsection{The solution}
+
+\index{Variables!target\_column}
+\index{Variables!target\_value}
+Looking at the new hyperlink event and the new target\_column and target\_value
+variables it should be fairly obvious that these variables tell which column to
+add a target to, and what that target should be.
+
+\begin{sfvcode}
+    define tagset tagsets.targethtml;
+        parent=tagsets.html4;
+    
+        mvar target_column;
+        mvar target_value;
+    
+        define event hyperlink;
+            start:
+                put '<a href="' URL;
+                /*put "#" ANCHOR;*/
+                put '"';
+
+                do /if hreftarget;
+                    putq " target=" HREFTARGET;
+                else /if cmp($column, target_column);
+                    putq " target=" target_value /if target_value;
+                done;
+            
+                put ">";
+                trigger do_value;
+            finish:
+                put "</a>" CR;
+        end;
+    end;
+\end{sfvcode}
+
+\index{Event!data}
+\index{Variables!colstart}
+\index{Statements!Set}
+\index{tagsets!HTMLcss}
+\index{Procedure!Report}
+This tagset will work perfectly most of the time.  The exception is the report procedure.
+The report procedure frequently
+gives a data event with no data.  Then does something else between the start and
+finish of the data event.  The only real problem with that is the metadata and the 
+context that metadata provides.  In this case column number of the cell was needed.
+The set statement is used to set \$column to colstart.  When the
+hyperlink event comes along, it has something to check against the macro variable.
+The good news is that the data event, with the exception of the set \$column statement,
+is an exact copy of the data event from the htmlcss tagset.
+
+Running the following proc print with the event\_map tagset will shows a different
+data event than the one provided by report.  Ultimately the data event triggers the
+hyperlink event, so our solution still works.  But for print, it would have been
+unessecary to save away the column number.
+
+\begin{sfvcode}
+proc print data=x;
+    var x;
+    var x2 / style(data) = [url="URL-from-Print"];
+    var x3;
+    var x4;
+run;
+\end{sfvcode}
+
+The XML created for a data cell looks like this.
+
+\begin{sfvoutput}
+   <data event_name="data" trigger_name="attr_out" output_name="Print" 
+     output_label="Data Set WORK.X" section="body" class="Data" value="1" 
+     row="2" data_row="1" colcount="1" col="3" type="double" 
+     rawvalue="P/AAAAAAAAA=" index="IDX1" just="r" url="URL-from-Print">
+   </data>
+\end{sfvoutput}
+
+\index{Procedure!report}
+Realizing that this needed to be done for the report procedure only comes with experience. 
+This problem will show up several times in this book.  At some point, realizing
+that the report procedure is special will become second nature.  This problem will
+go away in the future, as improvements are made to proc report. 
+The final solution is shown below.
+
+\begin{fvcode}{Target_html}{The complete Target HTML tagset}
+proc template;
+    define tagset tagsets.targethtml;
+        parent=tagsets.html4;
+    
+        mvar target_column;
+        mvar target_value;
+    
+        define event hyperlink;
+            start:
+                put '<a href="' URL;
+                /*put "#" ANCHOR;*/
+                put '"';
+
+                do /if hreftarget;
+                    putq " target=" HREFTARGET;
+                else /if cmp($column, target_column);
+                    putq " target=" target_value /if target_value;
+                done;
+            
+                put ">";
+                trigger do_value;
+            finish:
+                put "</a>" CR;
+        end;
+
+        define event data;
+            start:
+                trigger header /breakif cmp(htmlclass, "RowHeader");
+                trigger header /breakif cmp(htmlclass, "Header");
+
+                /* The only new line here */
+                set $column colstart;
+
+                put "<td";
+                putq " title=" flyover;
+                do /if !cmp(htmlclass,'batch');
+                    trigger classalign;
+                    trigger style_inline;
+                done;
+                trigger rowcol;
+                put " nowrap" /if no_wrap;
+                put ">";
+                trigger cell_value;
+            finish:
+                trigger header /breakif cmp(htmlclass, "RowHeader");
+                trigger header /breakif cmp(htmlclass, "Header");
+
+                trigger cell_value;
+                put "</td>" CR;
+
+                /* The only new line here - unset just to be safe */
+                unset $column;
+            
+            end;
+    
+    end;
+run;
+
+
+data x; x=1; x2=1; x3=1; x4=1; run;
+
+%let target_column=2;
+%let target_value=_blank_;
+
+ods tagsets.targethtml file="report_url.html";
+
+proc report data=x nowd;
+  column x x2 x3 x4;
+  define x / display;
+  define x2 / display;
+
+  compute x2;
+    call define( _COL_, "URL", "URL-from-REPORT" );
+    endcomp;
+
+  run;
+
+ods _all_ close;
+\end{fvcode}
+
+The output gives the desired reselt.  The same cell in the output now looks 
+like this.
+
+\begin{sfvoutput}
+<td class="r Data"><a href="URL-from-REPORT" target=_blank_>        1</a>
+\end{sfvoutput}
+
+\index{Statements!Putq!Macro variable bug}
+Notice that putq didn't do it's job.  This appears to be a bug
+with macro variables in SAS 9.1.  The best solution for that is to put the
+quotes around the variable yourself.  Using a put instead of a
+putq will insure that the tagset won't break when a future release
+fixes the quoting bug.   
+
+\begin{sfvcode}
+                do /if hreftarget;
+                    putq " target=" HREFTARGET;
+                else /if cmp(\$column, target_column);
+                    put ' target="' target_value '"' /if target_value;
+                done;
+\end{sfvcode}
+
+Another method is to assign the macro variable
+to another variable with a set.  Then use that variable in the putq.
+
+\begin{sfvcode}
+                do /if hreftarget;
+                    putq " target=" HREFTARGET;
+                else /if cmp($column, target_column);
+                    do /if target_value;
+                        set $target_value target_value;
+                        putq ' target=' $target_value;
+                        unset $target_value;
+                    done;
+                done;
+\end{sfvcode}
+
+
+\section{Summary}
+Tagsets provide some powerful tools which can help find the 
+best way to write or change any tagset.  When starting from
+scratch one of the mapping tagsets is a good place to start.
+They are also good for comparing against existing tagsets.
+
+The default event can be used in an existing tagset to reveal
+unknown events between the events already defined.
+
+The putvars statement can be used to show all the currently populated
+variables.  Including a put\_all event in a tagset gives a quick
+and easy way to find that elusive variable when needed.
+
+The putlog statement can be used to print information to the log which
+can make it easier to find or see variables or sequences of events. They
+are particularly useful as a sanity check, when it's not clear that a
+tagset is doing what it should.
+
+
+

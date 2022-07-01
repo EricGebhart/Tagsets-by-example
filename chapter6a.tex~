@@ -1,0 +1,376 @@
+\chapter{The Tagset Attributes}
+A tagset can have several attributes.  The attributes control the basic
+behavior of the tagset.  Most importantly the translation of special
+characters that may interfere with the markup language being generated.
+Other attributes control output indention, breaking of lines, even the
+way the output should be displayed in the SAS output window.  Setting 
+up a tagset's attributes is the first step towards creating a new tagset.
+
+\section{Parent}
+\index{Parent}
+\index{Attributes!Parent}
+The Parent attribute designates another tagset to inherit attributes and events
+from.
+
+\section{Special Characters}
+\index{Map}
+\index{Attributes!Map}
+\index{MapSub}
+\index{Attributes!MapSub}
+Every markup language has characters that it thinks are special.  Usually
+these characters need to be remapped to something else.  
+The map attribute tells us which characters we care about.
+For HTML and XML the most important characters are <> and \&.   
+The mapsub attribute is a list of strings which correspond to the characters
+in the map attribute.  Each string is delimited by a character of
+your choosing.  The only requirement is that the value of mapsub
+start with that character.
+
+\begin{sfvcode}
+   map='\&<>';
+   mapsub='/\&amp;/\&lt;/\&gt;/';
+\end{sfvcode}
+
+\subsection{Automatic Character Translation}
+\index{BeginWellFormed}
+\index{Attributes!BeginWellFormed}
+\index{EndWellFormed}
+\index{Attributes!EndWellFormed}
+The old ODS HTML destination only translated special characters if the string
+it had did not start with < and end with >.   This feature of HTML is set
+in the style templates, and is set using the protectspecialchars attribute.
+The valid values for protectspecialchars is yes, no, and auto.  The auto 
+setting is when this behavior comes into play.
+
+This automatic non-translation
+allowed for HTML code to be put directly into the dataset, or style.  When
+ODS HTML detected raw HTML code it would leave it alone.  This same mechanism
+needs to work for ODS Markup.  But what determines well formed raw markup changes
+with the markup being generated.  To support this feature there are two attributes
+that can be set in the tagset.  beginWellFormed and endWellFormed.  BeginWellFormed
+is what the string should start with, and endWellFormed is what the string should 
+end with.  If the string matches, ignoring leading and trailing whitespace, then
+the characters in the string will not be translated.  If these attributes are not
+set, then the result is that strings are always translated.
+
+\begin{sfvcode}
+   BeginWellFormed='<';
+   EndWellFormed='>';
+\end{sfvcode}
+
+\section{Non Breaking Spaces}
+\index{nobreakspace}
+\index{Attributes!nobreakspace}
+\index{Non-breaking spaces}
+Many markup languages have something called a non-breaking space.  In HTML
+a non-breaking space is \&nbsp;.  In latex it is \~.  The nobreakspace attribute is how you
+tell the tagset what it should use if need be.  If nobreakspace is not set 
+then the normal space character is used.
+
+\begin{sfvcode}
+   nobreakspace='&nbsp;';
+\end{sfvcode}
+
+\section{Split Characters}
+\index{split}
+\index{Attributes!split}
+Sometimes SAS wants to break strings into multiple lines.  The split attribute
+tells us what to do when that happens.  In HTML the value of split is '<br>' in
+latex it's \\linebreak.  For many output types a space is appropriate.
+
+\begin{sfvcode}
+   split='<br>';
+\end{sfvcode}
+
+\section{Indention}
+\index{indent}
+\index{ndent}
+\index{Statements!ndent}
+\index{xdent}
+\index{Statements!xdent}
+\index{Attributes!indent}
+The indention attribute is purely to make the markup output pretty. 
+This attribute determines how many spaces to use
+when increasing or decreasing the indent level of the output, by using
+the Ndent and Xdent commands.  
+
+\begin{sfvcode}
+   indent=4;
+\end{sfvcode}
+
+\section{Stacked Columns}
+\index{stacked\_columns}
+\index{Attributes!stacked\_columns}
+Stacked columns are a concept used by table templates that allow multiple columns
+of a table to be combined into one column with the values stacked on top
+of each other.  Some forms of markup do not allow for this sort of thing.
+The stacked\_columns attribute allows the tagset to turn stacked columns off
+if they would cause problems with the output.  The result is that the columns
+will be printed separately.  The default is for  stacked columns to be on.
+if on the values tend to be printed within the data event with the value of
+the split attribute inbetween them.
+
+\index{stacked\_columns!Proc Freq}
+One caveat is that no matter what the setting, the Freq procedure will still
+do stacked columns.
+
+\begin{sfvcode}
+   stacked_columns=no;
+\end{sfvcode}
+
+\section{Image Formats}
+\index{image\_formats}
+\index{Attributes!image\_formats}
+The value of image\_formats is to determine which types of images the destination
+will support.  The image formats are listed in order of preference.  When graphics
+are being generated for the destination, the preferred type is checked against
+this list.  If the type is in the list everything goes as planned.  If the type
+is not in the list then the first type in the list will be used instead.  This
+is particularly useful for the LaTeX and troff destinations.  Those destinations
+ do not always support the more generally acceptable gif and jpeg formats.
+
+\begin{sfvcode}
+   image_formats='gif,jpg,png';
+\end{sfvcode}
+
+\section{Output Type}
+\index{output\_type}
+\index{Attributes!output\_type}
+The value of Output\_type is for the SAS display manager.  It gives SAS clues
+about how to treat the output files the tagset creates.  Known values for
+output type are HTML, XML, Latex, troff, and CSV.
+
+\section{Adding Measurements}
+\index{Measurement}
+\index{Attributes!Measured}
+The measurement attribute indicates whether measurements of the output should be
+supplied.  This attribute is currently ignored.  
+
+\section{Copyright Symbol}
+\index{Copyright}
+\index{Attributes!Copyright}
+The Copyright attribute should be set to a string that will render to a 
+copyright symbol for the markup being generated.
+
+\section{Trademark Symbol}
+\index{Trademark}
+\index{Attributes!Trademark}
+The trademark attribute should be set to a string that will render to a 
+trademark symbol for the markup being generated.
+
+\section{Registered Trademark Symbol}
+\index{Registered Trademark}
+\index{Attributes!Registered Trademark}
+The Registered\_Trademark attribute should be set to a string that will render to a 
+registered trademark symbol for the markup being generated.
+
+\section{Default Event}
+\index{Default Event}
+\index{Attributes!Default Event}
+The default event is the name of an event to use if the event requested by ODS
+is not defined.  Some tagsets consist almost entirely of just a default event.
+
+\section{Embedded Stylesheet}
+\index{Embedded Stylesheet}
+\index{Attributes!Embedded Stylesheet}
+This attribute tells ODS that it is ok to trigger stylesheet events even when there
+is no stylesheet file.  If Embedded_stylesheet is set to yes, and there is no stylesheet
+specified on the ODS statement, then stylesheet events will be directed to the body file.
+
+\section{Pure Style}
+\index{Pure Style}
+\index{Attributes!Pure Style}
+This attribute causes the default behavior of ODS Markup to be like the old ODS HTML.
+A stylesheet is not used.  Although it could be generated.  The result is that
+all style attributes are available on all events.  Normally, the styles definitions
+are printed at the beginning.  Later on most of the style attributes will be blanked
+when the style is actually in use.  For instance the font and foreground color will
+not be defined when the titles actually occur.  Only the name of the style to be used
+will be populated.  Any style over rides will be seen.  But for the most part that is
+all that will show up other than the actual style name.
+
+The best way to visualize this
+is to create an HTML tagset that does it.  Extremely verbose HTML is the result.
+This is not a good way to create HTML but there may be markup languages or other
+uses that require this behavior.  Although, I have yet to see an instance where
+this behavior is actually desired.  
+
+\begin{sfvcode}
+proc template;
+    define tagset tagsets.verbose_html;
+        parent=tagsets.html4;
+        embedded_stylesheet=no;
+        pure_style=yes;
+    end;
+run;
+ods html file='simple.html';
+ods tagsets.verbose_html file='verbose.html';
+ods _all_ close;
+\end{sfvcode}
+
+The result is extremely verbose output.  The body tag from the purestyle
+tagset is shown first, followed by the same tag from the html4 tagset.
+
+\begin{sfvoutput}
+<body onload="startup()" onunload="shutdown()" 
+      style=" font-family: Arial, Helvetica, sans-serif; font-size: 3; 
+      font-weight: normal; font-style: roman; color: #002288; 
+      background-color: #E0E0E0; margin-left: 8; margin-right: 8;">
+
+
+<body onload="startup()" onunload="shutdown()" class="Body">
+
+\end{sfvoutput}
+
+\section{Package}
+The package attribute sets a package template to use with this destination.  When this
+happens, a package that uses that package template will be created.  If the package
+is an archive then it will be given the file name from the ODS statement.  The actual
+files created and placed in the package will take their names from the tagset's 
+file name attributes.  By default, the package created will be an archive.
+
+\section{File Names}
+\index{Packages}
+\index{Packages!file names}
+\index{Body}
+\index{Contents}
+\index{Pages}
+\index{Frame}
+\index{Stylesheet}
+\index{Code}
+\index{Data}
+There are 7 file names that can be specified within the tagset.  One for each of
+the files that can be created by ODS Markup.  Body, contents, pages, frame, stylesheet,
+code and data.  The filenames are specified as quoted strings.
+
+
+\section{Mime Types}
+\index{Mimetypes}
+\index{Packages}
+\index{Packages!Mimetypes}
+\index{Body\_mimetype}
+\index{Contents\_mimetype}
+\index{Pages\_mimetype}
+\index{Frame\_mimetype}
+\index{Stylesheet\_mimetype}
+\index{Code\_mimetype}
+\index{Data\_mimetype}
+\index{Default\_mimetype}
+The mime types for each of the 7 files can also be specified.  There is also
+a default mime type that will be used in the absence of the others.  If the 
+mime types are not specified ODS will guess at the mimetype for the file.
+These attributes are; body_mimetype, contents_mimetype, pages_mimetype, frame_mimetype,
+stylesheet_mimetype, code_mimetype, data_mimetype, and default_mimetype.
+
+
+\section{Measurement"}
+\index{measurement}
+\index{Attributes!measurement}
+\index{RTF}
+\index{LaTeX}
+Setting measurement to yes will turn on the measurement of the content being
+generated.  All text will be measured for height and width and will be adjusted
+to fit the physical page.  Tables will be paneled if needed.  This behavior is
+what has made it possible to create an RTF tagset.  The MLaTeX tagset also takes
+advantage of measurement to create reports that fit nicely on paper.
+
+
+
+\section{Log\_note}
+\index{Log\_note}
+\index{Attributes!Log\_note}
+The lognote attribute is a note that will be printed once when the tagset 
+is used in an ODS statement.  The same behavior can be accomplished using
+the putlog statement in the initialize event.
+
+\section{Splitting Text}
+\index{Split}
+\index{Attributes!Split}
+\index{Breaktext\_Length}
+\index{Attributes!Breaktext\_Length}
+\index{Breaktext\_Width}
+\index{Attributes!Breaktext\_Width}
+\index{Breaktext\_Ratio}
+\index{Attributes!Breaktext\_Ratio}
+ODS HTML introduced a new behavior with SAS 8.1.  Text was automatically broken to
+the next line if the length exceeded the width of the column or page.  This behavior
+worked well most of the time.  But not always.  Tagsets give complete control over
+this behavior with the three breaktext attributes.  This is a fairly complex set of
+attributes.  The first two are to disable the breaking of text based on the length
+of the string or the width of the space the string is going into.  The third defines
+when text should be broken based on the ratio of space verses text.
+The best way to see how they work is to play with them.
+
+\subsection{Breaktext Length}
+\index{Breaktext\_Length}
+\index{Attributes!Breaktext\_Length}
+Breaktext\_length is the maximum {\bfseries length of text} which will be considered for placement 
+of automatic breaks.  If the text is longer than this value then no breaks will be inserted
+automatically
+To keep text longer than 66 characters long from having forced breaks inserted, you would specify:
+\begin{sfvcode}
+  breaktext\_length=66;
+\end{sfvcode}
+
+\subsection{Breaktext Width}
+\index{Breaktext\_Width}
+\index{Attributes!Breaktext\_Width}
+Breaktext\_width is the maximum {\bfseries width of space} that will
+be considered for placement of automatic breaks in text.  If the width
+of the space is greater than this value the text will not be broken.
+To not break text that is going into a space greater than or equal
+to 40 characters wide, you would specify:
+
+\begin{sfvcode}
+    BreakText_Width=40;
+\end{sfvcode}
+
+
+\subsection{Breaktext Ratio}
+\index{Breaktext\_Ratio}
+\index{Attributes!Breaktext\_Ratio}
+Breaktext\_Ratio is the ratio of the width of space to the length of the text which is supposed to fit in it.  Like the other two attributes, this attribute serves to narrow the the string and
+width combinations that will be considered for splitting.  The text length and width must fall
+within this ratio before they will be considered for forced splits.
+
+If it is desirable to never force breaks in text which is less than 1.2 times longer
+than the width of space it is to fit in, you would specify:
+
+\begin{sfvcode}
+    BreakText_Ratio=1.2;
+\end{sfvcode}
+
+
+\section{External Graph Instance}
+\index{Ext\_Graph\_Instance}
+\index{Attributes!Ext\_Graph\_Instance}
+The External\_graph\_instance attribute is used specifically to save on memory usage.
+Setting this attribute to yes, means that when graph procedures are used, another
+ods Markup file will be created internally.  The graph procedure will use the 
+graph tagset to generate it's output, and that output will be incorporated into
+the output generated on the ods statement.  This comes into play when the devices
+are set to java, javaimg, activex and activeximg.  It is also used by statistical
+graphics.  If a tagset does not specify this, then only images will be supported
+by the tagset, unless it defines the graph events.  
+
+\section{No Byte Order Mark}
+\index{No\_Byte\_Order\_Mark}
+\index{Attributes!No\_Byte\_Order\_Mark}
+When creating XML output with a unicode encoding a byte order mark should be the
+first character in the file.  The byte order mark tells the XML parser what the
+byte order is for multibyte characters.  When viewed in an editor it looks like
+hexadecimal characters.  Many inferior XML parsers cannot cope with the byte order
+mark.  If this attribute is set to yes, the generated XML will not have a byte order
+mark.  This is a bad idea.  The pain and suffering caused by actually typing in
+and reading the attribute says it all.  'No\_Byte\_Order\_Mark=yes'.
+
+\section{Hierarchical Data}
+\index{Heirarchical\_Data}
+\index{Attributes!Heirarchical\_Data}
+Setting the Hierarchical\_Data attribute to yes will cause the Tabulate and Freq
+procedures to follow a hierarchical event model instead of a tabular event model.
+This model allows the creation of data cubes ala OLAP.
+
+\section{Summary}
+There are many attributes available but for the most part they can be set and forgotten
+or even better, inherited from another tagset.  

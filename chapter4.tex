@@ -1,0 +1,461 @@
+\chapter{Creating Variables}
+\index{\$}
+\index{\$\$}
+The set statement has already been used in several examples. 
+Set is the primary way to create and modify variables in
+tagsets.
+Before continuing it would be good to
+explain the different types of variables and the methods 
+of creating them.  This chapter is dedicated to explaining
+the different types of variables that can be created and 
+used in tagsets.
+
+The first step towards understanding is to create a tagset that
+we can play with.  We know the initialize event happens once and
+that it happens at the very beginning.  We can create a framework
+that will allow us to play with tagset just by utilizing the the
+initialize event.  There are other events we could use.  Doc for
+instance.  But initialize will do just fine.  All of the code snippets
+can be placed directly into the initialize event in the following code.
+
+\begin{sfvcode}
+proc template;
+     define tagset tagsets.Variables;
+
+         define event initialize;
+
+             /* put play code here */
+
+         end;
+     end;
+run;
+
+ods tagsets.variables file='test.txt';
+ods tagsets.variables close;
+
+\end{sfvcode}
+
+
+\section{String Variables}
+\index{Statements!Set}
+\index{Set}
+\index{Statements!UnSet}
+\index{UnSet}
+The most common variables are string variables.  Any variable
+created with the set statement will be a string.  Tagset variables
+are variable length, meaning that they are always the size of the
+text they contain.  If a variable is assigned an empty string then
+it really doesn't exist at all.  But that's ok, because referencing
+a non-existant variable is allowed, in fact it's the easiest way
+to create conditional values.  Setting a variable to 'true' and unsetting
+it for false is the most efficient way to use a variable of this sort.
+
+The set statement always creates strings.  The first argument is
+the variable to set.  
+All variables that can be created are
+prefixed with a \$ or a \$\$.
+After that, the set statement works just like a put,  any number
+of strings and variables can be specified.  Including the variable
+that is being assigned.
+
+The unset statement is used to delete any variables that may have
+created.  Unsetting a variable that does not exist does no harm.
+
+\begin{sfvcode}
+           set $test 'The value is:' value;           
+           set $test2 $test ' and the label is:' label;           
+
+           unset $test;
+
+           put $test2;
+\end{sfvcode}
+
+Like the put statement, set can also have datastep functions.  The
+functions cannot be nested.
+
+\begin{sfvcode}
+           set $test  operator ' ran this job.';           
+           set $test2 $test ' On this date: ' date;           
+           set $test3 compress($test2, ':.');
+\end{sfvcode}
+
+\section{Lists}
+\index{Lists}
+\index{Lists!Pushing values}
+Set can also create variables that are lists.  Lists are denoted by
+a suffix of '[]'.  If the brackets are empty the set adds a new entry
+to the end of the list.  Lists are 1 based, the first entry always
+has an index value of 1.
+If there is a number within the brackets the
+value at that location in the list will be replaced with the new value.
+If the list is not that long, then the value is appended to the end of
+the list.  If a list variable is referenced without a subscript the 
+return value is the number of entries in the list.
+
+\begin{sfvcode}
+            set $test[]  operator ' ran this job.';           
+            set $test[] $test[1] ' On this date: ' date;           
+            set $test[] compress($test[2], ':.');
+\end{sfvcode}
+
+\index{Lists!Negative indexing}
+\index{Lists!Popping values}
+Lists also accept negative index values.  If the index value is negative
+the the list will be indexed from the end instead of the beginning. 
+An index of -1 is always the last entry in the list.  Unsetting a
+value in a list causes the list to shrink and all entries from that
+point on will appear to have moved to eliminate the gap.  The last entry
+on a list can be deleted by unsetting the -1 entry.
+
+
+\begin{sfvcode}
+           set $test[] 'Entry 1';
+           set $test[] 'Entry 2';
+           set $test[] 'Entry 3'; 
+
+           set $test[2] 'The New 2';
+
+           put 'Test has a length of ' $test nl;
+
+           /* print them in reverse order */
+           put $test[-1] nl;
+           put $test[-2] nl;
+           put $test[-3] nl;
+
+           /* delete the first entry */
+           unset $test[1];
+       
+           put 'Test has a length of ' $test nl;
+ 
+           /* delete the whole thing */
+
+           unset $test;
+
+           put 'Test has a length of ' $test nl;
+
+\end{sfvcode}
+
+\section{Dictionaries}
+
+\index{Dictionaries}
+Dictionaries are just like lists except that their indexes are strings
+instead of numbers.  These are called key's.  In order to create an entry
+in a dictionary a key must be provided.
+
+\begin{sfvcode}
+            set $test['one']  operator ' ran this job.';           
+            set $test['one plus'] $test['one'] ' On this date: ' date;           
+            set $test['one sentence'] compress($test['one plus'], ':.') '.';
+
+            put 'Test has a length of ' $test nl;
+
+            set $key 'one sentence';
+            put $test[$key] nl;
+
+           unset $test;
+
+\end{sfvcode}
+
+\section{Numeric Variables}
+\index{Variables!Numeric}
+\index{Numbers}
+\index{Numeric Variables}
+Numeric variables can be quite useful for list manipulation and many other
+things.  Numeric variables can be created with the eval statement.  The eval
+statement has two arguments.  The first is the variable to set.  The second
+is a where clause.  Eval is one of the few statements that cannot have an
+if condition.   The problem arises because / is a valid character in a where clause.
+The do statement allows a solution to this problem.
+The type of the variable created with the eval statement 
+depends on the where clause.  If the result of the clause is numeric then
+the variable will be numeric, otherwise it will be a string.  One advantage
+of where clauses is that functions can be nested.  But a set statement is
+much more efficient, so if a string is desired set is the better choice.
+
+\begin{sfvcode}
+      set $key 'one sentence';
+      eval $count 1;
+      eval $count $count+1;
+      eval $position index($test, 's');
+      eval $string1 substr($key, $position);
+      set $string2 substr($key, $position);
+\end{sfvcode}
+
+\section{Stream Variables}
+\index{Variables!Stream}
+\index{Streams}
+\index{Stream Variables}
+\index{Statements!Open}
+\index{Open}
+\index{Statements!Close}
+\index{Close}
+Occasionally the target output does not fit the event model
+used by tagsets.  This is where stream variables are most useful.  Stream
+variables are more like a temporary file than a variable.  The set and unset
+statements work with stream variables, but it is much more common to create or append
+to a stream with the open statement.  Once a stream is open all output will
+be directed to the stream.  Streams automatically compress anything that
+is written to them. As long as the output is small the stream will
+stay in memory.  As it grows it will be written to disk.  A stream is
+closed with a close statement.  A stream will be appended to if it is reopened.
+Only one stream can be open at a time, so
+opening a stream will close any stream that was previously open.  When 
+using a stream variable in a put or set or unset the variable is prefixed with a \$\$.
+
+\begin{sfvcode}  
+     open deferred;
+         put 'we will print this later.  Goodbye.' nl;
+     close;
+     put 'This will print now.' nl;
+
+     put $$deferred;
+
+     unset $$deferred;
+
+\end{sfvcode}  
+
+\subsection{Stream Specific Statements}
+\index{Statements!DelStream}
+\index{DelStream}
+\index{Statements!PutStream}
+\index{PutStream}
+There are several stream specific statements besides open and close.  
+Stream specific commands don't use the \$\$ prefix because they know that
+they are operating on a stream.  Delstream deletes a stream but the command
+is redundant because unset does the same thing.  Putstream on the other hand
+can be useful.  Putstream writes the given stream directly to the output file.
+If another stream is currently open, putstream will reopen that stream when it
+is done.  
+
+Another command that is sometimes needed is flush.  Flush forces any buffered output
+to be written to the current output stream.  This applies to the 'normal' stream that
+points to the output file, or to any other stream which may be open.  
+This is sometimes necessary when switching between streams.
+
+\index{Statements!Open!SAS 9.2}
+\index{Streams!SAS 9.2}
+With the release of SAS 9.2 the open statement will also be able to accept
+variables as a stream name.  This is similar to the concept of pointers in
+the C programming language.  When a variable is given to an open statement
+a stream is opened with the name contained within the variable.
+Using list and dictionary variables with the open statement allows for 
+easy management of multiple streams within a tagset. 
+This simple example behaves just like the previous example.
+
+\begin{sfvcode}  
+
+     set $mystream "deferred";
+
+     open $mystream;
+         put 'we will print this later.  Goodbye.' nl;
+     close;
+     put 'This will print now.' nl;
+
+     put $$deferred;
+
+     unset $$deferred;
+
+\end{sfvcode}  
+
+\section{The Putvars Statment}
+\label{putvars_statement}
+\index{Statements!Putvars}
+\index{Putvars}
+putvars has already been used in previous examples to 
+examine the variables in an event.
+Putvars is a special statement that prints all
+the values for a given category of variables.  The first 
+argument to putvars is the variable category to print.
+The categories are shown in table \ref{Variable Categories}
+on page \pageref{Variable Categories}.
+
+\begin{table}\caption{Putvars: Variable Categories}
+\label{Variable Categories}
+\begin{tabular}{l|l}
+%\multicolumn{2}{c}{variable Categories} \\ 
+\hline
+Event &  Data and Metadata variables\\
+Style &  Style variables\\
+Memory & Memory variables created with set or eval statements\\
+Stream & Stream variables created with the open statement\\
+Dynamic & Dynamic variables created within SAS. \\
+Lists & Any list variable. \\
+Dictionaries & Any Dictionary variable.
+\end{tabular}
+\end{table}
+
+After the first argument, putvars behaves just like a put,
+except that it will execute once for each variable in the
+chosen category.  It is an implicit loop where the name of
+the variable is placed in a special variable \_name\_, and the
+value of that variable is placed in \_value\_.  A very common
+use of putvars looks like this.
+
+\begin{sfvcode}
+   putvars style _name_ ' : ' _value_ nl;
+\end{sfvcode}
+
+\section{Bringing it all together}
+It's quite easy to create a tagset to test all of these things.  The initialize
+event is perfect for this sort of thing. The doc event should be used with SAS 9.0 or earlier.
+The code example on page \pageref{variables example} combines the examples in this chapter 
+into one event.  The output is shown in \ref{variables_out} on page \pageref{variables_out}.  
+
+\clearpage
+\begin{fvcode}{variables example}{Using Variables}
+proc template;
+
+    define tagset tagsets.variables;
+
+        /* define event doc;  */
+        define event initialize;
+
+            set $test  operator ' ran this job.';           
+            set $test2 $test ' On this date: ' date;           
+            set $test3 compress($test2, ':.');
+
+            put 'Simple string Variables' nl;
+            putvars memory _name_ ': ' _value_ nl;
+
+            set $test[]  operator ' ran this job.';           
+            set $test[] $test[1] ' On this date: ' date;           
+            set $test[] compress($test[2], ':.');
+         
+            put nl 'A List' nl;
+            putvars $test _name_ ': ' _value_ nl;
+
+            set $test[] 'Entry 1';
+            set $test[] 'Entry 2';
+            set $test[] 'Entry 3'; 
+
+            set $test[2] 'The New 2';
+
+            put nl 'The same List' nl;
+            put 'Test now has a length of ' $test nl;
+
+            putvars $test _name_ ': ' _value_ nl;
+
+            put nl 'Print the last 3 in reverse' nl;
+            /* print them in reverse order */
+            put $test[-1] nl;
+            put $test[-2] nl;
+            put $test[-3] nl;
+
+            /* delete the first entry */
+            put 'Deleting test[1]' nl;
+            unset $test[1];
+       
+            put 'Test now has a length of ' $test nl;
+ 
+            putvars $test _name_ ': ' _value_ nl;
+
+            /* delete the whole thing */
+
+            unset $test;
+
+            put 'Test has a length of ' $test nl;
+
+            set $test['one']  operator ' ran this job.';           
+            set $test['one plus'] $test['one'] ' On this date: ' date;           
+            set $test['one sentence'] compress($test['one plus'], ':.') '.';
+
+            put nl 'A Dictionary' nl;
+            put 'Test has a length of ' $test nl;
+
+            putvars $test _name_ ': ' _value_ nl;
+
+            put nl 'Print a dictionary entry with a key' nl;
+            set $key 'one sentence';
+            put $test[$key] nl;
+
+            unset $test;
+
+            eval $count 1;
+            eval $count $count+1;
+            eval $position index($key, 's');
+            eval $string1 substr($key, $position);
+            set $string2 substr($key, $position);
+
+            put nl 'Miscellaneous variables' nl;
+            putvars memory _name_ ': ' _value_ nl;
+
+            open deferred;
+                put 'we will print this later.  Goodbye.' nl;
+            close;
+            put nl 'This will print now.' nl;
+   
+            put $$deferred;
+   
+            unset $$deferred;
+
+        end;
+    end;
+run;
+
+ods tagsets.variables file='test.txt';
+ods tagsets.variables close;
+\end{fvcode}
+
+\begin{poutput}{variables_out}{Using Variables}
+Simple string Variables
+test: eric ran this job.
+test2: eric ran this job. On this date: 2003-10-26
+test3: eric ran this job On this date 2003-10-26
+
+A List
+: eric ran this job.
+: eric ran this job. On this date: 2003-10-26
+: eric ran this job On this date 2003-10-26
+
+The same List
+Test now has a length of 6
+: eric ran this job.
+: The New 2
+: eric ran this job On this date 2003-10-26
+: Entry 1
+: Entry 2
+: Entry 3
+
+Print the last 3 in reverse
+Entry 3
+Entry 2
+Entry 1
+Deleting test[1]
+Test now has a length of 5
+: The New 2
+: eric ran this job On this date 2003-10-26
+: Entry 1
+: Entry 2
+: Entry 3
+
+A Dictionary
+Test has a length of 3
+one: eric ran this job.
+one plus: eric ran this job. On this date: 2003-10-26
+one sentence: eric ran this job On this date 2003-10-26.
+
+Print a dictionary entry with a key
+eric ran this job On this date 2003-10-26.
+
+Miscellaneous variables
+test2: eric ran this job. On this date: 2003-10-26
+test3: eric ran this job On this date 2003-10-26
+key: one sentence
+count: 2
+position: 5
+string1: sentence
+string2: sentence
+
+This will print now.
+we will print this later.  Goodbye.
+\end{poutput}
+
+\section{Summary}
+This chapter uses a fairly simplistic tagset that does
+nothing but show the various forms of variables that
+can be created.  Strings are by far the most common
+type of variable.  Occasionally only a numeric variable
+will do what is needed.  It may not be apparent, but 
+Dictionaries and lists can be extremely useful for
+simplifying problems and creating new possibilities.
+

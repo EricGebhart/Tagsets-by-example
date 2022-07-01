@@ -1,0 +1,86 @@
+\chapter{Extended examples}
+This chapter will explore some more complex examples.  The
+complexity comes mostly from the combination of multiple
+techniques.  From a juggler's point
+of view, there are just more balls in the air.  But a ball is
+still just a ball.  Any given feature of these new tagsets
+is still just as simple as it ever was.  This is one of the
+wonderful things about tagsets.  It is easy to reuse and 
+combine ideas from different tagsets.
+
+\section{Repeating Headers, and Mirrored Row headers}
+When tabular output is extremely wide or long it is often hard to tell
+what the data is because the haders have scrolled out of view.  This
+tagset solves that problem by putting row headers on both sides of the
+table.  It also repeats the headers as in our previous example on page
+\pageref{repeat3}
+
+\subsection{The Single Stream Solution}
+This solution uses a single stream per row to capture all of the row headers.
+This works nicely but when a table has multiple row headers the result isn't
+as nice as it could be.  Still, this is an important step towards the next
+solution.
+
+\subsection{The Multiple Stream Solution}
+This solution uses multiple streams to capture the row headers.  Streams
+make everything easy.  The easiest thing would be to use one stream to catch
+the rowheaders on each row.  But then, the order would be fixed when a row had
+multiple column row headers.  It  would be really nice if the row headers would
+be reversed when they are printed on the other end of the table.  To do that
+each row header will need it's own stream.
+
+\subsection{The Multiple List Solution}
+This solution uses lists to capture the row headers text and alignment.
+this is a bit more work but makes it easier to manipulate how the row headers
+are rendered.
+
+\section{Automatic Panelling}
+In this example we will combine our startpage tagset with some a dictionary 
+and some new events to create a tagset that automatically panels output.
+
+\subsection{An Extension of Start Page}
+sthsnthsn
+
+\subsection{The solution}
+tnhsnthsn
+
+\section{HTML forms}
+This example uses as simple proc print to create a simple HTML form with 
+option menus created by the proc print.  This is a fairly simple example 
+that can be extended to use multiple data sets and procedures to create
+more complex HTML forms from ODS.
+
+\subsection{Option Lists}
+
+\subsection{Saving the Lists}
+
+\subsection{Creating the Form}
+
+\section{Summary}
+These tagsets are another example of how a basic idea can be
+extended to create a nicley flexible output destination.  It can be completely
+transparent to the user or it's behavior can be modified at will.
+
+
+\chapter{A feature Rich Tagset}
+In this book we have created many tagsets that can each do something special.
+The tagsets have been carefully written to enable those features to be
+transparent to anyone who uses them.  It is possible that all of these features
+be combined into one tagset.  
+
+\section{Which features?}
+two - sided, start page, sliders, table head style, stripes, nobs, byline, web site.
+
+\section{Lining up the inheritance}
+Some of the existing tagsets con be used just by changing their inheritance.  If the
+order of inheretance is chosen with care then the number of changes can be minimized.
+
+\section{Copy and Paste}
+It might just be easier to create one big tagset that does it all...
+
+\section{Macro Variables and Tagset Alias}
+Turning all of these things on and off presents some special problems.  Each of them
+want macro variables, tagset alias or both.
+
+\section{Summary}
+Cool.

@@ -1,0 +1,619 @@
+\chapter{Modifying Existing Tagsets}
+\index{Tagset!modifying}
+\index{Tagset!inheritance}
+The most common tagset programming is done to
+modify the behavior of an existing tagset. 
+Modifying a tagset is fairly easy to do because
+tagsets can inherit events from each other.  
+It is also easy to identify which events need changing.
+This chapter will introduce a few new concepts
+while showing the steps needed to modify a tagset
+through inheritance.  
+ 
+
+\index{CSV}
+\section{Changing the delimiter for CSV files}
+
+It is a common request to change the delimiter used
+by the CSV destination.
+A common alternative to the comma is the semi-colon, another
+popular choice is tab. These examples are going to
+show how to create a new tagset, that does this
+through inheritance.  The CSV tagset is not as simple
+as it once was.  The difference between the current CSV
+tagset and the original CSV tagset that shipped with SAS 8.2
+is like night and day.  Despite it's surprising complexity
+the CSV tagset is still easy to derive other tagsets from.
+
+With the version from SAS 8.2, creating a tagset that used
+a different delimiter was actually more complex.  The current
+version actually has an option that we can specify on the 
+ODS statement or within a new tagset that we define ourselves.
+
+Because it is a good example, I will take you through the process
+of modifying the CSV tagset from SAS 8.2.  If you need it this
+tagset is readily available at http://support.sas.com/rnd/base/topics/odsmarkup.
+
+After that, we'll go through the motions with the CSV tagset available
+for SAS 9.1.3 dated April 2006.
+
+
+\index{Finding Events}
+\subsection{Finding the Events}
+The first thing to do is find the events that
+put the commas in between the comma separated values.
+A good guess is that the data and header events will
+be involved.  But one of the nice things about inheriting
+from another tagset is that it can be examined for clues.
+Since this tagset is going to modify the csv tagset, that
+is the tagset to inherit from.
+There are two ways to look at the csv
+tagset.  Proc template is my least favorite, because
+it loses white space and comments.  It also reverses
+the order of the tagset attributes and events.  But
+to use it do the following.
+
+\begin{fvcode}{Source_tagsets}{Getting the CSV Source}
+
+ proc template;
+   source tagsets.csv;
+
+\end{fvcode}
+
+My favorite way to look at tagsets is by using the original
+source which is downloadable from the SAS web site.  The source
+can also be examined in the template browser or by using the
+source statement in proc template.  However, those methods do
+not show white space or comments that are in the original source.
+That makes the original tagset source code far superior to the
+tagset source you can see through the template interface.
+
+Looking at the source 
+in Figure \ref{comma_events} on page \pageref{comma_events} 
+shows all the events which have commas.
+
+\begin{fvcode}{comma_events}{CSV Events with commas}
+
+        define event header;
+          start:
+            put ',' / if !cmp(COLSTART, "1");
+            put '"';
+            put VALUE;
+          finish:
+            put '"';
+        end;
+
+        define event data;
+          start:
+            put ',' / if !cmp(COLSTART, "1");
+            put '"';
+            put VALUE;
+          finish:
+            put '"';
+        end;
+
+        define event colspanfill;
+            put ',';
+        end;
+
+        define event rowspanfill;
+            put ',' /if ! exists(VALUE);
+        end;
+
+
+\end{fvcode}
+
+\subsection{Simple Ifs}
+\index{if}
+\index{compare}
+\index{cmp}
+\index{exists}
+\index{any}
+\index{contains}
+\index{if!compare}
+\index{if!cmp}
+\index{if!exists}
+\index{if!any}
+\index{if!contains}
+These events are readily understandable, but contain
+three if statements that need explanation.  This type
+of if only applies to the statement it is connected
+to.  There are 5 tests that are extremely 
+efficient.  The first two are, cmp() and exists().
+The others are any(), contains(), and a variable by its
+self. Exists, Any, and the simple
+variable tests evaluate for a non-zero length of strings
+and the actual value of numeric variables.  A value of 0 
+is false, non-zero is true.
+
+\subsubsection{Compare}
+\index{compare}
+\index{cmp}
+\index{variables!colstart}
+Both of these tests are preceded
+by an exclamation point.\footnote{An ! can only occur
+at the beginning of a test}  An exclamation point or
+caret means not.  Cmp is an effient case insensitive
+compare.  The variable colstart always contains the 
+number of the column that the current cell starts in.
+
+The data and header events, use cmp to suppress the comma,
+on first value of the row.
+
+\subsubsection{Exists}
+\index{exists}
+The final if in the tagset is an exists.  Exists can take any number
+of variables as arguments.  If all the variables have
+a value then exists is true, otherwise it is false.
+The following pseudo code shows how exists can be thought 
+of as a group of ands. 
+\begin{sfvcode}
+  if exists(variable1, variable2, variable3)
+  if variable1 and variable2 and variable3
+\end{sfvcode}
+In a case like this, the variable could be listed
+by its self like this.
+\begin{sfvcode}
+  put ',' /if ! exists(variable);
+  put ',' /if ! variable;
+\end{sfvcode}
+Either syntax will cause 
+the put in the rowspanfill event will print a comma
+if the VALUE variable does not have a value.  Rowspanfill is one of those
+elusive events that is is rarely sighted.  The best way to coax it out of
+hiding is to use Proc Tabulate.
+
+\subsubsection{Any}
+\index{any}
+Any() is just like exists() but is true if any one
+of the variables given has a value.  Think of it as
+a group of OR's as demonstrated by this pseudo code.
+\begin{sfvcode}
+   if any(variable1, variable2, variable3)
+   if variable1 or variable2 or variable3
+\end{sfvcode}
+
+\section{Making the changes}
+Even with the new syntax just discussed, the job is pretty easy.  All that
+is desired is to change those commas to semi-colons.
+
+Tagset inheritiance is very straight forward.  A tagsets inherits all attributes
+and events from the parent tagset.  Any changes require a complete redefinition of
+the event to be changed.
+
+The new tagset only needs to specify tagsets.csv as it's parent and redefine those
+four events with semi-colons instead of commas.  The new tagset is shown in 
+listing \vref{Semi-csv}.
+
+
+\begin {fvcode}{Semi-csv}{Semi-Colon separated values}
+    Define tagset tagsets.SSV
+        parent=tagsets.csv;
+    
+        define event header;
+            start:
+                put ';' / if !cmp(COLSTART, "1");
+                put '"';
+                put VALUE;
+            finish:
+                put '"';
+        end;
+
+        define event data;
+            start:
+                put ';' / if !cmp(COLSTART, "1");
+                put '"';
+                put VALUE;
+            finish:
+                put '"';
+        end;
+
+        define event colspanfill;
+            put ';';
+        end;    
+
+        define event rowspanfill;
+            put ';' /if ! exists(VALUE);
+        end;
+
+     end; 
+\end{fvcode}
+
+Running the following proc print 
+with the new tagset gives us the output.
+Shown in figure \vref{semi_output}.
+\begin{sfvcode}
+options obs=3;
+ods tagsets.ssv file='test.ssv';
+proc print data=sashelp.class;run;
+ods tagsets.ssv close;
+\end{sfvcode}
+
+\begin{poutput}{semi_output}{Semi Colon Separated output}
+"Obs";"Name";"Sex";"Age";"Height";"Weight"
+" 1";"Alfred";"M";"14";"69.0";"112.5"
+" 2";"Alice";"F";"13";"56.5";" 84.0"
+" 3";"Barbara";"F";"13";"65.3";" 98.0"
+\end{poutput}
+       
+\section{A better CSV tagset}
+\index{Define!event}
+\index{Event!data}
+This new but old tagset is nice, but it's not very flexible.  It's not that
+hard to write a new one if a different delimiter is desired, but wouldn't
+it be nice to have a tagset that would use any delimiter it was given?
+Macro variables are one way to achieve more flexibility.  Once declared
+they can be used anywhere within the tagset.  Macro variables in a tagset
+can get out of hand.  Since SAS 9.1.3 there has been an options option that
+gives the same flexibility without cluttering up the SAS macro name space.
+
+\subsection{Macro variables}
+\index{Macro Variables}
+Macro variables are one way to pass values into a tagset.
+Any macro variable can be accessed
+within the tagset as long as it is declared.  A macro
+variable can be used to define the delimiter.  A comma 
+can be used in its absence.
+A macro variable is declared in a tagset like this:
+\begin{sfvcode}
+  mvar myvariable;
+  nvar myOtherVariable;
+\end{sfvcode}
+As long as they are declared the tagset will know what to do when
+they are used.  If they are not declared then the tagset will fail to
+compile when you reference them later.
+
+\subsection{The Initialize Event}
+\index{Event!Initialize}
+The code could use the macro variable everywhere there is a comma, but
+that would require an if at each point to determine if a comma 
+was needed instead.  That would add unecessary complexity.  It
+would also allow the delimiter to be changed in midstream.  A changing
+macro variable might be good in other situations, but it's not very 
+useful here.
+
+It would be best to set up the delimiter once at the very beginning
+and use that everywhere.  There is a special event especially for
+this sort of thing.  The Initialize event\footnote{Only available in SAS 9.0
+or greater, use the doc event in earlier releases} happens once when the tagset
+is first invoked.  All that is needed is to examine the macro variable
+and create a tagset variable accordingly.
+
+\subsection{The set statement}
+\index{Set}
+\index{Statements!Set}
+By using the Set statement\footnote{Available in SAS 9.0 and greater}
+it is possible to create variables within a tagset.  All variables
+are global and will persist until they are unset or the output destination
+is closed.  Set will be used to create a new delimiter variable that
+will be populated with the macro variable or, lacking that, a comma.
+
+\subsection{The New CSV Tagset}        
+Our new old school (SAS 8.2) tagset is shown in figure \vref{csv_1}.
+
+\begin{fvcode}{csv_1}{A Better CSV Tagset}
+proc template;
+
+    Define tagset tagsets.SSV;
+        parent=tagsets.csv;
+
+        mvar csv_delimiter;
+
+        define event initialize;
+           set $delimiter csv_delimiter;
+           set $delimiter ',' /if !$delimiter;
+        end;
+
+        define event header;
+            start:
+                put $delimiter / if !cmp(COLSTART, "1");
+                put '"';
+                put VALUE;
+            finish:
+                put '"';
+        end;
+
+        define event data;
+            start:
+                put $delimiter / if !cmp(COLSTART, "1");
+                put '"';
+                put VALUE;
+            finish:
+                put '"';
+        end;
+
+        define event colspanfill;
+            put $delimiter;
+        end;    
+
+        define event rowspanfill;
+            put $delimiter /if ! exists(VALUE);
+        end;
+
+     end; 
+run;
+
+%let csv_delimiter=|;
+
+options obs=3;
+ods tagsets.ssv file='test.ssv';
+proc print data=sashelp.class;run;
+ods tagsets.ssv close;
+\end{fvcode}
+
+For this run the delimiter has been set to '|' which causes
+the output to appear as in figure \ref{csv_1_out} on page \pageref{csv_1_out} 
+
+\begin{poutput}{csv_1_out}{Semi Colon Separated output}
+"Obs"|"Name"|"Sex"|"Age"|"Height"|"Weight"
+" 1"|"Alfred"|"M"|"14"|"69.0"|"112.5"
+" 2"|"Alice"|"F"|"13"|"56.5"|" 84.0"
+" 3"|"Barbara"|"F"|"13"|"65.3"|" 98.0"
+\end{poutput}
+       
+This tagset is quite flexible.  But there's the next best thing that will
+make it even more flexible.  Macro variables are nice, but
+they can be hard to keep track of.  
+
+\subsection{Tagset Alias}
+\index{Alias}
+\index{tagset\_alias}
+\index{Variables!tagset\_alias}
+At some point there was a realization that a tagset might want to behave
+differently on occasion.  That it would assume an alias, a sort of alternate
+personality.
+from it's usual behavior.   What I didn't realize at that time is that the
+future would call for a multiply split personality and that a simple alias 
+would fall quite short of providing the nuances we would later need.
+
+The ods markup statement has an alias option that was created just for
+this sort of purpose.
+It works very simply, any value assigned to alias becomes
+the value of the tagset\_alias variable in the tagset.  All that is needed
+is to add it to the initialize event.  Once that happens, the delimiter can
+be specified on the ods statement.
+
+For simplicity this example creates a completely new tagset which inherits
+from the example in \ref{csv_1} on page \pageref{csv_1}.  The only event that
+needs to be changed is the initialize event.  There is no reason to repeat
+all the other events.  Inheritance keeps the example short and simple.
+In reality this would probably be incorporated into one tagset.
+
+The delimiter should be the value specified on the ods statement first.  The
+value of the macro variable second, and if neither of those are specified
+then the delimiter should default to comma.
+The resulting code is shown in figure \ref{csv_2} on page \pageref{csv_2}.
+In this example the macro variable is still set to '|' but an ! is given
+on the ods statment.  
+The resulting output is shown in figure \ref{csv_2_out} on page 
+\pageref{csv_2_out}.
+
+\begin{fvcode}{csv_2}{Using alias}
+proc template;
+
+    Define tagset tagsets.SSV2;
+        parent=tagsets.ssv;
+
+        mvar csv_delimiter;
+
+        define event initialize;
+           set $delimiter tagset_alias;
+           set $delimiter csv_delimiter /if !$delimiter;
+           set $delimiter ',' /if !$delimiter;
+        end;
+     end; 
+run;
+
+%let csv_delimiter=|;
+
+options obs=3;
+ods tagsets.ssv2 file='test.ssv' alias='!';
+proc print data=sashelp.class;run;
+ods tagsets.ssv2 close;
+
+\end{fvcode}
+
+\begin{poutput}{csv_2_out}{Variable delimited output}
+"Obs"!"Name"!"Sex"!"Age"!"Height"!"Weight"
+" 1"!"Alfred"!"M"!"14"!"69.0"!"112.5"
+" 2"!"Alice"!"F"!"13"!"56.5"!" 84.0"
+" 3"!"Barbara"!"F"!"13"!"65.3"!" 98.0"
+\end{poutput}
+
+\subsection{Tagset Options}
+\index{Options}
+\index{\$options}
+\index{Variables!\$options}
+As of SAS 9.1.3 the ODS markup destination has a new option.  Options can
+now be passed to the tagset with the options(...) option.  This allows 
+great flexibility in the tagset with a central control in the ods 
+statement.  Options are much more powerful than the Alias option, and
+much easier than macro variables.  As a tagset becomes more complex it
+is often necessary to give it more controls.  Macro variables can get
+out of hand and become hard to manage.  As of this writing, the most 
+current CSV tagset has several options.  Other tagsets have even more.
+
+\begin{sfvcode}
+ods tagsets.ssv2 file='test.ssv' options(delimeter='!' doc='help');
+\end{sfvcode}
+
+Any name/value pairs given within the parenthesis become entries in a
+tagset dictionary variable called \$options.  It is up to the tagset
+to use them.  It is also the responsibility of the tagset
+to document their use.  
+
+
+\begin{fvcode}{csv_2}{Using alias}
+proc template;
+
+    Define tagset tagsets.SSV2;
+        parent=tagsets.ssv;
+
+        mvar csv_delimiter;
+
+        define event initialize;
+           set $delimiter tagset_alias;
+           set $delimeter $options['DELIMETER'] /if $options;
+           set $delimiter csv_delimiter /if !$delimiter;
+           set $delimiter ',' /if !$delimiter;
+           
+           trigger help /if $options;
+        end;
+
+        define event options_set;
+           trigger initialize;
+        end;
+
+        define event help;
+           break /if ^cmp($options['DOC'], 'help');
+           putlog ' ';
+           putlog 'Help for the SSV2 tagset';
+           putlog ' ';
+           putlog 'The following options are available';
+           putlog 'doc: No default value.';
+           putlog '     help - this text.';
+           putlog ' ';
+           putlog "delimeter: default value: ','";
+           putlog '     The value of this option will be used';
+           putlog '     as the delimeter for the data printed.';
+           putlog ' ';
+        end;
+      
+     end; 
+run;
+
+%let csv_delimiter=|;
+
+options obs=3;
+ods tagsets.ssv2 file='test.ssv' options(delimeter='!' doc='help');
+proc print data=sashelp.class;run;
+ods tagsets.ssv2 options(delimeter=';');
+proc print data=sashelp.class;run;
+ods tagsets.ssv2 close;
+
+\end{fvcode}
+
+This tagset introduces a new event called Options\_set.  The Options\_set
+event will happen when a subsequent ods statement changes the options
+on an ods statement that is already open.  The second ods statement in
+the example exercises the Options\_set event.
+
+
+\section{The Current Methodology}
+
+\index{CSV}
+All of these examples have been great for getting an understanding of the
+CSV tagset, events, if statements, macro variables, Tagset Alias, and the
+Options option.  But how would you do all of this now?  With the CSV tagset
+in all of it's modern complexity.  Well, that's not so hard as all of this.
+
+\index{Options}
+\index{Options!CSV}
+\index{\$options}
+In it's current version, the CSV tagset has an option for the delimiter. 
+And another for turning on titles,  and another for footnotes, bylines, 
+procedure titles, and notes.  Even for turning column headers on and off
+or changing the way currency values are treated.  That can lead to a rather
+long set of options on the ods statement.
+
+What if you wanted CSV output that had titles but no table headers, and it
+treated money like numbers.  And we wanted a semi-colon as a field separator.
+Here is the ods statement we could use.
+
+\index{Options!CSV}
+\begin{sfvcode}
+    ods csv file='test.csv'
+            options(delimiter=';' titles='yes' Currency_as_number='yes');
+\end{sfvcode}
+
+\index{Options!CSVALL}
+\index{Options}
+The interesting thing about this is that there are other CSV tagsets.  CSVALL
+and CSV\_byline don't really do much now.  With SAS 8.2 they actually had a
+fair amount of code in them.  Currently all they do is set up some options.
+They are a great example of how we can create a new destination that behaves
+quite differently from the tagset it was derived from.  But without adding 
+much code at all.
+
+Here is the entire source code for the CSVALL tagset.
+
+\index{Options!CSVALL}
+\index{Options!Set}
+\index{Set}
+\index{Statements!Set}
+\begin{sfvcode}
+    define tagset tagsets.csvall;
+        parent= tagsets.csv;
+        notes "This is the CSV with titles and bylines definition";
+
+        define event initialize;
+            set $options['BYLINES'] 'yes';
+            set $options['TITLES'] 'yes';
+            set $options['PROC_TITLES'] 'yes';
+            set $options['NOTES'] 'yes';
+            trigger set_options;
+            trigger documentation;
+            trigger compile_regexp;
+        end;
+
+    end;
+\end{sfvcode}
+
+\index{Options!CSVALL}
+\index{Options!Set}
+\index{Set}
+\index{Statements!Set}
+\index{CSV!Delimiter}
+This can be used as a template for other CSV tagsets.  To create this
+tagset the initialize event was copied from the parent CSV tagset.
+Set statements were added to create a tagset that would over ride any
+settings or lack of settings on the ods statement.  In this case the
+options for bylines, titles, proc titles and notes are all turned on.
+It would be just as simple to create a new tagset that changed the default
+delimiter.  
+
+In this example we want to test for an incoming value before
+setting it to something else.  That is actually something that might
+be nice in the CSVALL tagset.  As it stands, the CSVALL tagset would
+not allow for the titles to be turned off.  It would set that option
+to yes regardless of the options on the ods statement.  Here is the
+new ssv tagset.
+
+\index{Options!CSVALL}
+\index{Options!Set}
+\index{Set}
+\index{Statements!Set}
+\index{CSV!Delimiter}
+\begin{sfvcode}
+    define tagset tagsets.ssv;
+        parent = tagsets.csv;
+        notes "This is the CSV with titles and bylines definition";
+
+        define event initialize;
+            do /if ^$options['DELIMITER'];
+                set $options['DELIMITER'] ';';
+            done;
+            trigger set_options;
+            trigger documentation;
+            trigger compile_regexp;
+        end;
+
+    end;
+\end{sfvcode}
+
+I think you'll agree that tweaking tagset behavior has become easier 
+although the tagsets themselves are more complex.  
+It is important to be mindful of the future when writing 
+tagsets.  Compartmentalization makes future enhancements much easier.
+
+\section{Summary}
+All of the things covered here will be covered in more detail later.
+These few examples have covered a lot of ground.
+
+Most of the idea's introduced here are used extensively 
+in all tagsets.  Inheritance is the primary way of modifying and creating
+new tagsets.  Simple if statements are the most common form of controlling
+the program flow within events.  Macro variables, tagset alias, and the
+options option are ways to affect the personality of a tagset from one 
+usage to the next.
+

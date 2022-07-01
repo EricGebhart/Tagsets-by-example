@@ -1,0 +1,76 @@
+\contentsline {part}{I\hspace {1em}Using ODS Markup and Tagsets}{1}{part.1}
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}The basics}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}It's all in the Name}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}The tagset directory}{6}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Using a tagset}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Summary}{9}{section.2.3}
+\contentsline {chapter}{\numberline {3}Using The CSV Destinations.}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Summary}{16}{section.3.1}
+\contentsline {chapter}{\numberline {4}Using The HTML Tagsets}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}The Different HTML's}{19}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}HTML4 And XHTML}{20}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}HTMLCSS}{20}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}PHTML}{20}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}XHTML}{21}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}MSOffice2K}{21}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}HTML4}{21}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}PHTML}{21}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}HTMLCSS}{21}{subsection.4.1.8}
+\contentsline {subsection}{\numberline {4.1.9}XHTML}{21}{subsection.4.1.9}
+\contentsline {subsection}{\numberline {4.1.10}MSOffice2K}{21}{subsection.4.1.10}
+\contentsline {section}{\numberline {4.2}HTML and Excel}{22}{section.4.2}
+\contentsline {section}{\numberline {4.3}CHTML}{22}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}CHTML\_imode}{22}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}Stylesheets}{22}{section.4.4}
+\contentsline {section}{\numberline {4.5}Javascript code}{22}{section.4.5}
+\contentsline {section}{\numberline {4.6}Accessibility}{23}{section.4.6}
+\contentsline {section}{\numberline {4.7}Summary}{23}{section.4.7}
+\contentsline {chapter}{\numberline {5}Using LaTeX}{25}{chapter.5}
+\contentsline {section}{\numberline {5.1}The LaTeX statement}{25}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Color Support}{25}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}Compiling the LaTeX Output}{26}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}The latex Command}{26}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}The dvips Command}{26}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}The pdflatex Command}{27}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Integrating LaTeX output into documents}{27}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}The easy way}{27}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Using NewFile to advantage}{27}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}The simple way}{28}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Image Formats and Graph}{28}{section.5.4}
+\contentsline {section}{\numberline {5.5}LaTeX in the different versions of SAS}{29}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}SAS 8.2}{29}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}SAS 9.0}{29}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}SAS 9.1 and beyond.}{29}{subsection.5.5.3}
+\contentsline {section}{\numberline {5.6}Summary}{30}{section.5.6}
+\contentsline {part}{II\hspace {1em}Beginning Tagsets}{31}{part.2}
+\contentsline {part}{III\hspace {1em}Intermediate Examples}{33}{part.3}
+\contentsline {part}{IV\hspace {1em}Usage Notes and Caveat's}{35}{part.4}
+\contentsline {part}{V\hspace {1em}Appendices}{37}{part.5}
+\contentsline {chapter}{Quick Reference Guide}{39}{appendix*.4}
+\contentsline {section}{\numberline {.1}Useful tagsets}{39}{section..1}
+\contentsline {section}{\numberline {.2}Tagset attributes}{41}{section..2}
+\contentsline {section}{\numberline {.3}Event attributes}{44}{section..3}
+\contentsline {section}{\numberline {.4}Event Statements}{44}{section..4}
+\contentsline {section}{\numberline {.5}If Statements}{47}{section..5}
+\contentsline {chapter}{Variables}{49}{appendix*.5}
+\contentsline {section}{\numberline {.6}Event Variables}{49}{section..6}
+\contentsline {subsection}{\numberline {.6.1}508 Accessibility}{49}{subsection..6.1}
+\contentsline {subsection}{\numberline {.6.2}Data}{49}{subsection..6.2}
+\contentsline {subsection}{\numberline {.6.3}Data Formatting}{50}{subsection..6.3}
+\contentsline {subsection}{\numberline {.6.4}Event MetaData}{51}{subsection..6.4}
+\contentsline {subsection}{\numberline {.6.5}Graph}{51}{subsection..6.5}
+\contentsline {subsection}{\numberline {.6.6}Measured}{51}{subsection..6.6}
+\contentsline {subsection}{\numberline {.6.7}Miscellaneous}{52}{subsection..6.7}
+\contentsline {subsection}{\numberline {.6.8}ODS Statement}{53}{subsection..6.8}
+\contentsline {subsection}{\numberline {.6.9}Table}{55}{subsection..6.9}
+\contentsline {subsection}{\numberline {.6.10}Title and Note Formatting}{55}{subsection..6.10}
+\contentsline {subsection}{\numberline {.6.11}URL}{56}{subsection..6.11}
+\contentsline {subsection}{\numberline {.6.12}XML Libname Engine}{56}{subsection..6.12}
+\contentsline {section}{\numberline {.7}Style Variables}{56}{section..7}
+\contentsline {subsection}{\numberline {.7.1}Borders}{56}{subsection..7.1}
+\contentsline {subsection}{\numberline {.7.2}Font}{57}{subsection..7.2}
+\contentsline {subsection}{\numberline {.7.3}Background}{58}{subsection..7.3}
+\contentsline {subsection}{\numberline {.7.4}Frame}{58}{subsection..7.4}
+\contentsline {subsection}{\numberline {.7.5}Miscellaneous}{59}{subsection..7.5}
+\contentsline {subsection}{\numberline {.7.6}Graph}{60}{subsection..7.6}

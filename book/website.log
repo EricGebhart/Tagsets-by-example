@@ -1,0 +1,193 @@
+1                                                          The SAS System                             23:56 Thursday, April 22, 2004
+
+NOTE: Copyright (c) 2002-2003 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) 9.2 (TS02.02B0D04072004)
+      Licensed to SAS Institute Inc., Site 0000000001.
+NOTE: This session is executing on the FreeBSD 4.9-STABLE platform.
+
+
+
+NOTE: SAS initialization used:
+      real time           0.47 seconds
+      cpu time            0.10 seconds
+      
+1          /*----------------------------------------------------------------*/
+2          /*-- Reading a file in using datastep functions.  This example  --*/
+3          /*-- comes straight out of the online documentation             --*/
+4          /*-- for fread().                                               --*/
+5          /*----------------------------------------------------------------*/
+6          proc template;
+7              define tagset tagsets.website;
+8                  parent=tagsets.html4;
+9                  embedded_stylesheet=no;
+10         
+11                 mvar infiles;
+12         
+13         
+14                 define event set_default_files;
+15                    set $infiles 'default_head.html default_foot.html';
+16                 end;
+17         
+18                 /*-------------------------------------------------------------eric-*/
+19                 /*-- The files should be given as a list with spaces between them.--*/
+20                 /*----------------------------------------------------------8Nov 03-*/
+21                 define event initialize;
+22                    /*trigger set_just_lookup;*/
+23         
+24                    do /if cmp(tagset_alias, 'default');
+25                         trigger set_default_files;
+26                     else;
+27                         set $infiles tagset_alias;
+28                         set $infiles infiles /if !$infiles;
+29                     done;
+30                     putlog "Infiles are" " :" $infiles;
+31         
+32                     set $filename scan($infiles, 1, ' ');
+33         
+34                     /*---------------------------------------------------------eric-*/
+35                     /*-- Set a flag so the ending document tags can be suppressed.--*/
+36                     /*------------------------------------------------------8Nov 03-*/
+37                     do /if $infiles);
+38                         set $read_files 'true';
+39                         set $filrf "headfile";
+40                         set $read_head "true";
+41                     done;
+42                 end;
+43         
+44                 define event proc;
+45                     start:
+46                         do /if no_top;
+47                             do /if $read_head;
+2                                                          The SAS System                             23:56 Thursday, April 22, 2004
+
+48                                 trigger readfile;
+49                                 unset $read_head;
+50                             done;
+51                         done;
+52                 end;
+53         
+54         
+55                 define event head_search;
+56                     trigger integrated_link /if contains($file_record, '</head>');
+57                 end;
+58         
+59                 define event integrated_link;
+60                     put '<style type="text/css">' CR '<!--' CR;
+61                     trigger alignstyle;
+62                     put '-->' CR '</style>' CR ;
+63         
+64                     set $urlList stylesheet_url;
+65                     set $urlList stylesheet_name /if !$urlList;
+66                     trigger urlLoop ;
+67                     unset $urlList;
+68                 end;
+69         
+70                 define event readfile;
+71         
+72                     /*--------------------------------------------------------*/
+73                     /*-- Set up the file and open it.                       --*/
+74                     /*--------------------------------------------------------*/
+75                     putlog "Reading in file: " $filename;
+76         
+77                     eval $fid 0;
+78         
+79                     eval $rc filename($filrf, $filename);
+80         
+81                     eval $fid fopen($filrf);
+82                     do /if missing($fid);
+83                         putlog "Error: Could not open file, " $filename;
+84                         break;
+85                     done;
+86         
+87         
+88                     /*--------------------------------------------------------*/
+89                     /*-- datastep functions  will bind directly to the      --*/
+90                     /*-- variable space as it exists.                       --*/
+91                     /*--                                                    --*/
+92                     /*-- Tagset variables are not like datastep             --*/
+93                     /*-- variables but we can create a big one full         --*/
+94                     /*-- of spaces and let the functions write to it.       --*/
+95                     /*--                                                    --*/
+96                     /*-- This creates a variable that is 200 spaces so      --*/
+97                     /*-- that the function can write directly to the        --*/
+98                     /*-- memory location held by the variable.              --*/
+99                     /*-- in VI, 200i<space>                                 --*/
+100                    /*--------------------------------------------------------*/
+101                    set $file_record  "
+101      !                                                                                                               ";
+102        
+103                    /*--------------------------------------------------------*/
+104                    /*-- Loop over the records in the file                  --*/
+3                                                          The SAS System                             23:56 Thursday, April 22, 2004
+
+105                    /*--------------------------------------------------------*/
+106                    do /if $fid > 0 ;
+107        
+108                        do /while fread($fid) = 0;
+109        
+110                            set $rc fget($fid,$file_record ,200);
+111        
+112                            trigger head_search;
+113        
+114                            /* trimn to get rid of the spaces at the end. */
+115                            put trimn($file_record ) nl;
+116        
+117                        done;
+118                    done;
+119        
+120                   /*----------------------------------------------------------*/
+121                   /*-- close up the file.  set works fine for this.         --*/
+122                   /*----------------------------------------------------------*/
+123        
+124                    set $rc close($fid);
+125                    set $rc filename($filrf);
+126        
+127                end;
+128        
+129                define event doc;
+130                    start:
+131                        set $doctype '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
+132                        set $framedoctype '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">';
+133                        put $doctype CR;
+134                        put "<html>" CR;
+135        
+136                    finish:
+137                        do /if $read_files;
+138                            set $filename scan($infiles, 2, ' ');
+139                            set $filrf "footfile";
+140                            trigger readfile;
+141                            break;
+142                        done;
+143        
+144                        put "</html>" CR;
+145                end;
+146        
+147                define event doc_body;
+148                    put '<body onload="startup()"';
+149                    put ' onunload="shutdown()"';
+150                    put  ' bgproperties="fixed"' / WATERMARK;
+151                    putq " background=" BACKGROUNDIMAGE;
+152                       trigger style_inline;
+153                    put ">" CR;
+154                    trigger pre_post;
+155                    put          CR;
+156                    trigger ie_check;
+157        
+158                  finish:
+159                    trigger pre_post;
+160        
+161                    break /if $read_files;
+162                    put "</body>" CR;
+4                                                          The SAS System                             23:56 Thursday, April 22, 2004
+
+163                end;
+164        
+165        end;
+NOTE: Overwriting existing template/link: Tagsets.Website
+NOTE: TAGSET 'Tagsets.Website' has been saved to: SASUSER.TEMPLAT
+166        
+167        run;
+NOTE: PROCEDURE TEMPLATE used (Total process time):
+      real time           0.48 seconds
+      cpu time            0.14 seconds
+      

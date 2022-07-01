@@ -1,0 +1,66 @@
+\chapter{Testing }
+\section{Define statement}
+The first thing to do is give a name to the new tagset.  That is done 
+with the define statement.  Our tagset is going to be called
+plain\_text.  The tagset should be put in proc template's tagset directory,
+so it's first name is {\itshape tagsets.} .
+The code in Figure \vref{define_tagset}
+shows a very simple tagset definition.
+
+\begin{fvcode}{define_tagset}{Defining a Tagset}
+     Define tagset tagsets.plain_text;
+
+     end; 
+\end{fvcode}
+
+\subsection{A listing example}
+This is a very simple example of listing.  The code shown if Figure \vref{SSV}
+was created using the listing package.  This example is a direct usage of the
+listing environment, I've added arguments to make it look nearly the same as
+the fancyvrb example above.  The next example \vref{SSV2} uses the lst environment
+created above.  Notice the varioref for \ref{SSV2} adapts nicely to the location
+of the listing. The environment makes it easier to use and allows for style changes
+in one spot.
+
+\begin{lstlisting}[label=SSV, caption={SSV listing}, frame=lines, xleftmargin=1cm]
+proc template;
+    
+    Define tagset tagsets.SSV;
+
+        parent=tagsets.csv;
+
+        define event header;
+            start:
+                put ';' / if !cmp(COLSTART, "1");
+                put '"';
+                put VALUE;
+            finish:
+                put '"';
+        end;
+
+        define event data;
+            start:
+                put ';' / if !cmp(COLSTART, "1");
+                put '"';
+                put VALUE;
+            finish:
+                put '"';
+        end;
+
+        define event colspanfill;
+            put ';';
+        end;    
+
+        define event rowspanfill;
+            put ';' /if ! exists(VALUE);
+        end;
+
+     end; 
+run;
+
+options obs=3;
+ods tagsets.ssv file='test.ssv';
+proc print data=sashelp.class;run;
+ods tagsets.ssv close;
+\end{lstlisting}
+

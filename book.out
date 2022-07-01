@@ -1,0 +1,76 @@
+\BOOKMARK [-1][-]{part.1}{I Using ODS Markup and Tagsets}{}
+\BOOKMARK [0][-]{chapter.1}{Introduction}{part.1}
+\BOOKMARK [0][-]{chapter.2}{The basics}{part.1}
+\BOOKMARK [1][-]{section.2.1}{It's all in the Name}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{The tagset directory}{section.2.1}
+\BOOKMARK [1][-]{section.2.2}{Using a tagset}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Summary}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Using The CSV Destinations.}{part.1}
+\BOOKMARK [1][-]{section.3.1}{Summary}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Using The HTML Tagsets}{part.1}
+\BOOKMARK [1][-]{section.4.1}{The Different HTML's}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.1.1}{HTML4 And XHTML}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{HTMLCSS}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.3}{PHTML}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.4}{XHTML}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.5}{MSOffice2K}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.6}{HTML4}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.7}{PHTML}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.8}{HTMLCSS}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.9}{XHTML}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.10}{MSOffice2K}{section.4.1}
+\BOOKMARK [1][-]{section.4.2}{HTML and Excel}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{CHTML}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{CHTML\137imode}{section.4.3}
+\BOOKMARK [1][-]{section.4.4}{Stylesheets}{chapter.4}
+\BOOKMARK [1][-]{section.4.5}{Javascript code}{chapter.4}
+\BOOKMARK [1][-]{section.4.6}{Accessibility}{chapter.4}
+\BOOKMARK [1][-]{section.4.7}{Summary}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Using LaTeX}{part.1}
+\BOOKMARK [1][-]{section.5.1}{The LaTeX statement}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.1.1}{Color Support}{section.5.1}
+\BOOKMARK [1][-]{section.5.2}{Compiling the LaTeX Output}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.2.1}{The latex Command}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.2}{The dvips Command}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.3}{The pdflatex Command}{section.5.2}
+\BOOKMARK [1][-]{section.5.3}{Integrating LaTeX output into documents}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.3.1}{The easy way}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.2}{Using NewFile to advantage}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.3}{The simple way}{section.5.3}
+\BOOKMARK [1][-]{section.5.4}{Image Formats and Graph}{chapter.5}
+\BOOKMARK [1][-]{section.5.5}{LaTeX in the different versions of SAS}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.5.1}{SAS 8.2}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.2}{SAS 9.0}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.3}{SAS 9.1 and beyond.}{section.5.5}
+\BOOKMARK [1][-]{section.5.6}{Summary}{chapter.5}
+\BOOKMARK [-1][-]{part.2}{II Beginning Tagsets}{}
+\BOOKMARK [-1][-]{part.3}{III Intermediate Examples}{}
+\BOOKMARK [-1][-]{part.4}{IV Usage Notes and Caveat's}{}
+\BOOKMARK [-1][-]{part.5}{V Appendices}{}
+\BOOKMARK [0][-]{appendix*.4}{Quick Reference Guide}{part.5}
+\BOOKMARK [1][-]{section..1}{Useful tagsets}{appendix*.4}
+\BOOKMARK [1][-]{section..2}{Tagset attributes}{appendix*.4}
+\BOOKMARK [1][-]{section..3}{Event attributes}{appendix*.4}
+\BOOKMARK [1][-]{section..4}{Event Statements}{appendix*.4}
+\BOOKMARK [1][-]{section..5}{If Statements}{appendix*.4}
+\BOOKMARK [0][-]{appendix*.5}{Variables}{part.5}
+\BOOKMARK [1][-]{section..6}{Event Variables}{appendix*.5}
+\BOOKMARK [2][-]{subsection..6.1}{508 Accessibility}{section..6}
+\BOOKMARK [2][-]{subsection..6.2}{Data}{section..6}
+\BOOKMARK [2][-]{subsection..6.3}{Data Formatting}{section..6}
+\BOOKMARK [2][-]{subsection..6.4}{Event MetaData}{section..6}
+\BOOKMARK [2][-]{subsection..6.5}{Graph}{section..6}
+\BOOKMARK [2][-]{subsection..6.6}{Measured}{section..6}
+\BOOKMARK [2][-]{subsection..6.7}{Miscellaneous}{section..6}
+\BOOKMARK [2][-]{subsection..6.8}{ODS Statement}{section..6}
+\BOOKMARK [2][-]{subsection..6.9}{Table}{section..6}
+\BOOKMARK [2][-]{subsection..6.10}{Title and Note Formatting}{section..6}
+\BOOKMARK [2][-]{subsection..6.11}{URL}{section..6}
+\BOOKMARK [2][-]{subsection..6.12}{XML Libname Engine}{section..6}
+\BOOKMARK [1][-]{section..7}{Style Variables}{appendix*.5}
+\BOOKMARK [2][-]{subsection..7.1}{Borders}{section..7}
+\BOOKMARK [2][-]{subsection..7.2}{Font}{section..7}
+\BOOKMARK [2][-]{subsection..7.3}{Background}{section..7}
+\BOOKMARK [2][-]{subsection..7.4}{Frame}{section..7}
+\BOOKMARK [2][-]{subsection..7.5}{Miscellaneous}{section..7}
+\BOOKMARK [2][-]{subsection..7.6}{Graph}{section..7}

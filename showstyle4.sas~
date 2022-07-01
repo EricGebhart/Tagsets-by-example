@@ -1,0 +1,50 @@
+
+proc template;
+
+    define style styles.showstyle;
+
+        style table /
+          Font = ("Verdana, Helvetica, sans-serif", 4, bold)
+          Foreground = black
+          background = White
+          bordercolor = green
+          cellspacing = 1
+          cellpadding = 3
+          rules = groups
+          frame = box
+        ;
+
+        style darkbox /
+          Font = ("Times", 6, bold)
+          Foreground = black
+          background = White
+          bordercolor = Black
+          cellspacing = 0
+          cellpadding = 1
+          rules = none
+          frame = box
+        ;
+    end;
+
+    define tagset tagsets.showstyle;
+
+        embedded_stylesheet = yes;
+
+        define event style_class;
+            put "Style Class ====================" nl nl;
+            putvars style _name_ ' : ' _value_ nl;
+        end;
+
+        define event table;
+            style=darkbox;
+
+            put nl "Table ==========================" nl nl;
+            putvars style _name_ ' : ' _value_ nl;
+        end;
+
+     end;
+run;
+
+ods tagsets.showstyle style=showstyle file='style.txt';
+proc print data=sashelp.class; run;
+ods tagsets.showstyle close;

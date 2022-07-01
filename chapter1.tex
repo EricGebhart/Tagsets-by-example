@@ -1,0 +1,271 @@
+\chapter{The basics}
+This chapter will cover the basics of using ODS Markup family of destinations.
+There are a lot of ODS destinations in this family, and they are ready to
+use.  By the end of this chapter you will have some idea of the destinations 
+available, and how to use them.
+
+ODS Markup is just another ODS destination that works very much
+like every other ODS destination.  It was originally derived from
+the original ODS HTML destination, so if you are familiar with ODS HTML,
+then you are already very familiar with ODS Markup.
+
+The way ODS Markup differs is that we will almost never use ODS Markup as
+a destination name.  ODS Markup should be thought of as a family of destinations.
+These destinations are defined using a type of template called Tagsets.  Each
+Tagset definition is a new ODS destination.
+ 
+The good news is that there are already a lot of Tagsets defined, so all we need
+to do is use them.  Since Tagsets define destinations within the ODS Markup family
+the only thing we really need to know is their names.  Once we know the tagset's 
+name we know the destination name, and we can easily construct an ODS statement
+that will use that ODS destination.
+
+
+
+\section{It's all in the Name}
+\index{basics}
+\index{proc template}
+\index{itemstore}
+\index{sasuser}
+\index{sashelp}
+A tagset is a SAS program that uses Proc Template.  There are a lot of advantages to
+this.  It means that SAS can update a tagset, make a fix, and even email that tagset
+to anyone that wants it.  Updates to the Tagsets that shipped with SAS are available
+for download on the Support.sas.com website.  Frequently there are also additional 
+tagsets that were not shipped with SAS.  Another benefit, is that if you want to learn
+to program Tagsets, you can create your own, or modify the Tagsets provided by SAS.
+
+For now, the most important thing to know, is what are the Tagsets available, and 
+what are they named.  All we really need is their names.  But where do we look?
+When a Tagset is run in SAS, Proc Template compiles the Tagset and stores it
+When a Tagset is run in SAS, Proc Template the Tagset
+it into a binary format which is then stored on disk in an itemstore.
+Typically this file will be in sasuser.  But can be placed anywhere
+using the 'ODS path' statement.  If administrative priviledges are
+available the template can be put in SASHELP where it will be
+available to all users on the system.  Once a template is compiled
+there is no need to compile it again unless it's itemstore is
+deleted.  All Tagsets that ship with SAS are in SASHELP.
+
+Thankfully, Proc Template handles all of this for us, and will look for Tagsets
+in all the right places.  All we need is 3 lines of SAS code, and we will have
+all the names for all the Tagsets.
+
+
+\subsection{The tagset directory}
+Templates are kept in directories within the itemstore.  ODS will automatically look for 
+tagsets in the tagsets directory.  The following example shows how to get a list
+of tagsets, and the output it generates.
+
+\begin{fvcode}{list_tagsets}{Simple ODS Markup Statement}
+       proc template;
+           list tagsets;
+
+                               The SAS System                               1
+                                                  13:00 Monday, August 7, 2006
+
+                Listing of: SASHELP.TMPLMST
+                Path Filter is: Tagsets
+                Sort by: PATH/ASCENDING
+ 
+                Obs    Path                             Type
+                 1     Tagsets                          Dir   
+                 2     Tagsets.Cascading_stylesheet     Tagset
+                 3     Tagsets.Chtml                    Tagset
+                 4     Tagsets.Colorlatex               Tagset
+                 5     Tagsets.Config_debug             Tagset
+                 6     Tagsets.Csv                      Tagset
+                 7     Tagsets.Csvall                   Tagset
+                 8     Tagsets.Csvbyline                Tagset
+                 9     Tagsets.Default                  Tagset
+                10     Tagsets.Docbook                  Tagset
+                11     Tagsets.Event_map                Tagset
+                12     Tagsets.ExcelXP                  Tagset
+                13     Tagsets.Graph_rtf                Tagset
+                14     Tagsets.Html4                    Tagset
+                15     Tagsets.Htmlcss                  Tagset
+                16     Tagsets.Htmlpanel                Tagset
+                17     Tagsets.Imode                    Tagset
+                18     Tagsets.Latex                    Tagset
+                19     Tagsets.MSOffice2k               Tagset
+                20     Tagsets.Mlatex                   Tagset
+                21     Tagsets.Mvshtml                  Tagset
+                22     Tagsets.Namedhtml                Tagset
+                23     Tagsets.Odsapp                   Tagset
+                24     Tagsets.Odsgraph                 Tagset
+                25     Tagsets.Odsstyle                 Tagset
+                26     Tagsets.Odsxrpcs                 Tagset
+                27     Tagsets.OpenOffice_rtf           Tagset
+                28     Tagsets.Phtml                    Tagset
+                29     Tagsets.Pyx                      Tagset
+                30     Tagsets.Rtf                      Tagset
+                31     Tagsets.Rtf_sample               Tagset
+                32     Tagsets.SASReport11              Tagset
+                33     Tagsets.SASReport12              Tagset
+                34     Tagsets.SASReport13              Tagset
+                35     Tagsets.SASReport14              Tagset
+                36     Tagsets.SASReport15              Tagset
+                37     Tagsets.SASReport_html           Tagset
+                38     Tagsets.SASReport_html1          Tagset
+                39     Tagsets.Sasreport_html11         Tagset
+                40     Tagsets.Short_map                Tagset
+                41     Tagsets.Simplelatex              Tagset
+                42     Tagsets.Style_display            Tagset
+                43     Tagsets.Style_popup              Tagset
+                44     Tagsets.Supermap                 Tagset
+                45     Tagsets.Tablesonlylatex          Tagset
+                46     Tagsets.Text_map                 Tagset
+                47     Tagsets.Tpl_style_list           Tagset
+                48     Tagsets.Tpl_style_map            Tagset
+                49     Tagsets.Troff                    Tagset
+                50     Tagsets.Wml                      Tagset
+                51     Tagsets.Wmlolist                 Tagset
+                52     Tagsets.Xbrl                     Tagset
+                53     Tagsets.Xhtml                    Tagset
+       run;
+
+NOTE: PROCEDURE TEMPLATE used (Total process time):
+      real time           1:40.15
+      cpu time            0.28 seconds
+      
+\end{fvcode}
+
+\section{Using a tagset}
+That is a lot of Tagsets!  For now, lets concentrate on the obvious
+ones.  
+To use a tagset, all that is needed is the proper ods statement.
+ODS Markup is not all that different from ODS HTML, in fact, ODS
+Markup can do everything ODS HTML can, plus a little more.
+The simplest form of the ODS Markup statement is shown 
+in Figure \ref{ods_markup_stmt} on page \pageref{ods_markup_stmt}.
+
+\index{ods statement}
+\begin{fvcode}{ods_markup_stmt}{Simple ODS Markup Statement}
+   
+    ods markup file='test.xml';
+
+    ....
+
+    ods markup close;
+
+\end{fvcode}
+
+\index{ods markup statement}
+\index{tagsets.default}
+
+The result of those statements will be the creation of the 'test.xml' output
+file.  The output of that file will have a format as defined by the default
+tagset, which is named, tagsets.default.
+
+But there are other ways to specify an ODS statement that accomplish the same thing.
+Figure \ref{ods_markup_stmt_perm} on page \pageref{ods_markup_stmt_perm}.
+shows ods statements which are equivalent with one exception.
+
+\begin{fvcode}{ods_markup_stmt_perm}{ODS Markup Statement Permutations}
+\index{ods markup statement!permutations}
+
+    ods markup file='test.xml';
+
+    ods markup tagset=default file='test2.xml';
+
+    ods tagsets.default file='test3.xml';
+
+\end{fvcode}
+
+The exception is the third statement.  That statement is different because the destination
+name is no longer markup.  The destination name is tagsets.default.   Because it has a
+unique name it can run simultaneously with ods markup.  Just like ODS RTF can run simultaneously
+with ODS HTML.  The first two statements cannot be used simultaneously because they have the
+same destination name.  The second ODS Markup 
+statement would automatically close the first one.  This happens because ODS destination names
+must be unique.  There is a way around that, using ODS' ID syntax, but that belongs in another
+book.  Beside's that syntax is mostly uneccessary if we use the tagset name as the destination
+name, and the resulting code is more readable and concise.
+
+
+As of SAS 9.1, ODS HTML is also a tagset.  Which means ODS HTML is really ODS Markup.  Consider
+the statements in figure \ref{ods_markup_stmt_perm2} on page \pageref{ods_markup_stmt_perm2}.
+
+\index{ods markup statement!permutations}
+\begin{fvcode}{ods_markup_stmt_perm2}{ODS Markup Statement Permutations}
+    ods html file='test1.html';
+
+    ods html4 file='test2.html';
+
+    ods tagsets.html4 file='test3.html';
+
+    ods markup tagset=html4 file='test4.html'
+\end{fvcode}
+
+Each one of those statements is roughly equivalent.  All of them use the html4 tagset.  So
+the markup each of them creates will be the same.  But each ODS statement creates a unique
+output destination.  They can all run simultaneously without conflict.  They can all have their
+own select or exclude statements and be opened or closed at different times.   
+
+There is one thing that makes html special.  Normally a tagset cannot be referenced by
+it's simple name unless the tagset option is used. But there are a few special tagsets that
+can be referenced as if they are a simple ODS destination.  
+Table \ref{shortcut_destinations} on page \pageref{shortcut_destinations} shows the list
+of shortcut names and their descriptions.
+
+
+\index{Simple names}
+\index{Shortcut destinations}
+\begin{table}\caption{Shortcut Destination names}
+\label{shortcut_destinations}
+\begin{tabular}{l|l}
+%\multicolumn{2}{c}{Shortcut Destinations} \\ 
+\hline
+HTML &  Alias for HTML4 \\
+HTML4 & 4.0 compliant HTML with concessions for browser compatibility. \\
+PHTML & Plain HTML.  Simple stylesheet, simple HTML. \\
+HTMLCSS & 4.0 compliant HTML with fewer concessions. \\
+CSV &  Comma separated values.  Tables only. \\
+CSVAll & CSV with titles, bylines, notes, etc. \\
+CSVByline & CSV with bylines only. \\
+WML &  Wireless Markup Language. - No longer in vogue. \\
+CHTML & Compact HTML. Very simple HTML with no styles. \\
+LaTeX & LaTeX output with style and color support. \\
+Troff & troff output which is very simple. \\
+MSOffice2K & HTML for importing into Word and Excel. \\
+Imode & Compact HTML that has no table tags.  Used extensively in Japan. \\
+DocBook &  XML format for documents. \\
+SasReport & XML format used internally by other SAS products.
+\end{tabular}
+\end{table}
+
+While these are special, the custom tagsets that can be written are no less special.  These
+custom tagsets cannot be referenced by their simple names but they will be output destinations just
+as these are.  Because Markup is a single destination, the prefered way to use tagsets is to
+use their two part name.  There is a trend away from using these shortcut names, so most of the
+newer tagsets like ExcelXP and RTF can only be referenced by their full name.
+See Figure \ref{ods_markup_stmt_active} on page \pageref{ods_markup_stmt_active} shows the list
+
+\index{ods markup statement!permutations}
+\index{ods markup statement!Multiple Active}
+\begin{fvcode}{ods_markup_stmt_active}{Multiple Active Markup Destinations}
+
+    ods tagsets.ExcelXP file='test.xml';
+    ods tagsets.RTF file='test.rtf';
+
+    proc print data=sashelp.class; 
+    run;
+
+    ods tagsets.ExcelXP close;
+    ods tagsets.RTF close;
+
+\end{fvcode}
+     
+\section{Summary}
+Using ODS Markup does not have to be complicated or difficult, all we really
+need is the name of the Tagset, and we can use them just like any other destination.
+Finding their names is very simple Proc Template code, and adding an ods statement that uses them is
+just as easy.  It won't hurt anything to try out a destination just to see what it
+will create.  Go ahead, play, try them out.  The next chapters will go into more 
+detail for many of the more popular and useful Tagsets that are available.
+
+The most confusing thing about the ods markup statement is that it
+is almost never used by it's name.  Aside from that it is almost
+the same as any other ods destination, especially the ODS HTML
+destination in previous releases of SAS.
+

@@ -1,0 +1,17 @@
+proc template;
+    
+    define tagset tagsets.colorlatex; parent=tagsets.latex;
+
+        define event stylesheet_link;
+            put CR '\usepackage[color]{';
+            put URL;
+            put scan(value, 1, '.') /if !url;
+            put '}' CR CR;
+        end;
+
+    end;
+run
+
+ods tagsets.colorlatex file="test.tex" stylesheet="test.sty";
+
+ods _all_ close;

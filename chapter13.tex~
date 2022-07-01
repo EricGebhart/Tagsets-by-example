@@ -1,0 +1,46 @@
+\chapter{Special Cases, Procedures and Operating Systems'}
+We have seen, in our examples, that there are some problems
+when it comes to the Report and Tabulate procedures.  These
+problems are surmountable but they do cause some pain.  This
+chapter is going to explain the specifics of these problems
+and how to work around them.
+
+\section{A Report Procedure problem}
+Yet another reason to
+convert is that tagsets can be interchanged to create new and 
+diffrent outputs.  Usually datastep is used to create HTML, CSV,
+
+\subsection{deferred data}
+or DDE to XML,  A different datastep is required for each.  A different
+tagset is required for each as well.  The difference is the reusability
+and the ease of creation and maintenance.
+
+\section{The Tabulate and Report problem}
+More reasons to convert are the availability of style changes, and the
+plethora of ODS options that can be used to customize your output.
+
+\subsection{The Table Head section}
+sthsthsnt
+
+\subsection{The Table column specifications}
+sthsthsnth
+
+\section{HTML on MVS with a PDSE}
+When serving web pages that are stored in a PDSE on MVS, the url do not
+adhere to the Standards for URI syntax.  Because of this HTML output
+that ODS creates will not have links that work.  To fix this there is
+a special tagset called MVSHTML that changes the format of the URLS
+in the HTML code.  URLS are used in several places, most importantly
+in the table of contents, and with the src attribute when including
+graphics.  The MVSHTML tagset takes care of all these problems.
+
+\section{Summary}
+Through the various examples in this book we have seen the problems
+that are caused by the Report and Tabulate procedures.  These problems
+are not unsurmountable, but they do complicate the tagsets we create.  
+Knowing what the problems are can help save time and frustration when 
+creating a tagset.  Or minimize the surprise when a tagset that works 
+with other procedures quits working when it comes to using Report or 
+Tabulate.
+
+

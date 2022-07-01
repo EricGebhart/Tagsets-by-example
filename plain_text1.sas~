@@ -1,0 +1,17 @@
+     proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event data;
+             put value nl;
+         end;
+
+     end; 
+
+     run;
+
+     
+     ods latex file='test.tex';
+     ods tagsets.plain_text obs=1 file='test.txt';
+     proc print data=sashelp.class; run;
+     ods tagsets.plain_text close;

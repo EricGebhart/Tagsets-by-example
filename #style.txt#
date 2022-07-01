@@ -1,0 +1,10 @@
+
+Event: table
+    FRAME : box
+    RULES : groups
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto

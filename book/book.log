@@ -1,0 +1,1478 @@
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2004.12.7)  7 AUG 2006 17:57
+**book.tex
+(./book.tex{/sw/share/texmf/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/sw/share/texmf/tex/latex/base/book.cls
+Document Class: book 2001/04/21 v1.4e Standard LaTeX document class
+(/sw/share/texmf/tex/latex/base/bk10.clo
+File: bk10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/sw/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
+\headwidth=\dimen103
+)
+(/sw/share/texmf/tex/latex/base/flafter.sty
+Package: flafter 2000/07/23 v1.2i Standard LaTeX floats after reference (FMi)
+)
+(/sw/share/texmf/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/sw/share/texmf/tex/latex/misc/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count88
+\float@exts=\toks14
+\float@box=\box26
+\@float@everytoks=\toks15
+\@floatcapt=\box27
+)
+(/sw/share/texmf/tex/latex/psnfss/times.sty
+Package: times 2002/09/08 PSNFSS-v9.0a (SPQR) 
+)
+(/sw/share/texmf/tex/latex/base/fontenc.sty
+Package: fontenc 2001/06/05 v1.94 Standard LaTeX package
+
+(/sw/share/texmf/tex/latex/base/t1enc.def
+File: t1enc.def 2001/06/05 v1.94 Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 38.
+))
+(/sw/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/sw/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/sw/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/sw/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/sw/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/sw/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/sw/share/texmf/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2000/03/21
+
+Style option: `fancyvrb' v2.7, with DG/SPQR fixes <2000/03/21> (tvz)
+\FV@CodeLineNo=\count90
+\FV@InFile=\read1
+\FV@TabBox=\box28
+\c@FancyVerbLine=\count91
+\FV@StepNumber=\count92
+\FV@OutFile=\write3
+)
+(./listings.sty
+\lst@mode=\count93
+\lst@gtempboxa=\box29
+\lst@token=\toks17
+\lst@length=\count94
+\lst@currlwidth=\dimen106
+\lst@column=\count95
+\lst@pos=\count96
+\lst@lostspace=\dimen107
+\lst@width=\dimen108
+\lst@newlines=\count97
+\lst@lineno=\count98
+\c@lstlisting=\count99
+\lst@maxwidth=\dimen109
+ (./lstpatch.sty
+File: lstpatch.sty 2004/10/17 1.3b (Carsten Heinz)
+) (./lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+\c@lstnumber=\count100
+\lst@skipnumbers=\count101
+\lst@framebox=\box30
+) (./listings.cfg
+File: listings.cfg 2004/09/05 1.3 listings configuration
+))
+Package: listings 2004/10/17 1.3b (Carsten Heinz)
+
+(/sw/share/texmf/tex/latex/tools/varioref.sty
+Package: varioref 2001/09/04 v1.3c package for extended references (FMi)
+\c@vrcnt=\count102
+) (./ods.sty
+(/sw/share/texmf/tex/latex/misc/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+\Gm@cnth=\count103
+\Gm@cntv=\count104
+\c@Gm@tempcnt=\count105
+\Gm@bindingoffset=\dimen110
+\Gm@wd@mp=\dimen111
+\Gm@odd@mp=\dimen112
+\Gm@even@mp=\dimen113
+\Gm@dimlist=\toks18
+
+(/sw/share/texmf/tex/latex/config/geometry.cfg
+File: geometry.cfg 2001/06/05 v1.0 teTeX (uncustomised setup)
+))
+(/sw/share/texmf/tex/latex/tools/longtable.sty
+Package: longtable 2000/10/22 v4.10 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count106
+\LTcapwidth=\dimen114
+\LT@head=\box31
+\LT@firsthead=\box32
+\LT@foot=\box33
+\LT@lastfoot=\box34
+\LT@cols=\count107
+\LT@rows=\count108
+\c@LT@tables=\count109
+\c@LT@chunks=\count110
+\LT@p@ftn=\toks19
+)
+(/sw/share/texmf/tex/latex/tools/array.sty
+Package: array 1998/05/13 v2.3m Tabular extension package (FMi)
+\col@sep=\dimen115
+\extrarowheight=\dimen116
+\NC@list=\toks20
+\extratabsurround=\skip47
+\backup@length=\skip48
+)
+(/sw/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2003/01/22 v6.73n Hypertext links for LaTeX
+\@linkdim=\dimen117
+\Hy@linkcounter=\count111
+\Hy@pagecounter=\count112
+
+(/sw/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2003/01/22 v6.73n Hyperref: PDFDocEncoding definition (HO)
+)
+(/sw/share/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive and teTeX
+)
+Package hyperref Info: Hyper figures OFF on input line 1792.
+Package hyperref Info: Link nesting OFF on input line 1797.
+Package hyperref Info: Hyper index ON on input line 1800.
+Package hyperref Info: Plain pages ON on input line 1805.
+Package hyperref Info: Backreferencing OFF on input line 1812.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 1916.
+(/sw/share/texmf-local/tex/latex/other/misc/url.sty
+\Urlmuskip=\muskip10
+Package: url 1999/03/28  ver 1.5x  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 2055.
+\Fld@menulength=\count113
+\Field@Width=\dimen118
+\Fld@charsize=\dimen119
+\Choice@toks=\toks21
+\Field@toks=\toks22
+Package hyperref Info: Hyper figures OFF on input line 2513.
+Package hyperref Info: Link nesting OFF on input line 2518.
+Package hyperref Info: Hyper index ON on input line 2521.
+Package hyperref Info: backreferencing OFF on input line 2528.
+Package hyperref Info: Link coloring OFF on input line 2533.
+\c@Item=\count114
+\c@Hfootnote=\count115
+)
+*hyperref using default driver hpdftex*
+(/sw/share/texmf/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2003/01/22 v6.73n Hyperref driver for pdfTeX
+
+(/sw/share/texmf/tex/latex/psnfss/pifont.sty
+Package: pifont 2002/09/08 PSNFSS-v9.0a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 62.
+
+(/sw/share/texmf/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 63.
+
+(/sw/share/texmf/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+\Fld@listcount=\count116
+\@outlinefile=\write4
+)
+\notewidth=\skip49
+
+(/sw/share/texmf/tex/latex/carlisle/colortbl.sty
+Package: colortbl 1999/03/24 v0.1i Color table columns (DPC)
+
+(/sw/share/texmf/tex/latex/graphics/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+
+(/sw/share/texmf/tex/latex/config/color.cfg
+File: color.cfg 2001/08/31 v1.1 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 125.
+)
+\everycr=\toks23
+\minrowclearance=\skip50
+)
+\c@sastarget=\count117
+) (./lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+)
+\c@calloutcounter=\count118
+\@indexfile=\write5
+\openout5 = `book.idx'.
+
+
+Writing index file book.idx
+(./book.aux (./preface.aux) (./introduction.aux) (./chapter1.aux)
+(./chapter2.aux) (./chapter3.aux
+
+LaTeX Warning: Label `csv_2' multiply defined.
+
+) (./chapter6.aux) (./chapter7a.aux) (./chapter6a.aux) (./chapter4.aux)
+(./chapter5.aux) (./chapter5a.aux) (./chapter4a.aux) (./chapter7.aux)
+(./chapter8.aux) (./chapter9.aux) (./chapter10.aux
+
+LaTeX Warning: Label `startpage2_out' multiply defined.
+
+) (./chapter11.aux) (./chapter10.aux
+
+LaTeX Warning: Label `Web_integration' multiply defined.
+
+
+LaTeX Warning: Label `22@xvr' multiply defined.
+
+
+LaTeX Warning: Label `22@vr' multiply defined.
+
+
+LaTeX Warning: Label `startpage2_out' multiply defined.
+
+) (./chapter11.aux
+
+LaTeX Warning: Label `23@xvr' multiply defined.
+
+
+LaTeX Warning: Label `23@vr' multiply defined.
+
+
+LaTeX Warning: Label `ages_out' multiply defined.
+
+
+LaTeX Warning: Label `24@xvr' multiply defined.
+
+
+LaTeX Warning: Label `24@vr' multiply defined.
+
+
+LaTeX Warning: Label `ages2_out' multiply defined.
+
+
+LaTeX Warning: Label `datastep_style' multiply defined.
+
+
+LaTeX Warning: Label `by_age_tagset' multiply defined.
+
+
+LaTeX Warning: Label `ages3_out' multiply defined.
+
+
+LaTeX Warning: Label `flexible_byline_tagset' multiply defined.
+
+
+LaTeX Warning: Label `ages4_out' multiply defined.
+
+) (./chapter14.aux) (./chapter15.aux) (./chapter16.aux) (./chapter17.aux)
+(./appendix1.aux) (./appendix3.aux))
+\openout1 = `book.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 182.
+ (/sw/share/texmf/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+) (/sw/share/texmf/tex/context/base/supp-pdf.tex
+(/sw/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count119
+\scratchcounter=\count120
+\scratchtoks=\toks24
+\scratchdimen=\dimen120
+\scratchskip=\skip51
+\scratchmuskip=\muskip11
+\scratchbox=\box35
+\scratchread=\read2
+\scratchwrite=\write6
+\zeropoint=\dimen121
+\minusone=\count121
+\thousandpoint=\dimen122
+\emptytoks=\toks25
+\nextbox=\box36
+\nextdepth=\dimen123
+\everyline=\toks26
+\!!counta=\count122
+\!!countb=\count123
+\recursecounter=\count124
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPtoPDFconversion=\toks27
+)
+-------------------- Geometry parameters
+paper: class default
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 73.71613pt, 0.7\paperwidth , 110.57425pt (default)
+v-parts: 95.39737pt, 0.7\paperheight , 143.09605pt (default)
+hmarginratio: 2:3
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  614.295pt
+\paperheight 794.96999pt
+\textwidth  430.00462pt
+\textheight 556.47656pt
+\oddsidemargin  1.44614pt
+\evensidemargin 38.30426pt
+\topmargin  -6.94011pt
+\headheight 12.0pt
+\headsep    18.06749pt
+\footskip   25.29494pt
+\marginparwidth 125.0pt
+\marginparsep   7.0pt
+\columnsep  10.0pt
+\skip\footins  9.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+Package hyperref Info: Link coloring OFF on input line 182.
+ (/sw/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2001/01/27 v2.19 Cross-referencing by name of section
+\c@section@level=\count127
+)
+LaTeX Info: Redefining \ref on input line 182.
+LaTeX Info: Redefining \pageref on input line 182.
+ (./book.out) (./book.out)
+\openout4 = `book.out'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 201.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 201.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 201.
+
+[1
+
+
+
+{/sw/share/texmf/dvips/config/pdftex.map}]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 201.
+ [2]
+\openout2 = `preface.aux'.
+
+ (./preface.tex) [3
+
+] [4
+
+
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 204.
+
+(./book.toc
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+ [5
+
+] [6] [7] [8] [9] [10])
+\tf@toc=\write7
+\openout7 = `book.toc'.
+
+ [11] [12
+
+] (./book.lot)
+\tf@lot=\write8
+\openout8 = `book.lot'.
+
+ [13
+
+
+] [14
+
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 228.
+
+! pdfTeX warning (ext4): destination with the same identifier (name{page.1}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.228 \part{Introduction}
+                          [1
+
+
+]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.2}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.228 \part{Introduction}
+                          [2]
+\openout2 = `introduction.aux'.
+
+ (./introduction.tex
+Chapter 1.
+
+Underfull \vbox (badness 1540) has occurred while \output is active []
+
+
+! pdfTeX warning (ext4): destination with the same identifier (name{page.3}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.46 
+      [3
+
+
+
+]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.4}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.104 
+       [4])
+! pdfTeX warning (ext4): destination with the same identifier (name{page.5}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.239 \include{introduction}
+                             [5]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.6}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.240 \cleardoublepage
+                       [6
+
+
+]
+\openout2 = `chapter1.aux'.
+
+ (./chapter1.tex
+Chapter 2.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 47.
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 50--51
+[][][][][][][][][][][]
+ []
+
+! pdfTeX warning (ext4): destination with the same identifier (name{page.7}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.51 ...                                    13:00 
+                                                  Monday, August 7, 2006
+[7
+
+
+]
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 51--53
+[][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+! pdfTeX warning (ext4): destination with the same identifier (name{page.8}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.100                 43 
+                             Tagsets.Style_popup              Tagset [8]
+LaTeX Font Info:    Try loading font information for T1+phv on input line 129.
+
+(/sw/share/texmf/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+! pdfTeX warning (ext4): destination with the same identifier (name{page.9}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.167 
+       [9]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.10}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.254 T
+       he most confusing thing about the ods markup statement is that it
+[10])
+! pdfTeX warning (ext4): destination with the same identifier (name{page.11}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.241 \include{chapter1}
+                         [11]
+! pdfTeX warning (ext4): destination with the same identifier (name{page.12}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.242 \cleardoublepage
+                       [12
+
+
+]
+\openout2 = `chapter2.aux'.
+
+ (./chapter2.tex
+Chapter 3.
+! pdfTeX warning (ext4): destination with the same identifier (name{page.13}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.64 
+      [13
+
+
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/sl' in size <9> not available
+(Font)              Font shape `T1/ptm/b/sl' tried instead on input line 98.
+
+! pdfTeX warning (ext4): destination with the same identifier (name{page.14}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \penalty 
+l.120      end;
+                [14] [15] (./lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+) (./lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+)
+LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 216.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <12> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 216.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <12> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 216.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 219.
+ [16]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 302.
+ [17] [18]
+[19]
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+ [20])
+[21] [22
+
+
+]
+\openout2 = `chapter3.aux'.
+
+ (./chapter3.tex
+Chapter 4.
+[23
+
+
+]
+Underfull \vbox (badness 2285) has occurred while \output is active []
+
+ [24]
+[25] [26] [27] [28] [29] [30] [31]) [32]
+\openout2 = `chapter6.aux'.
+
+ (./chapter6.tex
+Chapter 5.
+
+Overfull \hbox (459.54602pt too wide) in paragraph at lines 61--72
+[][] 
+ []
+
+[33
+
+
+
+
+] [34] [35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37]
+[38] [39]
+Overfull \hbox (3.45224pt too wide) in paragraph at lines 466--467
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [40]
+[41] [42] [43] [44] [45]
+Overfull \hbox (3.45224pt too wide) in paragraph at lines 844--845
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][] 
+ []
+
+[46]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 914.
+
+ (/sw/share/texmf/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 914.
+ [47] [48] [49] [50]) [51]
+[52
+
+
+]
+\openout2 = `chapter7a.aux'.
+
+ (./chapter7a.tex
+Chapter 6.
+[53
+
+
+] [54]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [55]
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 165.
+
+[56]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [57]
+[58] [59] [60] [61] [62]) [63] [64
+
+
+] [65
+
+] [66]
+\openout2 = `chapter6a.aux'.
+
+ (./chapter6a.tex
+Chapter 7.
+[67
+
+
+] [68] [69] [70] [71]) [72] [73] [74
+
+
+]
+\openout2 = `chapter4.aux'.
+
+ (./chapter4.tex
+Chapter 8.
+[75
+
+
+] [76]
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 148--150
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[77] [78] [79]
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+ [80
+
+]
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 360--362
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[81]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [82])
+[83] [84
+
+
+]
+\openout2 = `chapter5.aux'.
+
+ (./chapter5.tex
+Chapter 9.
+[85
+
+
+] [86] [87] [88] [89] [90]
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+ [91
+
+]
+[92]) [93] [94
+
+
+]
+\openout2 = `chapter5a.aux'.
+
+ (./chapter5a.tex
+Chapter 10.
+[95
+
+
+] [96] [97]) [98]
+\openout2 = `chapter4a.aux'.
+
+ (./chapter4a.tex
+Chapter 11.
+[99
+
+
+
+
+]
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 68--69
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 79.
+(/sw/share/texmf/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Overfull \hbox (55.99538pt too wide) in paragraph at lines 81--81
+[]       /pcrr8t/ods html file='test.html' stylesheet='test.css'(url='test.css 
+test2.css');[] 
+ []
+
+[100] [101]
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 226--227
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 227--228
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 228--229
+[][][][][][][][][][] 
+ []
+
+[102]
+Overfull \hbox (845.86081pt too wide) in paragraph at lines 270--272
+[][][][][][][][][][][][][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [103]
+Overfull \hbox (19.6524pt too wide) in paragraph at lines 353--354
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 366--367
+[][][][][][][][][] 
+ []
+
+[104]
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 367--368
+[][][][][][][][][][][][][][][][][][][][][][][][][]
+ []
+
+
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 368--369
+[][][][][][][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 369.
+
+(/sw/share/texmf/tex/latex/psnfss/omsphv.fd
+File: omsphv.fd 
+)
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 369.
+
+Overfull \hbox (41.25262pt too wide) in paragraph at lines 369--370
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 375--376
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 376--377
+[][][][][][][][][][][][][][][][][][][][][][]
+ []
+
+
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 377--378
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 384--385
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 385--386
+[][][][][][][][][][][][][][][][][][][][][][][]
+ []
+
+
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 386--387
+[][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [105])
+[106] [107
+
+
+
+] [108]
+\openout2 = `chapter7.aux'.
+
+ (./chapter7.tex
+Chapter 12.
+[109
+
+
+] [110] [111] [112] [113] [114] [115] [116]) [117] [118
+
+
+]
+\openout2 = `chapter8.aux'.
+
+ (./chapter8.tex
+Chapter 13.
+[119
+
+
+] [120] <table_rules.png, id=4892, 385.44pt x 136.51pt>
+File: table_rules.png Graphic file (type png)
+
+<use table_rules.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 106--107
+[][] 
+ []
+
+[121] <table_rules1.png, id=4906, 380.42125pt x 136.51pt>
+File: table_rules1.png Graphic file (type png)
+
+<use table_rules1.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 178--179
+[][] 
+ []
+
+[122 <./table_rules.png>] [123] [124 <./table_rules1.png>] [125]
+<striped.png, id=5034, 426.59375pt x 256.96pt>
+File: striped.png Graphic file (type png)
+ <use striped.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 392--393
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [126]
+[127 <./striped.png>] [128]
+Overfull \hbox (25.05246pt too wide) in paragraph at lines 475--476
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [129]
+[130]
+Overfull \hbox (100.65323pt too wide) in paragraph at lines 654--655
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[131]
+
+LaTeX Warning: Reference `slider_out' on page 132 undefined on input line 699.
+
+[132] <slider.png, id=5293, 472.76625pt x 103.38625pt>
+File: slider.png Graphic file (type png)
+ <use slider.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 726--727
+[][] 
+ []
+
+) [133 <./slider.png>] [134
+
+
+]
+\openout2 = `chapter9.aux'.
+
+ (./chapter9.tex
+Chapter 14.
+[135
+
+
+]
+Overfull \hbox (3.45224pt too wide) in paragraph at lines 64--65
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.25235pt too wide) in paragraph at lines 75--76
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+ [136
+
+]
+[137]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [138]
+[139]
+Overfull \hbox (30.45251pt too wide) in paragraph at lines 309--310
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[140]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [141]
+Overfull \hbox (14.25235pt too wide) in paragraph at lines 420--421
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [142]
+<startpage1.png, id=5640, 423.5825pt x 274.02374pt>
+File: startpage1.png Graphic file (type png)
+ <use startpage1.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 455--456
+[][] 
+ []
+
+[143] [144 <./startpage1.png>]
+<startpage2.png, id=5691, 435.6275pt x 336.25626pt>
+File: startpage2.png Graphic file (type png)
+ <use startpage2.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 512--513
+[][] 
+ []
+
+<startpage3.png, id=5692, 283.0575pt x 687.56876pt>
+File: startpage3.png Graphic file (type png)
+ <use startpage3.png>
+[145] [146 <./startpage2.png>] [147 <./startpage3.png>]
+<startpage4.png, id=5747, 282.05376pt x 855.195pt>
+File: startpage4.png Graphic file (type png)
+ <use startpage4.png>
+
+LaTeX Warning: Float too large for page by 120.84824pt on input line 588.
+
+) [148] [149 <./startpage4.png>] [150
+
+
+]
+\openout2 = `chapter10.aux'.
+
+ (./chapter10.tex
+Chapter 15.
+
+Underfull \vbox (badness 4024) has occurred while \output is active []
+
+ [151
+
+
+]
+Overfull \hbox (29.43106pt too wide) in paragraph at lines 66--70
+[]/ptmr8t/Macro vari-ables, or alias can be used to spec-ify the files to read.
+ If both the no_top_matter and no_bottom_matter
+ []
+
+[152]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [153]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [154]
+[155] [156] [157]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [158]
+Overfull \hbox (111.45334pt too wide) in paragraph at lines 460--461
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (116.8534pt too wide) in paragraph at lines 461--462
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [159]
+
+LaTeX Warning: Reference `website_out' on page 160 undefined on input line 515.
+
+
+<website.png, id=5953, 600.2425pt x 784.9325pt>
+File: website.png Graphic file (type png)
+ <use website.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 520--521
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.52357pt on input line 521.
+
+) [160] [161 <./website.png>] [162
+
+
+]
+\openout2 = `chapter11.aux'.
+
+ (./chapter11.tex
+Chapter 16.
+[163
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [164]
+<ages.png, id=6068, 409.53pt x 775.89874pt>
+File: ages.png Graphic file (type png)
+ <use ages.png>
+
+LaTeX Warning: Float too large for page by 11.19914pt on input line 157.
+
+[165] [166 <./ages.png>]
+
+LaTeX Warning: Reference `striped' on page 167 undefined on input line 222.
+
+[167]
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 242--244
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 244--245
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 245--246
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 246--247
+[][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [168]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [169]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [170]
+<ages2.png, id=6319, 411.5375pt x 304.13625pt>
+File: ages2.png Graphic file (type png)
+ <use ages2.png> [171] [172 <./ages2.png>]
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 492--494
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 494--495
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 495--496
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 496--497
+[][][][][][][][][][] 
+ []
+
+[173]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [174]
+<ages3.png, id=6463, 426.59375pt x 762.85pt>
+File: ages3.png Graphic file (type png)
+ <use ages3.png> [175] [176 <./ages3.png>]
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+ [177]
+[178] <ages4.png, id=6608, 409.53pt x 759.83875pt>
+File: ages4.png Graphic file (type png)
+ <use ages4.png>) [179]
+[180 <./ages4.png>]
+\openout2 = `chapter10.aux'.
+
+ (./chapter10.tex
+Chapter 17.
+
+Underfull \vbox (badness 4024) has occurred while \output is active []
+
+ [181
+
+
+
+
+]
+Overfull \hbox (29.43106pt too wide) in paragraph at lines 66--70
+[]/ptmr8t/Macro vari-ables, or alias can be used to spec-ify the files to read.
+ If both the no_top_matter and no_bottom_matter
+ []
+
+[182]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [183]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [184]
+[185] [186] [187]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [188]
+Overfull \hbox (111.45334pt too wide) in paragraph at lines 460--461
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (116.8534pt too wide) in paragraph at lines 461--462
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [189]
+File: website.png Graphic file (type png)
+
+<use website.png>
+Overfull \hbox (3.61537pt too wide) in paragraph at lines 520--521
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.52357pt on input line 521.
+
+) [190] [191] [192
+
+
+]
+\openout2 = `chapter11.aux'.
+
+ (./chapter11.tex
+Chapter 18.
+[193
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [194]
+File: ages.png Graphic file (type png)
+
+<use ages.png>
+
+LaTeX Warning: Float too large for page by 11.19914pt on input line 157.
+
+[195] [196]
+
+LaTeX Warning: Reference `striped' on page 197 undefined on input line 222.
+
+[197]
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 242--244
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 244--245
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 245--246
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 246--247
+[][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [198]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [199]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [200]
+File: ages2.png Graphic file (type png)
+
+<use ages2.png> [201] [202]
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 492--494
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 494--495
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 495--496
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.8523pt too wide) in paragraph at lines 496--497
+[][][][][][][][][][] 
+ []
+
+[203]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [204]
+File: ages3.png Graphic file (type png)
+
+<use ages3.png> [205] [206]
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+ [207]
+[208]
+File: ages4.png Graphic file (type png)
+ <use ages4.png>) [209] [210] [211
+
+
+
+] [212]
+\openout2 = `chapter14.aux'.
+
+ (./chapter14.tex
+Chapter 19.
+[213
+
+
+] [214] [215] [216] [217]) [218]
+\openout2 = `chapter15.aux'.
+
+ (./chapter15.tex
+Chapter 20.
+[219
+
+
+
+
+] [220]) [221] [222
+
+
+]
+\openout2 = `chapter16.aux'.
+
+ (./chapter16.tex
+Chapter 21.
+
+Overfull \hbox (7.06924pt too wide) in paragraph at lines 46--48
+[]/ptmr8t/There is a SYLK tagset avail-able on the ODS web-site at http://suppo
+rt.sas.com/rnd/base/topics/odsmarkup/ 
+ []
+
+[223
+
+
+]
+Overfull \hbox (1.50931pt too wide) in paragraph at lines 77--79
+[]/ptmr8t/There is a DDE tagset avail-able on the ODS web-site at http://suppor
+t.sas.com/rnd/base/topics/odsmarkup/ 
+ []
+
+[224] <excelby.png, id=7681, 506.89375pt x 179.67125pt>
+File: excelby.png Graphic file (type png)
+ <use excelby.png>)
+[225 <./excelby.png>] [226
+
+
+]
+\openout2 = `chapter17.aux'.
+
+ (./chapter17.tex
+Chapter 22.
+[227
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [228]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [229]
+Overfull \hbox (62.85284pt too wide) in paragraph at lines 169--170
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [230])
+[231] [232
+
+
+] [233
+
+
+] [234]
+\openout2 = `appendix1.aux'.
+
+ (./appendix1.tex [235
+
+
+] [236] [237] [238] [239] [240]
+[241] [242]) [243]
+\openout2 = `appendix3.aux'.
+
+ (./appendix3.tex [244
+
+
+
+] [245] [246] [247]
+Overfull \hbox (1.61588pt too wide) in paragraph at lines 215--216
+[]/ptmr8t@12.0pt/Current des-ti-na-tion file. Val-ues in-clude BODY, CON-TENTS,
+ PAGES, FRAME,
+ []
+
+[248] [249] [250] [251]
+Overfull \hbox (14.67111pt too wide) in paragraph at lines 526--527
+[]/ptmr8t@12.0pt/Darker color in a bor-der that uses two col-ors to cre-ate a t
+hree-dimensional
+ []
+
+
+Overfull \hbox (18.15085pt too wide) in paragraph at lines 529--530
+[]/ptmr8t@12.0pt/Lighter color in a bor-der that uses two col-ors to cre-ate a 
+three-dimensional
+ []
+
+[252] [253]
+Overfull \hbox (1.44777pt too wide) in paragraph at lines 604--605
+[]/ptmr8t@12.0pt/Specifies whether to make the im-age that is spec-i-fied by BA
+CK-GROUNDIM-
+ []
+
+[254] [255]) [256] (./book.ind [257
+
+
+] [258] [259] [260] [261] [262]) (./book.aux (./preface.aux) (./introduction.au
+x) (./chapter1.aux) (./chapter2.aux)
+(./chapter3.aux) (./chapter6.aux) (./chapter7a.aux) (./chapter6a.aux)
+(./chapter4.aux) (./chapter5.aux) (./chapter5a.aux) (./chapter4a.aux)
+(./chapter7.aux) (./chapter8.aux) (./chapter9.aux) (./chapter10.aux)
+(./chapter11.aux) (./chapter10.aux) (./chapter11.aux) (./chapter14.aux)
+(./chapter15.aux) (./chapter16.aux) (./chapter17.aux) (./appendix1.aux)
+(./appendix3.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 12902 strings out of 95437
+ 185167 string characters out of 1190295
+ 183656 words of memory out of 1000001
+ 9788 multiletter control sequences out of 10000+50000
+ 76884 words of font info for 77 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 38i,12n,60p,634b,1908s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 8699 PDF objects out of 300000
+ 5820 named destinations out of 131072
+ 2046 words of extra memory for PDF output out of 65536
+
+! pdfTeX warning (dest): name{lstnumber.-93.92} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/sw/share/texmf/dvips/psnfss/8r.enc}{/sw/share/texmf/dvips/tetex/bbad153f.enc}
+</sw/share/texmf/fonts/type1/bluesky/cm/cmsy9.pfb></sw/share/texmf/fonts/type1/
+urw/times/utmb8a.pfb></sw/share/texmf/fonts/type1/urw/times/utmr8a.pfb>
+Output written on book.pdf (276 pages, 1793529 bytes).

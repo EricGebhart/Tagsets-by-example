@@ -1,0 +1,249 @@
+\chapter{Using The HTML Tagsets}
+\index{Tagsets!HTML}
+\index{Destinations!HTML}
+HTML is certainly one the most popular output typs available.
+Not only is easily used to report information on the web, but it
+is also a commonly understood import format for many applications.
+ODS Markup has several HTML tagsets to choose from when it comes
+to creating HTML output.  Each of these Tagsets has some advantage
+in one way or another depending upon how it will be used.
+This chapter will explain the different HTML tagsets and the
+features they support.
+
+
+\section{The Different HTML's}
+\index{Destinations!HTML}
+ODS HTML is one of the aliased destination names that really 
+means use the tagsets.html4 Tagset.  Someday it may well mean
+use the Tagsets.html5 Tagset.  But that is in the future.
+
+There are several other aliases, for the various HTML tagsets.
+PHTML, HTMLCSS, CHTML and CHTML\_imode are the 
+other shortcut names for HTML tagsets.  These aliases map directly
+to their tagset names, the aliases just keep us from having to put 'tagsets.'
+in front of them.
+
+Only one example is needed in order to
+see the major differences between the different HTML tagsets available.
+There are differences in style, the way titles and footnotes are processed,
+and in the case of the MSOffice2k tagset, there is a difference in how the
+tables are rendered.  All that is needed to see this differences is a 
+couple of title statements and some simple Proc Tabulate output.
+
+This example has three titles, the default title, and two more titles that
+use the 3 part title syntax.  It is the use of style and 3 part titles that
+will show major differences between these various HTML destinations.  
+
+\begin{sfvcode}
+ods html file="html.html";
+ods xhtml file="xhtml.html";
+ods htmlcss file="htmlcss.html";
+ods phtml file="phtml.html";
+ods tagsets.MSOffice2K file="msoffice2k.html";
+ods chtml file="chtml.html";
+ods imode file="imode.html";
+
+
+  title3 height=15pt color=orange
+         justify=right '15 pt first right'
+         justify=left 'first left';
+  title4 height=10pt color=red 'no justify red'
+         justify=right 'Second right'
+         justify=left 'Second left';
+
+proc sort data=sashelp.class out=work.class;
+    by age  sex;
+run;
+
+options obs=2;
+
+PROC TABULATE DATA=class;
+   VAR Height Weight;
+   CLASS Sex Age;
+   TABLE Age*Mean ALL*Sex*Mean,
+         Weight;
+   by age;
+   
+RUN;
+
+ods _all_ close;
+\end{sfvcode}
+
+
+\subsection{HTML4 And XHTML}
+\index{Destinations!HTML}
+\index{Destinations!HTML4}
+\index{Destinations!HTML3}
+\index{Destinations!XHTML}
+HTML4 and HTML are really the same thing and XHTML is nearly the same but not quite.
+The only thing the XHTML tagset does is add XML compliant tags to the HTML.
+If you don't know what that is, don't worry about it.  For all practical purposes
+they are nearly identical.
+
+The HTML destination does not have to be HTML4, it could be set to be HTML3.
+There is a registry setting
+that will allow HTML to be the legacy version HTML.  HTML3 is
+the name of what was the HTML destination in SAS 8.2.  HTML3 does
+not use tagsets or ODS Markup at all.  It is done the old fashioned way
+with C-code.  HTML3 has remained virtually unchanged since SAS 8.2.
+
+Let's look at the HTML4 output first since HTML4 is the tagset that does everything.
+There aren't any surprises here.  It looks just the way we would expect.
+The titles are colored, and justified on the page just the way they should be.
+
+\includegraphics[width=6in]{html.html.png}
+
+Use this output as a reference as you look at the output for the rest of these HTML
+destinations.  It will give you a good idea of how they all behave.
+
+\subsection{HTMLCSS}
+\index{Destinations!HTMLCSS}
+\index{HTMLCSS}
+HTMLCSS is a basic stylesheet based HTML tagset.  There is very little difference
+between the HTML4 tagset and HTMLCSS. Both the HTML4 and MSOffice2k tagsets inherit
+most of their events from the HTMLCSS tagset, and ultimately the PHTML tagset.
+
+
+\subsection{PHTML}
+\index{Destinations!PHTML}
+\index{PHTML}
+The PHTML tagset generates a very plain HTML.  The huge stylesheet is replaced
+by a much smaller stylesheet.  If you dislike all the styles and the verbosity
+of the html4 and htmlcss tagsets then this tagset is a good place to start.
+
+
+\subsection{XHTML}
+\index{Destinations!XHTML}
+\index{XHTML}
+The XHTML tagsets is one of the shortest tagsets around.  It inherits from the HTML4
+tagset.  All it adds are the stricter XML style tags.
+
+\subsection{MSOffice2K}
+\index{Destinations!MSOffice2k}
+\index{MSOffice2k}
+The MSOffice2k tagset is a good tagset to use if you want to import the resulting HTML
+into Microsoft Office.  This tagset adds Microsoft specific XML to the HTML so that 
+Microsoft office can size images better.  It also creates different HTML for titles and
+footnotes so that they import more smoothly into Excel.  This tagset also works with proc
+tabulate to create a better array of table cells, so that Excel will keep all of the
+rows straight.
+
+
+\subsection{HTML4}
+\index{Destinations!HTML!Stylesheets}
+The HTML tagsets that use styles always use a stylesheet, if no stylesheet file
+is specified the stylesheet is still written to the top of the
+body file.  Using an external stylesheet allows more flexibility
+and it can allow multiple reports to use the same stylesheet file.
+
+\begin{sfvcode}
+   ODS html file='test.html';
+
+   proc print data=sashelp.class; run;
+
+   ODS html close;
+\end{sfvcode}
+
+
+
+\subsection{PHTML}
+\index{Destinations!PHTML}
+\index{PHTML}
+The PHTML tagset generates a very plain HTML.  The huge stylesheet is replaced
+by a much smaller stylesheet.  If you dislike all the styles and the verbosity
+of the html4 and htmlcss tagsets then this tagset is a good place to start.
+
+
+\subsection{HTMLCSS}
+\index{Destinations!HTMLCSS}
+\index{HTMLCSS}
+HTMLCSS is a basic stylesheet based HTML tagset.  There is very little difference
+between the HTML4 tagset and HTMLCSS. Both the HTML4 and MSOffice2k tagsets inherit
+most of their events from the HTMLCSS tagset, and ultimately the PHTML tagset.
+
+\subsection{XHTML}
+\index{Destinations!XHTML}
+\index{XHTML}
+The XHTML tagsets is one of the shortest tagsets around.  It inherits from the HTML4
+tagset.  All it adds are the stricter XML style tags.
+
+\subsection{MSOffice2K}
+\index{Destinations!MSOffice2k}
+\index{MSOffice2k}
+The MSOffice2k tagset is a good tagset to use if you want to import the resulting HTML
+into Microsoft Office.  This tagset adds Microsoft specific XML to the HTML so that 
+Microsoft office can size images better.  It also creates different HTML for titles and
+footnotes so that they import more smoothly into Excel.  This tagset also works with proc
+tabulate to create a better array of table cells, so that Excel will keep all of the
+rows straight.
+
+\section{HTML and Excel}
+\index{Excel!HTML}
+\index{Excel!CHTML}
+\index{Excel!PHTML}
+\index{Excel!MSOffice2k}
+\index{HTML}
+\index{CHTML}
+\index{PHTML}
+\index{MSOffice2k}
+HTML is one of the better ways to import SAS ouput into excel.  But
+some tagsets work better than others.  HTML that uses H tags for 
+titles, notes and bylines works better than HTML that uses tables
+for their formatting.  That makes the HTML4 and HTMLCSS tagsets 
+bad choices for importing into Excel.  The Compact HTML, PHTML, and
+the MSOffice2k tagsets work the best. 
+
+\section{CHTML}
+\index{Destinations!cHTML}
+\index{cHTML}
+Compact HTML is a subset of HTML.  Chtml has no style, it has a limited but very
+useful set of HTML tags.  Chtml output is viewable on any browser.  It is intended
+for use with phones and PDA's where download size is important.
+
+\subsection{CHTML\_imode}
+Imode HTML is a subset of Compact HTML.  Imode has no support for tables.  It is
+primarily used for phones in Japan.
+
+
+\section{Stylesheets}
+\index{HTML!Stylesheets}
+If you choose to use stylesheets it can be convenient to have one stylesheet
+that everyone uses.  It is easy to reference another stylesheet on the ODS
+Statement.  This first ODS statement will create a stylesheet file called test.css.
+
+\begin{sfvcode}
+ODS HTML file='test.html' stylesheet='test.css';
+\end{sfvcode}
+
+This next ODS statement does not create a stylesheet file at all.  But it does put 
+in a stylesheet link to the test.css stylesheet that was created earlier.
+
+\begin{sfvcode}
+ODS HTML file='test.html' stylesheet=(url='test.css');
+\end{sfvcode}
+
+
+\section{Javascript code}
+If you have a need for javascript in your HTML there are some good places to put
+that code.  There is an event in the tagset called code\_body that will write to
+the code file specified on the ods statement.  A link to that file will be created
+in the body, contents, and pages files.  It is also possible to trigger the code\_body
+event when no code file is specified, that will allow support for both external and 
+embedded javascript. 
+
+
+\section{Accessibility}
+The HTML tagsets have accessibility features that are 508 compliant to
+level two.  Level 3 compliance is possible with most procedures but 
+will require updates to the table templates used by the procedures.
+Attributes in the table templates provide for summary, abreviation,
+acronym, long\_description, caption, and alt.  Setting these table and
+column attributes can improve your HTML's 508 compliance dramatically.  
+
+\section{Summary}
+There are several HTML tagsets provided by SAS.  Most likely one of
+them will be reasonably close to the style of HTML you wish to create.
+
+
+
+

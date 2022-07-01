@@ -1,0 +1,43 @@
+\documentclass{book}
+\usepackage{fancyhdr, flafter, makeidx, float, times}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{varioref}
+\usepackage[color]{ods}
+\pagestyle{fancy}
+
+
+\begin{document}
+
+% The way the preface titles are to be
+\fancyhead{} %clear all fields
+\fancyhead[LO,RE]{\thepage}
+\fancyhead[RO]{}
+\fancyhead[LE]{}
+\fancyfoot[CO,CE]{}
+
+\frontmatter
+\title{ODS Markup: \\
+Tagsets by Example}
+\author{Eric Gebhart\\
+SAS Institute}
+\renewcommand{\today}{September 22, 2003}
+\pagenumbering{roman}
+\maketitle
+
+\mainmatter
+\cleardoublepage
+\pagenumbering{arabic}
+\fancyhead{} %clear all fields
+\setlength{\headrulewidth}{1pt}
+\lhead[\rm\thepage]{\sl\rightmark}
+\rhead[\sl\leftmark]{\rm\thepage}
+
+\tableofcontents
+
+% -----------------------document end
+\backmatter
+
+\end{document}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" saslongversion="9.01.01M0D10062003" date="2003-11-24" time="12:39:29" encoding="iso-8859-1" event_name="doc" trigger_name="attr_out" section="doc" class="Body" id="CLASS" name="CLASS" index="IDX" just="c">
+   <doc_head event_name="doc_head" trigger_name="attr_out" section="doc_head" class="Body" index="IDX" just="c">
+   </doc_head>
+   <doc_body event_name="doc_body" trigger_name="attr_out" section="doc_body" class="Body" index="IDX" just="c">
+      <proc event_name="proc" trigger_name="attr_out" section="proc" class="INBOARD" id="CLASS" colcount="5" col_id="1" ref_id="2" name="CLASS" label="TABLE" index="IDX" just="c">
+         <table event_name="table" trigger_name="attr_out" section="table" class="Table" id="CLASS" col_id="3" name="CLASS" label="TABLE" type="table" index="IDX" just="c">
+            <colspecs event_name="colspecs" trigger_name="attr_out" section="colspecs" class="Body" id="CLASS" text="CLASS" colcount="5" col_id="3" ref_id="-1" name="CLASS" label="TABLE" index="IDX" just="c">
+               <colgroup event_name="colgroup" trigger_name="attr_out" section="colgroup" id="CLASS" colcount="5" index="IDX" just="c">
+                  <colspec_entry event_name="colspec_entry" trigger_name="attr_out" section="colspec_entry" id="CLASS" colcount="5" col_id="4" ref_id="8000" name="Name" type="string" index="IDX" just="l" width="8"/>
+                  <colspec_entry event_name="colspec_entry" trigger_name="attr_out" section="colspec_entry" id="CLASS" colcount="5" col_id="5" ref_id="8000" name="Sex" type="string" index="IDX" just="l" width="1"/>
+                  <colspec_entry event_name="colspec_entry" trigger_name="attr_out" section="colspec_entry" id="CLASS" colcount="5" col_id="6" ref_id="8003" name="Age" type="double" index="IDX" just="d"/>
+                  <colspec_entry event_name="colspec_entry" trigger_name="attr_out" section="colspec_entry" id="CLASS" colcount="5" col_id="7" ref_id="8003" name="Height" type="double" index="IDX" just="d"/>
+                  <colspec_entry event_name="colspec_entry" trigger_name="attr_out" section="colspec_entry" id="CLASS" colcount="5" col_id="8" ref_id="8003" name="Weight" type="double" index="IDX" just="d"/>
+               </colgroup>
+            </colspecs>
+            <table_head event_name="table_head" trigger_name="attr_out" section="table_head" class="Body" id="CLASS" colcount="5" name="CLASS" label="TABLE" index="IDX" just="c">
+               <row event_name="row" trigger_name="attr_out" section="head" class="Table" id="CLASS" colcount="5" name="CLASS" label="TABLE" index="IDX" just="c">
+                  <data event_name="data" trigger_name="attr_out" section="head" class="Header" id="CLASS" text="Name" colcount="5" type="string" index="IDX" just="c">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="head" class="Header" id="CLASS" text="Sex" colcount="5" type="string" index="IDX" just="c">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="head" class="Header" id="CLASS" text="Age" colcount="5" type="string" index="IDX" just="c">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="head" class="Header" id="CLASS" text="Height" colcount="5" type="string" index="IDX" just="c">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="head" class="Header" id="CLASS" text="Weight" colcount="5" type="string" index="IDX" just="c">
+                  </data>
+               </row>
+            </table_head>
+            <table_body event_name="table_body" trigger_name="attr_out" section="table_body" class="INBOARD" id="CLASS" text="TABLE" colcount="5" col_id="3" name="CLASS" label="TABLE" index="IDX" just="c">
+               <row event_name="row" trigger_name="attr_out" section="body" class="Table" id="CLASS" colcount="5" name="CLASS" index="IDX" just="c">
+                  <data event_name="data" trigger_name="attr_out" section="body" class="Data" id="CLASS" text="COLUMN" value="Joyce" colcount="5" col_id="4" name="Name" type="string" index="IDX" just="0">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="body" class="Data" id="CLASS" text="COLUMN" value="F" colcount="5" col_id="5" name="Sex" type="string" index="IDX" just="0">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="body" class="Data" id="CLASS" text="COLUMN" value="11" colcount="5" col_id="6" name="Age" type="float" index="IDX" just="0">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="body" class="Data" id="CLASS" text="COLUMN" value="51.3" colcount="5" col_id="7" name="Height" type="float" index="IDX" just="0">
+                  </data>
+                  <data event_name="data" trigger_name="attr_out" section="body" class="Data" id="CLASS" text="COLUMN" value="50.5" colcount="5" col_id="8" name="Weight" type="float" index="IDX" just="0">
+                  </data>
+               </row>
+</table_body>
+</table>
+</proc>
+</doc_body>
+</doc>

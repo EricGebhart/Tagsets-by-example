@@ -1,0 +1,53 @@
+
+Event: style_class
+    FRAME : box
+    RULES : none
+    FONT_FACE : Times
+    HTMLCLASS : darkbox
+    CELLSPACING : 0
+    CELLPADDING : 1
+    FONT_SIZE : x-large
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #000000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+Event: style_class
+    FRAME : box
+    RULES : groups
+    FONT_FACE : Verdana, Helvetica, sans-serif
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FONT_SIZE : medium
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #008000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+Event: table
+    FRAME : box
+    RULES : none
+    FONT_FACE : Times
+    CELLSPACING : 0
+    CELLPADDING : 1
+    FONT_SIZE : x-large
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #000000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto

@@ -1,0 +1,754 @@
+\chapter{Variables}
+\section{Event Variables}
+\subsection{508 Accessibility}
+
+All of these variables for 508 Accessiblity can be set in the table template.
+
+\begin{description}
+\variable{508 Accessibility}{Abbr}
+ Abbreviation; useful for compliance with Section 508 of the U.S. Rehabilitation Act of 1973.
+
+\variable{508 Accessibility}{Acronym}
+Acronym
+
+\variable{508 Accessibility}{Alt} 
+Alternate description.
+
+\variable{508 Accessibility}{Caption} 
+	Captions for tables.
+\variable{508 Accessibility}{LongDesc} 
+	Long table description.
+\variable{508 Accessibility}{Summary} 
+        Table Summary.
+
+\end{description}
+
+\subsection{Data}
+
+\begin{description}
+\variable{Data}{\_Name\_} 
+    Name of the current variable or key. Used by putvars, iterate and next
+
+\variable{Data}{\_Value\_} 
+    Value of the current variable or variable element. Used by putvars, iterate and next
+
+\variable{Data}{Dname} 
+    Name of the column in the data component to associate with the current column. Set with the DATANAME= attribute in the column definition.
+
+\variable{Data}{Label} 
+    Label for the variable. Set with the LABEL= attribute in the column definition.
+
+\variable{Data}{Name} 
+    Name of the variable. Set with the VARNAME= attribute in the column definition.
+
+\variable{Data}{Value} 
+    Current value. data, header, title, byline, note, etc.
+
+\end{description}
+
+\subsection{Data Formatting}
+\begin{description}
+
+\variable{Data Formatting}{Closure} 
+    Describes whether the endpoints of a format range are included or excluded, i.e. <-, -, -<, <-<, etc.
+
+
+\variable{Data Formatting}{DataEncoding} 
+Encoding type for Raw value, always Base64.
+
+\variable{Data Formatting}{DataType} 
+Picture format option.
+
+\variable{Data Formatting}{DefWidth} 
+Format Default Width
+
+\variable{Data Formatting}{Fill} 
+Picture format option.
+
+\variable{Data Formatting}{FMTLang} 
+Picture format option.
+
+\variable{Data Formatting}{Fuzz} 
+Format option.
+
+\variable{Data Formatting}{Max} 
+Format option
+
+\variable{Data Formatting}{Min} 
+Format option
+
+\variable{Data Formatting}{Missing} 
+Value that indicates that no data value is stored. By default, SAS uses a single period (.) for a missing numeric value and a blank space for a missing character value. In addition, for a numeric missing value, a special missing value can be used to represent different categories of missing data by assigning the letters A - Z or an underscore.
+
+\variable{Data Formatting}{MultiLabel} 
+Format option.
+
+\variable{Data Formatting}{Multiplier} 
+Picture format option.
+
+\variable{Data Formatting}{NoEdit} 
+Picture format option
+
+\variable{Data Formatting}{No\_Wrap} 
+Places a NOWRAP attribute in the tag, so that the browser doesn't insert a line break. NOWRAP is automatically added to a <TD> in HTML. This is important, for example, if the cell contents are math, because the browser might otherwise break a line after a negative sign.
+
+\variable{Data Formatting}{NotSorted} 
+Format option
+
+\variable{Data Formatting}{Precision} 
+Number of places to the right of the decimal.
+
+\variable{Data Formatting}{Prefix} 
+Picture format option.
+
+\variable{Data Formatting}{RangeEnd} 
+End value of a range in a format.
+
+\variable{Data Formatting}{RangeStart} 
+Start value of a range in a format
+
+\variable{Data Formatting}{Round} 
+Format option
+
+\variable{Data Formatting}{Base64} 
+encoding of the stored machine representation of the original value.
+
+\variable{Data Formatting}{SASFormat} 
+SAS format used to format the value.
+
+\variable{Data Formatting}{Scale} 
+Total number of places in the floating point number.
+
+\variable{Data Formatting}{Type} 
+Type of data, which can be STRING, DOUBLE, CHAR, BOOL, or INT.
+
+\variable{Data Formatting}{UnformattedType} 
+Data type before formatting.
+
+\variable{Data Formatting}{UnformattedValue} 
+Value before formatting.
+
+\variable{Data Formatting}{UnformmatedWidth} 
+Width before formatting.
+
+\end{description}
+
+\subsection{Event MetaData}
+
+
+\begin{description}
+
+\variable{Event Metadata}{Empty} 
+Flag to determine whether event is called as an empty tag.
+
+\variable{Event Metadata}{Event\_Name} 
+SAS Requested event name.
+
+\variable{Event Metadata}{State} 
+Current state of the event, which is either START or FINISH.
+
+\variable{Event Metadata}{Trigger\_Name} 
+Name of the current event if in a triggered event
+
+\end{description}
+
+\subsection{Graph}
+
+\begin{description}
+
+\variable{Graph}{Archive} 
+Points to the location of the jar files. Used by SAS/GRAPH.
+
+\variable{Graph}{ClassId} 
+Identifier used by MS Windows to instantiate active controls.
+
+\variable{Graph}{Coordinate} 
+Coordinate in a map area. Used by SAS/GRAPH.
+
+\variable{Graph}{Grseg} 
+The current graph image is a Grseg.
+
+\variable{Graph}{Image\_Formats} 
+Specifies a comma-separated string of image types. The image types are the same as what SAS/GRAPH can produce, for example, GIF, JPG, PNG.
+
+\variable{Graph}{Shape} 
+Shape of the clickable map. Used by SAS/GRAPH.
+
+
+\end{description}
+
+\subsection{Measured}
+
+\begin{description}
+
+\variable{Measured}{Blue} 
+\variable{Measured}{Bottom} 
+\variable{Measured}{Green} 
+\variable{Measured}{KeepN} 
+\variable{Measured}{Left} 
+\variable{Measured}{List\_Index} 
+\variable{Measured}{NOCenter} 
+\variable{Measured}{Page\_Columns} 
+\variable{Measured}{SectionData} 
+\variable{Measured}{Red} 
+\variable{Measured}{Right} 
+\variable{Measured}{Top} 
+\variable{Measured}{Vmerge} 
+
+
+\end{description}
+
+\subsection{Miscellaneous}
+
+\begin{description}
+
+\variable{Miscellaneous}{Anchor} 
+Current anchor, which is the last value of the anchor tag. For example, IDX.
+
+\variable{Miscellaneous}{Data\_Viewer} 
+Name of the Data Viewer, Table, Batch, Tree, Graph, Report, Print, etc
+
+\variable{Miscellaneous}{Date} 
+The Date Formatted as YYYY-MM-DD.
+
+\variable{Miscellaneous}{Dest\_File} 
+Current destination file. Values include BODY, CONTENTS, PAGES, FRAME, CODE, STYLESHEET, DATA.
+
+\variable{Miscellaneous}{FirstPage} 
+Specifies that the current page is the first page of the output file.
+
+\variable{Miscellaneous}{Language} 
+Language of the current output. Currently, only set when it is an Asian language.
+
+\variable{Miscellaneous}{Output\_Label} 
+Label of the current output object.
+
+\variable{Miscellaneous}{Output\_Name} 
+Name of the current output object.
+
+\variable{Miscellaneous}{Output\_Type} 
+Output type as specified in the tagset.
+
+\variable{Miscellaneous}{Page\_Count} 
+Page count since the files were opened.
+
+\variable{Miscellaneous}{Proc\_Count} 
+How many procedures have run since the files were opened.
+
+\variable{Miscellaneous}{Proc\_Name} 
+Name of the current procedure.
+
+\variable{Miscellaneous}{SASLongVersion} 
+Long format of the SAS version.
+
+\variable{Miscellaneous}{SASVersion} 
+Short format of the SAS version.
+
+\variable{Miscellaneous}{Space} 
+String that the tagset uses for a nonbreaking space.
+
+\variable{Miscellaneous}{Split} 
+String that the tagset uses for line breaks.
+
+\variable{Miscellaneous}{Style} 
+Current style in use.
+
+\variable{Miscellaneous}{Style\_Element} 
+Name of the current style element, Always populated when possible. Where htmlclass is only populated when using stylesheets.
+
+\variable{Miscellaneous}{Suppress\_Charset} 
+The Suppress Charset Registry setting.
+
+\variable{Miscellaneous}{Time} 
+The time formatted as HH:MM:SS.
+
+\variable{Miscellaneous}{TOCLevel} 
+Table of contents level.
+
+\variable{Miscellaneous}{Total\_Page\_Count} 
+Page count since the ODA was opened.
+
+\variable{Miscellaneous}{Total\_Proc\_Count} 
+How many procedures have run since the ODA opened.
+
+\end{description}
+
+\subsection{ODS Statement}
+
+\begin{description}
+
+\variable{ODS Statement}{Author} 
+Author of the output. Specified from the ODS statement or is the user that is running SAS.
+
+\variable{ODS Statement}{BaseName} 
+BASE= option as set in the ODS statement.
+
+\variable{ODS Statement}{Body\_Name} 
+Name of the body file.
+
+\variable{ODS Statement}{Body\_Title} 
+Title of body file.
+
+\variable{ODS Statement}{Body\_URL} 
+URL of the body file.
+
+\variable{ODS Statement}{Code} 
+Used by SAS/GRAPH.
+
+\variable{ODS Statement}{CodeBase} 
+The codebase used by SAS/GRAPH.
+
+\variable{ODS Statement}{Code\_Name} 
+Name of the code file.
+
+\variable{ODS Statement}{Code\_Title} 
+Title of code file.
+
+\variable{ODS Statement}{Code\_URL} 
+URL of the code file.
+
+\variable{ODS Statement}{Contents\_Name} 
+Name of the contents file.
+
+\variable{ODS Statement}{Contents\_Title} 
+Title of contents file.
+
+\variable{ODS Statement}{Contents\_URL} 
+URL of the contents file.
+
+\variable{ODS Statement}{Data\_Name} 
+Name of the data file.
+
+\variable{ODS Statement}{Data\_Title} 
+Title of data file.
+
+\variable{ODS Statement}{Data\_URL} 
+URL of the data file.
+
+\variable{ODS Statement}{Encoding} 
+The real world encoding which corresponds to the encoding specified. ex. utf8, iso-8859-1.
+
+\variable{ODS Statement}{Frame\_Name} 
+Name of the frame file.
+
+\variable{ODS Statement}{Frame\_Title} 
+Title of frame file.
+
+\variable{ODS Statement}{Frame\_URL} 
+URL of the frame file.
+
+\variable{ODS Statement}{Graph\_Path\_Name} 
+The graph path as given on the ODS statement
+
+\variable{ODS Statement}{Graph\_Path\_URL} 
+The graph path URL.
+
+\variable{ODS Statement}{No\_Bottom} 
+Non-zero if the No\_Bottom\_Matter option was specified.
+
+\variable{ODS Statement}{No\_Top} 
+Non-zero if No\_Top\_Matter option option was specified
+
+\variable{ODS Statement}{Operator} 
+Operator. Set from the ODS statement or is the user that is running SAS.
+
+\variable{ODS Statement}{Pages\_Name} 
+Name of the pages file.
+
+\variable{ODS Statement}{Pages\_Title} 
+Title of pages file.
+
+\variable{ODS Statement}{Pages\_URL} 
+URL of the pages file.
+
+\variable{ODS Statement}{Path} 
+Path as set by the ODS statement.
+
+\variable{ODS Statement}{Path\_Name} 
+The Path as given on the ODS statement.
+
+\variable{ODS Statement}{Path\_URL} 
+The path URL.
+
+\variable{ODS Statement}{Stylesheet\_Name} 
+Name of the stylesheet file.
+
+\variable{ODS Statement}{Stylesheet\_Title} 
+Title of stylesheet file.
+
+\variable{ODS Statement}{Stylesheet\_URL} 
+URL of the stylesheet file.
+
+\variable{ODS Statement}{Tagset} 
+Name of the current tagset.
+
+\variable{ODS Statement}{Tagset\_Alias} 
+Tagset alias, as given by the alias attribute on the ODS statement.
+
+\variable{ODS Statement}{Title} 
+Title from the ODS statement.
+
+\variable{ODS Statement}{TranTab} 
+Translation table name for character conversions.
+
+\end{description}
+
+\subsection{Table}
+
+\begin{description}
+
+\variable{Table}{CLabel} 
+Label for the output object in the contents file, the Results window, and the trace record. Set with the CONTENTS\_LABEL= attribute in the table definition.
+
+\variable{Table}{Colcount} 
+Number of columns in the current table.
+
+\variable{Table}{Colend} 
+Ending column number.
+
+\variable{Table}{Colspan} 
+Number of columns that the cell spans.
+
+\variable{Table}{Colstart} 
+Column number for which the cell starts.
+
+\variable{Table}{Data\_Row} 
+Specifies that the current row is a data row.
+
+\variable{Table}{First\_Stacked\_Value} 
+Specifies that this is the first value in a set of stacked values.
+
+\variable{Table}{Last\_Stacked\_Value} 
+Specifies that this is the last value in a set of stacked values.
+
+\variable{Table}{Is\_Stacked} 
+TRUE if the Current column is a stacked column.
+
+\variable{Table}{Row} 
+Current table row, which includes headers.
+
+\variable{Table}{RowSpan} 
+Number of rows that the current cell spans.
+
+\variable{Table}{Section} 
+Section of the table, which can be HEAD, BODY, or FOOT.
+
+\variable{Table}{Width} 
+Width. Most commonly used for COLSPECS.
+
+\end{description}
+
+\subsection{Title and Note Formatting}
+
+\begin{description}
+
+\variable{Title and Note Formatting}{After} 
+AFTER	 Specifies that the current note is an after note (see the documentation for the NOTES statement and the NOTES= option).
+
+\variable{Title and Note Formatting}{Before} 
+Specifies that the current note is a before note (see the documentation for the NOTES statement and the NOTES= option).
+
+\variable{Title and Note Formatting}{Hidden} 
+Specifies when the current object is hidden. Generally used when creating the table of contents.
+
+\variable{Title and Note Formatting}{In\_Association} 
+Specifies inside an association.
+
+\variable{Title and Note Formatting}{In\_Caption} 
+Specifies inside the caption part of an association.
+
+\variable{Title and Note Formatting}{Is\_Note} 
+Specifies that the current procedure title is a note.
+
+\variable{Title and Note Formatting}{Is\_Title} 
+Specifies that the current procedure title is a title.
+
+\end{description}
+
+\subsection{URL}
+
+\begin{description}
+
+\variable{URL}{NoBase} 
+NOBASE	Flag to determine whether to use the value for BASE= as part of the URL. 0 uses BASE=. 1 does not use BASE=.
+
+\variable{URL}{Target} 
+TARGET	Target that is associated with the URL.
+
+\variable{URL}{URL} 
+Fully formed URL.
+
+\end{description}
+
+\subsection{XML Libname Engine}
+
+\begin{description}
+
+\variable{XML Libname Engine}{ID} 
+\variable{XML Libname Engine}{SUFFIX} 
+
+\variable{XML Libname Engine}{XMLDataForm} 
+Specifies whether the tag for an element to contain SAS variable information (name and data) is to appear in open element or enclosed attribute format. Used by the XML LIBNAME engine.
+
+\variable{XML Libname Engine}{XMLMetaData} 
+Specifies whether to generate schema-related information.
+
+\variable{XML Libname Engine}{XMLSchema} 
+Specifies whether to generate schema-related information.
+
+\variable{XML Libname Engine}{tag\_Name} 
+Specifies a dynamic tagname defined by the data.
+
+\variable{XML Libname Engine}{XMLCONTROL} 
+\variable{XML Libname Engine}{XMLCDATA} 
+\variable{XML Libname Engine}{XMLPARM} 
+
+\end{description}
+
+\section{Style Variables}
+\subsection{Borders}
+
+\begin{description}
+
+\variable{Borders}{BorderBottomColor} 
+Border Color
+
+\variable{Borders}{BorderBottomStyle} 
+Border Style: Dotted, Dashed, Solid, Double, Groove, Ridge, Inset, Outset, Hidden.
+
+\variable{Borders}{BorderBottomWidth} 
+Border Width
+
+\variable{Borders}{BorderColor} 
+Color of the border if the border is just one color.
+
+\variable{Borders}{BorderColorDark} 
+Darker color in a border that uses two colors to create a three-dimensional effect.
+
+\variable{Borders}{BorderColorLight} 
+Lighter color in a border that uses two colors to create a three-dimensional effect.
+
+\variable{Borders}{BorderLeftColor} 
+Border Color
+
+\variable{Borders}{BorderLeftStyle} 
+Border Style: Dotted, Dashed, Solid, Double, Groove, Ridge, Inset, Outset, Hidden.
+
+\variable{Borders}{BorderLeftWidth} 
+Border Width
+
+\variable{Borders}{BorderRightColor} 
+Border Color
+
+\variable{Borders}{BorderRightStyle} 
+Border Style: Dotted, Dashed, Solid, Double, Groove, Ridge, Inset, Outset, Hidden.
+
+\variable{Borders}{BorderRightWidth} 
+Border Width
+
+\variable{Borders}{BorderRightStyle} 
+Border Style: Dotted, Dashed, Solid, Double, Groove, Ridge, Inset, Outset, Hidden.
+
+\variable{Borders}{BorderTopColor} 
+Border Color
+
+\variable{Borders}{BorderTopStyle} 
+Border Style: Dotted, Dashed, Solid, Double, Groove, Ridge, Inset, Outset, Hidden.
+
+\variable{Borders}{BorderTopWidth} 
+Border Width
+
+\variable{Borders}{BorderWidth} 
+Width of the border of the table.
+
+\end{description}
+
+\subsection{Font}
+
+\begin{description}
+
+\variable{Borders}{color} 
+Color of the text.
+
+\variable{Borders}{FontFamily} 
+Font family.
+
+\variable{Borders}{FontSize} 
+Size of the font.
+
+\variable{Borders}{FontStyle} 
+Style of the font.
+
+\variable{Borders}{FontWeight} 
+Font weight.
+
+\variable{Borders}{FontWidth} 
+Font width.
+
+\variable{Miscellaneous}{textdecoration} 
+\variable{Miscellaneous}{textindent} 
+
+\end{description}
+
+\subsection{Background}
+
+\begin{description}
+
+\variable{Background}{BackgroundColor} 
+Color of the background.
+
+\variable{Background}{BackgroundImage} 
+Background image.
+
+\variable{Borders}{Watermark} 
+Specifies whether to make the image that is specified by BACKGROUNDIMAGE into a watermark.
+
+\variable{Background}{BackgroundRepeat} 
+
+\variable{Background}{backgroundPosition} 
+
+\end{description}
+
+\subsection{Frame}
+
+\begin{description}
+
+\variable{Frame}{BodyScrollBar} 
+Specifies whether to put a scrollbar in the frame that references the body file.
+
+\variable{Frame}{BodySize} 
+Width of the frame that displays the body file in the HTML frame file.
+
+\variable{Frame}{ContentPosition} 
+Position, within the frame file, of the frames that display the contents and the page files.
+
+\variable{Frame}{ContentScrollbar} 
+Specifies whether to put a scrollbar in the frames that display the contents and the page files.
+
+\variable{Frame}{ContentSize} 
+Width of the frames in the frame file that display the contents and the page files.
+
+\variable{Frame}{FrameBorder} 
+Specifies whether to put a border around the frame for an HTML file that uses frames.
+
+\variable{Frame}{FrameBorderWidth} 
+Width of the border around the frames for an HTML file that uses frames.
+
+\variable{Frame}{FrameSpacing} 
+Width of the space between frames for HTML that uses frames.
+
+\variable{Frame}{LinkColor} 
+Color for links that have not yet been visited.
+
+\variable{Frame}{ListEntryAnchor} 
+Specifies whether to make the entry in the table of contents a link to the body file.
+
+\end{description}
+
+\subsection{Miscellaneous}
+
+\begin{description}
+
+\variable{Miscellaneous}{FillRuleWidth} 
+
+Width of the fill rule.
+\variable{Miscellaneous}{Flyover} 
+
+Text to show in a tool tip for the cell.
+\variable{Miscellaneous}{NoBreakSpace} 
+
+\variable{Miscellaneous}{PostHTML} 
+HTML code to place after the table or cell.
+
+\variable{Miscellaneous}{PostImage} 
+Image to place after the table or cell.
+
+\variable{Miscellaneous}{PostText} 
+Text to place after the table or cell.
+
+\variable{Miscellaneous}{PreHTML} 
+HTML code to place before the table or cell.
+
+\variable{Miscellaneous}{PreImage} 
+Image to place before the table or cell.
+
+\variable{Miscellaneous}{PreText} 
+Text to place before the cell or table.
+
+\variable{Miscellaneous}{ProtectSpecialCharacters} 
+Specifies how less-than (<) and greater-than (>) signs and ampersands (\&) are interpreted.
+
+\variable{Miscellaneous}{Height} 
+Height of the object.
+
+\variable{Miscellaneous}{Padding} 
+Amount of white space on each of the four sides of the text in a cell.
+
+\variable{Miscellaneous}{PaddingLeft} 
+
+\variable{Miscellaneous}{PaddingTop} 
+
+\variable{Miscellaneous}{PaddingBottom} 
+
+\variable{Miscellaneous}{PaddingRight} 
+
+\variable{Miscellaneous}{BorderSpacing} 
+Amount of spacing between cells.
+
+\variable{Miscellaneous}{Width} 
+Width of the object.
+
+\variable{Miscellaneous}{Rules} 
+
+\variable{Miscellaneous}{Frame} 
+
+\variable{Miscellaneous}{HrefTarget} 
+Window or frame in which to open the target of the link.
+
+\variable{Miscellaneous}{Class} 
+Name of the stylesheet class to use for the table or cell.
+
+\variable{Miscellaneous}{ContentType} 
+Value of the content type for pages that you send directly to a Web server rather than to a file.
+
+\variable{Miscellaneous}{DocType} 
+Entire doctype declaration for the HTML document.
+
+\variable{Miscellaneous}{HTMLID} 
+ID for the table or cell.
+
+\variable{Miscellaneous}{HTMLStyle} 
+Individual attributes and values for the table or cell.
+
+\variable{Miscellaneous}{Margin} 
+
+\variable{Miscellaneous}{MarginRight} 
+
+\variable{Miscellaneous}{MarginLeft} 
+
+\variable{Miscellaneous}{MarginTop} 
+
+\variable{Miscellaneous}{MarginBottom} 
+
+\end{description}
+
+
+\subsection{Graph}
+
+\begin{description}
+\variable{Miscellaneous}{Description} 
+\variable{Miscellaneous}{GradientDirection} 
+\variable{Miscellaneous}{ImageStyle} 
+\variable{Miscellaneous}{MarkerSymbol} 
+\variable{Miscellaneous}{TickDisplay} 
+\variable{Miscellaneous}{DisplayOpts} 
+\variable{Miscellaneous}{Connect} 
+\variable{Miscellaneous}{CapStyle} 
+
+\variable{Miscellaneous}{ContrastColor} 
+\variable{Miscellaneous}{StartColor} 
+\variable{Miscellaneous}{NeutralColor} 
+\variable{Miscellaneous}{EndColor} 
+
+\end{description}
+

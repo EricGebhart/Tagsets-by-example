@@ -1,0 +1,58 @@
+
+proc template;
+
+    define tagset tagsets.striped_latex;
+        parent=tagsets.colorlatex;
+
+        define event table_body;
+            start:
+                set $row_class 'data';
+            finish:
+                unset $row_class;
+        end;
+
+        define event row;
+            finish:
+                put CR '\\\hline' CR;
+
+                do /if cmp(section, 'body');
+                    do /if cmp($row_class, 'data');
+                        set $row_class 'data_strong';
+                    else;
+                        set $row_class 'data';
+                    done;
+                done;
+        end;
+
+        define event data;
+            start:
+                put VALUE /if cmp($sascaption, 'true');
+                break /if cmp($sascaption, 'true');
+                put ' & ' CR / if !cmp(COLSTART, '1') ;
+
+                /* Print cell formatting including class name and alignment. */
+                put '   ';
+                put '\multicolumn{';
+                put colspan;
+                put '1' / if !exists(colspan);
+                put '}';
+                put '{|S{';
+                put $row_class;
+                put '}{';
+                put just;
+                put '}|}';
+                put '{';
+                put VALUE;
+
+            finish:
+                break /if cmp($sascaption, 'true');
+                put '}';
+        end;
+ 
+    end;
+run;
+
+ods tagsets.striped_latex file='striped.tex';
+options obs=5;
+proc print data=sashelp.class; run;
+ods _all_ close;

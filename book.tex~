@@ -1,0 +1,337 @@
+\documentclass{book}
+%\documentclass[8pt]{book}
+\usepackage{fancyhdr, flafter, makeidx, float, times}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{varioref}
+\usepackage[color]{ods}
+\pagestyle{fancy}
+
+%\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+%       remember chapter title
+%\renewcommand{\chaptermark}[1]%
+%                  {\markboth{#1}{}}
+%       section number and title
+%\renewcommand{\sectionmark}[1]%
+%              {\markright{\thesection\ #1}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]%
+%      {\fancyplain{}{\bfseries\rightmark}}
+%\rhead[\fancyplain{}{\bfseries\leftmark}]%
+%      {\fancyplain{}{\bfseries\thepage}}
+%\cfoot{}
+
+%\setlength{\paperheight}{9in}
+%\setlength{\paperwidth}{7.5in}
+%\setlength{\textwidth}{5.5in}
+
+
+%\floatstyle{ruled}
+%\newfloat{code}{thp}{lop}[section]
+%\floatname{code}{Code}
+%\floatstyle{boxed}
+%\newfloat{output}{thp}{lop}[section]
+%\floatname{output}{Output}
+
+
+%\DefineVerbatimEnvironment{code}{Verbatim}
+%{commandchars=\\\#\?, tabsize=4, xleftmargin=1cm, 
+% samepage=false, hfuzz=1pt, fontsize=\small,
+% frame=lines, framesep=3mm}
+%
+%\DefineVerbatimEnvironment{codel}{Verbatim}
+%{commandchars=\\\#\?, tabsize=4, xleftmargin=1cm, 
+% samepage=false, hfuzz=1pt, fontsize=\small,
+% frame=lines, framesep=3mm}
+
+%\newenvironment{fvcode}[2]{\label{#1}
+% \Verbatim[commandchars=\~\`\`, tabsize=4, xleftmargin=1cm, 
+% samepage=false, hfuzz=1pt, fontsize=\small,
+% frame=lines, framesep=3mm, label={Code \ref{#1}: \itshape{#2}}]}{\endVerbatim}
+
+\lstdefinelanguage{tagsets}
+ {morekeywords={trigger,do,else,done,if,while,when,break, breakif,
+                set,unset,open,close,eval,cmp,exists,any,contains,ODS,proc,run},
+  morekeywords=[2]{Define,End,start,finish},
+  sensitive=false,
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+ }[keywords,comments,strings,directives]
+
+\lstdefinestyle{tagsetstyle}
+ {basicstyle=\small,
+  stringstyle=\sffamily,
+  keywordstyle=[2]{\bfseries\slshape},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false
+  emphstyle=\underbar
+ }
+
+\lstdefinestyle{HTMLstyle}
+ {language=HTML,
+  basicstyle=\small,
+  stringstyle=\sffamily,
+  keywordstyle=[2]{\bfseries\slshape},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false
+ }
+
+\lstnewenvironment{fvcode}[2]
+ {\lstset{label={#1}, caption={#2}, escapechar={~},
+          frame=lines, xleftmargin=1cm, style=tagsetstyle}}
+ {}
+
+\lstnewenvironment{fvoutput}[2]
+ {\lstset{label={#1}, caption={Output: #2}, frame=lines, xleftmargin=1cm, style=HTMLstyle}}
+ {}
+
+\lstnewenvironment{sfvcode}
+ {\lstset{xleftmargin=1cm, style=tagsetstyle}}
+ {}
+
+\lstnewenvironment{sfvoutput}
+ {\lstset{xleftmargin=1cm, style=HTMLstyle}}
+ {}
+
+\lstnewenvironment{poutput}[2]
+ {\lstset{label={#1}, caption={Output: #2}, frame=single, xleftmargin=1cm, style=HTMLstyle}}
+ {}
+
+\newenvironment{goutput}[2]{\label{#1} \begin{figure} \caption{#2}}
+  {\end{figure}}
+
+\newenvironment{fvhtmcode}[2]{\label{#1}
+ \Verbatim[commandchars=\\\{\}, tabsize=4, xleftmargin=1cm, 
+ samepage=false, hfuzz=1pt, fontsize=\small,
+ frame=lines, framesep=3mm, label={Code \ref{#1}: \itshape{#2}}]}{\endVerbatim}
+
+\newenvironment{fvcodel}[2]{\label{#1}
+ \Verbatim[commandchars=\~\`\`, tabsize=4, xleftmargin=1cm, 
+ samepage=false, hfuzz=1pt, fontsize=\small,
+ numbers=left, numbersep=5pt, 
+ frame=lines, framesep=3mm, label={Code \ref{#1}: \itshape{#2}}]}{\endVerbatim}
+
+\newcommand{\commandnames}[1]{\mbox{\large\textbf{#1}}\hfil}
+\newcommand{\variablenames}[2]{\mbox{\large\textbf{#2}}\hfil}
+\newcommand{\svariablenames}[2]{\mbox{\large\textbf{#2}}\hfil}
+\newcommand{\commandargs}[1]{\normalsize\textit{#1}}
+\newcommand{\tagsetalias}[1]{\index{#1}\normalsize\textit{Shortcut Alias: #1}}
+%\newcommand{\commanditem}[2]{\entry{\commandnames{#1}\commandargs{#2}}}
+\newcommand{\commanditem}[2]{\index{#1}\item[\commandnames{#1}]\commandargs{#2}}
+\newcommand{\tagsetitem}[2]{\index{#1}\index{#2}\item[\commandnames{#1}]\tagsetalias{#2}}
+\newcommand{\stagsetitem}[1]{\index{#1}\item[\commandnames{#1}]}
+\newcommand{\variable}[2]{\item[\index{Variables!#1!#2}\variablenames{#1}{#2}]}
+\newcommand{\stylevariable}[2]{\index{Variables!Style!#1!#2}\item[\svariablenames{#1}{#2}]}
+\newenvironment{entry}
+     {\begin{list}{}%
+         {\renewcommand{\makelabel}{\commandnames}%
+            \setlength{\labelwidth}{35pt}%
+            \setlength{\leftmargin}{\labelwidth+\labelsep}%
+         }%
+     }%
+     {\end{list}}
+
+
+%\newenvironment{sfvcode}{
+% \Verbatim[commandchars=\~\`\`, tabsize=4, xleftmargin=1cm, 
+% samepage=false, hfuzz=1pt, fontsize=\small,
+% frame=lines, framesep=3mm]}{\endVerbatim}
+
+%\newenvironment{fvoutput}[2]{\label{#1}
+% \Verbatim[commandchars=\~\`\`, tabsize=4, xleftmargin=1cm, 
+% samepage=false, hfuzz=1pt, fontsize=\small,
+% frame=lines, framesep=3mm, label={Output \ref{#1}: \itshape{#2}}]}{\endVerbatim}
+
+%\newenvironment{sfvoutput}{
+%\Verbatim[commandchars=\~\`\`, tabsize=4, xleftmargin=1cm, 
+%samepage=false, hfuzz=1pt, fontsize=\small,
+%frame=lines, framesep=3mm, label={\itshape Output}]}{\endVerbatim}
+
+\newcounter{calloutcounter}[chapter]
+\setcounter{calloutcounter}{1}
+\newcommand{\calloutref}[1]{{\bfseries\ref{#1}}}
+\newcommand{\callout}[1]{\label{#1}
+ \refstepcounter{calloutcounter}
+ \hspace{-5pt}
+ {\bfseries 
+  \thecalloutcounter
+ \hspace{5pt}}
+}
+
+%  \marginpar[\flushright{\bfseries\value{calloutcounter}$\longrightarrow$}]
+%             {{\bfseries $\longleftarrow$\value{calloutcounter}}}}
+
+\newcommand{\calloutRepeat}{
+ \hspace{-5pt}{\bfseries 
+ \thecalloutcounter\hspace{5pt}}
+}
+
+%  \marginpar[\flushright{\bfseries\value{calloutcounter}$\longrightarrow$}]
+%             {\bfseries$\longleftarrow$\value{calloutcounter}}}
+% \hspace{-5pt}{\bfseries \value{calloutcounter}\hspace{0pt}}
+
+\makeindex
+
+%\includeonly{introduction, chapter1, chapter2,chapter3, chapter6, chapter7a, chapter4, chapter5, chapter5a, chapter4a, chapter7,chapter8,chapter9}
+
+\begin{document}
+\lstset{language=tagsets}
+%\lstset{language=SAS}
+
+% The way the preface titles are to be
+\fancyhead{} %clear all fields
+\fancyhead[LO,RE]{\thepage}
+\fancyhead[RO]{}
+\fancyhead[LE]{}
+\fancyfoot[CO,CE]{}
+
+\frontmatter
+\title{ODS Markup: \\
+Tagsets by Example}
+\author{Eric Gebhart\\
+SAS Institute}
+\renewcommand{\today}{September 22, 2003}
+\pagenumbering{roman}
+\maketitle
+  \section*{Preface}
+\include{preface}
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+%\listoflistings
+\cleardoublepage
+\listoftables
+
+%\listof{code}
+%\listof{output}
+% -----------------------document body
+
+\mainmatter
+\cleardoublepage
+\pagenumbering{arabic}
+\fancyhead{} %clear all fields
+%\setlength{\headrulewidth}{1pt}
+\lhead[\rm\thepage]{\sl\rightmark}
+\rhead[\sl\leftmark]{\rm\thepage}
+
+%The old fancyhead way.
+%\fancyhead[LE,RO]{\thepage}
+%\fancyhead[RE]{\bfseries Chapter \thechapter. \chaptermark}
+%\fancyhead[LO]{\bfseries Section \thesection \sectionmark}
+%\fancyfoot[CO,CE]{}
+
+\part{Introduction}
+%{
+%These chapters will cover the basics of the ods markup statement,
+%proc template, and tagsets.  A tagset will be developed to show
+%the fundamentals of how tagsets work.  The CSV tagset will be
+%modified through inheritance.  The last chapters will give an
+%outline for solving problems and working with tagsets in general. 
+%These fundamentals will go a long way towards working with tagsets
+%and solving problems of any nature.
+%}
+\cleardoublepage
+\include{introduction}
+\cleardoublepage
+\include{chapter1}
+\cleardoublepage
+\include{chapter2}
+\cleardoublepage
+\include{chapter3}
+\cleardoublepage
+\include{chapter6}
+\cleardoublepage
+\include{chapter7a}
+\cleardoublepage
+
+\part{Technicalities}
+\include{chapter6a}
+\cleardoublepage
+\include{chapter4}
+\cleardoublepage
+\include{chapter5}
+\cleardoublepage
+\include{chapter5a}
+\cleardoublepage
+\include{chapter4a}
+\cleardoublepage
+
+\part{Intermediate Examples}
+%{
+%These Chapters concentrate on two very powerful aspects of
+%tagsets and ODS.  ODS Styles and tagset streams.  ODS styles are tightly
+%coupled with tagsets.  Styles provide an extra level of control
+%and versatility to tagsets.  Streams add a versatility to tagsets
+%that allow them to adapt to new solutions.  
+%}
+\include{chapter7}
+\cleardoublepage
+\include{chapter8}
+\cleardoublepage
+\include{chapter9}
+\cleardoublepage
+\include{chapter10}
+\cleardoublepage
+\include{chapter11}
+\cleardoublepage
+
+%\part{Advanced Examples}
+%{
+%These chapters will cover more advanced examples.  These examples are
+%more advanced because they do more than one thing at a time.  Multiple
+%concepts are needed to accomplish these solutions.  These chapters will
+%cover website integration, Data Step Conversions, repeating headers, 
+%automatic paneling of output, and an extension of the slidebar example shown earlier.
+%Understanding these examples is a good indication that all problems are within
+%your grasp. 
+%}
+
+\include{chapter10}
+\cleardoublepage
+\include{chapter11}
+\cleardoublepage
+%\include{chapter12}
+%\cleardoublepage
+
+\part{Usage Notes and Caveat's}
+%{
+%These chapters cover problems that can be encountered with some
+%procedures and the most common uses of the various tagsets that 
+%are shipped with SAS.  There are several flavors of HTML that may
+%be used for various purposes.  Uploading ODS output to spreadsheets
+%is another hot topic.  Several tagsets lend themselves towards that
+%goal.  LaTeX is an often overlooked but very versatile family of tagsets.  
+%It's usage may be more popular with understanding.  The XML libname
+%engine also uses tagsets to define it's output.  Knowing when to
+%use the libname engine instead of ODS is an advantage.
+%}
+
+%\include{chapter13}
+%\cleardoublepage
+\include{chapter14}
+\cleardoublepage
+\include{chapter15}
+\cleardoublepage
+\include{chapter16}
+\cleardoublepage
+\include{chapter17}
+\cleardoublepage
+
+% -----------------------document end
+\backmatter
+\part{Appendices}
+\appendix
+\begin{appendix}
+\include{appendix1}
+\include{appendix3}
+%\include{appendix2}
+\end{appendix}
+
+\printindex
+
+\end{document}

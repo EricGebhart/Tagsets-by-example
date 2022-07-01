@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" saslongversion="9.01.01M0D10062003" date="2003-11-17" time="01:28:05" encoding="iso-8859-1">
+  <doc_body>
+    <proc name="Print">
+      <anchor name="IDX"/>
+      <system_title_group>
+        <title_container>
+          <title_container_row>
+          </title_container_row>
+        </title_container>
+      </system_title_group>
+      <proc_branch name="Print" value="Print">
+        <leaf name="Print" value="Data Set SASHELP.CLASS">
+          <page_anchor/>
+          <output name="Print">
+            <table>
+            </table>
+          </output>
+        </leaf>
+      </proc_branch>
+    </proc>
+    <proc name="Standard">
+      <pagebreak/>
+      <anchor name="IDX1"/>
+      <system_title_group>
+        <title_container>
+          <title_container_row>
+          </title_container_row>
+        </title_container>
+      </system_title_group>
+      <proc_title_group>
+        <proc_title value="The STANDARD Procedure"/>
+      </proc_title_group>
+      <proc_branch name="Standard" value="Standard">
+        <bygroup name="_bygroup_">
+          <branch name="ByGroup1" value="Age=11">
+            <leaf name="Standard" value="Standardized data set variables.">
+              <page_anchor/>
+              <byline value="Age=11"/>
+              <output name="Standard">
+                <table>
+                </table>
+              </output>
+            </leaf>
+          </branch>
+          <anchor name="IDX2"/>
+          <branch name="ByGroup2" value="Age=12">
+            <leaf name="Standard" value="Standardized data set variables.">
+              <byline value="Age=12"/>
+              <output name="Standard">
+                <table>
+                </table>
+              </output>
+            </leaf>
+          </branch>
+          <anchor name="IDX3"/>
+          <branch name="ByGroup3" value="Age=13">
+            <leaf name="Standard" value="Standardized data set variables.">
+              <byline value="Age=13"/>
+              <output name="Standard">
+                <table>
+                </table>
+              </output>
+            </leaf>
+          </branch>
+        </bygroup>
+      </proc_branch>
+    </proc>
+  </doc_body>
+</doc>

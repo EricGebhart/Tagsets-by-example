@@ -1,0 +1,744 @@
+\documentclass{book}
+\usepackage{fancyhdr, flafter, makeidx, float, times}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage[color]{ods}
+\pagestyle{fancy}
+\makeindex
+%includeonly{Introduction, chap1}
+\begin{document}
+\fancyhead{} %clear all fields
+\fancyhead[LO,RE]{\thepage}
+\fancyhead[RO]{}
+\fancyhead[LE]{}
+\fancyfoot[CO,CE]{}
+\frontmatter
+\title{ODS Markup: \
+Tagsets by Example}
+\renewcommand{\today}{September 22, 2003}
+\pagenumbering{roman}
+\maketitle
+  \section*{Preface}
+\include{preface}
+\cleardoublepage
+	ableofcontents
+\cleardoublepage
+\mainmatter
+\cleardoublepage
+\pagenumbering{arabic}
+\setlength{\headrulewidth}{1pt}
+\lhead[m	hepage]{\slightmark}
+head[\sl\leftmark]{m	hepage}
+\part{Introduction}
+\chapter{Introduction}
+ODS markup and tagsets are the best way to create markup output
+from SAS.  This chapter will talk about some of the reasons for
+learning tagsets.  As well as what they are and the history 
+behind them.
+\section{Why Learn Tagsets?}
+
+\section{What are Tagsets?}
+
+\section{A short History of Tagsets}
+
+\section{Markup Languages}
+
+\subsection{In the Beginning There Was Roff}
+
+\subsection{Then there was LaTeX}
+
+\subsection{SGML and friends}
+
+\subsection{Other Formats}
+
+\subsection{What it all means}
+
+\chapter{The basics}
+This chapter will cover the basics of using ODS Markup and the Template Procedure.
+ODS markup relies upon tagsets to define how it should work.  
+Indicating which tagset to use is the only thing that
+differentiates the ODS Markup statement from any other ODS destination.
+A tagset is defined using the template procedure.  The amount of
+template knowledge needed is not that great, but it is good to know
+the basics of using it.
+\section{Tagsets and Proc Template}
+
+\subsection{The tagset directory}
+
+\section{Using a tagset}
+
+\section{Summary}
+
+\chapter{Tagsets: how do they work?}
+Tagsets are a hybrid of procedural and non-procedural, declaritive
+programming languages.  A tagset is a collection of event definitions.
+Each definition can have procedural elements, but the events themselves
+are not procedural.  That's why they are called events.  Events do happen
+in some order, but with variation.  They are like the events in your
+day.  The alarm clock, brushing your teeth, eating breakfast, going
+to work, etc.  They do have some predictability, but are not exactly
+the same all the time.  This chapter will use a simple plain text
+tagset to show how tagsets work.  As the tagset evolves the 
+output created will reveal the fundamentals of tagset behavior. 
+\section{Data and context in time}
+
+\section{Event Requests}
+
+\subsection{A few variables}
+
+\section{Our First tagset}
+
+\subsection{Define statement}
+
+\subsection{The data event}
+
+\subsection{The header event}
+
+\section{Fleshing out the plain\_text tagset}
+
+\subsection{head, body, and foot}
+
+\subsection{Titles}
+
+\section{Summary}
+
+\chapter{Modifying Existing Tagsets}
+The most common tagset programming is done to
+modify the behavior of an existing tagset. 
+Modifying a tagset is fairly easy to do because
+tagsets can inherit events from each other.  
+It is also easy to identify which events need changing.
+This chapter will introduce a few new concepts
+while showing the steps needed to modify a tagset
+through inheritance.  
+\section{Changing the delimiter for CSV files}
+
+\subsection{Finding the Events}
+
+\subsection{Simple If's}
+
+\section{Making the changes}
+
+\section{A better CSV tagset}
+
+\subsection{Macro variables}
+
+\subsection{The Initialize Event}
+
+\subsection{The set statement}
+
+\subsection{The New CSV Tagset}        
+
+\subsection{Tagset Alias}
+
+\section{Summary}
+
+\chapter{The Path to Enlightenment}
+So far all of the examples have given away the events and
+variables needed.  But the ability to find events, and their
+variables is required to be truly effective at programming
+tagsets.  This chapter will explain several techniques that
+will illustrate which events
+may work for a solution, and the variables that are bundled in
+those events.  In short, this chapter will show how to get 
+tagsets to reveal themselves.
+\section{Finding Events}
+
+\subsection{The Short\_map Tagset}
+
+\section{The Default\_Event Tagset Attribute}
+
+\subsection{The Events}
+
+\subsection{The Default Event}
+
+\subsection{summary}
+
+\section{Finding Variables}
+
+\section{The Putlog Statement}
+
+\section{Define, Identify, Locate, Explore, and Solve.}
+
+\subsection{Repeat as Necessary}
+
+\section{Going step by step}
+
+\subsection{Adding a Target to a URL}
+
+\subsection{Define the Problem}
+
+\subsection{Identify the event}
+
+\subsection{Locate the Event}
+
+\subsection{Explore the Data}
+
+\subsection{Repeat.  Identify, Locate, Explore} 
+
+\subsection{The solution}
+
+\section{Summary}
+
+\chapter{File Redirection}
+Adding output to the all the files specified on the ODS 
+statement requires that some events be redirected to those
+files.  This chapter will show the differences between the
+various files and the events associated with them.  It will
+also show how to use file redirection modify their contents.
+\section{The File Attribute}
+
+\section{Identify}
+
+\section{Locate and Explore}
+
+\section{File interactions}
+
+\section{Freedom of Choice}
+
+\subsection{Explore}
+
+\section{Summary}
+
+\part{Technicalities}
+\chapter{The Tagset Attributes}
+A tagset can have several attributes.  The attributes control the basic
+behavior of the tagset.  Most importantly the translation of special
+characters that may interfere with the markup language being generated.
+Other attributes control output indention, breaking of lines, even the
+way the output should be displayed in the SAS output window.  Setting 
+up a tagset's attributes is the first step towards creating a new tagset.
+\section{Parent}
+
+\section{Special Characters}
+
+\subsection{Automatic Character Translation}
+
+\section{Non Breaking Spaces}
+
+\section{Split Characters}
+
+\section{Indention}
+
+\section{Stacked Columns}
+
+\section{Image Formats}
+
+\section{Output Type}
+
+\section{Adding Measurements}
+
+\section{Copyright Symbol}
+
+\section{Trademark Symbol}
+
+\section{Registered Trademark Symbol}
+
+\section{Default Event}
+
+\section{Embedded Stylesheet}
+
+\section{Pure Style}
+
+\section{lognote}
+
+\section{Splitting Text}
+
+\subsection{Breaktext Length}
+
+\subsection{Breaktext Width}
+
+\subsection{Breaktext Ratio}
+
+\section{External Graph Instance}
+
+\section{No Byte Order Mark}
+
+\section{Hierarchical Data}
+
+\section{Summary}
+
+\chapter{Creating Variables}
+The set statement has already been used in several examples. 
+Set is the primary way to create and modify variables in
+tagsets.
+Before continuing it would be good to
+explain the different types of variables and the methods 
+of creating them.  This chapter is dedicated to explaining
+the different types of variables that can be created and 
+used in tagsets.
+\section{String Variables}
+
+\section{Lists}
+
+\section{Dictionaries}
+
+\section{Numeric Variables}
+
+\section{Stream Variables}
+
+\subsection{Stream Specific Statements}
+
+\section{The Putvars Statment}
+
+\section{Bringing it all together}
+
+\section{Summary}
+
+\chapter{Procedural controls}
+The tagset's if syntax has already been used in previous examples. 
+With SAS 8.2 and 9.0 if statements were kept to a few simple 
+choices.  This simple if statement is still the most efficient
+and most frequently used type of conditional programming that
+tagsets have.  With SAS 9.1 if statments have been extended with
+where clauses and new statements to provide fully featured procedural
+controls.  
+The examples in this chapter will explain the if syntax and the procedural control
+statements that complement them.
+\section{Simple If's}
+
+\subsection{Built in tests}
+
+\section{Where Clauses}
+
+\section{Break}
+
+\section{Breakif}
+
+\section{Do blocks}
+
+\section{Do While Loops}
+
+\section{Iterating through Dictionaries}
+
+\section{Bringing it all together}
+
+\section{Summary}
+
+\chapter{Trigger Happy}
+ODS triggers, or requests, many events internally.  
+It is also possible to trigger
+events from other events. This chapter is going to
+explain the trigger statement and how to use it.  
+\section{Simple Triggers}
+
+\section{Events with a state}
+
+\section{summary}
+
+\chapter{Data Step Functions}
+Data step functions provide important capabilities to tagsets.  Many
+solutions are dependent on string manipulation, formatting and 
+number conversion.  Without the functions, these solutions would
+be very difficult or impossible.  This chapter will explain the usage
+of data step functions in tagsets.
+\section{Set and Put statements}
+
+\section{The Eval Statement}
+
+\subsection{number conversions}
+
+\section{advanced usage and debugging}
+
+\subsection{File I/O}
+
+\subsection{Perl Regular Expressions}
+
+\section{Summary}
+
+\part{Intermediate Examples}
+\chapter{Styles and Tagsets, A perfect match}
+Understanding how to use ODS styles with tagsets can
+simplify many problems.  Styles can help make
+a tagset more versatile and reusable.  They can
+also help to make the output less verbose and
+more compartmentalized. This chapter 
+will demonstrate the basics of using styles 
+with tagsets.   The best way to start is with
+a simple tagset designed specifically
+to show how styles work.  
+\section{Starting Simple}
+
+\subsection{Embedded styles}
+
+\section{Styles of your own choosing}       
+
+\section{Getting the whole style}       
+
+\section{Summary}
+
+\chapter{Tagsets with Style}
+The fundamentals of tagsets have been covered, now it is time
+do something with them. 
+This chapter will cover examples that specifically leverage
+ODS styles to accomplish their tasks.
+\section{A Problem with Table Rules}
+
+\subsection{Define the problem}
+
+\subsection{A Simple Solution}
+
+\subsection{Identify and locate the event}
+
+\subsection{A Simple Solution}
+
+\subsection{Table Rules with style}
+
+\subsection{The Better Solution}
+
+\section{Everyone likes stripes}
+
+\subsection{Defining the Problem}
+
+\subsection{The HTML solution}
+
+\subsection{The Code}
+
+\subsection{The LaTeX solution}
+
+\subsection{The Code}
+
+\subsection{Summary}
+
+\section{slidebar columns}
+
+\subsection{Define the Problem}
+
+\subsection{Identify and Locate}
+
+\subsection{The Solution}
+
+\subsection{Example Summary}
+
+\section{Summary}
+
+\chapter{Tagsets with Streams}
+Streams add another level of versatility to tagsets.  
+Streams allow for output to be saved away, and reused or
+just delayed.  This is ideal for solving problems where
+the ODS event model does not match the shape of the target
+ouput. Streams are the most common solution to this problem.
+Streams can delay output, collect output from different events
+at different times, to be used later.
+This chapter will show how to use streams to solve problems
+that would otherwise be impossible.
+\section{Overly long Tables}
+
+\subsection{Defining the Solution}
+
+\subsection{Identify, Locate and Explore}
+
+\subsection{The Solution}
+
+\subsection{summary}       
+
+\section{Special Cases} 
+
+\section{One Better}
+
+\subsection{The solution}
+
+\section{A Tagset with Startpage}
+
+\subsection{Identify, Locate and Explore}
+
+\subsection{Defining the solution}
+
+\subsection{Block and Unblock statments}
+
+\subsection{A partial solution}
+
+\subsection{The Solution}
+
+\subsection{More Identify and Locate}
+
+\subsection{Refining the Control}
+
+\subsection{Almost There}
+
+\subsection{The Final Solution}
+
+\section{Summary}
+
+\part{Advanced Examples}
+\chapter{ODS Output for Website Integration}
+Many web sites have a framework that web pages must fit into 
+before they will be published.  Usually this means
+editing the html pages and pasting in some chunk of HTML from
+some files the website authors have provided.
+Usually there is one file to replace the top section of the
+web page and another to replace the bottom.  
+The tagsets in this chapter will create HTML that
+is ready for integration with any website.  
+\section{The Problem}
+
+\section{Alternate Behavior for existing options}
+
+\subsection{Explore}
+
+\section{Reading an external file}
+
+\section{The Solution}
+
+\subsection{Initialization Timing}
+
+\section{Summary}
+
+\chapter{Datastep Conversions}
+You may wonder, why would someone want to convert a datastep 
+program to use tagsets?  There are lots of reasons.  Mostly it's
+for code reuse and flexibility.  Datastep programs allow lots of
+flexibility but they are written for one purpose.  If the same 
+functionality is desired for a different set of data an entirely
+new datastep will have to be written.  If the rendering is left to
+a tagset, then anyone can use that tagset with any form of data,
+and any procedure.  Maintenance of the code is also simplified 
+since both the tagset and the resulting SAS job wil be much
+simpler than the original datastep. Add the various powers of
+ODS to this new found flexibility and there is plenty of motivation
+for conversion.  This chapter will show the process and rewards 
+of converting datastep programs to tagsets. 
+\section{Special Bylines}
+
+\subsection{The DataStep Code}
+
+\subsection{Breaking it down}
+
+\subsection{The Style}
+
+\subsection{Counting Observations}
+
+\subsection{various problems}
+
+\subsection{Modifying the Byline}
+
+\subsection{A more flexible solution}
+
+\section{Slidebars for HTML, PDF, and PS}
+
+\subsection{breaking it down}
+
+\subsection{The Style}
+
+\subsection{The HTML Tagset}
+
+\subsection{Dealing with the Report Procedure}
+
+\subsection{The LaTeX Tagset}
+
+\section{Summary}
+
+\chapter{Extended examples}
+This chapter will explore some more complex examples.  The
+complexity comes mostly from the combination of multiple
+techniques.  From a juggler's point
+of view, there are just more balls in the air.  But a ball is
+still just a ball.  Any given feature of these new tagsets
+is still just as simple as it ever was.  This is one of the
+wonderful things about tagsets.  It is easy to reuse and 
+combine ideas from different tagsets.
+\section{Repeating Headers, and Mirrored Row headers}
+
+\subsection{The Single Stream Solution}
+
+\subsection{The Multiple Stream Solution}
+
+\subsection{The Multiple List Solution}
+
+\section{Automatic Panelling}
+
+\subsection{An Extension of Start Page}
+
+\subsection{The solution}
+
+\section{HTML forms}
+
+\subsection{Option Lists}
+
+\subsection{Saving the Lists}
+
+\subsection{Creating the Form}
+
+\section{Summary}
+
+\chapter{A feature Rich Tagset}
+In this book we have created many tagsets that can each do something special.
+The tagsets have been carefully written to enable those features to be
+transparent to anyone who uses them.  It is possible that all of these features
+be combined into one tagset.  So that is what we are going to do.
+\section{Which features?}
+
+\section{Lining up the inheritance}
+
+\section{Copy and Paste}
+
+\section{Macro Variables and Tagset Alias}
+
+\section{Summary}
+
+\part{Usage Notes and Caveat's}
+\chapter{Special Cases, Procedures and Operating Systems'}
+The examples in this book have shown that there are some problems
+when it comes to the Report and Tabulate procedures.  These
+problems are surmountable but they do cause some pain.  This
+chapter is going to explain the specifics of these problems
+and how to work around them.
+\section{A Report Procedure problem}
+
+\subsection{deferred data}
+
+\section{The Tabulate and Report problem}
+
+\subsection{The Table Head section}
+
+\subsection{The Table column specifications}
+
+\section{HTML on MVS with a PDSE}
+
+\section{Summary}
+
+\chapter{Using LaTeX}
+Besides HTML and XML, LaTeX output is one of the most useful
+and versatile output destinations available.  LaTeX is commonly
+used in publishing and is capable of creating several viewable
+formats, including PDF and Postscript.  LaTeX supports color
+and various image formats.
+Sadly, this destination is largely overlooked.
+This chapter will discuss how to use it to advantage. 
+\section{The LaTeX statement}
+
+\subsection{Color Support}
+
+\section{Compiling the LaTeX Output}
+
+\subsection{The latex Command}
+
+\subsection{The dvips Command}
+
+\subsection{The pdflatex Command}
+
+\section{Integrating LaTeX output into documents}
+
+\subsection{The easy way}
+
+\subsection{Using NewFile to advantage}
+
+\subsection{The simple way}
+
+\section{Image Formats and Graph}
+
+\section{LaTeX in the different versions of SAS}
+
+\subsection{SAS 8.2}
+
+\subsection{SAS 9.0}
+
+\subsection{SAS 9.1 and beyond.}
+
+\section{Summary}
+
+\chapter{Using The HTML Tagsets}
+There are several HTML tagsets to choose from. Each generates
+a slightly different type of HTML.  Each have their advantages.
+This chapter will explain the different HTML tagsets and the
+features they support.
+\section{The html statement}
+
+\subsection{HTML4}
+
+\subsection{PHTML}
+
+\subsection{HTMLCSS}
+
+\subsection{MSOffice2K}
+
+\section{CHTML}
+
+\section{Stylesheets}
+
+\section{Javascript code}
+
+\section{Scrolling Tables}
+
+\section{Accessibility}
+
+\section{HTML and Excel}
+
+\section{Summary}
+
+\chapter{Using Markup output with Spreadsheets.}
+There are various ways to get SAS output into a spreadsheet.
+Each have their advantages and disadvantages.  This chapter
+will go over the various tagsets that are good for importing into
+spreadsheet programs.
+\section{Using CSV}
+
+\section{SYLK}
+
+\section{HTML and Excel}
+
+\subsection{Compact HTML}
+
+\subsection{PHTML - Plain HTML}
+
+\subsection{HTML for Microsoft Office 2000}
+
+\section{DDE}
+
+\section{Spreadsheet XML}
+
+\section{Summary}
+
+\chapter{Using Tagsets with the Libname XML Engine}
+The libname XML Engine also uses tagsets.  all of the output generated
+from the XML engine is done through a tagset.  The libname engine's 
+tagsets differ somewhat from the tagsets used by ODS Markup.  This chapter
+will explain how to use tagsets with the libname engine and how they
+differ from those used by ODS.
+\section{XML Engine vs. ODS}
+
+\section{Advantages of the XML engine}
+
+\subsection{Control options}
+
+\section{The Tagsets}
+
+\section{Summary}
+
+\backmatter
+\part{Appendices}
+ppendix
+egin{appendix}
+\chapter{Quick Reference Guide}
+\section{Useful tagsets}
+\section{Tagset attributes}
+\section{Event attributes}
+\section{Event Statements}
+\section{If Statements}
+None
+\chapter{Variables}
+\section{Event Variables}
+\subsection{508 Accessibility}
+\subsection{Data}
+\subsection{Event MetaData}
+\subsection{Data Formatting}
+\subsection{Title and Note Formatting}
+\subsection{Miscellaneous}
+\subsection{Graph}
+\subsection{ODS Statement}
+\subsection{Table}
+\subsection{URL}
+\subsection{XML Libname Engine}
+\section{Style Variables}
+\subsection{Borders}
+\subsection{Font}
+\subsection{Images}
+\subsection{Layout}
+\subsection{Miscellaneous}
+\subsection{Text}
+None
+\chapter{Extended Examples}
+None
+\end{appendix}
+\end{document}

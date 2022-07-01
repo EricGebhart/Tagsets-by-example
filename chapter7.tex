@@ -1,0 +1,471 @@
+\chapter{Styles and Tagsets, A perfect match}
+\index{Styles}
+Understanding how to use ODS styles with tagsets can
+simplify many problems.  Styles can help make
+a tagset more versatile and reusable.  They can
+also help to make the output less verbose and
+more compartmentalized. This chapter 
+will demonstrate the basics of using styles 
+with tagsets.   The best way to start is with
+a simple tagset designed specifically
+to show how styles work.  
+
+
+\section{Starting Simple}
+The easiest way to examine any problem is to break it down
+as much as possible.  It is easy to see how styles work with a
+tagset that has one event.  Any event will do. 
+The table event is a good place to start.
+It is a familiar event, and tables have some
+interesting style attributes.  
+
+A single putvars statement can do all the work of revealing how styles work.
+
+\begin{fvcode}{show_style}{Show table style}
+
+proc template;
+
+    define tagset tagsets.showstyle;
+
+        define event table;
+            putvars style _name_ ' : ' _value_ nl;
+        end;
+
+     end;
+run;
+
+ods tagsets.showstyle file='style.txt';
+proc print data=sashelp.class; run;
+ods tagsets.showstyle close;
+
+\end{fvcode}
+
+The output in figure \ref{show_style_out} shows all the style
+attributes for the print procedure's table event.
+
+\begin{poutput}{show_style_out}{The default table style}
+FRAME : BOX
+RULES : GROUPS
+HTMLCLASS : Table
+CELLSPACING : 1
+CELLPADDING : 7
+FRAMEBORDER : auto
+CONTENTSCROLLBAR : auto
+BODYSCROLLBAR : auto
+\end{poutput}
+
+But where did these come from?  ODS has a sytle called default
+that it uses if no other style is specified on the ods statement.
+The default style has a style element called table which has these
+attributes defined.  There is an automatic association between the
+table event and the table style.  In fact, most events have a
+style that is automatically associated with them.  By default, the
+value of HTMLCLASS will be the name of the style element defined in
+the style template.
+
+\index{pure\_style}
+\index{Attributes!pure\_style}
+It is noticable is that there are no colors or fonts, yet
+those things must be specified, how could they not be?
+In fact, they are defined in the style template.  But they don't show
+up here because, by default, tagsets screen out most of the values 
+except during a few special events that are used to create style definitons
+for the output.  The most common manifestation is an HTML Cascading stylesheet
+definition.  If all those style attributes are defined elsewhere then
+there is no reason to repeat them on every event.  Setting the pure\_style
+attribute to yes will change this behavior so that all the style attributes
+are available all of the time.  
+
+
+It could be argued
+that cellpadding and cellspacing belong in the stylesheet,
+not here in the table event.  That is technically true.  But some less
+capable browsers cannot render tables correctly
+using those stylesheet definitions.  So cellpadding and cellspacing remain
+here with frame and rules until the web browsers can get it right.  This is
+mostly an HTML issue since these things are not a problem in other markup
+languages like latex, troff and XML.
+
+\index{Embedded\_stylesheet}
+\index{Attributes!Embedded\_stylesheet}
+\index{Event!style\_class}
+The next step is to create a new style, and add a new event to expose this
+behavior.  Figure \ref{show_style2} on page \pageref{show_style2} shows
+the new code.  There is a new style called showstyle which contains one
+style element.  The table style element defines a font and colors, as
+well as some table specific attributes.  The tagset has a new event,
+style\_class.  Style\_class is the event used to create each style
+definition in the output.  Most events are directed at the body
+file by default.  But style\_class is one of those events that is not.
+By default style\_class is directed at the stylesheet file.  In order
+to see the output from the style\_class event a stylesheet file was specified
+on the ods statement.  Instead of adding a stylesheet file, we could have also
+just set the embedded\_stylesheet attribute to yes.
+The new style must also be specified.  The
+output from the body file in figure \ref{show_style2_out} on page \pageref{show_style2_out}
+hasn't changed much, it still shows the same variables from before.
+But the output in the stylesheet file in figure \ref{show_style2_outb} shows much more.
+
+\begin{fvcode}{show_style2}{Show table style}
+
+proc template;
+
+    define style styles.showstyle;
+
+        style table /
+          Font = ("Verdana, Helvetica, sans-serif", 4, bold)
+          Foreground = black
+          background = White
+          bordercolor = green
+          cellspacing = 1
+          cellpadding = 3
+          rules = groups
+          frame = box
+        ;
+    end;
+
+    define tagset tagsets.showstyle;
+        indent=4;
+
+        define event style_class;
+           trigger put_style;
+        end;
+
+        define event table;
+           trigger put_style;
+        end;
+
+        define event put_style;
+            put nl 'Event: ' Event_Name nl;
+            ndent;
+            putvars style _name_ ' : ' _value_ nl;
+            xdent;
+        end;
+
+     end;
+run;
+
+ods tagsets.showstyle style=showstyle 
+                      file='style.txt' 
+                stylesheet='style2.txt';
+
+proc print data=sashelp.class; run;
+ods tagsets.showstyle close;
+
+\end{fvcode}
+       
+\begin{poutput}{show_style2_out}{The table event style: style.txt}
+Event: table
+    FRAME : box
+    RULES : groups
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+\end{poutput}
+
+The stylesheet file contains much more information about the style.
+
+\begin{poutput}{show_style2_outb}{The table class style: style2.txt}
+Event: style_class
+    FRAME : box
+    RULES : groups
+    FONT_FACE : Verdana, Helvetica, sans-serif
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FONT_SIZE : medium
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #008000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+\end{poutput}
+
+\subsection{Embedded styles}
+\index{Embedded styles}
+\index{Stylesheet}
+\index{Embedded\_Stylesheet}
+\index{Events!Style\_class}
+\index{Tagset!inheritance}
+\index{inheritance}
+Having all of the style definitions in a separate file can be nice.
+But there are times when a separate stylesheet file is inconvenient.
+This example is one
+of those times.  Tagsets allow for this with an attribute called 'embedded\_stylesheet'.
+By default the value of this attribute is false.  Turning it on simplifies the
+previous example because a separate stylesheet file is no longer needed.  One can
+still be specified, and everything will work just like the last example.  But if it isn't,
+ hen the style\_class events are directed at the body
+file.  In this example inheritance is also used.  This
+makes it easy to see what has changed from one tagset to the next.  
+For the purposes of this book it also
+makes the examples much shorter.  The new tagset is in figure 
+\vref{show_style3}.  The corresponding output is
+in figure \vref{show_style3_out}.
+
+\begin{fvcode}{show_style3}{Show table style}
+
+proc template;
+    define tagset tagsets.showstyle1;
+        parent=tagsets.showstyle;
+        embedded_stylesheet = yes;
+     end;
+run;
+
+ods tagsets.showstyle1 style=showstyle file='style.txt';
+proc print data=sashelp.class; run;
+ods tagsets.showstyle close;
+\end{fvcode}
+       
+Now all the output shows up in the body file.
+
+\begin{poutput}{show_style3_out}{The table event style}
+Event: style_class
+    FRAME : box
+    RULES : groups
+    FONT_FACE : Verdana, Helvetica, sans-serif
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FONT_SIZE : medium
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #008000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+Event: table
+    FRAME : box
+    RULES : groups
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+\end{poutput}
+
+
+\section{Styles of your own choosing}       
+\index{Attributes!style}
+\index{Events!Style\_class}
+These examples have been using the style names that ODS decided to use.
+But it is possible to create and use style elements using any name.
+This can be done by using the the event's style attribute.
+The code in figure \ref{show_style4} on page \pageref{show_style4}.  
+Adds a new style element, darkbox, and then uses it in the table event.
+The output in figure \ref{show_style4_out} on page \pageref{show_style4_out} shows
+two style class events and one table event which reveals the new style.  
+Note that any new style elements in the ODS style result in another request
+of the style\_class event.
+
+
+\index{Tagset!inheritance}
+\index{inheritance}
+\begin{fvcode}{show_style4}{Show table style}
+
+proc template;
+
+    define style styles.showstyle;
+
+        style table /
+          Font = ("Verdana, Helvetica, sans-serif", 4, bold)
+          Foreground = black
+          background = White
+          bordercolor = green
+          cellspacing = 1
+          cellpadding = 3
+          rules = groups
+          frame = box
+        ;
+
+        style darkbox /
+          Font = ("Times", 6, bold)
+          Foreground = black
+          background = White
+          bordercolor = Black
+          cellspacing = 0
+          cellpadding = 1
+          rules = none
+          frame = box
+        ;
+    end;
+
+    define tagset tagsets.showstyle2;
+        parent=tagsets.showstyle1;
+
+        define event table;
+           style=darkbox;
+           trigger put_style;
+        end;
+    end;
+run;
+
+ods tagsets.showstyle2 style=showstyle file='style.txt';
+proc print data=sashelp.class; run;
+ods tagsets.showstyle close;
+\end{fvcode}
+       
+\begin{poutput}{show_style4_out}{Specified Style}
+Event: style_class
+    FRAME : box
+    RULES : none
+    FONT_FACE : Times
+    HTMLCLASS : darkbox
+    CELLSPACING : 0
+    CELLPADDING : 1
+    FONT_SIZE : x-large
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #000000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+Event: style_class
+    FRAME : box
+    RULES : groups
+    FONT_FACE : Verdana, Helvetica, sans-serif
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FONT_SIZE : medium
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #008000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+Event: table
+    FRAME : box
+    RULES : none
+    HTMLCLASS : darkbox
+    CELLSPACING : 0
+    CELLPADDING : 1
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+\end{poutput}
+
+\section{Getting the whole style}       
+\index{Attributes!pure\_style}
+Having a separate place for style definitions is a good thing.  But
+sometimes it is necessary to get all the style information all of the
+time.  There is another event attribute which allows this to happen.
+If pure\_style is set to yes, and the style attribute has been set,
+then all attributes of a style will show up in the event.  If this
+behavior is desired for all events the pure\_style attribute can be
+set as a tagset attribute instead of an event attribute.
+In example \vref{show_style5}
+pure\_style is set to yes.  The resulting changes to the output from
+the table event can be seen in 
+figure \vref{show_style5_out}.
+
+\index{Tagset!inheritance}
+\index{inheritance}
+\begin{fvcode}{show_style5}{Show table style}
+
+proc template;
+
+    define tagset tagsets.showstyle3;
+        parent=tagsets.showstyle2;
+
+        define event table;
+           style=darkbox;
+           pure_style=yes;
+           trigger put_style;
+        end;
+    end;
+run;
+
+ods tagsets.showstyle3 style=showstyle file='style.txt';
+proc print data=sashelp.class; run;
+ods tagsets.showstyle close;
+\end{fvcode}
+
+\begin{poutput}{show_style5_out}{Pure style}
+Event: style_class
+    FRAME : box
+    RULES : none
+    FONT_FACE : Times
+    HTMLCLASS : darkbox
+    CELLSPACING : 0
+    CELLPADDING : 1
+    FONT_SIZE : x-large
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #000000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+Event: style_class
+    FRAME : box
+    RULES : groups
+    FONT_FACE : Verdana, Helvetica, sans-serif
+    HTMLCLASS : table
+    CELLSPACING : 1
+    CELLPADDING : 3
+    FONT_SIZE : medium
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #008000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+Event: table
+    FRAME : box
+    RULES : none
+    FONT_FACE : Times
+    CELLSPACING : 0
+    CELLPADDING : 1
+    FONT_SIZE : x-large
+    BACKGROUND : #FFFFFF
+    FOREGROUND : #000000
+    BORDERCOLOR : #000000
+    FONT_WEIGHT : bold
+    FONT_STYLE : normal
+    FONT_WIDTH : normal
+    FRAMEBORDER : auto
+    CONTENTSCROLLBAR : auto
+    BODYSCROLLBAR : auto
+
+\end{poutput}
+
+\index{Variables!style\_element}
+\index{Variables!HTMLclass}
+Notice that everything is there, except HTMLCLASS.  If the name of
+the style is really necessary, there is an event variable called
+style\_element which is always populated with the current ods style
+element name.
+
+\section{Summary}
+This chapter has covered the fundamentals of using ODS styles with
+tagsets.  The interaction is really quite simple and direct.  
+
+

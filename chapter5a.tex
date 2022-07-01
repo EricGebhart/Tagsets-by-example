@@ -1,0 +1,192 @@
+\chapter{Trigger Happy}
+\index{Events!Triggering}
+\index{Statements!Trigger}
+\index{Statements!Trigger}
+ODS triggers, or requests, many events internally.  
+It is also possible to trigger
+events from other events. This chapter is going to
+explain the trigger statement and how to use it.  
+
+\section{Simple Triggers}
+\index{Statements!Trigger}
+\index{Events!Triggering}
+In previous examples, the trigger statement has been used for simple 
+cases where the triggered
+event is a simple event without a start or finish.  This type of use
+is very straight forward and intuitive.
+
+\index{Variables!Trigger\_name}
+There is a special variable that will always have the name of the 
+current triggered event.  Trigger\_name will be empty if the current
+event was triggered from within ODS.  The event\_name variable will
+always have the name of the initial ODS event.  This variable is useful
+in explaining how all of this works.
+
+The following example is the simple form of trigger that has been
+used previously.  For convenience the doc event is being used for this
+example.  The do\_stuff event is being triggered from both the start
+and finish of the doc event.  The message from the do\_stuff event 
+will print twice, as expected.
+
+\begin{sfvcode}
+   define event doc; 
+      start:
+          trigger do_stuff;
+      finish:
+          trigger do_stuff;
+   end;
+
+   define event do_stuff;
+        put 'This is the ' trigger_name ' Event' nl;
+   end;
+
+\end{sfvcode}
+
+
+\section{Events with a state}
+\index{Events!state}
+\index{Events!Start:}
+\index{Events!Finish:}
+\index{Variables!State}
+Events can have what is called a state.  In the example above,
+the doc event has two states.  The first time it is triggered
+it's state is start.  The second time it is in the finish state.
+The do\_stuff event is stateless.  It does the same thing always.
+The 'state' variable indicates the current state.  It's value
+will be either start or finish.  
+
+This is important because triggered events preserve the state of
+the calling event.  When a trigger statement is in the start section
+of an event, the start section of the triggered event is executed. 
+Likewise, when the trigger statement is in the finish section, the
+finish section of the triggered event is executed.  The following
+example defines a start and finish in the triggered event. 
+The result is that each message is printed once.
+
+\begin{sfvcode}
+   define event doc; 
+      start:
+          trigger do_stuff;
+      finish:
+          trigger do_stuff;
+   end;
+
+   define event do_stuff;
+       start:
+           put state ': ' trigger_name ' Event' nl;
+       finish:
+           put state ': ' trigger_name ' Event' nl;
+   end;
+\end{sfvcode}
+
+But what if the triggered event only defined a start or finish?  
+Then it would only execute for the state section defined.  The following
+example will only print one message, once.
+
+\begin{sfvcode}
+   define event doc; 
+      start:
+          trigger do_stuff;
+      finish:
+          trigger do_stuff;
+   end;
+
+   define event do_stuff;
+       finish:
+           put state ': ' trigger_name ' Event' nl;
+   end;
+\end{sfvcode}
+
+\index{Statements!Trigger!start}
+\index{Statements!Trigger!finish}
+\index{Trigger!start}
+\index{Trigger!finish}
+\index{Triggers!Example}
+There are times when this behavior is not desirable.  Events are commmonly
+defined with a start and finish that would be placed around another event
+or a put.  There is a third argument to the trigger statement that allows
+this.  After the event name, start or finish can be specified.  It may be a
+good idea to always specify start and finish just to clarify what the code
+is doing.  In this example indention is added to help clarify the nesting
+of starts and finishes.  
+The example in figure \ref{Triggers} on page \pageref{Triggers}
+shows all of the various trigger behaviors.  
+The output is shown if figure \ref{Triggers_out} on page \pageref{Triggers_out}.
+
+\begin{fvcode}{Triggers}{Triggers Example}
+
+proc template;
+
+   define tagset tagsets.triggers;
+       indent = 4;
+
+       define event doc; 
+          start:
+              trigger do_stuff;
+              trigger do_stuff start;
+              trigger inbetween;
+              trigger do_stuff finish;
+          finish:
+              trigger do_stuff start;
+              trigger inbetween;
+              trigger do_stuff finish;
+              trigger do_stuff;
+       end;
+
+       define event do_stuff;
+           start:
+               put state ': ' trigger_name nl;
+               ndent;
+               trigger more_stuff;
+           finish:
+               trigger more_stuff;
+               xdent;
+               put state ': ' trigger_name nl;
+       end;
+
+       define event more_stuff;
+           start:
+               put state ': ' trigger_name nl;
+       end;
+
+       define event inbetween;
+           put state ': ' trigger_name nl;
+       end;
+
+   end;
+run;
+
+ods tagsets.triggers file='test.txt';
+ods tagsets.triggers close;
+
+\end{fvcode}
+
+\begin{fvoutput}{Triggers_out}{Triggers Example}
+start: do_stuff
+    start: more_stuff
+    start: do_stuff
+        start: more_stuff
+        start: inbetween
+    finish: do_stuff
+    start: do_stuff
+        start: more_stuff
+        finish: inbetween
+    finish: do_stuff
+finish: do_stuff
+\end{fvoutput}
+
+
+\section{summary}
+Triggered events are great way to compartmentalize commonly used code.  When combined
+with if and breakif they are also a good way to control the program flow.  If your 
+events are getting complicated with lots of do / elses then it's probably time to
+create some new events and trigger them.  Triggered events are just as fast as
+inline code, so performance is not an issue.  Readability and maintenance of the
+tagset is.
+
+Previous to SAS 9.1 triggers were the only way to control the program flow.   
+Many of the tagsets still have code that reflect this programming style.  Triggered
+events are overly complex in some cases. 
+
+
+

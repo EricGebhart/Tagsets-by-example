@@ -1,0 +1,39 @@
+
+proc template;
+
+   define tagset tagsets.triggers;
+       indent = 4;
+
+       define event doc; 
+          start:
+              trigger do_stuff;
+              trigger do_stuff start;
+              trigger do_stuff finish;
+          finish:
+              trigger do_stuff start;
+              trigger do_stuff finish;
+              trigger do_stuff;
+       end;
+
+       define event do_stuff;
+           start:
+               put 'This is the finish of the ' trigger_name 'Event' nl;
+               ndent;
+               trigger more_stuff;
+           finish:
+               trigger more_stuff;
+               xdent;
+               put 'This is the finish of the ' trigger_name 'Event' nl;
+       end;
+
+       define event more_stuff;
+           start:
+               put trigger_name 'Event Only has a start' nl;
+       end;
+
+   end;
+run;
+
+ods tagsets.triggers file='test.txt';
+ods tagsets.triggers close;
+

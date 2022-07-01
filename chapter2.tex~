@@ -1,0 +1,559 @@
+
+\chapter{Tagsets: how do they work?}
+Tagsets are a hybrid of procedural and non-procedural, declarative
+programming languages.  A tagset is a collection of event definitions.
+Each definition can have procedural elements, but the events themselves
+are not procedural.  That's why they are called events.  Events do happen
+in some order, but with variation.  They are like the events in your
+day.  The alarm clock, brushing your teeth, eating breakfast, going
+to work, etc.  They do have some predictability, but are not exactly
+the same all the time.  In the context of SAS, events are determined
+by the job being run.  There are events for titles and footers, and
+page breaks.  There are events for tables and images,  Tables have
+varying numbers of observations, columns, and headers.  There are
+events for all of those things and more. This chapter will use a 
+simple plain text tagset to show how tagsets work.  As the tagset
+evolves the output created will reveal the fundamentals of tagset
+behavior.
+
+\index{procedural}
+\index{Event model}
+\section{Data and context in time}
+
+Tagsets are an event driven programming language.
+While they do have procedural elements the overall
+structure is an event driven model.  Events are best
+described as named bundles of data that occur at
+different points in time.  The name and timing of
+of the event provide context to the data it contains.
+
+\index{Event Requests}
+\section{Event Requests}
+A tagset defines what is to be done with the data
+for any given event.  But it is not necessary to
+define all possible events.  Only events which are
+meaningful to the output being created
+need to be defined.  For this reason, it is more
+accurate to think of these data bundles as event
+requests.  You may have a title statement in your
+SAS job.
+When it comes time, ODS will bundle up all the data,
+and metadata which defines that title.  The title
+event will then be requested.  If the tagset in use has
+a definition for the title event then something will
+happen.  Otherwise, nothing will happen.
+
+\index{variables}
+\subsection{A few variables}
+At current count there are 279 variables that could
+be defined for any given event.  Most events only
+populate a fraction of the available variables.  None
+populate all of them at once.
+
+
+\index{variables!MetaData}
+\subsubsection{Data and Metadata}
+Of those 279 variables, 172 of them are concerned with
+the data and the metadata about the data.  The main variable
+for any event is called 'value'.  All of the other variables
+are concerned with providing more information abouth that
+value.  Name, label, type, missing, rawvalue, justification,
+to name a few.  These variables are defined by ODS, the procedure
+currently in use, and the table or statgraph template for the
+current object.
+
+Still other variables provide context within the output,
+the procedure name, the output count, the row, count, the date,
+and many more.
+
+\index{variables!Style}
+\index{Style}
+\subsubsection{style Variables}
+The remaining 107 variables are style variables.  These are
+the same as the attributes you may have defined in the ODS
+style template that you are using.  These variables define things
+like font, foreground color, background color, cellspacing, bordercolor,
+and many more.
+
+\index{plain\_text}
+\section{Our First tagset}
+It's best not to get bogged down in the details, or to spend much
+time worrying about how all this works.  Tagsets are self revealing,
+the best way to learn them is to play with them. Starting with something 
+simple is the best way to go.  It will all make sense in time.
+
+This series of examples is going to create a very simple tagset. The output it will create
+will be plain text, something like the listing output that SAS has 
+generated forever.
+
+\subsection{Define statement}
+\index{Define!tagset}
+The first thing to do is give a name to the new tagset.  That is done 
+with the define statement.  Our tagset is going to be called
+plain\_text.  The tagset should be put in proc template's tagset directory,
+so it's first name is {\itshape tagsets.} .
+The code in listing \vref{define_tagset} shows a very simple tagset definition.
+
+\begin{fvcode}{define_tagset}{Defining a Tagset}
+     Define tagset tagsets.plain_text;
+
+     end; 
+\end{fvcode}
+
+       
+\subsection{The data event}
+\index{Define!event}
+\index{Event!data}
+\index{Table!cell}
+The data event is one of the most fundamental events.   This
+event is triggered for every value in every observation of a table.  
+The define event statement is used to create an event definition.
+The code now looks like this \vref{define_event}.
+
+\begin{fvcode}{define_event}{Adding an Event}
+     Define tagset tagsets.plain_text;
+
+         Define event data;
+
+         end;
+
+     end; 
+\end{fvcode}
+
+\subsubsection{The put statement}
+\index{concatenation}
+\index{newline}
+\index{Put}
+\index{Statements!Put}
+So far so good but the tagset doesn't do anything yet.  The values in the
+data event need to be printed
+The put statement is the way to do that.  If you are familiar with data step,
+this may seem familiar but it is not quite the same as the put statement in Data Step.
+This put automatically concatenates everything.  If you want a newline you must
+specify it with nl.  
+
+%\begin{fvcode}{doing_something}{Printing Something}
+\begin{lstlisting}
+     Define tagset tagsets.plain_text;
+
+         Define event data;
+             put 'Data: ' value nl;
+         end;
+
+     end; 
+\end{lstlisting}
+%\end{fvcode}
+
+\subsection{The header event}
+\index{Event!header}
+\index{Table!cell}
+The data will now be printed but there will be no headings.  The
+header event will take care of that.  All that is needed is a 
+header event that looks just like the data event.
+
+For now, printing each value on a line by it's self is enough.
+The working tagset, along with a simple proc print is shown in 
+figure \ref{plain_text1} on page \pageref{plain_text1} 
+The plain text output is shown in figure \ref{plain_text1_out} on page \pageref{plain_text1_out} 
+The corresponding latex output is shown in figure \ref{latex1_out} on page \pageref{latex1_out} 
+Notice that the observation count on each row is handled by the header event.
+
+\begin{fvcode} {plain_text1}{A Plain Text Tagset}
+ proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event data;
+             put 'Data: ' value nl;
+         end;
+
+         Define event header;
+             put 'Header: ' value nl;
+         end;
+
+
+     end; 
+
+ run;
+
+     
+ ods latex file='test.tex' stylesheet="test.sty" (url="test");
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods tagsets.plain_text close;
+ ods latex close;
+\end{fvcode}
+
+\begin{poutput}{plain_text1_out}{Simple Tagset Output}
+Header: Obs
+Header: Name
+Header: Sex
+Header: Age
+Header: Height
+Header: Weight
+Header:  1
+Data: Alfred
+Data: M
+Data: 14
+Data: 69
+Data: 112.5
+Header:  2
+Data: Alice
+Data: F
+Data: 13
+Data: 56.5
+Data: 84.0
+Header:  3
+Data: Barbara
+Data: F
+Data: 13
+Data: 65.3
+Data: 98.0
+\end{poutput}
+
+\label{latex1_out}
+\sassystemtitle[c]{The SAS System}
+
+\begin{sastable}[c]{rllrrr}\hline
+   \multicolumn{1}{|S{Header}{c}|}{Obs} & 
+   \multicolumn{1}{|S{Header}{c}|}{Name} & 
+   \multicolumn{1}{|S{Header}{c}|}{Sex} & 
+   \multicolumn{1}{|S{Header}{c}|}{Age} & 
+   \multicolumn{1}{|S{Header}{c}|}{Height} & 
+   \multicolumn{1}{|S{Header}{c}|}{Weight}
+\\\hline
+   \multicolumn{1}{|S{RowHeader}{r}|}{ 1} & 
+   \multicolumn{1}{|S{Data}{l}|}{Alfred} & 
+   \multicolumn{1}{|S{Data}{l}|}{M} & 
+   \multicolumn{1}{|S{Data}{r}|}{14} & 
+   \multicolumn{1}{|S{Data}{r}|}{69.0} & 
+   \multicolumn{1}{|S{Data}{r}|}{112.5}
+\\\hline
+   \multicolumn{1}{|S{RowHeader}{r}|}{ 2} & 
+   \multicolumn{1}{|S{Data}{l}|}{Alice} & 
+   \multicolumn{1}{|S{Data}{l}|}{F} & 
+   \multicolumn{1}{|S{Data}{r}|}{13} & 
+   \multicolumn{1}{|S{Data}{r}|}{56.5} & 
+   \multicolumn{1}{|S{Data}{r}|}{ 84.0}
+\\\hline
+   \multicolumn{1}{|S{RowHeader}{r}|}{ 3} & 
+   \multicolumn{1}{|S{Data}{l}|}{Barbara} & 
+   \multicolumn{1}{|S{Data}{l}|}{F} & 
+   \multicolumn{1}{|S{Data}{r}|}{13} & 
+   \multicolumn{1}{|S{Data}{r}|}{65.3} & 
+   \multicolumn{1}{|S{Data}{r}|}{ 98.0}
+\\\hline
+\end{sastable}
+
+\section{Fleshing out the plain\_text tagset}
+\index{Event!Table}
+\index{Event!Row}
+\index{Event!Data}
+\index{Event!Header}
+\index{Event!Table\_head}
+\index{Event!Table\_body}
+\index{Event!Table\_foot}
+This is all very nice but to create something more useful
+some more events will be needed.  The most basic
+events are fairly intuitive.  All tables have a handful
+of basic events.  We've seen the data and header events.
+The other basic events are, table, row, table\_head,  table\_body, and
+ table\_foot.  
+
+The table event encapsulates all other events which define a table.
+You may be wondering how an event can contain other
+events within it's scope, Or even how an event can have
+a scope.
+
+\subsubsection{Start and finish}
+\index{Table!row}
+\index{Event!start:}
+\index{Event!finish:}
+Event requests commonly come in matched pairs.  If you are
+used to coding HTML then this is a common concept for you.
+Most HTML tags are paired as a begin tag and and end tag such
+as <span> and </span>.  Tagset events are the same way.  But
+to keep things neatly packaged each event definition can hold
+both parts.  The beginning and the ending.  In the tagset these
+are denoted by start:  and finish:. 
+
+This works because most events get called twice from within ODS.
+Once at the beginning and then again at the end.  So when 
+print procedure creates a table, the table event is triggered twice, once
+at the begininng of the table, and once at the end.  The same
+thing goes for the row event, the table\_head, table\_body, and table\_foot events,
+even the data and header events.
+
+Our output doesn't look much like a table, but now there are some
+more events to try out.  A slight modification to the data and 
+header event and the addition of the table and row events will make
+the output look much nicer.
+The new tagset now looks like the code in
+figure \ref{plain_text2} on page \pageref{plain_text2} 
+
+\begin{fvcode}{plain_text2}{Simple Tagset}
+ proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event table;
+             start:
+                 put '-----------------------------------------' nl;
+             finish:
+                 put '-----------------------------------------' nl;
+         end;
+
+         Define event row;
+             finish:
+                 put nl;
+         end;
+
+         Define event data;
+             put value '   ';
+         end;
+
+         Define event header;
+             put value ' ';
+         end;
+
+
+     end; 
+
+ run;
+
+     
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods tagsets.plain_text close;
+\end{fvcode}
+
+\begin{poutput}{plain_text2_out}{Simple Tagset Output}
+-----------------------------------------
+Obs Name Sex Age Height Weight 
+ 1 Alfred   M   14   69   112.5   
+-----------------------------------------
+\end{poutput}
+
+This version isn't half bad considering the simplicity of the
+tagset.  The table event puts lines above and below,  the finish 
+of row event causes a newline at the end of each row, and the data
+and header values are printed with spaces between them.
+
+\subsection{head, body, and foot}
+\index{Table!head}
+\index{Table!body}
+\index{Table!foot}
+\index{Event!table\_head}
+\index{Event!table\_body}
+\index{Event!table\_foot}
+The table\_head, table\_body, and table\_foot events can also be useful 
+to us. The head event surrounds the rows that contain the table
+headings.  The body section surrounds the data rows, and in the
+rare cases that the table has footers at the bottom, the foot section
+surrounds those.
+
+For explanation this new tages is going to use all of these events so you can see
+where they fit in.  The output will be a bit garish but that can be fixed later.
+Our new tagset is shown figure \ref{plain_text3} on page \pageref{plain_text3} 
+And the output, expanded to 3 observations is in figure \ref{plain_text3_out} 
+on page \pageref{plain_text3_out} 
+
+\begin{fvcode}{plain_text3}{A Simple Tagset}
+ proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event table;
+             start:
+                 put '-----------------------------------------' nl;
+             finish:
+                 put '-----------------------------------------' nl;
+         end;
+
+         Define event table_head;
+             finish:
+                 put '_________________________________________' nl;
+         end;
+
+         Define event table_body;
+             start:
+                 put '.........................................' nl;
+             finish:
+                 put '.........................................' nl;
+         end;
+
+         Define event table_foot;
+             start:
+                 put '=========================================' nl;
+             finish:
+                 put '=========================================' nl;
+         end;
+
+         Define event row;
+             finish:
+             put nl;
+         end;
+
+         Define event data;
+             put value '   ';
+         end;
+
+         Define event header;
+             put value ' ';
+         end;
+
+
+     end; 
+
+ run;
+
+     
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods tagsets.plain_text close;
+
+\end{fvcode}
+
+\begin{poutput}{plain_text3_out}{Simple Tagset Output}
+-----------------------------------------
+Obs Name Sex Age Height Weight 
+_________________________________________
+.........................................
+ 1 Alfred   M   14   69.0   112.5   
+ 2 Alice   F   13   56.5    84.0   
+ 3 Barbara   F   13   65.3    98.0   
+.........................................
+-----------------------------------------
+\end{poutput}
+
+\index{Table!foot}
+It is worth noting that the table foot event did not create
+any output.  That is because there was no table foot.  If there
+had been something inside the table's foot section then that
+group of events would have generated output.
+
+\subsection{Titles}
+\index{Titles}
+\index{Footnotes}
+\index{Footers}
+\index{Procedure titles}
+\index{Note}
+\index{Warning}
+\index{Error}
+\index{Fatal}
+\index{Event!system\_title}
+\index{Event!system\_footer}
+\index{Event!proc\_title}
+\index{Event!note}
+\index{Event!warning}
+\index{Event!error}
+\index{Event!fatal}
+\index{Event!byline}
+There is only one thing that the latex output in figure 
+\ref{latex1_out} on page \pageref{latex1_out} has that the plain\_text output doesn't..
+The default system title.  Only one more event is needed for that.
+But there are other events related to the system\_title event that are worth
+noting. There are actually 8 more 
+fundamental events which are concerned with titles, and notes.  The names
+are self explanatory.  They are, System\_title, System\_footer, Proc\_title,
+Byline, Note, Warning, Error, and Fatal.  
+Like the incredibly simple data and header events all that is really needed for
+each of these is to print the value.  
+
+The new tagset is shown figure \ref{plain_text4} on page \pageref{plain_text4} 
+And the output is in figure \ref{plain_text4_out} 
+on page \pageref{plain_text4_out} 
+
+\begin{fvcode}{plain_text4}{A Better Simple Tagset}
+proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event table;
+             start:
+                 put '-----------------------------------------' nl;
+             finish:
+                 put '-----------------------------------------' nl;
+         end;
+
+         Define event table_head;
+             finish:
+                 put '_________________________________________' nl;
+         end;
+
+         Define event row;
+             finish:
+             put nl;
+         end;
+
+         Define event data;
+             put value '   ';
+         end;
+
+         Define event header;
+             put value ' ';
+         end;
+
+         Define event system_title;
+             put value nl nl;
+         end;
+
+         Define event system_footer;
+             put value nl nl;
+         end;
+
+         Define event proc_title;
+             put value nl nl;
+         end;
+
+         Define event note;
+             put value nl nl;
+         end;
+
+         Define event warning;
+             put value nl nl;
+         end;
+
+         Define event error;
+             put value nl nl;
+         end;
+
+         Define event fatal;
+             put value nl nl;
+         end;
+
+     end; 
+
+ run;
+
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods _all_ close;
+\end{fvcode}
+
+\begin{poutput}{plain_text4_out}{Simple Tagset Output}
+The SAS System
+
+-----------------------------------------
+Obs Name Sex Age Height Weight 
+_________________________________________
+ 1 Alfred   M   14   69.0   112.5   
+ 2 Alice   F   13   56.5    84.0   
+ 3 Barbara   F   13   65.3    98.0   
+-----------------------------------------
+\end{poutput}
+
+\section{Summary}
+By giving away a few events, this chapter has given a
+glimpse of how tagsets and events work.  Events can have a start
+and finish, and can occur within the scope of another event.  The way
+the data event occurs between the start and finish of the row event.
+
+Tagsets can be very simple and so can their events.  This can be used
+to advantage.  It is possible to actually write very simple tagsets to explore
+how they work.  This is a fundamental concept behind learning, understanding,
+and using tagsets.  

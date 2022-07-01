@@ -1,0 +1,888 @@
+
+
+
+\chapter{The Path to Discovery}
+
+\index{Events!Finding}
+\section{Finding Events}
+So far, to keep things simple, we given a few event names away.
+But there are many more events than those few we have
+revealed.  The events also vary according to what you run
+and which output file you look at.  The events for the body
+file will be different than the contents file which will 
+be different from the stylesheet file.
+
+\index{tagsets!event_map}
+\index{tagsets!short_map}
+\index{tagsets!tpl_style_map}
+\index{tagsets!text_map}
+Thankfully we can write a tagset that will tell us
+what the events are and when they occur.  In fact
+there are several tagsets already created for this purpose.
+All but one of these tagsets generate XML.  Where the tag
+names are the event names.  The main difference between
+these tagsets are the attributes displayed on the tags.
+Event map is fairly verbose and displays the most attributes.
+Short map shows only the values, names, and labels and is
+more than adequate most of the time.  Tpl_style_map is
+more concerned with style names, and the names for ODS output
+objects. Text_map is meant as a learning tool but is not as
+helpful as the others once events are understood.
+
+\begin{tabular}{l|l}
+\hline
+\multicolumn{2}{c}{Event Mapping Tagsets} \\ \hline
+Event_map &  A fairly verbose XML map \\
+Short_map &  The same Event_map but less data \\
+tpl_style_map & Displays more style and template information \\
+text_map & A formatted text map.  More human readable than xml 
+\hline
+\end{tabular}
+
+Lets open and close a file with short_map and see how it looks.
+All we need is two ods statements as shown 
+in figure \ref{event_map1}
+on page \pageref{event_map1}.
+The corresponding output is shown in figure \ref{event_map1_out}
+on page \pageref{event_map1_out}.
+
+\begin{output}[H]
+\caption{Empty Event Map}
+\label{event_map1}
+\begin{verbatim}
+ods tagsets.short_map file='test.xml';
+ods tagsets.short_map close;
+\end{verbatim}
+
+Each tag in this output is the name of an event.  Using standard
+XML format a tag like <doc> corresponds to the Start: section
+of the doc event.  The </doc> corresponds to the End: section
+of the doc event.  A tag like <doc_title/> means that this is
+a non-scoping event that does not really have a start and finish.
+If the event is defined with a start: and finish: that is still ok,
+but both sections will be triggered one after the other when the
+event occurs.
+
+It's interesting to note that even though we didn't do anything
+there were a fair number of events that occured.  
+Markup languages
+generally need a head section at the top of the document which has
+information about the document it's self.  This section also holds
+information about how the document should be formatted.  The very
+last events are doc\_body and the end of doc.  Doc\_body is where
+the output from our procedures will go.  Excercise: It would probably
+be enlightening to expand the example in in figure \ref{event_map1}
+on page \pageref{event_map1} to specify all the output files the
+ODS markup statement supports.  Then examine the contents of each.
+Many of them will be similar,  But each is different in it's own way.
+
+\begin{output}[H]
+\label{event_map1_out}
+\caption{Empty Event Map Output}
+\begin{verbatim}
+<doc operator="eric" sasversion="9.1" saslongversion="9.01.01M0D10062003" date="2003-10-24" time="18:09:16" encoding="iso-8859-1">
+  <doc_head>
+    <doc_meta/>
+    <auth_oper/>
+    <doc_title/>
+    <stylesheet_link/>
+    <javascript>
+      <startup_function>
+      </startup_function>
+      <shutdown_function>
+      </shutdown_function>
+    </javascript>
+  </doc_head>
+  <doc_body>
+  </doc_body>
+</doc>
+\end{verbatim}
+\end{output}
+
+Let's modify our job to use our 1 observation proc print and see what comes out.
+
+\begin{code}[H]
+\caption{Empty Event Map Output}
+\label{event_map2}
+\begin{verbatim}
+options obs=1;
+ods tagsets.short_map file='test.xml';
+proc print data=sashelp.class; run;
+ods tagsets.short_map close;
+\end{verbatim}
+
+The output is rather extensive for such a small table!
+
+\begin{verbatim}
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<doc operator="eric" sasversion="9.1" saslongversion="9.01.01M0D10062003" date="2003-10-24" time="18:27:50" encoding="iso-8859-1">
+  <doc_head>
+    <doc_meta/>
+    <auth_oper/>
+    <doc_title/>
+    <stylesheet_link/>
+    <javascript>
+      <startup_function>
+      </startup_function>
+      <shutdown_function>
+      </shutdown_function>
+    </javascript>
+  </doc_head>
+  <doc_body>
+    <proc name="Print">
+      <anchor name="IDX"/>
+      <page_setup>
+        <system_title_setup_group>
+          <title_setup_container>
+            <title_setup_container_specs>
+              <title_setup_container_spec/>
+            </title_setup_container_specs>
+            <title_setup_container_row>
+              <system_title_setup value="The SAS System">
+              </system_title_setup>
+            </title_setup_container_row>
+          </title_setup_container>
+        </system_title_setup_group>
+      </page_setup>
+      <system_title_group>
+        <title_container>
+          <title_container_specs>
+            <title_container_spec/>
+          </title_container_specs>
+          <title_container_row>
+            <system_title value="The SAS System">
+            </system_title>
+          </title_container_row>
+        </title_container>
+      </system_title_group>
+      <proc_branch name="Print" value="Print">
+        <leaf name="Print" value="Data Set SASHELP.CLASS">
+          <page_anchor/>
+          <output name="Print">
+            <table>
+              <rowspec>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+                <cellspecsep/>
+                <cellspec/>
+              </rowspec>
+              <colspecs>
+                <colgroup>
+                  <colspec_entry name="Obs"/>
+                </colgroup>
+                <colgroup>
+                  <colspecsep/>
+                  <colspec_entry name="Name"/>
+                  <colspecsep/>
+                  <colspec_entry name="Sex"/>
+                  <colspecsep/>
+                  <colspec_entry name="Age"/>
+                  <colspecsep/>
+                  <colspec_entry name="Height"/>
+                  <colspecsep/>
+                  <colspec_entry name="Weight"/>
+                </colgroup>
+              </colspecs>
+              <table_headers>
+                <header_spec>
+                  <sub_header_colspec name="Obs">
+                    <col_header_label value="Obs">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Name">
+                    <col_header_label value="Name">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Sex">
+                    <col_header_label value="Sex">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Age">
+                    <col_header_label value="Age">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Height">
+                    <col_header_label value="Height">
+                    </col_header_label>
+                  </sub_header_colspec>
+                  <sub_header_colspec name="Weight">
+                    <col_header_label value="Weight">
+                    </col_header_label>
+                  </sub_header_colspec>
+                </header_spec>
+              </table_headers>
+              <table_head>
+                <row>
+                  <header value="Obs">
+                  </header>
+                  <header value="Name">
+                  </header>
+                  <header value="Sex">
+                  </header>
+                  <header value="Age">
+                  </header>
+                  <header value="Height">
+                  </header>
+                  <header value="Weight">
+                  </header>
+                </row>
+              </table_head>
+              <table_body>
+                <row>
+                  <header value=" 1">
+                  </header>
+                  <data value="Alfred">
+                  </data>
+                  <data value="M">
+                  </data>
+                  <data value="14">
+                  </data>
+                  <data value="69">
+                  </data>
+                  <data value="112.5">
+                  </data>
+                </row>
+              </table_body>
+            </table>
+          </output>
+        </leaf>
+      </proc_branch>
+    </proc>
+  </doc_body>
+</doc>
+\end{verbatim}
+
+That is a lot of output.  Obviously the probability of
+using all of those events in one tagset is pretty slim.
+But for every event there is probably a tagset that uses
+it.
+
+
+\section{Default Event}
+\index{Attributes!Default\_event}
+\index{Default\_event}
+So how do we know that we are seeing all the events?  The
+answer is because these tagsets use the default event.
+Normally, if an event is not defined the event request
+is quietly forgotten.  But a tagset can have an event that
+is designated the default.  If an event is not found,
+in a tagset that has a default event, the default event
+is triggered instead.  The code for the shortmap tagset
+can be seen 
+in figure \ref{event_map3} on page \pageref{event_map3}.
+
+\begin{code}[H]
+\caption{Short Map Tagset}
+\label{event_map3}
+\begin{verbatim}
+    define tagset tagsets.short_map;
+        notes "This is the event map definition";
+        map = '<>&"';
+        mapsub = '/&lt;/&gt;/&amp;/&quot;';
+        nobreakspace = ' ';
+        split = ' ';
+        indent=2;
+        stacked_columns = yes;
+        output_type = 'xml';
+
+        default_event = 'basic';
+
+        define event initialize;
+        end;
+
+        define event show_charset;
+           set $show_charset "1" / if !exists(suppress_charset);
+        end;
+
+        define event doc;
+            start:
+                trigger show_charset;
+                put '<?xml version="1.0"';
+                putq " encoding=" encoding / if exists($show_charset);
+                put "?>" CR CR;
+                put "<" EVENT_NAME ;
+                putq " title="        BODY_TITLE;
+                putq " author="       AUTHOR;
+                putq " operator="     OPERATOR;
+                putq " sasversion="   SASVERSION;
+                putq " saslongversion="   SASLONGVERSION;
+                putq " date="         DATE;
+                putq " time="         TIME;
+                putq " encoding="     ENCODING / if exists($show_charset);
+                putq " language="     LANGUAGE;
+                putq " trantab="      TRANTAB;
+                trigger attr_out;
+                put ">" CR;
+                ndent;
+            finish:
+                xdent;
+                put "</" EVENT_NAME '>';
+        end;
+
+        define event basic;
+            start:
+                put "<" EVENT_NAME ;
+                trigger attr_out;
+                put "/>" CR / if cmp ("colspecsep", event_name);
+                break / if cmp ("colspecsep", event_name);
+                put "/" / if exists(empty);
+                put ">" CR;
+                break / if exists(empty);
+                ndent;
+            finish:
+                break / if exists(empty);
+                break / if cmp ("colspecsep", event_name);
+                xdent;
+                put "</" EVENT_NAME ">" CR;
+        end;
+
+       define event attr_out;
+          putq " name=" name;
+          putq " value=" value;
+       end;
+    end;
+
+\end{verbatim}
+\end{code}
+
+
+
+\index{Event Requests}
+\section{Event Requests}
+A tagset defines what is to be done with the data
+for any given event.  But it is not necessary to
+define all possible events.  Only events which are
+meaningful to the output we are trying to create
+need to be defined.  For this reason, it is more
+accurate to think of these data bundles as event
+requests.  You may have a title statement, so
+when it comes time, ODS will bundle up all the data,
+and metadata which defines that title.  And the title
+event will be requested.  If the tagset in use has
+a definition for the title event then something will
+happen.  Otherwise, nothing will happen.
+
+\index{variables}
+\subsection{A few variables}
+At current count there are 279 variables that could
+be defined for any given event.  All of these variables
+will probably never have a value at the same time.
+
+\index{variables!MetaData}
+\subsubsection{Data and Metadata}
+Of those 279 variables, 172 of them are concerned with
+the data and the metadata about the data.  The main variable
+for any event is called 'value'.  All of the other variables
+are concerned with providing more information abouth that
+value.  Name, label, type, missing, rawvalue, justification,
+to name a few.  These variables are defined by ODS, the procedure
+currently in use, and the table or statgraph template for the
+current object.
+
+Still other variables provide context within the output,
+the procedure name, the output count, the row, count, the date,
+and many more.
+
+\index{variables!Style}
+\index{Style}
+\subsubsection{style Data}
+The remaining 107 variables are style variables.  These are
+the same as the attributes you may have defined in the ODS
+style template that you are using.  These variables define things
+like font, foreground color, background color, cellspacing, bordercolor,
+and many more.
+
+\index{plain\_text}
+\section{Our First tagset}
+It's best not to get bogged down in the details, or to spend much
+time worrying about how all this works.  Tagsets are self revealing,
+the best way to learn them is to play with them.  So we are going
+to start with something simple.  It will all make sense in time.
+
+We are going to create a very simple tagset. The output it will create
+will be plain text, something like the listing output that SAS has 
+generated forever.
+
+\subsection{Define statement}
+\index{Define!tagset}
+The first thing we have to do is give a name to our new tagset.  We 
+do that with the define statement.  Our tagset is going to be called
+plain\_text.  And we want to put in proc template's tagset directory.
+The code in Figure \ref{define_tagset} on page \pageref{define_tagset} 
+shows our very simple tagset definition.
+
+\begin{code}[H] 
+\label{define_tagset}
+\caption{Define Tagset}
+\begin{verbatim}
+     Define tagset tagsets.plain_text;
+
+     end; 
+\end{verbatim}
+\end{code}
+
+       
+\subsection{The data event}
+\index{Define!event}
+\index{Event!data}
+The data event is one of the most fundamental events we can define.  This
+event is triggered for every value in every observation of a table.  We
+want the tagset to create output when the data event is requested by ODS.
+The define event statement is used to create an event definition.
+Our code now looks like this \ref{define_event} on page \pageref{define_event} 
+
+\begin{code}[H] 
+\label{define_event}
+\caption{Define Event}
+\begin{verbatim}
+     Define tagset tagsets.plain_text;
+
+         Define event data;
+
+         end;
+
+     end; 
+\end{verbatim}
+\end{code}
+
+\subsubsection{The put statement}
+\index{concatenation}
+\index{newline}
+\index{put}
+So far so good but our tagset doesn't do anything yet.  We need to print the
+data that is in the data event.  We do that with the put statement.  This
+will seem familiar but it is not quite the same as the put statement in Data Step.
+This put automaatically concatenates everything.  If you want a newline you must
+specify it with nl.  
+
+\subsection{The header event}
+\index{Event!header}
+We have the data coming out now we need the headings.  The
+header event will take care of that.  All we need is a 
+header event that looks just like our data event.
+
+For now, let's print each value on a line by it's self.
+Our working tagset, along with a simple proc print is shown in 
+figure \ref{plain_text1} on page \pageref{plain_text1} 
+The plain text output is shown in figure \ref{plain_text1_out} on page \pageref{plain_text1_out} 
+The corresponding latex output is shown in figure \ref{latex1_out} on page \pageref{latex1_out} 
+Notice that the observation count is handled by the header event.
+
+\begin{code}[H] 
+\label{plain_text1}
+\caption{Simple Tagset}
+\begin{verbatim}
+ proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event data;
+             put 'Data: ' value nl;
+         end;
+
+         Define event header;
+             put 'Header: ' value nl;
+         end;
+
+
+     end; 
+
+ run;
+
+     
+ ods latex file='test.tex' stylesheet="test.sty" (url="test");
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods tagsets.plain_text close;
+ ods latex close;
+\end{verbatim}
+\end{code}
+
+\begin{output}[H]
+\label{plain_text1_out}
+\caption{Simple Tagset Output}
+\begin{verbatim}
+Header: Obs
+Header: Name
+Header: Sex
+Header: Age
+Header: Height
+Header: Weight
+Header:  1
+Data: Alfred
+Data: M
+Data: 14
+Data: 69
+Data: 112.5
+Header:  2
+Data: Alice
+Data: F
+Data: 13
+Data: 56.5
+Data: 84.0
+Header:  3
+Data: Barbara
+Data: F
+Data: 13
+Data: 65.3
+Data: 98.0
+\end{verbatim}
+\end{output}
+
+\sassystemtitle[c]{The SAS System}
+
+\begin{sastable}[c]{rllrrr}\hline
+   \multicolumn{1}{|S{Header}{c}|}{Obs} & 
+   \multicolumn{1}{|S{Header}{c}|}{Name} & 
+   \multicolumn{1}{|S{Header}{c}|}{Sex} & 
+   \multicolumn{1}{|S{Header}{c}|}{Age} & 
+   \multicolumn{1}{|S{Header}{c}|}{Height} & 
+   \multicolumn{1}{|S{Header}{c}|}{Weight}
+\\\hline
+   \multicolumn{1}{|S{RowHeader}{r}|}{ 1} & 
+   \multicolumn{1}{|S{Data}{l}|}{Alfred} & 
+   \multicolumn{1}{|S{Data}{l}|}{M} & 
+   \multicolumn{1}{|S{Data}{r}|}{14} & 
+   \multicolumn{1}{|S{Data}{r}|}{69.0} & 
+   \multicolumn{1}{|S{Data}{r}|}{112.5}
+\\\hline
+   \multicolumn{1}{|S{RowHeader}{r}|}{ 2} & 
+   \multicolumn{1}{|S{Data}{l}|}{Alice} & 
+   \multicolumn{1}{|S{Data}{l}|}{F} & 
+   \multicolumn{1}{|S{Data}{r}|}{13} & 
+   \multicolumn{1}{|S{Data}{r}|}{56.5} & 
+   \multicolumn{1}{|S{Data}{r}|}{ 84.0}
+\\\hline
+   \multicolumn{1}{|S{RowHeader}{r}|}{ 3} & 
+   \multicolumn{1}{|S{Data}{l}|}{Barbara} & 
+   \multicolumn{1}{|S{Data}{l}|}{F} & 
+   \multicolumn{1}{|S{Data}{r}|}{13} & 
+   \multicolumn{1}{|S{Data}{r}|}{65.3} & 
+   \multicolumn{1}{|S{Data}{r}|}{ 98.0}
+\\\hline
+\end{sastable}
+
+\section{Fleshing out the plain\_text tagset}
+This is all very nice but to create something more useful
+we are going to need some more events.  The most basic
+events are fairly intuitive.  All tables have a handful
+of basic events.  We've seen the data and header events.
+The other basic events are, table, row, head, body, and
+foot.  
+
+The table event encapsulates all other events which define a table.
+You may be wondering how an event can contain other
+events within it's scope, Or even how an event can have
+a scope.
+
+\subsubsection{Start and finish}
+Event requests commonly come in matched pairs.  If you are
+used to coding HTML then this is a common concept for you.
+Most HTML tags are paired as a begin tag and and end tag such
+as <span> and </span>.  Tagset events are the same way.  But
+to keep things neatly packaged each event definition can hold
+both parts.  The beginning and the ending.  In the tagset these
+are denoted by start:  and finish:. 
+
+This works because most events get called twice from within ODS.
+Once at the beginning and then again at the end.  So when proc
+print creates a table, the table event is triggered twice, once
+at the begininng of the table, and once at the end.  The same
+thing goes the row event, the head, body, and foot events,
+even the data and header events.
+
+Our output doesn't look much like a table, but now we have some
+more events to try out.  Let's add the table and row events and
+fix up our data and header events.
+Our new tagset now looks like the code in
+figure \ref{plain_text2} on page \pageref{plain_text} 
+
+\begin{code}
+\label{plain_text2}
+\caption{Simple Tagset}
+\begin{verbatim}
+ proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event table;
+             start:
+                 put '-----------------------------------------' nl;
+             finish:
+                 put '-----------------------------------------' nl;
+         end;
+
+         Define event row;
+             finish:
+                 put nl;
+         end;
+
+         Define event data;
+             put value '   ';
+         end;
+
+         Define event header;
+             put value ' ';
+         end;
+
+
+     end; 
+
+ run;
+
+     
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods tagsets.plain_text close;
+\end{verbatim}
+\end{code}
+
+\begin{output}
+\label{plain_text2_out}
+\caption{Simple Tagset Output}
+\begin{verbatim}
+-----------------------------------------
+Obs Name Sex Age Height Weight 
+ 1 Alfred   M   14   69   112.5   
+-----------------------------------------
+\end{verbatim}
+\end{output}
+
+This version isn't half bad considering the simplicity of our
+tagset.  The table event puts lines above and below,  the finish 
+of row event causes a newline at the end of each row, and the data
+and header values are printed with spaces between them.
+
+\subsection{head, body, and foot}
+\index{Table!head}
+\index{Table!body}
+\index{Table!foot}
+\index{Event!table\_head}
+\index{Event!table\_body}
+\index{Event!table\_foot}
+The table\_head, table\_body, and table\_foot events can also be useful 
+to us. The head event surrounds the rows that contain the table
+headings.  The body section surrounds the data rows, and in the
+rare cases that the table has footers at the bottom, the foot section
+surrounds those.
+
+For explanation I'm going to use all of these events so you can see
+where they fit in.  The output will be a bit garish but we will fix
+that when we revisit this tagset later on in the book.
+Our new tagset is shown figure \ref{plain_text3} on page \pageref{plain_text3} 
+And the output, expanded to 3 observations is in figure \ref{plain_text3_out} 
+on page \pageref{plain_text3_out} 
+
+\begin{code}
+\label{plain_text3}
+\caption{Simple Tagset}
+\begin{verbatim}
+ proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event table;
+             start:
+                 put '-----------------------------------------' nl;
+             finish:
+                 put '-----------------------------------------' nl;
+         end;
+
+         Define event table_head;
+             finish:
+                 put '_________________________________________' nl;
+         end;
+
+         Define event table_body;
+             start:
+                 put '.........................................' nl;
+             finish:
+                 put '.........................................' nl;
+         end;
+
+         Define event table_foot;
+             start:
+                 put '=========================================' nl;
+             finish:
+                 put '=========================================' nl;
+         end;
+
+         Define event row;
+             finish:
+             put nl;
+         end;
+
+         Define event data;
+             put value '   ';
+         end;
+
+         Define event header;
+             put value ' ';
+         end;
+
+
+     end; 
+
+ run;
+
+     
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods tagsets.plain_text close;
+
+\end{verbatim}
+\end{code}
+
+\begin{output}[H] 
+\label{plain_text3_out}
+\caption{Simple Tagset Output}
+\begin{verbatim}
+-----------------------------------------
+Obs Name Sex Age Height Weight 
+_________________________________________
+.........................................
+ 1 Alfred   M   14   69.0   112.5   
+ 2 Alice   F   13   56.5    84.0   
+ 3 Barbara   F   13   65.3    98.0   
+.........................................
+-----------------------------------------
+\end{verbatim}
+\end{output}
+
+\index{Table!foot}
+It is worth noting that the table foot event did not create
+any output.  That is because there was no table foot.  If there
+had been something inside the table's foot section then that
+group of events would have generated output.
+
+\subsection{Titles}
+\index{Titles}
+\index{Footnotes}
+\index{Footers}
+\index{Procedure titles}
+\index{Note}
+\index{Warning}
+\index{Error}
+\index{Fatal}
+\index{Event!system\_title}
+\index{Event!system\_footer}
+\index{Event!proc\_title}
+\index{Event!note}
+\index{Event!warning}
+\index{Event!error}
+\index{Event!fatal}
+There is only one thing that our latex output in figure 
+\ref{latex1_out} on page \pageref{latex1_out} has that we don't have.
+The default system title.  We only really need one more event for this
+example. But while we are here it is worth saying there are actually 7 more 
+fundamental events which are concerned with titles, and notes.  The names
+are self explanatory.  They are, System\_title, System\_footer, Proc\_title,
+Note, Warning, Error, and Fatal.  
+Like our incredibly simple data and header events all we really need to do for
+each of these is print the value.  
+
+Our new tagset is shown figure \ref{plain_text4} on page \pageref{plain_text4} 
+And the output is in figure \ref{plain_text4_out} 
+on page \pageref{plain_text4_out} 
+
+\begin{code}
+\label{plain_text4}
+\caption{Simple Tagset}
+\begin{verbatim}
+proc template;
+
+     Define tagset tagsets.plain_text;
+
+         Define event table;
+             start:
+                 put '-----------------------------------------' nl;
+             finish:
+                 put '-----------------------------------------' nl;
+         end;
+
+         Define event table_head;
+             finish:
+                 put '_________________________________________' nl;
+         end;
+
+         Define event row;
+             finish:
+             put nl;
+         end;
+
+         Define event data;
+             put value '   ';
+         end;
+
+         Define event header;
+             put value ' ';
+         end;
+
+         Define event system_title;
+             put value nl nl;
+         end;
+
+         Define event system_footer;
+             put value nl nl;
+         end;
+
+         Define event proc_title;
+             put value nl nl;
+         end;
+
+         Define event note;
+             put value nl nl;
+         end;
+
+         Define event warning;
+             put value nl nl;
+         end;
+
+         Define event error;
+             put value nl nl;
+         end;
+
+         Define event fatal;
+             put value nl nl;
+         end;
+
+     end; 
+
+ run;
+
+ ods tagsets.plain_text file='test.txt';
+ option obs=3;
+ proc print data=sashelp.class; run;
+ ods _all_ close;
+\end{verbatim}
+\end{code}
+
+\begin{output}[H] 
+\label{plain_text4_out}
+\caption{Simple Tagset Output}
+\begin{verbatim}
+The SAS System
+
+-----------------------------------------
+Obs Name Sex Age Height Weight 
+_________________________________________
+ 1 Alfred   M   14   69.0   112.5   
+ 2 Alice   F   13   56.5    84.0   
+ 3 Barbara   F   13   65.3    98.0   
+-----------------------------------------
+\end{verbatim}
+\end{output}
+
+
+     
